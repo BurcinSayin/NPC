@@ -1,0 +1,31 @@
+Jamis Buck's NPC Generator - Change Log - Andargor
+
+2.0.5 BETA
+
+- Fixed Skill Focus bonus. Now grants +3.
+- Fixed Monk Flurry of Blows.
+
+2.0.4 BETA
+
+- Removed wtStream library and updated command-line and CGI versions (Jamis)
+- Added more alignment choices (Jamis + Andargor)
+- Upgraded to Beta status
+
+2.0.3 ALPHA
+
+- Specialist wizards now get Spell Focus for their school, not the opposite...
+
+2.0.2 ALPHA
+
+- Tweaked skill selection routines (Wizards weren't getting Spellcraft often enough, ugh, and same for Rangers and Survival)
+- Specialist Wizards no longer get prohibited spells at 0th level
+- Experience points now calculated correctly
+
+2.0.1 ALPHA
+
+- Fixed Spell Focus and Greater Spell Focus selection routines to avoid crashes with non-Wizards
+- PCGen character names now include sex and class relevant info to facilitate exporting to PDF and to avoid filename collisions
+
+2.0.0 ALPHA
+
+- Original Release
