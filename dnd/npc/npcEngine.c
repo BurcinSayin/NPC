@@ -66,23 +66,19 @@ static const int allLanguages[] = { lnABYSSAL, lnAQUAN, lnAURAN,
   lnGOBLIN, lnGIANT, lnGNOLL, lnHALFLING, lnIGNAN, lnINFERNAL, lnORC, 
   lnSYLVAN, lnTERRAN, lnUNDERCOMMON, 0 };
 
-static const int allSkills[] = { skAPPRAISE, skACROBATICS, skBLUFF, skCLIMB,
-  skCRAFT_ALCHEMY, skCRAFT_ARMORSMITHING, skCRAFT_BOWMAKING,
-  skCRAFT_BLACKSMITHING, skCRAFT_CARPENTRY, skCRAFT_LEATHERWORKING,
-  skCRAFT_PAINTING, skCRAFT_POTTERY, skCRAFT_SCULPTING, skCRAFT_SHIPMAKING,
-  skCRAFT_STONEMASONRY, skCRAFT_TRAPMAKING, skCRAFT_WEAPONSMITHING,
-  skCRAFT_WOODWORKING, skDECIPHERSCRIPT, skDIPLOMACY, skDISABLEDEVICE,
-  skDISGUISE, skESCAPEARTIST, skFORGERY, skGATHERINFORMATION, skHANDLEANIMAL,
-  skHEAL, skHIDE, skINTIMIDATE, skJUMP, skKNOWLEDGE_ARCANA,
-  skKNOWLEDGE_ARCHITECTUREANDENGINEERING, skKNOWLEDGE_DUNGEONEERING,
-  skKNOWLEDGE_GEOGRAPHY, skKNOWLEDGE_HISTORY, skKNOWLEDGE_LOCAL,
-  skKNOWLEDGE_NATURE, skKNOWLEDGE_NOBILITYANDROYALTY, skKNOWLEDGE_RELIGION,
-  skKNOWLEDGE_THEPLANES, skLISTEN, skMOVESILENTLY, skOPENLOCK, skPERFORM_ACT,
-  skPERFORM_COMEDY, skPERFORM_DANCE, skPERFORM_KEYBOARDINSTRUMENTS,
-  skPERFORM_ORATORY, skPERFORM_PERCUSSIONINSTRUMENTS, skPERFORM_STRINGINSTRUMENTS,
-  skPERFORM_WINDINSTRUMENTS, skPERFORM_SING, skPROFESSION_HUNTER, skPROFESSION_MINER,
-  skRIDE, skSEARCH, skSENSEMOTIVE, skSLEIGHTOFHAND, skSPEAKLANGUAGE, skSPELLCRAFT, skSPOT,
-  skSURVIVAL, skSWIM, skTUMBLE, skUSEMAGICDEVICE, skUSEROPE, 0 };
+static const int allSkills[] = { skACROBATICS,skAPPRAISE,skBLUFF,skCLIMB,
+skCRAFT_ALCHEMY,skCRAFT_ARMORSMITHING,skCRAFT_BOWMAKING,skCRAFT_BLACKSMITHING,
+skCRAFT_CARPENTRY,skCRAFT_LEATHERWORKING,skCRAFT_PAINTING,skCRAFT_POTTERY,skCRAFT_SCULPTING,
+skCRAFT_SHIPMAKING,skCRAFT_STONEMASONRY,skCRAFT_TRAPMAKING,skCRAFT_WEAPONSMITHING,
+skCRAFT_WOODWORKING,skDIPLOMACY,skDISABLEDEVICE,skDISGUISE,skESCAPEARTIST,
+skFLY,skHANDLEANIMAL,skHEAL,skINTIMIDATE,skKNOWLEDGE_ARCANA,skKNOWLEDGE_DUNGEONEERING,
+skKNOWLEDGE_ARCHITECTUREANDENGINEERING,skKNOWLEDGE_GEOGRAPHY,skKNOWLEDGE_HISTORY,
+skKNOWLEDGE_LOCAL,skKNOWLEDGE_NATURE,skKNOWLEDGE_NOBILITYANDROYALTY,skKNOWLEDGE_THEPLANES,
+skKNOWLEDGE_RELIGION,skLINGUISTICS,skPERCEPTION,skPERFORM_ACT,skPERFORM_COMEDY,
+skPERFORM_DANCE,skPERFORM_KEYBOARDINSTRUMENTS,skPERFORM_ORATORY,
+skPERFORM_PERCUSSIONINSTRUMENTS,skPERFORM_STRINGINSTRUMENTS,skPERFORM_WINDINSTRUMENTS,
+skPERFORM_SING,skPROFESSION_HUNTER,skPROFESSION_MINER,skRIDE,skSENSEMOTIVE,skSLEIGHTOFHAND,
+skSPELLCRAFT,skSTEALTH,skSURVIVAL,skSWIM,skUSEMAGICDEVICE,0 };
 
 static const int simpleWeapons[] = { wpGAUNTLET, wpUNARMED, wpDAGGER, 
   wpDAGGER_PUNCHING, wpGAUNTLET_SPIKED, wpMACE_LIGHT, wpSICKLE, wpCLUB, 
@@ -107,8 +103,7 @@ static const int schoolsOfMagic[] = { ssUNIVERSAL, ssABJURATION,
   ssCONJURATION, ssDIVINATION, ssENCHANTMENT, ssEVOCATION, ssILLUSION,
   ssNECROMANCY, ssTRANSMUTATION, 0 };
 
-static const int requiredSkills[] = { skSPOT, skLISTEN, skHIDE, 
-  skMOVESILENTLY, 0 };
+static const int requiredSkills[] = { skPERCEPTION,skSTEALTH, 0 };
 
 /* preferred feat designations */
 
@@ -2748,7 +2743,7 @@ struct {
   {  85,   0,   0,  10,   0, rcHALFLING_LIGHTFOOT },
   {  95,   0,   0,  12,   0, rcGNOME_ROCK },         
   { 100,   0,   0,  14,   0, rcHALFORC },            
-  {   0,   3,   0,  15,   0, rcAASIMAR },            
+  /*{   0,   3,   0,  15,   0, rcAASIMAR },            
   {   0,   6,   0,  17,   0, rcDWARF_DEEP },         
   {   0,  11,   0,  19,   0, rcDWARF_MOUNTAIN },
   {   0,  14,   0,  21,   0, rcELF_GRAY },           
@@ -2822,7 +2817,7 @@ struct {
   {   0,   0,   0,   0,  87, rcCC_STEPPETROLL },
   {   0,   0,   0,   0,  91, rcCC_STRIFEELEMENTAL },
   {   0,   0,   0,   0,  95, rcCC_TOKALTRIBESMAN },
-  {   0,   0,   0,   0, 100, rcCC_UBANTUTRIBESMAN },
+  {   0,   0,   0,   0, 100, rcCC_UBANTUTRIBESMAN },*/
   {   0,   0,   0,   0,   0, 0 }
 };
 
@@ -4196,7 +4191,7 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
         continue;
       }
 
-      if( skill->type == skSPEAKLANGUAGE ) {
+      if( skill->type == skLINGUISTICS ) {
         if( rankIncrease - (int)rankIncrease > 0 ) {
           if( rankIncrease*2 + 1 > points ) {
             if( rankIncrease*2 - 1 < 1 ) {
@@ -4289,26 +4284,20 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 	  switch (classType) {
 		  case pcBARBARIAN:
 			  switch (allSkills[i]) {
-				case skACROBATICS:
 				case skBLUFF:
 				case skCLIMB:
 				case skESCAPEARTIST:
-				case skGATHERINFORMATION:
 				case skHANDLEANIMAL:
 				case skHEAL:
 				case skINTIMIDATE:
-				case skJUMP:
-				case skLISTEN:
+				case skPERCEPTION:
 				case skRIDE:
-				case skSEARCH:
 				case skSENSEMOTIVE:
-				case skSPOT:
 				case skSURVIVAL:
 				case skSWIM:
-				case skUSEROPE:
 					weight *= 2;
 					break;
-				case skTUMBLE:
+				case skACROBATICS:
 					weight *= 5;
 					break;
 
@@ -4322,21 +4311,17 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  switch (allSkills[i]) {
 				case skAPPRAISE:
 				case skBLUFF:
-				case skDECIPHERSCRIPT:
+				case skLINGUISTICS:
 				case skDIPLOMACY:
 				case skDISGUISE:
 				case skESCAPEARTIST:
-				case skFORGERY:
-				case skGATHERINFORMATION:
 				case skHANDLEANIMAL:
 				case skHEAL:
-				case skHIDE:
-				case skLISTEN:
-				case skSEARCH:
+				case skSTEALTH:
+				case skPERCEPTION:
 				case skSENSEMOTIVE:
 				case skSLEIGHTOFHAND:
 				case skSPELLCRAFT:
-				case skSPOT:
 				case skUSEMAGICDEVICE:
 				case skKNOWLEDGE_ARCANA:
 					weight *= 2;
@@ -4349,12 +4334,11 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcCLERIC:
 			  switch (allSkills[i]) {
-				case skDECIPHERSCRIPT:
+				case skLINGUISTICS:
 				case skDIPLOMACY:
-				case skGATHERINFORMATION:
 				case skSENSEMOTIVE:
 				case skSPELLCRAFT:
-				case skSPOT:
+				case skPERCEPTION:
 				case skUSEMAGICDEVICE:
 				case skKNOWLEDGE_RELIGION:
 					weight *= 2;
@@ -4371,21 +4355,16 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 		  case pcDRUID:
 			  switch (allSkills[i]) {
 				case skCLIMB:
-				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skESCAPEARTIST:
 				case skHEAL:
-				case skJUMP:
-				case skLISTEN:
 				case skRIDE:
-				case skSEARCH:
 				case skSENSEMOTIVE:
 				case skSPELLCRAFT:
-				case skSPOT:
+				case skPERCEPTION:
 				case skSURVIVAL:
 				case skSWIM:
 				case skUSEMAGICDEVICE:
-				case skUSEROPE:
 				case skKNOWLEDGE_NATURE:
 					weight *= 2;
 					break;
@@ -4405,14 +4384,10 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skCLIMB:
 				case skHANDLEANIMAL:
 				case skINTIMIDATE:
-				case skJUMP:
-				case skLISTEN:
+				case skPERCEPTION:
 				case skRIDE:
 				case skSENSEMOTIVE:
 				case skSPELLCRAFT:
-				case skSPOT:
-				case skTUMBLE:
-				case skUSEROPE:
 					weight *= 2;
 					break;
 			  }
@@ -4423,21 +4398,15 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcMONK:
 			  switch (allSkills[i]) {
-				case skACROBATICS:
 				case skCLIMB:
-				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skESCAPEARTIST:
 				case skHEAL:
-				case skJUMP:
-				case skLISTEN:
-				case skSEARCH:
 				case skSENSEMOTIVE:
-				case skSPOT:
 				case skKNOWLEDGE_RELIGION:
 					weight *= 2;
 					break;
-				case skTUMBLE:
+				case skACROBATICS:
 					weight *= 5;
 					break;
 			  }
@@ -4448,7 +4417,6 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcPALADIN:
 			  switch (allSkills[i]) {
-				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skHANDLEANIMAL:
 				case skHEAL:
@@ -4456,13 +4424,12 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skRIDE:
 				case skSENSEMOTIVE:
 				case skSPELLCRAFT:
-				case skTUMBLE:
 				case skKNOWLEDGE_RELIGION:
 				case skKNOWLEDGE_NOBILITYANDROYALTY:
 					weight *= 2;
 					break;
 				case skDISGUISE:
-				case skFORGERY:
+				case skBLUFF:
 				case skSLEIGHTOFHAND:
 					weight = 1;
 					break;
@@ -4477,26 +4444,17 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skACROBATICS:
 				case skBLUFF:
 				case skCLIMB:
-				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skESCAPEARTIST:
-				case skGATHERINFORMATION:
 				case skHANDLEANIMAL:
 				case skHEAL:
-				case skHIDE:
+				case skSTEALTH:
 				case skINTIMIDATE:
-				case skJUMP:
-				case skLISTEN:
-				case skMOVESILENTLY:
 				case skRIDE:
-				case skSEARCH:
 				case skSENSEMOTIVE:
 				case skSPELLCRAFT:
-				case skSPOT:
 				case skSWIM:
-				case skTUMBLE:
 				case skUSEMAGICDEVICE:
-				case skUSEROPE:
 				case skKNOWLEDGE_NATURE:
 					weight *= 2;
 					break;
@@ -4515,26 +4473,15 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skACROBATICS:
 				case skBLUFF:
 				case skCLIMB:
-				case skDECIPHERSCRIPT:
 				case skDISGUISE:
 				case skESCAPEARTIST:
-				case skFORGERY:
-				case skGATHERINFORMATION:
 				case skINTIMIDATE:
-				case skJUMP:
-				case skLISTEN:
-				case skSEARCH:
 				case skSENSEMOTIVE:
 				case skSLEIGHTOFHAND:
-				case skSPOT:
-				case skTUMBLE:
 				case skUSEMAGICDEVICE:
-				case skUSEROPE:
 					weight *= 2;
 					break;
-				case skHIDE:
-				case skMOVESILENTLY:
-				case skOPENLOCK:
+				case skSTEALTH:
 				case skDISABLEDEVICE:
 					weight *= 5;
 					break;
@@ -4546,14 +4493,9 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcSORCERER:
 			  switch (allSkills[i]) {
-				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
-				case skGATHERINFORMATION:
-				case skLISTEN:
-				case skSEARCH:
 				case skSENSEMOTIVE:
 				case skSPELLCRAFT:
-				case skSPOT:
 				case skUSEMAGICDEVICE:
 					weight *= 2;
 					break;
@@ -4565,13 +4507,8 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcWIZARD:
 			  switch (allSkills[i]) {
-				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
-				case skGATHERINFORMATION:
-				case skLISTEN:
-				case skSEARCH:
 				case skSENSEMOTIVE:
-				case skSPOT:
 				case skUSEMAGICDEVICE:
 				case skKNOWLEDGE_ARCANA:
 				case skKNOWLEDGE_THEPLANES:
@@ -4645,7 +4582,7 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
         }
       }
 
-      if( j == skSPEAKLANGUAGE ) {
+      if( j == skLINGUISTICS ) {
         if( i != sktCLASS ) {
           if( ranks - (int)ranks > 0 ) {
             if( ranks*2 + 1 > points ) {
@@ -4715,8 +4652,8 @@ int calculateSpellcasterLevel( NPC* npc ) {
       case pcSORCERER:
       case pcWIZARD:
       case pcBARD:
-      case prcLOREMASTER:
-      case prcBLACKGUARD:
+      //case prcLOREMASTER:
+      //case prcBLACKGUARD:
         if( total < cls->level ) {
           total = cls->level;
         }
@@ -6328,7 +6265,7 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
     }
   }
 
-  if( type == skHIDE ) {
+  if( type == skSTEALTH ) {
     mod = dndGetSizeHideMod( dndGetRaceSize( npc->race ) );
     if( mod != 0 ) {
       base += mod;
@@ -6352,16 +6289,16 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
   }
 */
   switch (type) {
-  	case skJUMP: case skTUMBLE:
-	    if( npcHasFeat( npc, ftACROBATIC, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftACROBATIC, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
+  	//case skJUMP: case skTUMBLE:
+	  //  if( npcHasFeat( npc, ftACROBATIC, 0 ) ) {
+	  //    mod = 2;
+	  //    base += mod;
+	  //    if( breakdown != 0 ) {
+	  //      *b = s_newBreakdownItem( bdtFEAT, ftACROBATIC, mod );
+	  //      b = &((*b)->next);
+	  //    }
+	  //  }
+	  //  break;
   	case skACROBATICS: case skESCAPEARTIST:
 	    if( npcHasFeat( npc, ftAGILE, 0 ) ) {
 	      mod = 2;
@@ -6372,7 +6309,7 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
 	      }
 	    }
 	    break;
-  	case skLISTEN: case skSPOT:
+	case skPERCEPTION: case skSENSEMOTIVE:
 	    if( npcHasFeat( npc, ftALERTNESS, 0 ) ) {
 	      mod = 2;
 	      base += mod;
@@ -6402,7 +6339,7 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
 	      }
 	    }
 	    break;
-  	case skDISGUISE: case skFORGERY:
+  	case skDISGUISE: case skBLUFF:
 	    if( npcHasFeat( npc, ftDECEITFUL, 0 ) ) {
 	      mod = 2;
 	      base += mod;
@@ -6412,7 +6349,7 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
 	      }
 	    }
 	    break;
-  	case skSLEIGHTOFHAND: case skUSEROPE:
+  	case skSLEIGHTOFHAND: case skDISABLEDEVICE:
 	    if( npcHasFeat( npc, ftDEFTHANDS, 0 ) ) {
 	      mod = 2;
 	      base += mod;
@@ -6422,26 +6359,26 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
 	      }
 	    }
 	    break;
-  	case skAPPRAISE: case skDECIPHERSCRIPT:
-	    if( npcHasFeat( npc, ftDILIGENT, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftDILIGENT, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	case skGATHERINFORMATION: case skSEARCH:
-	    if( npcHasFeat( npc, ftINVESTIGATOR, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftINVESTIGATOR, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
+  	//case skAPPRAISE: case skDECIPHERSCRIPT:
+	  //  if( npcHasFeat( npc, ftDILIGENT, 0 ) ) {
+	  //    mod = 2;
+	  //    base += mod;
+	  //    if( breakdown != 0 ) {
+	  //      *b = s_newBreakdownItem( bdtFEAT, ftDILIGENT, mod );
+	  //      b = &((*b)->next);
+	  //    }
+	  //  }
+	  //  break;
+  	//case skGATHERINFORMATION: case skSEARCH:
+	  //  if( npcHasFeat( npc, ftINVESTIGATOR, 0 ) ) {
+	  //    mod = 2;
+	  //    base += mod;
+	  //    if( breakdown != 0 ) {
+	  //      *b = s_newBreakdownItem( bdtFEAT, ftINVESTIGATOR, mod );
+	  //      b = &((*b)->next);
+	  //    }
+	  //  }
+	  //  break;
   	case skSPELLCRAFT: case skUSEMAGICDEVICE:
 	    if( npcHasFeat( npc, ftMAGICALAPTITUDE, 0 ) ) {
 	      mod = 2;
@@ -6452,7 +6389,7 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
 	      }
 	    }
 	    break;
-  	case skDIPLOMACY: case skSENSEMOTIVE:
+  	case skDIPLOMACY:
 	    if( npcHasFeat( npc, ftNEGOTIATOR, 0 ) ) {
 	      mod = 2;
 	      base += mod;
@@ -6462,26 +6399,26 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
 	      }
 	    }
 	    break;
-  	case skDISABLEDEVICE: case skOPENLOCK:
-	    if( npcHasFeat( npc, ftNIMBLEFINGERS, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftNIMBLEFINGERS, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	case skBLUFF: case skINTIMIDATE:
-	    if( npcHasFeat( npc, ftPERSUASIVE, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftPERSUASIVE, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
+  	//case skDISABLEDEVICE: 
+	  //  if( npcHasFeat( npc, ftNIMBLEFINGERS, 0 ) ) {
+	  //    mod = 2;
+	  //    base += mod;
+	  //    if( breakdown != 0 ) {
+	  //      *b = s_newBreakdownItem( bdtFEAT, ftNIMBLEFINGERS, mod );
+	  //      b = &((*b)->next);
+	  //    }
+	  //  }
+	  //  break;
+  	//case skBLUFF: case skINTIMIDATE:
+	  //  if( npcHasFeat( npc, ftPERSUASIVE, 0 ) ) {
+	  //    mod = 2;
+	  //    base += mod;
+	  //    if( breakdown != 0 ) {
+	  //      *b = s_newBreakdownItem( bdtFEAT, ftPERSUASIVE, mod );
+	  //      b = &((*b)->next);
+	  //    }
+	  //  }
+	  //  break;
   	case skHEAL: case skSURVIVAL:
 	    if( npcHasFeat( npc, ftSELFSUFFICIENT, 0 ) ) {
 	      mod = 2;
@@ -6492,7 +6429,7 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
 	      }
 	    }
 	    break;
-  	case skHIDE: case skMOVESILENTLY:
+  	case skSTEALTH:
 	    if( npcHasFeat( npc, ftSTEALTHY, 0 ) ) {
 	      mod = 2;
 	      base += mod;
@@ -7213,11 +7150,12 @@ char* npcRandomName( int race, int gender, char* filePath, char* name, int bufle
       }
       break;
     case rcHALFORC:
-      if( rand() % 2 ) {
-        race = rcORC;
-      } else {
-        race = rcHUMAN;
-      }
+		race = rcHUMAN;
+      //if( rand() % 2 ) {
+      //  race = rcORC;
+      //} else {
+      //  race = rcHUMAN;
+      //}
       break;
   }
 
@@ -7228,30 +7166,30 @@ char* npcRandomName( int race, int gender, char* filePath, char* name, int bufle
       strcat( grammarPath, "human_names.txt" );
       break;
     case rcDWARF_HILL:
-    case rcDWARF_MOUNTAIN:
+    /*case rcDWARF_MOUNTAIN:
     case rcDWARF_DEEP:
     case rcDWARF_DUERGAR:
     case rcDWARF_DERRO:
     case rcHALFLING_DEEP:
     case rcCC_CHARDUNI:
-    case rcCC_DWARF_FORSAKEN:
+    case rcCC_DWARF_FORSAKEN:*/
       strcat( grammarPath, "dwarf_names.txt" );
       break;
     case rcELF_HIGH:
-    case rcELF_GRAY:
+    /*case rcELF_GRAY:
     case rcELF_WILD:
     case rcELF_WOOD:
     case rcELF_DROW:
-    case rcCC_ELF_FORSAKEN:
+    case rcCC_ELF_FORSAKEN:*/
       strcat( grammarPath, "elf_names.txt" );
       break;
     case rcHALFLING_LIGHTFOOT:
-    case rcHALFLING_TALLFELLOW:
+    //case rcHALFLING_TALLFELLOW:
       strcat( grammarPath, "halfling_names.txt" );
       break;
     case rcGNOME_ROCK:
-    case rcGNOME_FOREST:
-    case rcGNOME_SVIRFNEBLIN:
+    //case rcGNOME_FOREST:
+    //case rcGNOME_SVIRFNEBLIN:
       strcat( grammarPath, "gnome_names.txt" );
       break;
     default:
