@@ -66,8 +66,8 @@ static const int allLanguages[] = { lnABYSSAL, lnAQUAN, lnAURAN,
   lnGOBLIN, lnGIANT, lnGNOLL, lnHALFLING, lnIGNAN, lnINFERNAL, lnORC, 
   lnSYLVAN, lnTERRAN, lnUNDERCOMMON, 0 };
 
-static const int allSkills[] = { skAPPRAISE, skBALANCE, skBLUFF, skCLIMB,
-  skCONCENTRATION, skCRAFT_ALCHEMY, skCRAFT_ARMORSMITHING, skCRAFT_BOWMAKING,
+static const int allSkills[] = { skAPPRAISE, skACROBATICS, skBLUFF, skCLIMB,
+  skCRAFT_ALCHEMY, skCRAFT_ARMORSMITHING, skCRAFT_BOWMAKING,
   skCRAFT_BLACKSMITHING, skCRAFT_CARPENTRY, skCRAFT_LEATHERWORKING,
   skCRAFT_PAINTING, skCRAFT_POTTERY, skCRAFT_SCULPTING, skCRAFT_SHIPMAKING,
   skCRAFT_STONEMASONRY, skCRAFT_TRAPMAKING, skCRAFT_WEAPONSMITHING,
@@ -4289,7 +4289,7 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 	  switch (classType) {
 		  case pcBARBARIAN:
 			  switch (allSkills[i]) {
-				case skBALANCE:
+				case skACROBATICS:
 				case skBLUFF:
 				case skCLIMB:
 				case skESCAPEARTIST:
@@ -4322,7 +4322,6 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  switch (allSkills[i]) {
 				case skAPPRAISE:
 				case skBLUFF:
-				case skCONCENTRATION:
 				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skDISGUISE:
@@ -4350,7 +4349,6 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcCLERIC:
 			  switch (allSkills[i]) {
-				case skCONCENTRATION:
 				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skGATHERINFORMATION:
@@ -4373,7 +4371,6 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 		  case pcDRUID:
 			  switch (allSkills[i]) {
 				case skCLIMB:
-				case skCONCENTRATION:
 				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skESCAPEARTIST:
@@ -4403,7 +4400,7 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcFIGHTER:
 			  switch (allSkills[i]) {
-				case skBALANCE:
+				case skACROBATICS:
 				case skBLUFF:
 				case skCLIMB:
 				case skHANDLEANIMAL:
@@ -4426,7 +4423,7 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcMONK:
 			  switch (allSkills[i]) {
-				case skBALANCE:
+				case skACROBATICS:
 				case skCLIMB:
 				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
@@ -4451,7 +4448,6 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcPALADIN:
 			  switch (allSkills[i]) {
-				case skCONCENTRATION:
 				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skHANDLEANIMAL:
@@ -4478,10 +4474,9 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcRANGER:
 			  switch (allSkills[i]) {
-				case skBALANCE:
+				case skACROBATICS:
 				case skBLUFF:
 				case skCLIMB:
-				case skCONCENTRATION:
 				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skESCAPEARTIST:
@@ -4517,7 +4512,7 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 		  case pcROGUE:
 			  switch (allSkills[i]) {
 				case skAPPRAISE:
-				case skBALANCE:
+				case skACROBATICS:
 				case skBLUFF:
 				case skCLIMB:
 				case skDECIPHERSCRIPT:
@@ -4551,7 +4546,6 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 			  break;
 		  case pcSORCERER:
 			  switch (allSkills[i]) {
-				case skCONCENTRATION:
 				case skDECIPHERSCRIPT:
 				case skDIPLOMACY:
 				case skGATHERINFORMATION:
@@ -4585,9 +4579,6 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 					break;
 				case skSPELLCRAFT:
 					weight *= 20;
-					break;
-				case skCONCENTRATION:
-					weight *= 5;
 					break;
 			  }
 			  if (dndIsSkillCraft(allSkills[ i ])) weight *= 1;
@@ -6371,7 +6362,7 @@ float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdo
 	      }
 	    }
 	    break;
-  	case skBALANCE: case skESCAPEARTIST:
+  	case skACROBATICS: case skESCAPEARTIST:
 	    if( npcHasFeat( npc, ftAGILE, 0 ) ) {
 	      mod = 2;
 	      base += mod;

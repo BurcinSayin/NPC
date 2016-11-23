@@ -1,1 +1,273 @@
-﻿
+﻿  npc.c
+d:\work\npc.2.0.5-src\npcwin\npc.c(179): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+d:\work\npc.2.0.5-src\npcwin\npc.c(190): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1465): note: see declaration of 'vsprintf'
+d:\work\npc.2.0.5-src\npcwin\npc.c(225): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\work\npc.2.0.5-src\npcwin\npc.c(464): warning C4244: '=': conversion from 'time_t' to 'long', possible loss of data
+d:\work\npc.2.0.5-src\npcwin\npc.c(458): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+d:\work\npc.2.0.5-src\npcwin\npc.c(466): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+d:\work\npc.2.0.5-src\npcwin\npc.c(500): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\npcwin\npc.c(504): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: see declaration of 'strcat'
+d:\work\npc.2.0.5-src\npcwin\npc.c(507): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: see declaration of 'strcat'
+d:\work\npc.2.0.5-src\npcwin\npc.c(798): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+d:\work\npc.2.0.5-src\npcwin\npc.c(799): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: see declaration of 'strcat'
+d:\work\npc.2.0.5-src\npcwin\npc.c(800): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+d:\work\npc.2.0.5-src\npcwin\npc.c(783): warning C4101: 'tmp': unreferenced local variable
+d:\work\npc.2.0.5-src\npcwin\npc.c(782): warning C4101: 'wiz': unreferenced local variable
+d:\work\npc.2.0.5-src\npcwin\npc.c(781): warning C4101: 'cls': unreferenced local variable
+d:\work\npc.2.0.5-src\npcwin\npc.c(784): warning C4101: 'tmp2': unreferenced local variable
+  dndutil.c
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(453): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(458): error C2065: 'skFORGERY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(459): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(462): error C2065: 'skHIDE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(464): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(475): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(476): error C2065: 'skMOVESILENTLY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(477): error C2065: 'skOPENLOCK': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(490): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(493): error C2065: 'skSPEAKLANGUAGE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(495): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(498): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(500): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(453): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(458): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(459): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(462): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(464): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(475): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(476): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(477): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(490): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(493): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(495): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(498): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(500): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(524): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(529): error C2065: 'skFORGERY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(530): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(533): error C2065: 'skHIDE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(535): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(546): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(547): error C2065: 'skMOVESILENTLY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(548): error C2065: 'skOPENLOCK': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(561): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(564): error C2065: 'skSPEAKLANGUAGE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(566): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(569): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(571): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(524): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(529): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(530): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(533): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(535): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(546): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(547): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(548): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(561): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(564): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(566): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(569): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(571): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(595): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(600): error C2065: 'skFORGERY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(601): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(604): error C2065: 'skHIDE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(606): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(617): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(618): error C2065: 'skMOVESILENTLY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(619): error C2065: 'skOPENLOCK': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(632): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(635): error C2065: 'skSPEAKLANGUAGE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(637): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(640): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(642): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(595): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(600): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(601): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(604): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(606): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(617): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(618): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(619): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(632): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(635): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(637): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(640): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(642): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(666): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(671): error C2065: 'skFORGERY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(672): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(675): error C2065: 'skHIDE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(677): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(688): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(689): error C2065: 'skMOVESILENTLY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(690): error C2065: 'skOPENLOCK': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(703): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(706): error C2065: 'skSPEAKLANGUAGE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(708): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(711): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(713): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(666): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(671): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(672): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(675): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(677): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(688): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(689): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(690): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(703): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(706): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\src\dndutil.c(706): fatal error C1003: error count exceeds 100; stopping compilation
+  pcgen_interface.c
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(23): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(64): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(70): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(102): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(109): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(152): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(255): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(256): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(257): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(258): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(259): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(317): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(318): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(319): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(327): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(330): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(373): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(436): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(215): warning C4101: 'hp_per_lev': unreferenced local variable
+d:\work\npc.2.0.5-src\dnd\npc\pcgen_interface.c(216): warning C4101: 'hp_extra': unreferenced local variable
+  npcEngine.c
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(74): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(75): error C2065: 'skFORGERY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(75): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(76): error C2065: 'skHIDE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(76): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(80): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(80): error C2065: 'skMOVESILENTLY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(80): error C2065: 'skOPENLOCK': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(84): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(84): error C2065: 'skSPEAKLANGUAGE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(84): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(85): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(85): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(69): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(110): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(110): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(110): error C2065: 'skHIDE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(111): error C2065: 'skMOVESILENTLY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(110): error C2099: initializer is not a constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4199): error C2065: 'skSPEAKLANGUAGE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4296): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4300): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4301): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4303): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4305): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4308): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4311): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4325): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4329): error C2065: 'skFORGERY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4330): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4333): error C2065: 'skHIDE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4334): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4335): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4339): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4352): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4354): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4357): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4374): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4378): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4379): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4381): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4384): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4388): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4408): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4409): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4413): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4414): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4415): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4428): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4432): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4433): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4434): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4436): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4440): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4451): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4459): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4465): error C2065: 'skFORGERY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4480): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4483): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4486): error C2065: 'skHIDE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4488): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4489): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4490): error C2065: 'skMOVESILENTLY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4492): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4495): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4497): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4499): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4518): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4521): error C2065: 'skFORGERY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4522): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4524): error C2065: 'skJUMP': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4525): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4526): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4529): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4530): error C2065: 'skTUMBLE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4532): error C2065: 'skUSEROPE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4535): error C2065: 'skHIDE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4536): error C2065: 'skMOVESILENTLY': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4537): error C2065: 'skOPENLOCK': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4549): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4551): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4552): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4553): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4556): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4568): error C2065: 'skDECIPHERSCRIPT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4570): error C2065: 'skGATHERINFORMATION': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4571): error C2065: 'skLISTEN': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4572): error C2065: 'skSEARCH': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4574): error C2065: 'skSPOT': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4648): error C2065: 'skSPEAKLANGUAGE': undeclared identifier
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4296): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4300): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4301): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4303): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4305): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4308): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4311): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4325): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4329): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4330): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4333): error C2051: case expression not constant
+d:\work\npc.2.0.5-src\dnd\npc\npcengine.c(4333): fatal error C1003: error count exceeds 100; stopping compilation
+  Generating Code...
