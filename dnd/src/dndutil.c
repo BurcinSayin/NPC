@@ -7585,7 +7585,8 @@ int dndGetClassHitDie( int id ) {
     }
   }
 
-  return 0;
+  // if no Class Info found return 6 hit Dice
+  return 6;
 }
 
 
@@ -8627,7 +8628,8 @@ char* dndGetClassAbbr( int id ) {
     }
   }
 
-  return NULL;
+  // if class not found return unknown
+  return "Unkn.";
 }
 
 

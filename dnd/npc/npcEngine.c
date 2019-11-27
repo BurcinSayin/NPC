@@ -3,7 +3,7 @@
  *
  * by Jamis Buck (jgb3@email.byu.edu)
  *
- * NPC generation functions for the Dungeons & Dragons(tm) API.  This file 
+ * NPC generation functions for the Dungeons & Dragons(tm) API.  This file
  * is in the public domain.
  * ---------------------------------------------------------------------- */
 
@@ -32,38 +32,38 @@ typedef struct __preferredweapons__ PREFERREDWEAPONS;
 typedef struct __preferredspells__ PREFERREDSPELLS;
 
 struct __raceabilities__ {
-  int ability;
-  int weight;
+	int ability;
+	int weight;
 };
 
 
 struct __abilityscore__ {
-  int ability;
-  int score;
+	int ability;
+	int score;
 };
 
 
 struct __preferredfeats__ {
-  int feat;
-  int weight;
+	int feat;
+	int weight;
 };
 
 
 struct __preferredweapons__ {
-  int weapon;
-  int weight;
+	int weapon;
+	int weight;
 };
 
 
 struct __preferredspells__ {
-  int spell;
-  int weight;
+	int spell;
+	int weight;
 };
 
 
-static const int allLanguages[] = { lnABYSSAL, lnAQUAN, lnAURAN, 
-  lnCELESTIAL, lnCOMMON, lnDRACONIC, lnDWARVEN, lnELVEN, lnGNOME, 
-  lnGOBLIN, lnGIANT, lnGNOLL, lnHALFLING, lnIGNAN, lnINFERNAL, lnORC, 
+static const int allLanguages[] = { lnABYSSAL, lnAQUAN, lnAURAN,
+  lnCELESTIAL, lnCOMMON, lnDRACONIC, lnDWARVEN, lnELVEN, lnGNOME,
+  lnGOBLIN, lnGIANT, lnGNOLL, lnHALFLING, lnIGNAN, lnINFERNAL, lnORC,
   lnSYLVAN, lnTERRAN, lnUNDERCOMMON, 0 };
 
 static const int allSkills[] = { skACROBATICS,skAPPRAISE,skBLUFF,skCLIMB,
@@ -80,26 +80,26 @@ skPERFORM_PERCUSSIONINSTRUMENTS,skPERFORM_STRINGINSTRUMENTS,skPERFORM_WINDINSTRU
 skPERFORM_SING,skPROFESSION_HUNTER,skPROFESSION_MINER,skRIDE,skSENSEMOTIVE,skSLEIGHTOFHAND,
 skSPELLCRAFT,skSTEALTH,skSURVIVAL,skSWIM,skUSEMAGICDEVICE,0 };
 
-static const int simpleWeapons[] = { wpGAUNTLET, wpUNARMED, wpDAGGER, 
-  wpDAGGER_PUNCHING, wpGAUNTLET_SPIKED, wpMACE_LIGHT, wpSICKLE, wpCLUB, 
-  wpHALFSPEAR, wpMACE_HEAVY, wpMORNINGSTAR, wpQUARTERSTAFF, wpSHORTSPEAR, 
+static const int simpleWeapons[] = { wpGAUNTLET, wpUNARMED, wpDAGGER,
+  wpDAGGER_PUNCHING, wpGAUNTLET_SPIKED, wpMACE_LIGHT, wpSICKLE, wpCLUB,
+  wpHALFSPEAR, wpMACE_HEAVY, wpMORNINGSTAR, wpQUARTERSTAFF, wpSHORTSPEAR,
   wpCROSSBOW_LIGHT, wpDART, wpSLING, wpCROSSBOW_HEAVY, wpJAVELIN, 0 };
 
-static const int martialWeapons[] = { wpAXE_THROWING, wpHAMMER_LIGHT, 
-  wpHANDAXE, wpLANCE_LIGHT, wpPICK_LIGHT, wpSAP, wpSWORD_SHORT, wpBATTLEAXE, 
-  wpFLAIL_LIGHT, wpLANCE_HEAVY, wpLONGSWORD, wpPICK_HEAVY, wpRAPIER, 
-  wpSCIMITAR, wpTRIDENT, wpWARHAMMER, wpFALCHION, wpFLAIL_HEAVY, wpGLAIVE, 
-  wpGREATAXE, wpGREATCLUB, wpGREATSWORD, wpGUISARME, wpHALBERD, wpLONGSPEAR, 
-  wpRANSEUR, wpSCYTHE, wpSHORTBOW, wpSHORTBOW_COMPOSITE, wpLONGBOW, 
+static const int martialWeapons[] = { wpAXE_THROWING, wpHAMMER_LIGHT,
+  wpHANDAXE, wpLANCE_LIGHT, wpPICK_LIGHT, wpSAP, wpSWORD_SHORT, wpBATTLEAXE,
+  wpFLAIL_LIGHT, wpLANCE_HEAVY, wpLONGSWORD, wpPICK_HEAVY, wpRAPIER,
+  wpSCIMITAR, wpTRIDENT, wpWARHAMMER, wpFALCHION, wpFLAIL_HEAVY, wpGLAIVE,
+  wpGREATAXE, wpGREATCLUB, wpGREATSWORD, wpGUISARME, wpHALBERD, wpLONGSPEAR,
+  wpRANSEUR, wpSCYTHE, wpSHORTBOW, wpSHORTBOW_COMPOSITE, wpLONGBOW,
   wpLONGBOW_COMPOSITE, 0 };
 
-static const int exoticWeapons[] = { wpKUKRI, wpKAMA, wpNUNCHAKU, 
-  wpSIANGHAM, wpSWORD_BASTARD, wpWARAXE_DWARVEN, wpHAMMER_GNOMEHOOKED, 
-  wpAXE_ORCDOUBLE, wpCHAIN_SPIKED, wpFLAIL_DIRE, wpSWORD_TWOBLADED, 
-  wpURGOSH_DWARVEN, wpCROSSBOW_HAND, wpSHURIKEN, wpWHIP, 
+static const int exoticWeapons[] = { wpKUKRI, wpKAMA, wpNUNCHAKU,
+  wpSIANGHAM, wpSWORD_BASTARD, wpWARAXE_DWARVEN, wpHAMMER_GNOMEHOOKED,
+  wpAXE_ORCDOUBLE, wpCHAIN_SPIKED, wpFLAIL_DIRE, wpSWORD_TWOBLADED,
+  wpURGOSH_DWARVEN, wpCROSSBOW_HAND, wpSHURIKEN, wpWHIP,
   wpCROSSBOW_REPEATING, wpNET, 0 };
 
-static const int schoolsOfMagic[] = { ssUNIVERSAL, ssABJURATION, 
+static const int schoolsOfMagic[] = { ssUNIVERSAL, ssABJURATION,
   ssCONJURATION, ssDIVINATION, ssENCHANTMENT, ssEVOCATION, ssILLUSION,
   ssNECROMANCY, ssTRANSMUTATION, 0 };
 
@@ -112,8 +112,8 @@ static PREFERREDFEATS barbarianFeats[] = {
   { ftARMORPROFICIENCY_HEAVY,     RARE },
   { ftBLINDFIGHT,                 COMMON },
   { ftCOMBATREFLEXES,             COMMON },
-  { ftDIEHARD, UNCOMMON }, 
-  { ftDODGE,                      UNCOMMON*2 },
+  { ftDIEHARD, UNCOMMON },
+  { ftDODGE,                      UNCOMMON * 2 },
   { ftMOBILITY,                   UNCOMMON },
   { ftSPRINGATTACK,               RARE },
   { ftENDURANCE,                  COMMON },
@@ -124,45 +124,45 @@ static PREFERREDFEATS barbarianFeats[] = {
   { ftWHIRLWINDATTACK,            RARE },
   { ftGREATFORTITUDE,             UNCOMMON },
   { ftIMPROVEDCRITICAL,           UNCOMMON },
-  { ftIMPROVEDINITIATIVE,         RARE*2 },
-  { ftIMPROVEDFEINT, UNCOMMON }, 
+  { ftIMPROVEDINITIATIVE,         RARE * 2 },
+  { ftIMPROVEDFEINT, UNCOMMON },
   { ftIMPROVEDUNARMEDSTRIKE,      RARE },
 	{ ftIMPROVEDOVERRUN,		RARE },
-  { ftINVESTIGATOR, RARE }, 
-  { ftSNATCHARROWS, RARE }, 
+  { ftINVESTIGATOR, RARE },
+  { ftSNATCHARROWS, RARE },
   { ftDEFLECTARROWS,              RARE },
   { ftSTUNNINGFIST,               RARE },
   { ftIRONWILL,                   UNCOMMON },
   { ftLEADERSHIP,                 RARE },
   { ftLIGHTNINGREFLEXES,          UNCOMMON },
-  { ftMOUNTEDCOMBAT,              RARE*2 },
+  { ftMOUNTEDCOMBAT,              RARE * 2 },
   { ftMOUNTEDARCHERY,             RARE },
-  { ftTRAMPLE,                    RARE*2 },
-  { ftRIDEBYATTACK,               RARE*2 },
+  { ftTRAMPLE,                    RARE * 2 },
+  { ftRIDEBYATTACK,               RARE * 2 },
   { ftSPIRITEDCHARGE,             RARE },
   { ftPOINTBLANKSHOT,             RARE },
   { ftFARSHOT,                    RARE },
   { ftPRECISESHOT,                RARE },
   { ftRAPIDSHOT,                  RARE },
   { ftSHOTONTHERUN,               RARE },
-  { ftPOWERATTACK,                COMMON*2 },
+  { ftPOWERATTACK,                COMMON * 2 },
   { ftCLEAVE,                     COMMON },
   { ftIMPROVEDBULLRUSH,           UNCOMMON },
-  { ftIMPROVEDSUNDER,                     RARE*2 },
+  { ftIMPROVEDSUNDER,                     RARE * 2 },
   { ftGREATCLEAVE,                COMMON },
   { ftQUICKDRAW,                  UNCOMMON },
   { ftRUN,                        COMMON },
   { ftSHIELDPROFICIENCY,          RARE },
   { ftSKILLFOCUS,                 RARE },
-  { ftTOUGHNESS,                  RARE*2 },
+  { ftTOUGHNESS,                  RARE * 2 },
   { ftTRACK,                      UNCOMMON },
-  { ftTWOWEAPONDEFENSE, RARE }, 
+  { ftTWOWEAPONDEFENSE, RARE },
   { ftTWOWEAPONFIGHTING,          RARE },
   { ftIMPROVEDTWOWEAPONFIGHTING,  RARE },
   { ftWEAPONFINESSE,              RARE },
   { ftWEAPONFOCUS,                UNCOMMON },
-  { ftPERSUASIVE, UNCOMMON }, 
-  { ftSELFSUFFICIENT, UNCOMMON }, 
+  { ftPERSUASIVE, UNCOMMON },
+  { ftSELFSUFFICIENT, UNCOMMON },
   { 0,                            0 }
 };
 
@@ -172,7 +172,7 @@ static PREFERREDWEAPONS barbarianWeapons[] = {
   { wpDAGGER,              RARE },
   { wpDAGGER_PUNCHING,     RARE },
   { wpGAUNTLET_SPIKED,     RARE },
-  { wpMACE_LIGHT,          RARE*2 },
+  { wpMACE_LIGHT,          RARE * 2 },
   { wpSICKLE,              RARE },
   { wpCLUB,                UNCOMMON },
   { wpHALFSPEAR,           UNCOMMON },
@@ -184,7 +184,7 @@ static PREFERREDWEAPONS barbarianWeapons[] = {
   { wpDART,                RARE },
   { wpSLING,               RARE },
   { wpCROSSBOW_HEAVY,      RARE },
-  { wpJAVELIN,             RARE*2 },
+  { wpJAVELIN,             RARE * 2 },
   { wpAXE_THROWING,        RARE },
   { wpHAMMER_LIGHT,        RARE },
   { wpHANDAXE,             RARE },
@@ -195,7 +195,7 @@ static PREFERREDWEAPONS barbarianWeapons[] = {
   { wpBATTLEAXE,           COMMON },
   { wpFLAIL_LIGHT,         UNCOMMON },
   { wpLANCE_HEAVY,         RARE },
-  { wpLONGSWORD,           COMMON*2 },
+  { wpLONGSWORD,           COMMON * 2 },
   { wpPICK_HEAVY,          RARE },
   { wpRAPIER,              RARE },
   { wpSCIMITAR,            UNCOMMON },
@@ -225,8 +225,8 @@ static PREFERREDFEATS bardFeats[] = {
   { ftBLINDFIGHT,                 UNCOMMON },
   { ftCOMBATCASTING,              COMMON },
   { ftCOMBATREFLEXES,             UNCOMMON },
-  { ftDECEITFUL, UNCOMMON }, 
-  { ftDILIGENT, UNCOMMON }, 
+  { ftDECEITFUL, UNCOMMON },
+  { ftDILIGENT, UNCOMMON },
   { ftDODGE,                      COMMON },
   { ftMOBILITY,                   COMMON },
   { ftSPRINGATTACK,               UNCOMMON },
@@ -234,9 +234,9 @@ static PREFERREDFEATS bardFeats[] = {
   { ftGREATFORTITUDE,             RARE },
   { ftIMPROVEDCRITICAL,           RARE },
   { ftIMPROVEDINITIATIVE,         UNCOMMON },
-  { ftIMPROVEDFEINT, RARE }, 
+  { ftIMPROVEDFEINT, RARE },
   { ftIRONWILL,                   RARE },
-  { ftINVESTIGATOR, RARE }, 
+  { ftINVESTIGATOR, RARE },
   { ftLEADERSHIP,                 RARE },
   { ftLIGHTNINGREFLEXES,          RARE },
   { ftMOUNTEDCOMBAT,              RARE },
@@ -257,22 +257,22 @@ static PREFERREDFEATS bardFeats[] = {
   { ftSKILLFOCUS,                 COMMON },
   { ftSPELLFOCUS,                 UNCOMMON },
   { ftGREATERSPELLFOCUS,                 UNCOMMON },
-  { ftSPELLPENETRATION,           RARE*2 },
-  { ftGREATERSPELLPENETRATION,           RARE*2 },
-  { ftTOUGHNESS,                  RARE*2 },
+  { ftSPELLPENETRATION,           RARE * 2 },
+  { ftGREATERSPELLPENETRATION,           RARE * 2 },
+  { ftTOUGHNESS,                  RARE * 2 },
   { ftTRACK,                      RARE },
-  { ftTWOWEAPONDEFENSE, RARE }, 
+  { ftTWOWEAPONDEFENSE, RARE },
   { ftTWOWEAPONFIGHTING,          RARE },
   { ftWEAPONFINESSE,              UNCOMMON },
   { ftWEAPONFOCUS,                RARE },
-  { ftBREWPOTION,                 UNCOMMON*2 },
+  { ftBREWPOTION,                 UNCOMMON * 2 },
   { ftCRAFTMAGICARMSANDARMOR,     UNCOMMON },
   { ftCRAFTROD,                   UNCOMMON },
   { ftCRAFTSTAFF,                 UNCOMMON },
   { ftCRAFTWAND,                  UNCOMMON },
-  { ftCRAFTWONDROUSITEM,          UNCOMMON*2 },
+  { ftCRAFTWONDROUSITEM,          UNCOMMON * 2 },
   { ftFORGERING,                  UNCOMMON },
-  { ftSCRIBESCROLL,               UNCOMMON*2 },
+  { ftSCRIBESCROLL,               UNCOMMON * 2 },
   { ftEMPOWERSPELL,               RARE },
   { ftENLARGESPELL,               RARE },
   { ftEXTENDSPELL,                RARE },
@@ -281,16 +281,16 @@ static PREFERREDFEATS bardFeats[] = {
   { ftSILENTSPELL,                RARE },
   { ftSTILLSPELL,                 RARE },
   { ftWIDENSPELL,                 RARE },
-  {  ftAUGMENTSUMMONING, UNCOMMON }, 
-  {  ftCRAFTCONSTRUCT, RARE }, 
-  { ftESCHEWMATERIALS, UNCOMMON }, 
-  { ftIMPROVEDCOUNTERSPELL, UNCOMMON }, 
-  { ftMAGICALAPTITUDE, UNCOMMON }, 
-  { ftMANYSHOT, RARE }, 
-  { ftNEGOTIATOR, UNCOMMON }, 
-  { ftNIMBLEFINGERS, RARE }, 
-  { ftPERSUASIVE, UNCOMMON }, 
-  { ftSELFSUFFICIENT, RARE }, 
+  {  ftAUGMENTSUMMONING, UNCOMMON },
+  {  ftCRAFTCONSTRUCT, RARE },
+  { ftESCHEWMATERIALS, UNCOMMON },
+  { ftIMPROVEDCOUNTERSPELL, UNCOMMON },
+  { ftMAGICALAPTITUDE, UNCOMMON },
+  { ftMANYSHOT, RARE },
+  { ftNEGOTIATOR, UNCOMMON },
+  { ftNIMBLEFINGERS, RARE },
+  { ftPERSUASIVE, UNCOMMON },
+  { ftSELFSUFFICIENT, RARE },
   { 0,                            0 }
 };
 
@@ -300,7 +300,7 @@ static PREFERREDWEAPONS bardWeapons[] = {
   { wpDAGGER,              COMMON },
   { wpDAGGER_PUNCHING,     RARE },
   { wpGAUNTLET_SPIKED,     RARE },
-  { wpMACE_LIGHT,          RARE*2 },
+  { wpMACE_LIGHT,          RARE * 2 },
   { wpSICKLE,              RARE },
   { wpCLUB,                RARE },
   { wpHALFSPEAR,           RARE },
@@ -315,7 +315,7 @@ static PREFERREDWEAPONS bardWeapons[] = {
   { wpJAVELIN,             RARE },
   { wpSAP,                 COMMON },
   { wpSWORD_SHORT,         UNCOMMON },
-  { wpLONGSWORD,           COMMON*2 },
+  { wpLONGSWORD,           COMMON * 2 },
   { wpRAPIER,              UNCOMMON },
   { wpSHORTBOW,            UNCOMMON },
   { wpSHORTBOW_COMPOSITE,  UNCOMMON },
@@ -497,26 +497,26 @@ static PREFERREDSPELLS prefBardSpells[] = {
 
 static PREFERREDFEATS clericFeats[] = {
   { ftALERTNESS,                  UNCOMMON },
-  { ftBLINDFIGHT,                 RARE*2 },
+  { ftBLINDFIGHT,                 RARE * 2 },
   { ftCOMBATCASTING,              COMMON },
   { ftCOMBATREFLEXES,             UNCOMMON },
-  { ftDIEHARD, RARE }, 
-  { ftDILIGENT, UNCOMMON }, 
+  { ftDIEHARD, RARE },
+  { ftDILIGENT, UNCOMMON },
   { ftDODGE,                      UNCOMMON },
-  { ftMOBILITY,                   RARE*2 },
+  { ftMOBILITY,                   RARE * 2 },
   { ftSPRINGATTACK,               RARE },
   { ftENDURANCE,                  RARE },
-  { ftCOMBATEXPERTISE,                  RARE*2 },
+  { ftCOMBATEXPERTISE,                  RARE * 2 },
   { ftIMPROVEDDISARM,             RARE },
   { ftIMPROVEDTRIP,               RARE },
   { ftWHIRLWINDATTACK,            RARE },
   { ftGREATFORTITUDE,             RARE },
   { ftIMPROVEDCRITICAL,           UNCOMMON },
-  { ftIMPROVEDINITIATIVE,         RARE*2 },
+  { ftIMPROVEDINITIATIVE,         RARE * 2 },
   { ftIMPROVEDUNARMEDSTRIKE,      RARE },
-  { ftIMPROVEDFEINT, RARE }, 
-  { ftINVESTIGATOR, RARE }, 
-  { ftSNATCHARROWS, RARE }, 
+  { ftIMPROVEDFEINT, RARE },
+  { ftINVESTIGATOR, RARE },
+  { ftSNATCHARROWS, RARE },
   { ftDEFLECTARROWS,              RARE },
   { ftSTUNNINGFIST,               RARE },
   { ftIRONWILL,                   RARE },
@@ -526,13 +526,13 @@ static PREFERREDFEATS clericFeats[] = {
   { ftMOUNTEDARCHERY,             UNCOMMON },
   { ftTRAMPLE,                    UNCOMMON },
   { ftRIDEBYATTACK,               UNCOMMON },
-  { ftSPIRITEDCHARGE,             RARE*2 },
+  { ftSPIRITEDCHARGE,             RARE * 2 },
   { ftPOINTBLANKSHOT,             RARE },
   { ftFARSHOT,                    RARE },
   { ftPRECISESHOT,                RARE },
   { ftRAPIDSHOT,                  RARE },
   { ftSHOTONTHERUN,               RARE },
-  { ftPOWERATTACK,                RARE*2 },
+  { ftPOWERATTACK,                RARE * 2 },
   { ftCLEAVE,                     RARE },
   { ftIMPROVEDBULLRUSH,           RARE },
   { ftIMPROVEDSUNDER,                     RARE },
@@ -546,19 +546,19 @@ static PREFERREDFEATS clericFeats[] = {
   { ftGREATERSPELLPENETRATION,           UNCOMMON },
   { ftTOUGHNESS,                  RARE },
   { ftTRACK,                      RARE },
-  { ftTWOWEAPONDEFENSE, RARE }, 
-  { ftTWOWEAPONFIGHTING,          RARE*2 },
+  { ftTWOWEAPONDEFENSE, RARE },
+  { ftTWOWEAPONFIGHTING,          RARE * 2 },
   { ftIMPROVEDTWOWEAPONFIGHTING,  RARE },
-  { ftWEAPONFINESSE,              RARE*2 },
+  { ftWEAPONFINESSE,              RARE * 2 },
   { ftWEAPONFOCUS,                UNCOMMON },
-  { ftBREWPOTION,                 UNCOMMON*2 },
+  { ftBREWPOTION,                 UNCOMMON * 2 },
   { ftCRAFTMAGICARMSANDARMOR,     UNCOMMON },
   { ftCRAFTROD,                   UNCOMMON },
-  { ftCRAFTSTAFF,                 UNCOMMON*2 },
+  { ftCRAFTSTAFF,                 UNCOMMON * 2 },
   { ftCRAFTWAND,                  UNCOMMON },
   { ftCRAFTWONDROUSITEM,          UNCOMMON },
   { ftFORGERING,                  UNCOMMON },
-  { ftSCRIBESCROLL,               UNCOMMON*2 },
+  { ftSCRIBESCROLL,               UNCOMMON * 2 },
   { ftEMPOWERSPELL,               UNCOMMON },
   { ftENLARGESPELL,               UNCOMMON },
   { ftEXTENDSPELL,                COMMON },
@@ -570,14 +570,14 @@ static PREFERREDFEATS clericFeats[] = {
   { ftWIDENSPELL,                 UNCOMMON },
   { ftEXTRATURNING,               COMMON },
   { ftIMPROVEDTURNING,               COMMON },
-  {  ftAUGMENTSUMMONING, UNCOMMON }, 
-  {  ftCRAFTCONSTRUCT, RARE }, 
-  { ftESCHEWMATERIALS, UNCOMMON }, 
-  { ftIMPROVEDCOUNTERSPELL, UNCOMMON }, 
-  { ftMAGICALAPTITUDE, RARE }, 
-  { ftNEGOTIATOR, UNCOMMON }, 
-  { ftPERSUASIVE, UNCOMMON }, 
-  { ftSELFSUFFICIENT, UNCOMMON }, 
+  {  ftAUGMENTSUMMONING, UNCOMMON },
+  {  ftCRAFTCONSTRUCT, RARE },
+  { ftESCHEWMATERIALS, UNCOMMON },
+  { ftIMPROVEDCOUNTERSPELL, UNCOMMON },
+  { ftMAGICALAPTITUDE, RARE },
+  { ftNEGOTIATOR, UNCOMMON },
+  { ftPERSUASIVE, UNCOMMON },
+  { ftSELFSUFFICIENT, UNCOMMON },
   { 0,                            0 }
 };
 
@@ -606,31 +606,31 @@ static PREFERREDWEAPONS clericWeapons[] = {
 static PREFERREDFEATS druidFeats[] = {
   { ftALERTNESS,                   COMMON },
   { ftBLINDFIGHT,                  UNCOMMON },
-  { ftCOMBATCASTING,               UNCOMMON*2 },
+  { ftCOMBATCASTING,               UNCOMMON * 2 },
   { ftCOMBATREFLEXES,              UNCOMMON },
-  { ftDIEHARD, RARE }, 
-  { ftDILIGENT, UNCOMMON }, 
+  { ftDIEHARD, RARE },
+  { ftDILIGENT, UNCOMMON },
   { ftDODGE,                       UNCOMMON },
   { ftMOBILITY,                    UNCOMMON },
   { ftSPRINGATTACK,                RARE },
-  { ftENDURANCE,                   RARE*2 },
+  { ftENDURANCE,                   RARE * 2 },
   { ftCOMBATEXPERTISE,                   RARE },
   { ftIMPROVEDDISARM,              RARE },
   { ftIMPROVEDTRIP,                RARE },
   { ftWHIRLWINDATTACK,             RARE },
   { ftGREATFORTITUDE,              UNCOMMON },
-  { ftIMPROVEDCRITICAL,            RARE*2 },
+  { ftIMPROVEDCRITICAL,            RARE * 2 },
   { ftIMPROVEDINITIATIVE,          UNCOMMON },
   { ftIMPROVEDUNARMEDSTRIKE,       UNCOMMON },
-  { ftIMPROVEDFEINT, RARE }, 
-  { ftSNATCHARROWS, RARE }, 
-  { ftDEFLECTARROWS,               RARE*2 },
+  { ftIMPROVEDFEINT, RARE },
+  { ftSNATCHARROWS, RARE },
+  { ftDEFLECTARROWS,               RARE * 2 },
   { ftSTUNNINGFIST,                RARE },
   { ftIRONWILL,                    RARE },
   { ftLEADERSHIP,                  RARE },
-  { ftLIGHTNINGREFLEXES,           RARE*2 },
+  { ftLIGHTNINGREFLEXES,           RARE * 2 },
   { ftMOUNTEDCOMBAT,               UNCOMMON },
-  { ftMOUNTEDARCHERY,              RARE*2 },
+  { ftMOUNTEDARCHERY,              RARE * 2 },
   { ftTRAMPLE,                     RARE },
   { ftRIDEBYATTACK,                RARE },
   { ftSPIRITEDCHARGE,              RARE },
@@ -643,7 +643,7 @@ static PREFERREDFEATS druidFeats[] = {
   { ftCLEAVE,                      RARE },
   { ftIMPROVEDBULLRUSH,            RARE },
   { ftIMPROVEDSUNDER,                      RARE },
-  { ftGREATCLEAVE,                 RARE*2 },
+  { ftGREATCLEAVE,                 RARE * 2 },
   { ftQUICKDRAW,                   RARE },
   { ftRUN,                         UNCOMMON },
   { ftSKILLFOCUS,                  COMMON },
@@ -653,15 +653,15 @@ static PREFERREDFEATS druidFeats[] = {
   { ftGREATERSPELLPENETRATION,           UNCOMMON },
   { ftTOUGHNESS,                   UNCOMMON },
   { ftTRACK,                       COMMON },
-  { ftTWOWEAPONDEFENSE, RARE }, 
+  { ftTWOWEAPONDEFENSE, RARE },
   { ftTWOWEAPONFIGHTING,           UNCOMMON },
   { ftIMPROVEDTWOWEAPONFIGHTING,   RARE },
   { ftWEAPONFINESSE,               RARE },
   { ftWEAPONFOCUS,                 RARE },
-  { ftBREWPOTION,                  UNCOMMON*2 },
+  { ftBREWPOTION,                  UNCOMMON * 2 },
   { ftCRAFTMAGICARMSANDARMOR,      UNCOMMON },
   { ftCRAFTROD,                    UNCOMMON },
-  { ftCRAFTSTAFF,                  UNCOMMON*2 },
+  { ftCRAFTSTAFF,                  UNCOMMON * 2 },
   { ftCRAFTWAND,                   UNCOMMON },
   { ftCRAFTWONDROUSITEM,           UNCOMMON },
   { ftFORGERING,                   UNCOMMON },
@@ -672,18 +672,18 @@ static PREFERREDFEATS druidFeats[] = {
   { ftHEIGHTENSPELL,               UNCOMMON },
   { ftMAXIMIZESPELL,               UNCOMMON },
   { ftQUICKENSPELL,                UNCOMMON },
-  { ftSILENTSPELL,                 UNCOMMON*2 },
+  { ftSILENTSPELL,                 UNCOMMON * 2 },
   { ftSTILLSPELL,                  UNCOMMON },
   { ftWIDENSPELL,                 UNCOMMON },
-  {  ftAUGMENTSUMMONING, UNCOMMON }, 
-  {  ftCRAFTCONSTRUCT, RARE }, 
-  { ftESCHEWMATERIALS, UNCOMMON }, 
-  { ftIMPROVEDCOUNTERSPELL, UNCOMMON }, 
-  { ftMAGICALAPTITUDE, RARE }, 
-  { ftNATURALSPELL, COMMON }, 
-  { ftNEGOTIATOR, RARE }, 
-  { ftPERSUASIVE, RARE }, 
-  { ftSELFSUFFICIENT, UNCOMMON }, 
+  {  ftAUGMENTSUMMONING, UNCOMMON },
+  {  ftCRAFTCONSTRUCT, RARE },
+  { ftESCHEWMATERIALS, UNCOMMON },
+  { ftIMPROVEDCOUNTERSPELL, UNCOMMON },
+  { ftMAGICALAPTITUDE, RARE },
+  { ftNATURALSPELL, COMMON },
+  { ftNEGOTIATOR, RARE },
+  { ftPERSUASIVE, RARE },
+  { ftSELFSUFFICIENT, UNCOMMON },
   { 0,                             0 }
 };
 
@@ -704,27 +704,27 @@ static PREFERREDFEATS fighterFeats[] = {
   { ftALERTNESS,                  COMMON },
   { ftBLINDFIGHT,                 COMMON },
   { ftCOMBATREFLEXES,             UNCOMMON },
-  { ftDIEHARD, UNCOMMON }, 
-  { ftDILIGENT, RARE }, 
+  { ftDIEHARD, UNCOMMON },
+  { ftDILIGENT, RARE },
   { ftDODGE,                      UNCOMMON },
   { ftMOBILITY,                   COMMON },
   { ftSPRINGATTACK,               COMMON },
   { ftENDURANCE,                  UNCOMMON },
-  { ftEXOTICWEAPONPROFICIENCY,   RARE*2 },
+  { ftEXOTICWEAPONPROFICIENCY,   RARE * 2 },
   { ftCOMBATEXPERTISE,                  UNCOMMON },
   { ftIMPROVEDDISARM,             UNCOMMON },
   { ftIMPROVEDTRIP,               UNCOMMON },
   { ftWHIRLWINDATTACK,            COMMON },
-  { ftGREATFORTITUDE,             RARE*2 },
+  { ftGREATFORTITUDE,             RARE * 2 },
   { ftIMPROVEDCRITICAL,           COMMON },
   { ftIMPROVEDINITIATIVE,         COMMON },
   { ftIMPROVEDUNARMEDSTRIKE,      RARE },
-  { ftIMPROVEDFEINT, UNCOMMON }, 
-  { ftIMPROVEDPRECISESHOT, UNCOMMON }, 
-  { ftINVESTIGATOR, RARE }, 
-  { ftSNATCHARROWS, RARE }, 
+  { ftIMPROVEDFEINT, UNCOMMON },
+  { ftIMPROVEDPRECISESHOT, UNCOMMON },
+  { ftINVESTIGATOR, RARE },
+  { ftSNATCHARROWS, RARE },
   { ftDEFLECTARROWS,              RARE },
-  { ftIMPROVEDSHIELDBASH, RARE }, 
+  { ftIMPROVEDSHIELDBASH, RARE },
   { ftSTUNNINGFIST,               RARE },
   { ftIRONWILL,                   UNCOMMON },
   { ftLEADERSHIP,                 UNCOMMON },
@@ -748,20 +748,20 @@ static PREFERREDFEATS fighterFeats[] = {
   { ftRUN,                        RARE },
   { ftSKILLFOCUS,                 RARE },
   { ftTOUGHNESS,                  UNCOMMON },
-  { ftTRACK,                      RARE*2 },
-  { ftTWOWEAPONDEFENSE, UNCOMMON }, 
+  { ftTRACK,                      RARE * 2 },
+  { ftTWOWEAPONDEFENSE, UNCOMMON },
   { ftTWOWEAPONFIGHTING,          UNCOMMON },
   { ftIMPROVEDTWOWEAPONFIGHTING,  UNCOMMON },
-  { ftWEAPONFINESSE,              RARE*2 },
-  { ftWEAPONFOCUS,                UNCOMMON*2 },
+  { ftWEAPONFINESSE,              RARE * 2 },
+  { ftWEAPONFOCUS,                UNCOMMON * 2 },
   { ftWEAPONSPECIALIZATION,       UNCOMMON },
   { ftGREATERWEAPONFOCUS,                COMMON },
   { ftGREATERWEAPONSPECIALIZATION,       COMMON },
-  { ftMANYSHOT, RARE }, 
-  { ftNEGOTIATOR, RARE }, 
-  { ftPERSUASIVE, UNCOMMON }, 
-  { ftRAPIDRELOAD, RARE }, 
-  { ftSELFSUFFICIENT, RARE }, 
+  { ftMANYSHOT, RARE },
+  { ftNEGOTIATOR, RARE },
+  { ftPERSUASIVE, UNCOMMON },
+  { ftRAPIDRELOAD, RARE },
+  { ftSELFSUFFICIENT, RARE },
   { 0,                            0 }
 };
 
@@ -770,7 +770,7 @@ static PREFERREDFEATS fighterBonusFeats[] = {
 	{ ftCLEAVE,		COMMON },
 	{ ftCOMBATEXPERTISE,		COMMON },
 	{ ftCOMBATREFLEXES,		COMMON },
-  { ftSNATCHARROWS, UNCOMMON }, 
+  { ftSNATCHARROWS, UNCOMMON },
 	{ ftDEFLECTARROWS,		UNCOMMON },
 	{ ftDODGE,		COMMON },
 	{ ftEXOTICWEAPONPROFICIENCY,		RARE },
@@ -818,24 +818,24 @@ static PREFERREDFEATS fighterBonusFeats[] = {
 };
 
 static PREFERREDWEAPONS fighterWeapons[] = {
-  { wpGAUNTLET,            RARE*2 },
-  { wpUNARMED,             RARE*2 },
+  { wpGAUNTLET,            RARE * 2 },
+  { wpUNARMED,             RARE * 2 },
   { wpDAGGER,              RARE },
   { wpDAGGER_PUNCHING,     RARE },
-  { wpGAUNTLET_SPIKED,     RARE*2 },
+  { wpGAUNTLET_SPIKED,     RARE * 2 },
   { wpMACE_LIGHT,          RARE },
   { wpSICKLE,              RARE },
   { wpCLUB,                RARE },
   { wpHALFSPEAR,           RARE },
-  { wpMACE_HEAVY,          RARE*2 },
-  { wpMORNINGSTAR,         RARE*2 },
+  { wpMACE_HEAVY,          RARE * 2 },
+  { wpMORNINGSTAR,         RARE * 2 },
   { wpQUARTERSTAFF,        RARE },
   { wpSHORTSPEAR,          UNCOMMON },
   { wpCROSSBOW_LIGHT,      RARE },
   { wpDART,                RARE },
   { wpSLING,               RARE },
   { wpCROSSBOW_HEAVY,      RARE },
-  { wpJAVELIN,             RARE*2 },
+  { wpJAVELIN,             RARE * 2 },
   { wpAXE_THROWING,        RARE },
   { wpHAMMER_LIGHT,        RARE },
   { wpHANDAXE,             RARE },
@@ -846,7 +846,7 @@ static PREFERREDWEAPONS fighterWeapons[] = {
   { wpBATTLEAXE,           UNCOMMON },
   { wpFLAIL_LIGHT,         UNCOMMON },
   { wpLANCE_HEAVY,         UNCOMMON },
-  { wpLONGSWORD,           COMMON*2 },
+  { wpLONGSWORD,           COMMON * 2 },
   { wpPICK_HEAVY,          RARE },
   { wpRAPIER,              UNCOMMON },
   { wpSCIMITAR,            UNCOMMON },
@@ -873,20 +873,20 @@ static PREFERREDWEAPONS fighterWeapons[] = {
 static PREFERREDFEATS monkFeats[] = {
   { ftALERTNESS,                  COMMON },
   { ftBLINDFIGHT,                 COMMON },
-  { ftDIEHARD, RARE }, 
-  { ftDILIGENT, RARE }, 
+  { ftDIEHARD, RARE },
+  { ftDILIGENT, RARE },
   { ftDODGE,                      COMMON },
   { ftMOBILITY,                   COMMON },
   { ftSPRINGATTACK,               UNCOMMON },
-  { ftENDURANCE,                  RARE*2 },
+  { ftENDURANCE,                  RARE * 2 },
   { ftCOMBATEXPERTISE,                  COMMON },
   { ftIMPROVEDDISARM,             UNCOMMON },
   { ftWHIRLWINDATTACK,            UNCOMMON },
   { ftGREATFORTITUDE,             RARE },
   { ftIMPROVEDCRITICAL,           RARE },
   { ftIMPROVEDINITIATIVE,         UNCOMMON },
-  { ftIMPROVEDFEINT, UNCOMMON }, 
-  { ftINVESTIGATOR, RARE }, 
+  { ftIMPROVEDFEINT, UNCOMMON },
+  { ftINVESTIGATOR, RARE },
   { ftIRONWILL,                   UNCOMMON },
   { ftLEADERSHIP,                 RARE },
   { ftLIGHTNINGREFLEXES,          UNCOMMON },
@@ -909,15 +909,15 @@ static PREFERREDFEATS monkFeats[] = {
   { ftRUN,                        UNCOMMON },
   { ftSKILLFOCUS,                 UNCOMMON },
   { ftTOUGHNESS,                  RARE },
-  { ftTRACK,                      RARE*2 },
-  { ftTWOWEAPONDEFENSE, RARE }, 
+  { ftTRACK,                      RARE * 2 },
+  { ftTWOWEAPONDEFENSE, RARE },
   { ftTWOWEAPONFIGHTING,          RARE },
   { ftIMPROVEDTWOWEAPONFIGHTING,  RARE },
   { ftWEAPONFINESSE,              UNCOMMON },
   { ftWEAPONFOCUS,                UNCOMMON },
-  { ftNEGOTIATOR, RARE }, 
-  { ftPERSUASIVE, RARE }, 
-  { ftSELFSUFFICIENT, RARE }, 
+  { ftNEGOTIATOR, RARE },
+  { ftPERSUASIVE, RARE },
+  { ftSELFSUFFICIENT, RARE },
   { 0,                            0 }
 };
 
@@ -960,8 +960,8 @@ static PREFERREDFEATS paladinFeats[] = {
   { ftBLINDFIGHT,                 UNCOMMON },
   { ftCOMBATCASTING,              UNCOMMON },
   { ftCOMBATREFLEXES,             COMMON },
-  { ftDIEHARD, UNCOMMON }, 
-  { ftDILIGENT, UNCOMMON }, 
+  { ftDIEHARD, UNCOMMON },
+  { ftDILIGENT, UNCOMMON },
   { ftDODGE,                      UNCOMMON },
   { ftMOBILITY,                   UNCOMMON },
   { ftSPRINGATTACK,               UNCOMMON },
@@ -975,16 +975,16 @@ static PREFERREDFEATS paladinFeats[] = {
   { ftIMPROVEDCRITICAL,           UNCOMMON },
   { ftIMPROVEDINITIATIVE,         UNCOMMON },
   { ftIMPROVEDUNARMEDSTRIKE,      RARE },
-  { ftIMPROVEDFEINT, UNCOMMON }, 
+  { ftIMPROVEDFEINT, UNCOMMON },
 	{ ftIMPROVEDOVERRUN,		RARE },
-  { ftIMPROVEDPRECISESHOT, RARE }, 
-  { ftIMPROVEDSHIELDBASH, RARE }, 
-  { ftINVESTIGATOR, RARE }, 
-  { ftSNATCHARROWS, RARE }, 
+  { ftIMPROVEDPRECISESHOT, RARE },
+  { ftIMPROVEDSHIELDBASH, RARE },
+  { ftINVESTIGATOR, RARE },
+  { ftSNATCHARROWS, RARE },
   { ftDEFLECTARROWS,              RARE },
   { ftSTUNNINGFIST,               RARE },
   { ftIRONWILL,                   UNCOMMON },
-  { ftLEADERSHIP,                 COMMON*2 },
+  { ftLEADERSHIP,                 COMMON * 2 },
   { ftLIGHTNINGREFLEXES,          UNCOMMON },
   { ftMOUNTEDCOMBAT,              COMMON },
   { ftMOUNTEDARCHERY,             COMMON },
@@ -1010,8 +1010,8 @@ static PREFERREDFEATS paladinFeats[] = {
   { ftTRACK,                      RARE },
   { ftTWOWEAPONFIGHTING,          RARE },
   { ftIMPROVEDTWOWEAPONFIGHTING,  RARE },
-  { ftWEAPONFINESSE,              UNCOMMON*2 },
-  { ftWEAPONFOCUS,                UNCOMMON*2 },
+  { ftWEAPONFINESSE,              UNCOMMON * 2 },
+  { ftWEAPONFOCUS,                UNCOMMON * 2 },
   { ftBREWPOTION,                 RARE },
   { ftCRAFTMAGICARMSANDARMOR,     RARE },
   { ftCRAFTROD,                   RARE },
@@ -1031,35 +1031,35 @@ static PREFERREDFEATS paladinFeats[] = {
   { ftWIDENSPELL,                 RARE },
   { ftEXTRATURNING,               UNCOMMON },
   { ftIMPROVEDTURNING,               UNCOMMON },
-  { ftESCHEWMATERIALS, RARE }, 
-  { ftIMPROVEDCOUNTERSPELL, RARE }, 
-  { ftMANYSHOT, RARE }, 
-  { ftNEGOTIATOR, UNCOMMON }, 
-  { ftPERSUASIVE, UNCOMMON }, 
-  { ftRAPIDRELOAD, RARE }, 
-  { ftSELFSUFFICIENT, RARE }, 
+  { ftESCHEWMATERIALS, RARE },
+  { ftIMPROVEDCOUNTERSPELL, RARE },
+  { ftMANYSHOT, RARE },
+  { ftNEGOTIATOR, UNCOMMON },
+  { ftPERSUASIVE, UNCOMMON },
+  { ftRAPIDRELOAD, RARE },
+  { ftSELFSUFFICIENT, RARE },
   { 0,                            0 }
 };
 
 static PREFERREDWEAPONS paladinWeapons[] = {
-  { wpGAUNTLET,            RARE*2 },
-  { wpUNARMED,             RARE*2 },
+  { wpGAUNTLET,            RARE * 2 },
+  { wpUNARMED,             RARE * 2 },
   { wpDAGGER,              RARE },
   { wpDAGGER_PUNCHING,     RARE },
-  { wpGAUNTLET_SPIKED,     RARE*2 },
+  { wpGAUNTLET_SPIKED,     RARE * 2 },
   { wpMACE_LIGHT,          RARE },
   { wpSICKLE,              RARE },
   { wpCLUB,                RARE },
   { wpHALFSPEAR,           RARE },
-  { wpMACE_HEAVY,          RARE*2 },
-  { wpMORNINGSTAR,         RARE*2 },
+  { wpMACE_HEAVY,          RARE * 2 },
+  { wpMORNINGSTAR,         RARE * 2 },
   { wpQUARTERSTAFF,        RARE },
   { wpSHORTSPEAR,          UNCOMMON },
   { wpCROSSBOW_LIGHT,      RARE },
   { wpDART,                RARE },
   { wpSLING,               RARE },
   { wpCROSSBOW_HEAVY,      RARE },
-  { wpJAVELIN,             RARE*2 },
+  { wpJAVELIN,             RARE * 2 },
   { wpAXE_THROWING,        RARE },
   { wpHAMMER_LIGHT,        RARE },
   { wpHANDAXE,             RARE },
@@ -1070,7 +1070,7 @@ static PREFERREDWEAPONS paladinWeapons[] = {
   { wpBATTLEAXE,           UNCOMMON },
   { wpFLAIL_LIGHT,         UNCOMMON },
   { wpLANCE_HEAVY,         UNCOMMON },
-  { wpLONGSWORD,           COMMON*2 },
+  { wpLONGSWORD,           COMMON * 2 },
   { wpPICK_HEAVY,          RARE },
   { wpRAPIER,              UNCOMMON },
   { wpSCIMITAR,            UNCOMMON },
@@ -1100,9 +1100,9 @@ static PREFERREDFEATS rangerFeats[] = {
   { ftBLINDFIGHT,                 UNCOMMON },
   { ftCOMBATCASTING,              RARE },
   { ftCOMBATREFLEXES,             COMMON },
-  { ftDECEITFUL, UNCOMMON }, 
-  { ftDIEHARD, UNCOMMON }, 
-  { ftDILIGENT, UNCOMMON }, 
+  { ftDECEITFUL, UNCOMMON },
+  { ftDIEHARD, UNCOMMON },
+  { ftDILIGENT, UNCOMMON },
   { ftDODGE,                      COMMON },
   { ftMOBILITY,                   COMMON },
   { ftSPRINGATTACK,               COMMON },
@@ -1116,12 +1116,12 @@ static PREFERREDFEATS rangerFeats[] = {
   { ftIMPROVEDCRITICAL,           UNCOMMON },
   { ftIMPROVEDINITIATIVE,         COMMON },
   { ftIMPROVEDUNARMEDSTRIKE,      UNCOMMON },
-  { ftIMPROVEDFEINT, UNCOMMON }, 
+  { ftIMPROVEDFEINT, UNCOMMON },
 	{ ftIMPROVEDOVERRUN,		RARE },
-  { ftIMPROVEDPRECISESHOT, UNCOMMON }, 
-  { ftIMPROVEDSHIELDBASH, RARE }, 
-  { ftINVESTIGATOR, RARE*2 }, 
-  { ftSNATCHARROWS, RARE }, 
+  { ftIMPROVEDPRECISESHOT, UNCOMMON },
+  { ftIMPROVEDSHIELDBASH, RARE },
+  { ftINVESTIGATOR, RARE * 2 },
+  { ftSNATCHARROWS, RARE },
   { ftDEFLECTARROWS,              RARE },
   { ftSTUNNINGFIST,               RARE },
   { ftIRONWILL,                   UNCOMMON },
@@ -1149,9 +1149,9 @@ static PREFERREDFEATS rangerFeats[] = {
   { ftSPELLPENETRATION,           RARE },
   { ftTOUGHNESS,                  UNCOMMON },
   { ftIMPROVEDTWOWEAPONFIGHTING,  COMMON },
-  { ftWEAPONFINESSE,              UNCOMMON*2 },
-  { ftWEAPONFOCUS,                UNCOMMON*2 },
-  { ftBREWPOTION,                 RARE*2 },
+  { ftWEAPONFINESSE,              UNCOMMON * 2 },
+  { ftWEAPONFOCUS,                UNCOMMON * 2 },
+  { ftBREWPOTION,                 RARE * 2 },
   { ftCRAFTMAGICARMSANDARMOR,     RARE },
   { ftCRAFTROD,                   RARE },
   { ftCRAFTSTAFF,                 RARE },
@@ -1168,16 +1168,16 @@ static PREFERREDFEATS rangerFeats[] = {
   { ftSILENTSPELL,                RARE },
   { ftSTILLSPELL,                 RARE },
   { ftWIDENSPELL,                 RARE },
-  { ftESCHEWMATERIALS, RARE }, 
-  { ftIMPROVEDCOUNTERSPELL, RARE }, 
-  { ftMAGICALAPTITUDE, RARE }, 
-  { ftMANYSHOT, RARE },  
-  { ftNEGOTIATOR, RARE }, 
-  { ftPERSUASIVE, RARE }, 
-  { ftRAPIDRELOAD, RARE }, 
-  { ftSELFSUFFICIENT, COMMON }, 
-  { ftSTEALTHY, UNCOMMON }, 
-  { ftTWOWEAPONDEFENSE, UNCOMMON }, 
+  { ftESCHEWMATERIALS, RARE },
+  { ftIMPROVEDCOUNTERSPELL, RARE },
+  { ftMAGICALAPTITUDE, RARE },
+  { ftMANYSHOT, RARE },
+  { ftNEGOTIATOR, RARE },
+  { ftPERSUASIVE, RARE },
+  { ftRAPIDRELOAD, RARE },
+  { ftSELFSUFFICIENT, COMMON },
+  { ftSTEALTHY, UNCOMMON },
+  { ftTWOWEAPONDEFENSE, UNCOMMON },
   { 0,                            0 }
 };
 
@@ -1193,16 +1193,16 @@ static PREFERREDFEATS rangerBonusFeats[] = {
 
 static PREFERREDWEAPONS rangerWeapons[] = {
   { wpGAUNTLET,            RARE },
-  { wpUNARMED,             RARE*2 },
-  { wpDAGGER,              RARE*2 },
+  { wpUNARMED,             RARE * 2 },
+  { wpDAGGER,              RARE * 2 },
   { wpDAGGER_PUNCHING,     RARE },
   { wpGAUNTLET_SPIKED,     RARE },
   { wpMACE_LIGHT,          RARE },
   { wpSICKLE,              RARE },
-  { wpCLUB,                RARE*2 },
-  { wpHALFSPEAR,           RARE*2 },
+  { wpCLUB,                RARE * 2 },
+  { wpHALFSPEAR,           RARE * 2 },
   { wpMACE_HEAVY,          RARE },
-  { wpMORNINGSTAR,         RARE*2 },
+  { wpMORNINGSTAR,         RARE * 2 },
   { wpQUARTERSTAFF,        COMMON },
   { wpSHORTSPEAR,          UNCOMMON },
   { wpCROSSBOW_LIGHT,      RARE },
@@ -1220,7 +1220,7 @@ static PREFERREDWEAPONS rangerWeapons[] = {
   { wpBATTLEAXE,           RARE },
   { wpFLAIL_LIGHT,         RARE },
   { wpLANCE_HEAVY,         RARE },
-  { wpLONGSWORD,           COMMON*2 },
+  { wpLONGSWORD,           COMMON * 2 },
   { wpPICK_HEAVY,          RARE },
   { wpRAPIER,              RARE },
   { wpSCIMITAR,            RARE },
@@ -1250,16 +1250,16 @@ static PREFERREDFEATS rogueFeats[] = {
   { ftARMORPROFICIENCY_HEAVY,     RARE },
   { ftBLINDFIGHT,                 UNCOMMON },
   { ftCOMBATREFLEXES,             UNCOMMON },
-  { ftDECEITFUL, UNCOMMON }, 
-  { ftDEFTHANDS, UNCOMMON }, 
-  { ftDIEHARD, RARE }, 
-  { ftDILIGENT, UNCOMMON }, 
+  { ftDECEITFUL, UNCOMMON },
+  { ftDEFTHANDS, UNCOMMON },
+  { ftDIEHARD, RARE },
+  { ftDILIGENT, UNCOMMON },
   { ftDODGE,                      COMMON },
   { ftMOBILITY,                   COMMON },
   { ftSPRINGATTACK,               COMMON },
   { ftENDURANCE,                  RARE },
   { ftEXOTICWEAPONPROFICIENCY,   RARE },
-  { ftMARTIALWEAPONPROFICIENCY,  RARE*2 },
+  { ftMARTIALWEAPONPROFICIENCY,  RARE * 2 },
   { ftCOMBATEXPERTISE,                  UNCOMMON },
   { ftIMPROVEDDISARM,             COMMON },
   { ftIMPROVEDTRIP,               UNCOMMON },
@@ -1268,10 +1268,10 @@ static PREFERREDFEATS rogueFeats[] = {
   { ftIMPROVEDCRITICAL,           COMMON },
   { ftIMPROVEDINITIATIVE,         COMMON },
   { ftIMPROVEDUNARMEDSTRIKE,      UNCOMMON },
-  { ftIMPROVEDFEINT, UNCOMMON*2 }, 
-  { ftIMPROVEDPRECISESHOT, UNCOMMON }, 
-  { ftINVESTIGATOR, UNCOMMON }, 
-  { ftSNATCHARROWS, UNCOMMON }, 
+  { ftIMPROVEDFEINT, UNCOMMON * 2 },
+  { ftIMPROVEDPRECISESHOT, UNCOMMON },
+  { ftINVESTIGATOR, UNCOMMON },
+  { ftSNATCHARROWS, UNCOMMON },
   { ftDEFLECTARROWS,              UNCOMMON },
   { ftSTUNNINGFIST,               UNCOMMON },
   { ftIRONWILL,                   UNCOMMON },
@@ -1298,18 +1298,18 @@ static PREFERREDFEATS rogueFeats[] = {
   { ftSKILLFOCUS,                 COMMON },
   { ftTOUGHNESS,                  RARE },
   { ftTRACK,                      UNCOMMON },
-  { ftTWOWEAPONDEFENSE, UNCOMMON }, 
+  { ftTWOWEAPONDEFENSE, UNCOMMON },
   { ftTWOWEAPONFIGHTING,          UNCOMMON },
   { ftIMPROVEDTWOWEAPONFIGHTING,  RARE },
   { ftWEAPONFINESSE,              UNCOMMON },
   { ftWEAPONFOCUS,                UNCOMMON },
-  { ftMAGICALAPTITUDE, UNCOMMON }, 
-  { ftMANYSHOT, RARE*2 }, 
-  { ftNEGOTIATOR, UNCOMMON }, 
-  { ftNIMBLEFINGERS, UNCOMMON }, 
-  { ftPERSUASIVE, UNCOMMON }, 
-  { ftRAPIDRELOAD, RARE }, 
-  { ftSTEALTHY, UNCOMMON }, 
+  { ftMAGICALAPTITUDE, UNCOMMON },
+  { ftMANYSHOT, RARE * 2 },
+  { ftNEGOTIATOR, UNCOMMON },
+  { ftNIMBLEFINGERS, UNCOMMON },
+  { ftPERSUASIVE, UNCOMMON },
+  { ftRAPIDRELOAD, RARE },
+  { ftSTEALTHY, UNCOMMON },
   { 0,                            0 }
 };
 
@@ -1318,7 +1318,7 @@ static PREFERREDWEAPONS rogueWeapons[] = {
   { wpCROSSBOW_LIGHT,      RARE },
   { wpDAGGER,              UNCOMMON },
   { wpDAGGER_PUNCHING,     RARE },
-  { wpDART,                RARE*2 },
+  { wpDART,                RARE * 2 },
   { wpMACE_LIGHT,          RARE },
   { wpSAP,                 UNCOMMON },
   { wpSHORTBOW,            UNCOMMON },
@@ -1339,7 +1339,7 @@ static PREFERREDFEATS sorcererFeats[] = {
   { ftBLINDFIGHT,                 RARE },
   { ftCOMBATCASTING,              COMMON },
   { ftCOMBATREFLEXES,             RARE },
-  { ftDILIGENT, RARE }, 
+  { ftDILIGENT, RARE },
   { ftDODGE,                      UNCOMMON },
   { ftMOBILITY,                   UNCOMMON },
   { ftSPRINGATTACK,               RARE },
@@ -1351,11 +1351,11 @@ static PREFERREDFEATS sorcererFeats[] = {
   { ftIMPROVEDDISARM,             RARE },
   { ftIMPROVEDTRIP,               RARE },
   { ftWHIRLWINDATTACK,            RARE },
-  { ftGREATFORTITUDE,             RARE*2 },
+  { ftGREATFORTITUDE,             RARE * 2 },
   { ftIMPROVEDCRITICAL,           RARE },
   { ftIMPROVEDINITIATIVE,         UNCOMMON },
   { ftIMPROVEDUNARMEDSTRIKE,      UNCOMMON },
-  { ftINVESTIGATOR, RARE }, 
+  { ftINVESTIGATOR, RARE },
   { ftDEFLECTARROWS,              RARE },
   { ftSTUNNINGFIST,               RARE },
   { ftIRONWILL,                   UNCOMMON },
@@ -1386,7 +1386,7 @@ static PREFERREDFEATS sorcererFeats[] = {
   { ftGREATERSPELLPENETRATION,           COMMON },
   { ftTOUGHNESS,                  UNCOMMON },
   { ftTRACK,                      RARE },
-  { ftTWOWEAPONDEFENSE, RARE }, 
+  { ftTWOWEAPONDEFENSE, RARE },
   { ftTWOWEAPONFIGHTING,          RARE },
   { ftIMPROVEDTWOWEAPONFIGHTING,  RARE },
   { ftWEAPONFINESSE,              RARE },
@@ -1398,24 +1398,24 @@ static PREFERREDFEATS sorcererFeats[] = {
   { ftCRAFTWAND,                  COMMON },
   { ftCRAFTWONDROUSITEM,          COMMON },
   { ftFORGERING,                  COMMON },
-  { ftSCRIBESCROLL,               COMMON*2 },
-  { ftEMPOWERSPELL,               RARE*2 },
-  { ftENLARGESPELL,               RARE*2 },
-  { ftEXTENDSPELL,                RARE*2 },
+  { ftSCRIBESCROLL,               COMMON * 2 },
+  { ftEMPOWERSPELL,               RARE * 2 },
+  { ftENLARGESPELL,               RARE * 2 },
+  { ftEXTENDSPELL,                RARE * 2 },
   { ftHEIGHTENSPELL,              UNCOMMON },
-  { ftMAXIMIZESPELL,              RARE*2 },
+  { ftMAXIMIZESPELL,              RARE * 2 },
   { ftSILENTSPELL,                UNCOMMON },
   { ftSTILLSPELL,                 UNCOMMON },
   { ftWIDENSPELL,                 RARE },
-  {  ftAUGMENTSUMMONING, UNCOMMON }, 
-  {  ftCRAFTCONSTRUCT, RARE }, 
-  { ftESCHEWMATERIALS, UNCOMMON }, 
-  { ftIMPROVEDCOUNTERSPELL, RARE }, 
-  { ftIMPROVEDFAMILIAR, RARE }, 
-  { ftMAGICALAPTITUDE, UNCOMMON }, 
-  { ftNEGOTIATOR, RARE }, 
-  { ftPERSUASIVE, UNCOMMON }, 
-  { ftRAPIDRELOAD, RARE }, 
+  {  ftAUGMENTSUMMONING, UNCOMMON },
+  {  ftCRAFTCONSTRUCT, RARE },
+  { ftESCHEWMATERIALS, UNCOMMON },
+  { ftIMPROVEDCOUNTERSPELL, RARE },
+  { ftIMPROVEDFAMILIAR, RARE },
+  { ftMAGICALAPTITUDE, UNCOMMON },
+  { ftNEGOTIATOR, RARE },
+  { ftPERSUASIVE, UNCOMMON },
+  { ftRAPIDRELOAD, RARE },
  { 0,                            0 }
 };
 
@@ -1635,7 +1635,7 @@ static PREFERREDSPELLS prefSorcererSpells[] = {
 	{ spMAGICCIRCLEAGAINSTGOOD,                           UNCOMMON },
 	{ spMAGICCIRCLEAGAINSTLAW,                            UNCOMMON },
 	{ spMAGICJAR,                                         UNCOMMON },
-	{ spMAGICMISSILE,                                     COMMON*2 },
+	{ spMAGICMISSILE,                                     COMMON * 2 },
 	{ spMAGICMOUTH,                                       UNCOMMON },
 	{ spMAGICWEAPON,                                      UNCOMMON },
 	{ spMAGICWEAPONGREATER,                               UNCOMMON },
@@ -1816,7 +1816,7 @@ static PREFERREDSPELLS prefSorcererSpells[] = {
 	{ spWEIRD,                                            UNCOMMON },
 	{ spWHISPERINGWIND,                                   UNCOMMON },
 	{ spWINDWALL,                                         UNCOMMON },
-	{ spWISH,                                               RARE*2 },
+	{ spWISH,                                               RARE * 2 },
   { 0, 0 }
 };
 
@@ -1826,7 +1826,7 @@ static PREFERREDFEATS wizardFeats[] = {
   { ftBLINDFIGHT,                 RARE },
   { ftCOMBATCASTING,              COMMON },
   { ftCOMBATREFLEXES,             RARE },
-  { ftDILIGENT, RARE }, 
+  { ftDILIGENT, RARE },
   { ftDODGE,                      UNCOMMON },
   { ftMOBILITY,                   UNCOMMON },
   { ftSPRINGATTACK,               RARE },
@@ -1838,11 +1838,11 @@ static PREFERREDFEATS wizardFeats[] = {
   { ftIMPROVEDDISARM,             RARE },
   { ftIMPROVEDTRIP,               RARE },
   { ftWHIRLWINDATTACK,            RARE },
-  { ftGREATFORTITUDE,             RARE*2 },
+  { ftGREATFORTITUDE,             RARE * 2 },
   { ftIMPROVEDCRITICAL,           RARE },
   { ftIMPROVEDINITIATIVE,         UNCOMMON },
   { ftIMPROVEDUNARMEDSTRIKE,      UNCOMMON },
-  { ftINVESTIGATOR, RARE }, 
+  { ftINVESTIGATOR, RARE },
   { ftDEFLECTARROWS,              RARE },
   { ftSTUNNINGFIST,               RARE },
   { ftIRONWILL,                   UNCOMMON },
@@ -1873,7 +1873,7 @@ static PREFERREDFEATS wizardFeats[] = {
   { ftGREATERSPELLPENETRATION,           COMMON },
   { ftTOUGHNESS,                  UNCOMMON },
   { ftTRACK,                      RARE },
-  { ftTWOWEAPONDEFENSE, RARE }, 
+  { ftTWOWEAPONDEFENSE, RARE },
   { ftTWOWEAPONFIGHTING,          RARE },
   { ftIMPROVEDTWOWEAPONFIGHTING,  RARE },
   { ftWEAPONFINESSE,              RARE },
@@ -1885,7 +1885,7 @@ static PREFERREDFEATS wizardFeats[] = {
   { ftCRAFTWAND,                  COMMON },
   { ftCRAFTWONDROUSITEM,          COMMON },
   { ftFORGERING,                  COMMON },
-  { ftSCRIBESCROLL,               COMMON*2 },
+  { ftSCRIBESCROLL,               COMMON * 2 },
   { ftEMPOWERSPELL,               COMMON },
   { ftENLARGESPELL,               COMMON },
   { ftEXTENDSPELL,                COMMON },
@@ -1896,15 +1896,15 @@ static PREFERREDFEATS wizardFeats[] = {
   { ftSTILLSPELL,                 COMMON },
   { ftWIDENSPELL,                 UNCOMMON },
   { ftSPELLMASTERY,               UNCOMMON },
-  {  ftAUGMENTSUMMONING, COMMON }, 
-  {  ftCRAFTCONSTRUCT, UNCOMMON }, 
-  { ftESCHEWMATERIALS, UNCOMMON }, 
-  { ftIMPROVEDCOUNTERSPELL, UNCOMMON }, 
-  { ftIMPROVEDFAMILIAR, RARE }, 
-  { ftMAGICALAPTITUDE, UNCOMMON }, 
-  { ftNEGOTIATOR, RARE }, 
-  { ftPERSUASIVE, RARE }, 
-  { ftRAPIDRELOAD, RARE }, 
+  {  ftAUGMENTSUMMONING, COMMON },
+  {  ftCRAFTCONSTRUCT, UNCOMMON },
+  { ftESCHEWMATERIALS, UNCOMMON },
+  { ftIMPROVEDCOUNTERSPELL, UNCOMMON },
+  { ftIMPROVEDFAMILIAR, RARE },
+  { ftMAGICALAPTITUDE, UNCOMMON },
+  { ftNEGOTIATOR, RARE },
+  { ftPERSUASIVE, RARE },
+  { ftRAPIDRELOAD, RARE },
   { 0,                            0 }
 };
 
@@ -1915,9 +1915,9 @@ static PREFERREDFEATS wizardBonusFeats[] = {
   { ftCRAFTSTAFF,                 UNCOMMON },
   { ftCRAFTWAND,                  COMMON },
   { ftCRAFTWONDROUSITEM,          UNCOMMON },
-  { ftCRAFTCONSTRUCT,             UNCOMMON }, 
+  { ftCRAFTCONSTRUCT,             UNCOMMON },
   { ftFORGERING,                  COMMON },
-  { ftSCRIBESCROLL,               COMMON*2 },
+  { ftSCRIBESCROLL,               COMMON * 2 },
   { ftEMPOWERSPELL,               COMMON },
   { ftENLARGESPELL,               COMMON },
   { ftEXTENDSPELL,                COMMON },
@@ -2135,7 +2135,7 @@ static PREFERREDSPELLS prefWizardSpells[] = {
 	{ spMAGICCIRCLEAGAINSTGOOD,                           UNCOMMON },
 	{ spMAGICCIRCLEAGAINSTLAW,                            UNCOMMON },
 	{ spMAGICJAR,                                         UNCOMMON },
-	{ spMAGICMISSILE,                                     COMMON*2 },
+	{ spMAGICMISSILE,                                     COMMON * 2 },
 	{ spMAGICMOUTH,                                       UNCOMMON },
 	{ spMAGICWEAPON,                                      UNCOMMON },
 	{ spMAGICWEAPONGREATER,                               UNCOMMON },
@@ -2317,7 +2317,7 @@ static PREFERREDSPELLS prefWizardSpells[] = {
 	{ spWEIRD,                                            UNCOMMON },
 	{ spWHISPERINGWIND,                                   UNCOMMON },
 	{ spWINDWALL,                                         UNCOMMON },
-	{ spWISH,                                               RARE*2 },
+	{ spWISH,                                               RARE * 2 },
   { 0, 0 }
 };
 
@@ -2337,7 +2337,7 @@ static PREFERREDFEATS adeptFeats[] = {
   { ftIMPROVEDDISARM,             RARE },
   { ftIMPROVEDTRIP,               RARE },
   { ftWHIRLWINDATTACK,            RARE },
-  { ftGREATFORTITUDE,             RARE*2 },
+  { ftGREATFORTITUDE,             RARE * 2 },
   { ftIMPROVEDCRITICAL,           RARE },
   { ftIMPROVEDINITIATIVE,         UNCOMMON },
   { ftIMPROVEDUNARMEDSTRIKE,      UNCOMMON },
@@ -2380,7 +2380,7 @@ static PREFERREDFEATS adeptFeats[] = {
   { ftCRAFTWAND,                  COMMON },
   { ftCRAFTWONDROUSITEM,          COMMON },
   { ftFORGERING,                  COMMON },
-  { ftSCRIBESCROLL,               COMMON*2 },
+  { ftSCRIBESCROLL,               COMMON * 2 },
   { ftEMPOWERSPELL,               COMMON },
   { ftENLARGESPELL,               COMMON },
   { ftEXTENDSPELL,                COMMON },
@@ -2437,7 +2437,7 @@ static PREFERREDFEATS commonFeats[] = {
   { ftQUICKDRAW,                  RARE },
   { ftRUN,                        UNCOMMON },
   { ftSHIELDPROFICIENCY,          RARE },
-  { ftSKILLFOCUS,                 COMMON*3 },
+  { ftSKILLFOCUS,                 COMMON * 3 },
   { ftTOUGHNESS,                  RARE },
   { ftTRACK,                      RARE },
   { ftTWOWEAPONFIGHTING,          RARE },
@@ -2489,7 +2489,7 @@ static PREFERREDFEATS nobleFeats[] = {
   { ftDEFLECTARROWS,              RARE },
   { ftSTUNNINGFIST,               RARE },
   { ftIRONWILL,                   UNCOMMON },
-  { ftLEADERSHIP,                 COMMON*2 },
+  { ftLEADERSHIP,                 COMMON * 2 },
   { ftLIGHTNINGREFLEXES,          RARE },
   { ftMOUNTEDCOMBAT,              COMMON },
   { ftMOUNTEDARCHERY,             COMMON },
@@ -2508,7 +2508,7 @@ static PREFERREDFEATS nobleFeats[] = {
   { ftGREATCLEAVE,                RARE },
   { ftQUICKDRAW,                  RARE },
   { ftRUN,                        RARE },
-  { ftSKILLFOCUS,                 COMMON*3 },
+  { ftSKILLFOCUS,                 COMMON * 3 },
   { ftTOUGHNESS,                  RARE },
   { ftTRACK,                      RARE },
   { ftTWOWEAPONFIGHTING,          RARE },
@@ -2520,16 +2520,16 @@ static PREFERREDFEATS nobleFeats[] = {
 
 static PREFERREDWEAPONS nobleWeapons[] = {
   { wpGAUNTLET,            RARE },
-  { wpUNARMED,             RARE*2 },
-  { wpDAGGER,              RARE*2 },
+  { wpUNARMED,             RARE * 2 },
+  { wpDAGGER,              RARE * 2 },
   { wpDAGGER_PUNCHING,     RARE },
   { wpGAUNTLET_SPIKED,     RARE },
   { wpMACE_LIGHT,          RARE },
   { wpSICKLE,              RARE },
-  { wpCLUB,                RARE*2 },
-  { wpHALFSPEAR,           RARE*2 },
+  { wpCLUB,                RARE * 2 },
+  { wpHALFSPEAR,           RARE * 2 },
   { wpMACE_HEAVY,          RARE },
-  { wpMORNINGSTAR,         RARE*2 },
+  { wpMORNINGSTAR,         RARE * 2 },
   { wpQUARTERSTAFF,        UNCOMMON },
   { wpSHORTSPEAR,          UNCOMMON },
   { wpCROSSBOW_LIGHT,      RARE },
@@ -2547,7 +2547,7 @@ static PREFERREDWEAPONS nobleWeapons[] = {
   { wpBATTLEAXE,           RARE },
   { wpFLAIL_LIGHT,         RARE },
   { wpLANCE_HEAVY,         RARE },
-  { wpLONGSWORD,           COMMON*2 },
+  { wpLONGSWORD,           COMMON * 2 },
   { wpPICK_HEAVY,          RARE },
   { wpRAPIER,              UNCOMMON },
   { wpSCIMITAR,            RARE },
@@ -2613,7 +2613,7 @@ static PREFERREDFEATS expertFeats[] = {
   { ftGREATCLEAVE,                RARE },
   { ftQUICKDRAW,                  RARE },
   { ftRUN,                        RARE },
-  { ftSKILLFOCUS,                 COMMON*4 },
+  { ftSKILLFOCUS,                 COMMON * 4 },
   { ftTOUGHNESS,                  RARE },
   { ftTRACK,                      RARE },
   { ftTWOWEAPONFIGHTING,          RARE },
@@ -2657,12 +2657,12 @@ static PREFERREDFEATS warriorFeats[] = {
   { ftMOBILITY,                   UNCOMMON },
   { ftSPRINGATTACK,               UNCOMMON },
   { ftENDURANCE,                  UNCOMMON },
-  { ftEXOTICWEAPONPROFICIENCY,   RARE*2 },
+  { ftEXOTICWEAPONPROFICIENCY,   RARE * 2 },
   { ftCOMBATEXPERTISE,                  UNCOMMON },
   { ftIMPROVEDDISARM,             UNCOMMON },
   { ftIMPROVEDTRIP,               UNCOMMON },
   { ftWHIRLWINDATTACK,            UNCOMMON },
-  { ftGREATFORTITUDE,             RARE*2 },
+  { ftGREATFORTITUDE,             RARE * 2 },
   { ftIMPROVEDCRITICAL,           UNCOMMON },
   { ftIMPROVEDINITIATIVE,         COMMON },
   { ftIMPROVEDUNARMEDSTRIKE,      UNCOMMON },
@@ -2690,23 +2690,23 @@ static PREFERREDFEATS warriorFeats[] = {
   { ftRUN,                        RARE },
   { ftSKILLFOCUS,                 UNCOMMON },
   { ftTOUGHNESS,                  UNCOMMON },
-  { ftTRACK,                      RARE*2 },
+  { ftTRACK,                      RARE * 2 },
   { ftTWOWEAPONFIGHTING,          UNCOMMON },
   { ftIMPROVEDTWOWEAPONFIGHTING,  UNCOMMON },
-  { ftWEAPONFINESSE,              UNCOMMON*2 },
-  { ftWEAPONFOCUS,                UNCOMMON*2 },
+  { ftWEAPONFINESSE,              UNCOMMON * 2 },
+  { ftWEAPONFOCUS,                UNCOMMON * 2 },
   { 0,                            0 }
 };
 
 struct {
-  int               dtop_PC;
-  int               dtop_NPC;
-  int               dtop_All;
-  int               type;
-  PREFERREDFEATS*   feats;
-  PREFERREDFEATS*   bonusFeats;
-  PREFERREDWEAPONS* weapons;
-  int               abilities[6];
+	int               dtop_PC;
+	int               dtop_NPC;
+	int               dtop_All;
+	int               type;
+	PREFERREDFEATS* feats;
+	PREFERREDFEATS* bonusFeats;
+	PREFERREDWEAPONS* weapons;
+	int               abilities[6];
 } classes[] = {
   {   9,   0,   4, pcBARBARIAN,   barbarianFeats, 0,                 barbarianWeapons, { abSTRENGTH, abCONSTITUTION, abDEXTERITY, abWISDOM, abCHARISMA, abINTELLIGENCE } },
   {  18,   0,   8, pcBARD,        bardFeats,      0,                 bardWeapons,      { abCHARISMA, abDEXTERITY, abINTELLIGENCE, abCONSTITUTION, abSTRENGTH, abWISDOM } },
@@ -2714,100 +2714,100 @@ struct {
   {  36,   0,  16, pcDRUID,       druidFeats,     0,                 druidWeapons,     { abWISDOM, abDEXTERITY, abSTRENGTH, abINTELLIGENCE, abCONSTITUTION, abCHARISMA } },
   {  46,   0,  20, pcFIGHTER,     fighterFeats,   fighterBonusFeats, fighterWeapons,   { abSTRENGTH, abCONSTITUTION, abDEXTERITY, abINTELLIGENCE, abCHARISMA, abWISDOM } },
   {  55,   0,  24, pcMONK,        monkFeats,      0,                 monkWeapons,      { abWISDOM, abDEXTERITY, abSTRENGTH, abINTELLIGENCE, abCONSTITUTION, abCHARISMA } },
-  {  64,   0,  28, pcPALADIN,     paladinFeats,   0,                 paladinWeapons,   { abCHARISMA, abWISDOM, abSTRENGTH, abCONSTITUTION, abINTELLIGENCE, abDEXTERITY } },
-  {  73,   0,  32, pcRANGER,      rangerFeats,    0,				 rangerWeapons,    { abDEXTERITY, abSTRENGTH, abWISDOM, abINTELLIGENCE, abCONSTITUTION, abCHARISMA } },
-  {  82,   0,  36, pcROGUE,       rogueFeats,     0,                 rogueWeapons,     { abDEXTERITY, abWISDOM, abINTELLIGENCE, abCONSTITUTION, abSTRENGTH, abCHARISMA } },
-  {  91,   0,  40, pcSORCERER,    sorcererFeats,  0,                 sorcererWeapons,  { abCHARISMA, abINTELLIGENCE, abCONSTITUTION, abDEXTERITY, abWISDOM, abSTRENGTH } },
-  { 100,   0,  44, pcWIZARD,      wizardFeats,    wizardBonusFeats,  wizardWeapons,    { abINTELLIGENCE, abCONSTITUTION, abDEXTERITY, abWISDOM, abCHARISMA, abSTRENGTH } },
-  {   0,  20,  48, npcADEPT,      adeptFeats,     0,                 adeptWeapons,     { abWISDOM, abINTELLIGENCE, abCHARISMA, abSTRENGTH, abCONSTITUTION, abDEXTERITY } },
-  {   0,  40,  52, npcARISTOCRAT, nobleFeats,     0,                 nobleWeapons,     { abCHARISMA, abWISDOM, abDEXTERITY, abINTELLIGENCE, abSTRENGTH, abCONSTITUTION } },
-  {   0,  60,  92, npcCOMMONER,   commonFeats,    0,                 commonWeapons,    { abSTRENGTH, abWISDOM, abDEXTERITY, abINTELLIGENCE, abCHARISMA, abCONSTITUTION } },
-  {   0,  80,  96, npcEXPERT,     expertFeats,    0,                 expertWeapons,    { abDEXTERITY, abINTELLIGENCE, abWISDOM, abCONSTITUTION, abCHARISMA, abSTRENGTH } },
-  {   0, 100, 100, npcWARRIOR,    warriorFeats,   0,                 fighterWeapons,   { abSTRENGTH, abCONSTITUTION, abDEXTERITY, abINTELLIGENCE, abCHARISMA, abWISDOM } },
+  //{  64,   0,  28, pcPALADIN,     paladinFeats,   0,                 paladinWeapons,   { abCHARISMA, abWISDOM, abSTRENGTH, abCONSTITUTION, abINTELLIGENCE, abDEXTERITY } },
+  //{  73,   0,  32, pcRANGER,      rangerFeats,    0,				 rangerWeapons,    { abDEXTERITY, abSTRENGTH, abWISDOM, abINTELLIGENCE, abCONSTITUTION, abCHARISMA } },
+  //{  82,   0,  36, pcROGUE,       rogueFeats,     0,                 rogueWeapons,     { abDEXTERITY, abWISDOM, abINTELLIGENCE, abCONSTITUTION, abSTRENGTH, abCHARISMA } },
+  //{  91,   0,  40, pcSORCERER,    sorcererFeats,  0,                 sorcererWeapons,  { abCHARISMA, abINTELLIGENCE, abCONSTITUTION, abDEXTERITY, abWISDOM, abSTRENGTH } },
+  //{ 100,   0,  44, pcWIZARD,      wizardFeats,    wizardBonusFeats,  wizardWeapons,    { abINTELLIGENCE, abCONSTITUTION, abDEXTERITY, abWISDOM, abCHARISMA, abSTRENGTH } },
+  //{   0,  20,  48, npcADEPT,      adeptFeats,     0,                 adeptWeapons,     { abWISDOM, abINTELLIGENCE, abCHARISMA, abSTRENGTH, abCONSTITUTION, abDEXTERITY } },
+  //{   0,  40,  52, npcARISTOCRAT, nobleFeats,     0,                 nobleWeapons,     { abCHARISMA, abWISDOM, abDEXTERITY, abINTELLIGENCE, abSTRENGTH, abCONSTITUTION } },
+  //{   0,  60,  92, npcCOMMONER,   commonFeats,    0,                 commonWeapons,    { abSTRENGTH, abWISDOM, abDEXTERITY, abINTELLIGENCE, abCHARISMA, abCONSTITUTION } },
+  //{   0,  80,  96, npcEXPERT,     expertFeats,    0,                 expertWeapons,    { abDEXTERITY, abINTELLIGENCE, abWISDOM, abCONSTITUTION, abCHARISMA, abSTRENGTH } },
+  //{   0, 100, 100, npcWARRIOR,    warriorFeats,   0,                 fighterWeapons,   { abSTRENGTH, abCONSTITUTION, abDEXTERITY, abINTELLIGENCE, abCHARISMA, abWISDOM } },
   {   0,   0,   0, 0,             0,              0,                 0,                { 0, 0, 0, 0, 0, 0 } }
 };
 
 
 struct {
-  int dtop_Core;
-  int dtop_DMG;
-  int dtop_MM;
-  int dtop_All;
-  int dtop_CC;
-  int type;
+	int dtop_Core;
+	int dtop_DMG;
+	int dtop_MM;
+	int dtop_All;
+	int dtop_CC;
+	int type;
 } races[] = {
-  {  30,   0,   0,   2,   0, rcHUMAN },              
-  {  40,   0,   0,   4,   0, rcHALFELF },            
-  {  55,   0,   0,   6,   0, rcELF_HIGH },           
-  {  70,   0,   0,   8,   0, rcDWARF_HILL },         
+  {  30,   0,   0,   2,   0, rcHUMAN },
+  {  40,   0,   0,   4,   0, rcHALFELF },
+  {  55,   0,   0,   6,   0, rcELF_HIGH },
+  {  70,   0,   0,   8,   0, rcDWARF_HILL },
   {  85,   0,   0,  10,   0, rcHALFLING_LIGHTFOOT },
-  {  95,   0,   0,  12,   0, rcGNOME_ROCK },         
-  { 100,   0,   0,  14,   0, rcHALFORC },            
-  /*{   0,   3,   0,  15,   0, rcAASIMAR },            
-  {   0,   6,   0,  17,   0, rcDWARF_DEEP },         
+  {  95,   0,   0,  12,   0, rcGNOME_ROCK },
+  { 100,   0,   0,  14,   0, rcHALFORC },
+  /*{   0,   3,   0,  15,   0, rcAASIMAR },
+  {   0,   6,   0,  17,   0, rcDWARF_DEEP },
   {   0,  11,   0,  19,   0, rcDWARF_MOUNTAIN },
-  {   0,  14,   0,  21,   0, rcELF_GRAY },           
-  {   0,  17,   0,  23,   0, rcELF_WILD },           
-  {   0,  20,   0,  25,   0, rcELF_WOOD },           
-  {   0,  25,   0,  27,   0, rcGNOME_FOREST },       
+  {   0,  14,   0,  21,   0, rcELF_GRAY },
+  {   0,  17,   0,  23,   0, rcELF_WILD },
+  {   0,  20,   0,  25,   0, rcELF_WOOD },
+  {   0,  25,   0,  27,   0, rcGNOME_FOREST },
   {   0,  28,   0,  29,   0, rcHALFLING_DEEP },
   {   0,  33,   0,  31,   0, rcHALFLING_TALLFELLOW },
-  {   0,  36,   0,  33,   0, rcGNOME_SVIRFNEBLIN },  
-  {   0,  39,   0,  35,   0, rcLIZARDFOLK },         
-  {   0,  42,   0,  37,   0, rcDOPPLEGANGER },       
-  {   0,  48,   0,  39,   0, rcGOBLIN },             
-  {   0,  53,   0,  41,   0, rcHOBGOBLIN },          
-  {   0,  59,   0,  43,   0, rcKOBOLD },             
-  {   0,  64,   0,  45,   0, rcORC },                
-  {   0,  67,   0,  46,   0, rcTIEFLING },           
+  {   0,  36,   0,  33,   0, rcGNOME_SVIRFNEBLIN },
+  {   0,  39,   0,  35,   0, rcLIZARDFOLK },
+  {   0,  42,   0,  37,   0, rcDOPPLEGANGER },
+  {   0,  48,   0,  39,   0, rcGOBLIN },
+  {   0,  53,   0,  41,   0, rcHOBGOBLIN },
+  {   0,  59,   0,  43,   0, rcKOBOLD },
+  {   0,  64,   0,  45,   0, rcORC },
+  {   0,  67,   0,  46,   0, rcTIEFLING },
   {   0,  70,   0,  47,   0, rcELF_DROW },
   {   0,  71,   0,  48,   0, rcELF_AQUATIC },
-  {   0,  73,   0,  49,   0, rcDWARF_DUERGAR },      
-  {   0,  74,   0,  50,   0, rcDWARF_DERRO },        
-  {   0,  77,   0,  51,   0, rcGNOLL },              
-  {   0,  80,   0,  53,   0, rcTROGLODYTE },         
-  {   0,  85,   0,  55,   0, rcBUGBEAR },            
-  {   0,  91,   0,  57,   0, rcOGRE },               
-  {   0,  94,   0,  58,   0, rcMINOTAUR },           
-  {   0,  97,   0,  59,   0, rcMINDFLAYER },         
-  {   0, 100,   0,  60,   0, rcOGREMAGE },           
-  {   0,   0,   4,  62,   0, rcARANEA },             
-  {   0,   0,   8,  63,   0, rcAZER },               
-  {   0,   0,  13,  65,   0, rcCENTAUR },            
-  {   0,   0,  17,  66,   0, rcDRIDER },             
-  {   0,   0,  21,  68,   0, rcETTIN },              
-  {   0,   0,  26,  70,   0, rcGIANT_HILL },         
-  {   0,   0,  30,  72,   0, rcGIANT_STONE },        
-  {   0,   0,  34,  74,   0, rcGIANT_FROST },        
-  {   0,   0,  38,  76,   0, rcGIANT_FIRE },         
-  {   0,   0,  42,  78,   0, rcGIANT_CLOUD },        
-  {   0,   0,  46,  79,   0, rcGIANT_STORM },        
-  {   0,   0,  50,  81,   0, rcGRIMLOCK },           
-  {   0,   0,  54,  83,   0, rcHAG_SEA },            
-  {   0,   0,  58,  85,   0, rcHAG_ANNIS },          
-  {   0,   0,  62,  86,   0, rcHAG_GREEN },          
-  {   0,   0,  67,  88,   0, rcHARPY },              
-  {   0,   0,  71,  90,   0, rcKUOTOA },             
-  {   0,   0,  75,  92,   0, rcLOCATHAH },           
-  {   0,   0,  79,  93,   0, rcMEDUSA },             
-  {   0,   0,  83,  95,   0, rcSAHUAGIN },           
+  {   0,  73,   0,  49,   0, rcDWARF_DUERGAR },
+  {   0,  74,   0,  50,   0, rcDWARF_DERRO },
+  {   0,  77,   0,  51,   0, rcGNOLL },
+  {   0,  80,   0,  53,   0, rcTROGLODYTE },
+  {   0,  85,   0,  55,   0, rcBUGBEAR },
+  {   0,  91,   0,  57,   0, rcOGRE },
+  {   0,  94,   0,  58,   0, rcMINOTAUR },
+  {   0,  97,   0,  59,   0, rcMINDFLAYER },
+  {   0, 100,   0,  60,   0, rcOGREMAGE },
+  {   0,   0,   4,  62,   0, rcARANEA },
+  {   0,   0,   8,  63,   0, rcAZER },
+  {   0,   0,  13,  65,   0, rcCENTAUR },
+  {   0,   0,  17,  66,   0, rcDRIDER },
+  {   0,   0,  21,  68,   0, rcETTIN },
+  {   0,   0,  26,  70,   0, rcGIANT_HILL },
+  {   0,   0,  30,  72,   0, rcGIANT_STONE },
+  {   0,   0,  34,  74,   0, rcGIANT_FROST },
+  {   0,   0,  38,  76,   0, rcGIANT_FIRE },
+  {   0,   0,  42,  78,   0, rcGIANT_CLOUD },
+  {   0,   0,  46,  79,   0, rcGIANT_STORM },
+  {   0,   0,  50,  81,   0, rcGRIMLOCK },
+  {   0,   0,  54,  83,   0, rcHAG_SEA },
+  {   0,   0,  58,  85,   0, rcHAG_ANNIS },
+  {   0,   0,  62,  86,   0, rcHAG_GREEN },
+  {   0,   0,  67,  88,   0, rcHARPY },
+  {   0,   0,  71,  90,   0, rcKUOTOA },
+  {   0,   0,  75,  92,   0, rcLOCATHAH },
+  {   0,   0,  79,  93,   0, rcMEDUSA },
+  {   0,   0,  83,  95,   0, rcSAHUAGIN },
   {   0,   0,  88,  97,   0, rcTROLL },
-  {   0,   0,  92,  98,   0, rcYUANTI_PUREBLOOD },   
-  {   0,   0,  96,  99,   0, rcYUANTI_HALFBLOOD },   
-  {   0,   0, 100, 100,   0, rcYUANTI_ABOMINATION }, 
-  {   0,   0,   0,   0,   4, rcCC_ABANDONED },       
-  {   0,   0,   0,   0,   9, rcCC_ASAATH },          
-  {   0,   0,   0,   0,  13, rcCC_BATDEVIL },        
-  {   0,   0,   0,   0,  18, rcCC_PLAGUEWRETCH },    
-  {   0,   0,   0,   0,  22, rcCC_CHARDUNI },        
-  {   0,   0,   0,   0,  27, rcCC_COALGOBLIN },      
-  {   0,   0,   0,   0,  31, rcCC_DWARF_FORSAKEN },  
-  {   0,   0,   0,   0,  37, rcCC_ELF_FORSAKEN },    
-  {   0,   0,   0,   0,  41, rcCC_ICE_GHOUL },        
-  {   0,   0,   0,   0,  46, rcCC_MANTICORA },       
-  {   0,   0,   0,   0,  50, rcCC_MORGAUNT },        
+  {   0,   0,  92,  98,   0, rcYUANTI_PUREBLOOD },
+  {   0,   0,  96,  99,   0, rcYUANTI_HALFBLOOD },
+  {   0,   0, 100, 100,   0, rcYUANTI_ABOMINATION },
+  {   0,   0,   0,   0,   4, rcCC_ABANDONED },
+  {   0,   0,   0,   0,   9, rcCC_ASAATH },
+  {   0,   0,   0,   0,  13, rcCC_BATDEVIL },
+  {   0,   0,   0,   0,  18, rcCC_PLAGUEWRETCH },
+  {   0,   0,   0,   0,  22, rcCC_CHARDUNI },
+  {   0,   0,   0,   0,  27, rcCC_COALGOBLIN },
+  {   0,   0,   0,   0,  31, rcCC_DWARF_FORSAKEN },
+  {   0,   0,   0,   0,  37, rcCC_ELF_FORSAKEN },
+  {   0,   0,   0,   0,  41, rcCC_ICE_GHOUL },
+  {   0,   0,   0,   0,  46, rcCC_MANTICORA },
+  {   0,   0,   0,   0,  50, rcCC_MORGAUNT },
   {   0,   0,   0,   0,  53, rcCC_PROUD },
-  {   0,   0,   0,   0,  57, rcCC_RATMAN },          
+  {   0,   0,   0,   0,  57, rcCC_RATMAN },
   {   0,   0,   0,   0,  62, rcCC_RATMAN_BROWNGORGER },
   {   0,   0,   0,   0,  66, rcCC_RATMAN_DISEASED },
   {   0,   0,   0,   0,  71, rcCC_RATMAN_FOAMER,  },
@@ -2823,679 +2823,691 @@ struct {
 
 
 static int getRandomGEAlignment() {
-  int i;
+	int i;
 
-  i = rollDice( 1, 100 );
-  if( i <= 20 ) {
-    return alGOOD;
-  } else if( i <= 50 ) {
-    return alGENEUTRAL;
-  } else {
-    return alEVIL;
-  }
+	i = rollDice(1, 100);
+	if (i <= 20) {
+		return alGOOD;
+	}
+	else if (i <= 50) {
+		return alGENEUTRAL;
+	}
+	else {
+		return alEVIL;
+	}
 
-  return 0;
+	return 0;
 }
 
 static int getRandomLCAlignment() {
-  switch( rollDice( 1, 3 ) ) {
-    case 1: return alLAWFUL;
-    case 2: return alLCNEUTRAL;
-    case 3: return alCHAOTIC;
-  }
-  return 0;
+	switch (rollDice(1, 3)) {
+	case 1: return alLAWFUL;
+	case 2: return alLCNEUTRAL;
+	case 3: return alCHAOTIC;
+	}
+	return 0;
 }
 
 
-static int icomp( const void* x, const void* y ) {
-  int ix = *(int*)x;
-  int iy = *(int*)y;
+static int icomp(const void* x, const void* y) {
+	int ix = *(int*)x;
+	int iy = *(int*)y;
 
-  if( ix < iy ) return 1;
-  if( ix > iy ) return -1;
-  return 0;
+	if (ix < iy) return 1;
+	if (ix > iy) return -1;
+	return 0;
 }
 
 
-static int abscorecomp( const void* x, const void* y ) {
-  ABILITYSCORE* ax = (ABILITYSCORE*)x;
-  ABILITYSCORE* ay = (ABILITYSCORE*)y;
+static int abscorecomp(const void* x, const void* y) {
+	ABILITYSCORE* ax = (ABILITYSCORE*)x;
+	ABILITYSCORE* ay = (ABILITYSCORE*)y;
 
-  if( ax->score < ay->score ) return 1;
-  if( ax->score > ay->score ) return -1;
-  return 0;
+	if (ax->score < ay->score) return 1;
+	if (ax->score > ay->score) return -1;
+	return 0;
 }
 
 
-static int getSkillType( NPC* npc, int classType, int skill ) {
-  NPCCLASS* cls;
-  NPCEXPERTDATA* data;
-  int i;
+static int getSkillType(NPC* npc, int classType, int skill) {
+	NPCCLASS* cls;
+	NPCEXPERTDATA* data;
+	int i;
 
-  if( classType == npcEXPERT ) {
-    cls = npcGetClass( npc, classType );
-    if( cls == 0 ) {
-      return sktCROSSCLASS;
-    }
-    data = (NPCEXPERTDATA*)cls->data;
-    for( i = 0; i < 10; i++ ) {
-      if( data->classSkills[ i ] == skill ) {
-        return sktCLASS;
-      }
-    }
-  }
+	if (classType == npcEXPERT) {
+		cls = npcGetClass(npc, classType);
+		if (cls == 0) {
+			return sktCROSSCLASS;
+		}
+		data = (NPCEXPERTDATA*)cls->data;
+		for (i = 0; i < 10; i++) {
+			if (data->classSkills[i] == skill) {
+				return sktCLASS;
+			}
+		}
+	}
 
-  return dndGetSkillType( classType, skill );
+	return dndGetSkillType(classType, skill);
 }
 
 
-static int getNamedAbility( NPC* npc, int ability ) {
-  switch( ability ) {
-    case abSTRENGTH: return npc->strength;
-    case abDEXTERITY: return npc->dexterity;
-    case abCONSTITUTION: return npc->constitution;
-    case abINTELLIGENCE: return npc->intelligence;
-    case abWISDOM: return npc->wisdom;
-    case abCHARISMA: return npc->charisma;
-  }
+static int getNamedAbility(NPC* npc, int ability) {
+	switch (ability) {
+	case abSTRENGTH: return npc->strength;
+	case abDEXTERITY: return npc->dexterity;
+	case abCONSTITUTION: return npc->constitution;
+	case abINTELLIGENCE: return npc->intelligence;
+	case abWISDOM: return npc->wisdom;
+	case abCHARISMA: return npc->charisma;
+	}
 
-  return 0;
+	return 0;
 }
 
 
-static void addLanguage( NPC* npc, int language ) {
-  NPCLANGUAGE* l;
-  NPCLANGUAGE* i;
-  NPCLANGUAGE* p;
-  char*        lname;
-  int          rc;
+static void addLanguage(NPC* npc, int language) {
+	NPCLANGUAGE* l;
+	NPCLANGUAGE* i;
+	NPCLANGUAGE* p;
+	char* lname;
+	int          rc;
 
-  l = (NPCLANGUAGE*)malloc( sizeof( NPCLANGUAGE ) );
-  memset( l, 0, sizeof( *l ) );
+	l = (NPCLANGUAGE*)malloc(sizeof(NPCLANGUAGE));
+	memset(l, 0, sizeof(*l));
 
-  lname = dndGetLanguageName( language );
+	lname = dndGetLanguageName(language);
 
-  l->language = language;
+	l->language = language;
 
-  if( npc->languages == 0 ) {
-    npc->languages = l;
-  } else {
-    i = npc->languages;
-    p = 0;
-    while( i != 0 ) {
-      rc = strcmp( lname, dndGetLanguageName( i->language ) );
-      if( rc < 0 ) {
-        l->next = i;
-        if( p == 0 ) {
-          npc->languages = l;
-        } else {
-          p->next = l;
-        }
-        return;
-      }
-      p = i;
-      i = i->next;
-    }
-    p->next = l;
-  }
+	if (npc->languages == 0) {
+		npc->languages = l;
+	}
+	else {
+		i = npc->languages;
+		p = 0;
+		while (i != 0) {
+			rc = strcmp(lname, dndGetLanguageName(i->language));
+			if (rc < 0) {
+				l->next = i;
+				if (p == 0) {
+					npc->languages = l;
+				}
+				else {
+					p->next = l;
+				}
+				return;
+			}
+			p = i;
+			i = i->next;
+		}
+		p->next = l;
+	}
 }
 
 
-static int getWeightingForSpell( int classType, int spell, NPCFEAT* feats ) {
+static int getWeightingForSpell(int classType, int spell, NPCFEAT* feats) {
 	int i;
 	PREFERREDSPELLS* spells;
-	NPCFEAT *f;
-	int swAbjuration=1;
-	int swConjuration=1;
-	int swDivination=1;
-	int swEnchantment=1;
-	int swEvocation=1;
-	int swIllusion=1;
-	int swNecromancy=1;
-	int swTransmutation=1;
+	NPCFEAT* f;
+	int swAbjuration = 1;
+	int swConjuration = 1;
+	int swDivination = 1;
+	int swEnchantment = 1;
+	int swEvocation = 1;
+	int swIllusion = 1;
+	int swNecromancy = 1;
+	int swTransmutation = 1;
 	NPCFEATSCHOOL* nfsch;
 	int spsch;
-	int wmult=1;
+	int wmult = 1;
 	//NPCWIZARDDATA* wiz = 0;
 	//int opsch = 0;
 
-  switch( classType ) {
-    case pcBARD:
-      spells = prefBardSpells;
-      break;
-    case pcSORCERER:
-      spells = prefSorcererSpells;
-      break;
-    case pcWIZARD:
-      spells = prefWizardSpells;
-	  //opsch = wiz->opposedSchools[0] | wiz->opposedSchools[1];
-      break;
-    default:
-      return 1;
-  }
+	switch (classType) {
+	case pcBARD:
+		spells = prefBardSpells;
+		break;
+	case pcSORCERER:
+		spells = prefSorcererSpells;
+		break;
+	case pcWIZARD:
+		spells = prefWizardSpells;
+		//opsch = wiz->opposedSchools[0] | wiz->opposedSchools[1];
+		break;
+	default:
+		return 1;
+	}
 
 	spsch = dndGetSpellSchool(spell);
 	//if (spsch | opsch) return 0;
 
-    for( f = feats; f != 0; f = f->next ) {
-		if( f->type == ftSPELLFOCUS ) {
-		  nfsch = f->data;
-		  if (nfsch->school == spsch) wmult+=10;
-		} else if( f->type == ftGREATERSPELLFOCUS ) {
-		  nfsch = f->data;
-		  if (nfsch->school == spsch) wmult+=10;
+	for (f = feats; f != 0; f = f->next) {
+		if (f->type == ftSPELLFOCUS) {
+			nfsch = f->data;
+			if (nfsch->school == spsch) wmult += 10;
+		}
+		else if (f->type == ftGREATERSPELLFOCUS) {
+			nfsch = f->data;
+			if (nfsch->school == spsch) wmult += 10;
 		}
 	}
 
-/*
+	/*
 
-  for( f = feats; f != 0; f = f->next ) {
-	if( f->type == ftSPELLFOCUS ) {
-      nfsch = f->data;
-	  switch (nfsch->school) {
-		case ssABJURATION: swAbjuration++; break;
-		case ssCONJURATION: swConjuration++; break;
-		case ssDIVINATION: swDivination++; break;
-		case ssENCHANTMENT: swEnchantment++; break;
-		case ssEVOCATION: swEvocation++; break;
-		case ssILLUSION: swIllusion++; break;
-		case ssNECROMANCY: swNecromancy++; break;
-		case ssTRANSMUTATION: swTransmutation++; break;
+	  for( f = feats; f != 0; f = f->next ) {
+		if( f->type == ftSPELLFOCUS ) {
+		  nfsch = f->data;
+		  switch (nfsch->school) {
+			case ssABJURATION: swAbjuration++; break;
+			case ssCONJURATION: swConjuration++; break;
+			case ssDIVINATION: swDivination++; break;
+			case ssENCHANTMENT: swEnchantment++; break;
+			case ssEVOCATION: swEvocation++; break;
+			case ssILLUSION: swIllusion++; break;
+			case ssNECROMANCY: swNecromancy++; break;
+			case ssTRANSMUTATION: swTransmutation++; break;
+		  }
+		} else if( f->type == ftGREATERSPELLFOCUS ) {
+		  nfsch = f->data;
+		  switch (nfsch->school) {
+			case ssABJURATION: swAbjuration++; break;
+			case ssCONJURATION: swConjuration++; break;
+			case ssDIVINATION: swDivination++; break;
+			case ssENCHANTMENT: swEnchantment++; break;
+			case ssEVOCATION: swEvocation++; break;
+			case ssILLUSION: swIllusion++; break;
+			case ssNECROMANCY: swNecromancy++; break;
+			case ssTRANSMUTATION: swTransmutation++; break;
+		  }
+		}
 	  }
-    } else if( f->type == ftGREATERSPELLFOCUS ) {
-      nfsch = f->data;
-	  switch (nfsch->school) {
-		case ssABJURATION: swAbjuration++; break;
-		case ssCONJURATION: swConjuration++; break;
-		case ssDIVINATION: swDivination++; break;
-		case ssENCHANTMENT: swEnchantment++; break;
-		case ssEVOCATION: swEvocation++; break;
-		case ssILLUSION: swIllusion++; break;
-		case ssNECROMANCY: swNecromancy++; break;
-		case ssTRANSMUTATION: swTransmutation++; break;
-	  }
-    }
-  }
-*/
+	*/
 
-  for( i = 0; spells[ i ].spell != 0; i++ ) {
-    if( spells[ i ].spell == spell ) {
-      return (spells[ i ].weight * wmult);
-    }
-  }
-
-  return 1;
-}
-
-static void addSpellToRepertoire( NPCCLASS* cls, int spell, int level ) {
-  NPCSPELL** list;
-  NPCSPELL*  i;
-  NPCSPELL*  p;
-  NPCSPELL*  n;
-  char*      name;
-  int        rc;
-
-  /* verify that the spell level is valid */
-
-  if( ( level < 0 ) || ( level > 9 ) ) {
-    return;
-  }
-
-  /* grab the spell list from the appropriate class data structure, and
-   * verify the spell level further */
-
-  switch( cls->type ) {
-    case pcBARD:
-      if( level > 6 ) {
-        return;
-      }
-      list = ((NPCBARDDATA*)(cls->data))->spells;
-      break;
-    case pcSORCERER:
-      list = ((NPCSORCERERDATA*)(cls->data))->spells;
-      break;
-    case pcWIZARD:
-      list = ((NPCWIZARDDATA*)(cls->data))->spells;
-      break;
-    default:
-      return;
-  }
-
-  /* allocate a new spell structure */
-
-  n = (NPCSPELL*)malloc( sizeof( NPCSPELL ) );
-  memset( n, 0, sizeof( *n ) );
-  n->spell = spell;
-
-  /* put the spell in the repertoire at the indicated level */
-
-  i = list[ level ];
-  if( i == 0 ) {
-    list[ level ] = n;
-  } else {
-    /* insert the spell in sorted order, by name */
-
-    name = dndGetSpellName( spell );
-    p = 0;
-    do {
-      rc = strcmp( name, dndGetSpellName( i->spell ) );
-      
-      if( rc < 0 ) {
-        n->next = i;
-        if( p == 0 ) {
-          list[ level ] = n;
-        } else {
-          p->next = n;
-        }
-        return;
-      } else if( rc == 0 ) { /* spell already exists in repertoire */
-        free( n );
-        return;
-      }
-
-      p = i;
-      i = i->next;
-    } while( i != 0 );
-    p->next = n;    
-  }
-}
-
-
-static void selectDomainsForNPC( NPC* npc, NPCCLERICDATA* data ) {
-  WEIGHTEDLIST* wlist;
-  int           total;
-  int           i;
-  int           forbidden;
-
-  wlist = 0;
-  total = 0;
-
-  i = 1;
-  for( i = dmAIR; dndGetDomainName( i ) != 0; i++ ) {
-    forbidden = dndGetForbiddenAlignmentsForDomain( i );
-    if( ( npc->alignment & forbidden ) == 0 ) {
-      total += addToWeightedList( &wlist, i, 1 );
-    }
-  }
-
-  for( i = 0; i < 2; i++ ) {
-    data->domain[ i ] = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  }
-
-  destroyWeightedList( &wlist );
-}
-
-
-static int selectSpellMasterySpells( NPCSPELL** list, NPCFEAT* feats, NPCFEATSPELLS* featSpells, int intmod, NPCWIZARDDATA* wiz ) {
-  WEIGHTEDLIST*  wlist;
-  int            total;
-  int            i;
-  int            j;
-  int            found;
-  NPCSPELL*      spell;
-  NPCFEAT*       feat;
-  NPCFEATSPELLS* nfs;
-  int			 sch;
-  int			 favmult;
-  int			 favored = wiz->favoredSchool;
-  int			 opposed = wiz->opposedSchoolsCheck;
-
-  wlist = 0;
-  total = 0;
-
-  for( i = 1; i < 10; i++ ) {
-    for( spell = list[ i ]; spell != 0; spell = spell->next ) {
-	  sch = dndGetSpellSchool(spell->spell);
-	  if (sch & opposed) continue;
-
-      found = 0;
-      for( feat = feats; feat != 0; feat = feat->next ) {
-        if( feat->type == ftSPELLMASTERY ) {
-          nfs = (NPCFEATSPELLS*)feat->data;
-          for( j = 0; j < nfs->count; j++ ) {
-            if( nfs->spells[j] == spell->spell ) {
-              found = 1;
-              break;
-            }
-          } /* 1 ... 3 */
-        } /* if feat->type == ftSPELLMASTERY */
-        if( found ) {
-          break;
-        }
-      } /* feats */
-
-      if( found ) {
-        continue;
-      }
-
-	  if (sch & favored) favmult = 5;
-	  else favmult = 1;
-
-      total += addToWeightedList( &wlist, spell->spell, getWeightingForSpell( pcWIZARD, spell->spell, feats )*favmult );
-    } /* list[ i ] */
-  } /* 1 ... 9 */
-
-  if( wlist == 0 ) {
-    return 0;
-  }
-
-  for( i = 0; i < intmod; i++ ) {
-    featSpells->spells[i] = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-	featSpells->count++;
-    if( ( wlist == 0 ) && ( i < 2 ) ) {
-      return 0;
-    }    
-  }
-
-  destroyWeightedList( &wlist );
-
-  return 1;
-}
-
-
-static int findWeaponWeighting( int weapon, PREFERREDWEAPONS* weapons ) {
-  int i;
-
-  for( i = 0; weapons[ i ].weapon != 0; i++ ) {
-    if( weapons[ i ].weapon == weapon ) {
-      return weapons[ i ].weight;
-    }
-  }
-
-  return 1;
-}
-
-
-static int countFeatsWithWeapon( int weapon, NPCFEAT* feats ) {
-  int count;
-  NPCFEAT* f;
-  NPCFEATWEAPON* nfw;
-
-  count = 0;
-  for( f = feats; f != 0; f = f->next ) {
-    switch( f->type ) {
-      case ftSIMPLEWEAPONPROFICIENCY:
-      case ftMARTIALWEAPONPROFICIENCY:
-      case ftEXOTICWEAPONPROFICIENCY:
-      case ftIMPROVEDCRITICAL:
-	  case ftRAPIDRELOAD:
-      case ftWEAPONFOCUS:
-      case ftGREATERWEAPONFOCUS:
-      case ftWEAPONSPECIALIZATION:
-      case ftGREATERWEAPONSPECIALIZATION:
-        nfw = f->data;
-        if( nfw->weapon == weapon ) {
-          count++;
-        }
-        break;
-    }
-  }
-
-  return count;
-}
-
-
-static int selectAppropriateSchoolOfMagic( NPC* npc, NPCWIZARDDATA* wiz ) {
-  NPCFEAT* f;
-  WEIGHTEDLIST* wlist;
-  int total;
-  int i;
-  int found;
-  NPCFEATSCHOOL* nfsch;
-  int favmult;
-
-  wlist = 0;
-  total = 0;
-
-  for( i = 0; schoolsOfMagic[ i ] != 0; i++ ) {
-    if( schoolsOfMagic[ i ] == ssUNIVERSAL) {
-      continue;
-    }
-
-	if (wiz) {
-		if (schoolsOfMagic[ i ] & wiz->opposedSchoolsCheck) continue;
+	for (i = 0; spells[i].spell != 0; i++) {
+		if (spells[i].spell == spell) {
+			return (spells[i].weight * wmult);
+		}
 	}
 
-    found = 0;
-    for( f = npc->feats; f != 0; f = f->next ) {
-      if( f->type == ftSPELLFOCUS ) {
-        nfsch = f->data;
-        if( nfsch->school == schoolsOfMagic[ i ] ) {
-          found = 1;
-          break;
-        }
-      }
-    }
-    if( found ) {
-      continue;
-    }
-
-	  if (wiz) {
-		if (schoolsOfMagic[ i ] & wiz->favoredSchool) favmult = 500;
-		else favmult = 1;
-	  }
-	  else favmult = 1;
-
-
-    total += addToWeightedList( &wlist, schoolsOfMagic[i], favmult );
-  }
-
-  if( wlist == 0 ) {
-    return 0;
-  }
-
-  i = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  destroyWeightedList( &wlist );
-
-  return i;
+	return 1;
 }
 
-static int selectAppropriateSchoolOfGreaterMagic( NPC* npc, NPCWIZARDDATA* wiz ) {
-  NPCFEAT* f;
-  NPCFEAT* f2;
-  WEIGHTEDLIST* wlist;
-  int total;
-  int i;
-  int found;
-  NPCFEATSCHOOL* nfsch;
-  NPCFEATSCHOOL* nfsch2;
-  int favmult;
+static void addSpellToRepertoire(NPCCLASS* cls, int spell, int level) {
+	NPCSPELL** list;
+	NPCSPELL* i;
+	NPCSPELL* p;
+	NPCSPELL* n;
+	char* name;
+	int        rc;
 
-  wlist = 0;
-  total = 0;
+	/* verify that the spell level is valid */
 
-  for( f = npc->feats; f != 0; f = f->next ) {
-    if( f->type == ftSPELLFOCUS ) {
-      nfsch = f->data;
+	if ((level < 0) || (level > 9)) {
+		return;
+	}
 
-      found = 0;
-      for( f2 = npc->feats; f2 != 0; f2 = f2->next ) {
-        if( f2->type == ftGREATERSPELLFOCUS ) {
-          nfsch2 = f2->data;
+	/* grab the spell list from the appropriate class data structure, and
+	 * verify the spell level further */
 
-          if( nfsch->school == nfsch2->school ) {
-            found = 1;
-          }
-        }
-      }
-      if( found ) {
-        continue;
-      }
+	switch (cls->type) {
+	case pcBARD:
+		if (level > 6) {
+			return;
+		}
+		list = ((NPCBARDDATA*)(cls->data))->spells;
+		break;
+	case pcSORCERER:
+		list = ((NPCSORCERERDATA*)(cls->data))->spells;
+		break;
+	case pcWIZARD:
+		list = ((NPCWIZARDDATA*)(cls->data))->spells;
+		break;
+	default:
+		return;
+	}
 
-	  if (wiz) {
-		if (nfsch->school & wiz->favoredSchool) favmult = 500;
-		else favmult = 1;
-	  }
-	  else favmult = 1;
+	/* allocate a new spell structure */
 
-      total += addToWeightedList( &wlist, nfsch->school, favmult );
-    }
-  }
+	n = (NPCSPELL*)malloc(sizeof(NPCSPELL));
+	memset(n, 0, sizeof(*n));
+	n->spell = spell;
 
-  if( wlist == 0 ) {
-    return 0;
-  }
+	/* put the spell in the repertoire at the indicated level */
 
-  i = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  destroyWeightedList( &wlist );
+	i = list[level];
+	if (i == 0) {
+		list[level] = n;
+	}
+	else {
+		/* insert the spell in sorted order, by name */
 
-  return i;
+		name = dndGetSpellName(spell);
+		p = 0;
+		do {
+			rc = strcmp(name, dndGetSpellName(i->spell));
+
+			if (rc < 0) {
+				n->next = i;
+				if (p == 0) {
+					list[level] = n;
+				}
+				else {
+					p->next = n;
+				}
+				return;
+			}
+			else if (rc == 0) { /* spell already exists in repertoire */
+				free(n);
+				return;
+			}
+
+			p = i;
+			i = i->next;
+		} while (i != 0);
+		p->next = n;
+	}
 }
 
-static int selectExistingSkill( int feat, int classType, NPCSKILL* skills, NPCFEAT* feats ) {
-  WEIGHTEDLIST* wlist;
-  int           total;
-  NPCSKILL*     s;
-  NPCFEAT*      f;
-  int           i;
-  int           found;
-  NPCFEATSKILL* nfs;
 
-  wlist = 0;
-  total = 0;
+static void selectDomainsForNPC(NPC* npc, NPCCLERICDATA* data) {
+	WEIGHTEDLIST* wlist;
+	int           total;
+	int           i;
+	int           forbidden;
 
-  for( s = skills; s != 0; s = s->next ) {
-    found = 0;
+	wlist = 0;
+	total = 0;
 
-    for( f = feats; f != 0; f = f->next ) {
-      if( f->type == feat ) {
-        nfs = (NPCFEATSKILL*)f->data;
-        if( nfs->skill == s->type ) {
-          found = 1;
-          break;
-        }
-      }
-    }
+	i = 1;
+	for (i = dmAIR; dndGetDomainName(i) != 0; i++) {
+		forbidden = dndGetForbiddenAlignmentsForDomain(i);
+		if ((npc->alignment & forbidden) == 0) {
+			total += addToWeightedList(&wlist, i, 1);
+		}
+	}
 
-    if( found ) {
-      continue;
-    }
+	for (i = 0; i < 2; i++) {
+		data->domain[i] = getWeightedItem(&wlist, rollDice(1, total), &total);
+	}
 
-    i = dndGetSkillType( classType, s->type );
-    if( i == sktCLASS ) {
-      total += addToWeightedList( &wlist, s->type, 10 );
-    } else {
-      total += addToWeightedList( &wlist, s->type, 1 );
-    }
-  }
+	destroyWeightedList(&wlist);
+}
 
-  if( wlist == 0 ){
-    return 0;
-  }
 
-  i = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  destroyWeightedList( &wlist );
+static int selectSpellMasterySpells(NPCSPELL** list, NPCFEAT* feats, NPCFEATSPELLS* featSpells, int intmod, NPCWIZARDDATA* wiz) {
+	WEIGHTEDLIST* wlist;
+	int            total;
+	int            i;
+	int            j;
+	int            found;
+	NPCSPELL* spell;
+	NPCFEAT* feat;
+	NPCFEATSPELLS* nfs;
+	int			 sch;
+	int			 favmult;
+	int			 favored = wiz->favoredSchool;
+	int			 opposed = wiz->opposedSchoolsCheck;
 
-  return i;
+	wlist = 0;
+	total = 0;
+
+	for (i = 1; i < 10; i++) {
+		for (spell = list[i]; spell != 0; spell = spell->next) {
+			sch = dndGetSpellSchool(spell->spell);
+			if (sch & opposed) continue;
+
+			found = 0;
+			for (feat = feats; feat != 0; feat = feat->next) {
+				if (feat->type == ftSPELLMASTERY) {
+					nfs = (NPCFEATSPELLS*)feat->data;
+					for (j = 0; j < nfs->count; j++) {
+						if (nfs->spells[j] == spell->spell) {
+							found = 1;
+							break;
+						}
+					} /* 1 ... 3 */
+				} /* if feat->type == ftSPELLMASTERY */
+				if (found) {
+					break;
+				}
+			} /* feats */
+
+			if (found) {
+				continue;
+			}
+
+			if (sch & favored) favmult = 5;
+			else favmult = 1;
+
+			total += addToWeightedList(&wlist, spell->spell, getWeightingForSpell(pcWIZARD, spell->spell, feats) * favmult);
+		} /* list[ i ] */
+	} /* 1 ... 9 */
+
+	if (wlist == 0) {
+		return 0;
+	}
+
+	for (i = 0; i < intmod; i++) {
+		featSpells->spells[i] = getWeightedItem(&wlist, rollDice(1, total), &total);
+		featSpells->count++;
+		if ((wlist == 0) && (i < 2)) {
+			return 0;
+		}
+	}
+
+	destroyWeightedList(&wlist);
+
+	return 1;
+}
+
+
+static int findWeaponWeighting(int weapon, PREFERREDWEAPONS* weapons) {
+	int i;
+
+	for (i = 0; weapons[i].weapon != 0; i++) {
+		if (weapons[i].weapon == weapon) {
+			return weapons[i].weight;
+		}
+	}
+
+	return 1;
+}
+
+
+static int countFeatsWithWeapon(int weapon, NPCFEAT* feats) {
+	int count;
+	NPCFEAT* f;
+	NPCFEATWEAPON* nfw;
+
+	count = 0;
+	for (f = feats; f != 0; f = f->next) {
+		switch (f->type) {
+		case ftSIMPLEWEAPONPROFICIENCY:
+		case ftMARTIALWEAPONPROFICIENCY:
+		case ftEXOTICWEAPONPROFICIENCY:
+		case ftIMPROVEDCRITICAL:
+		case ftRAPIDRELOAD:
+		case ftWEAPONFOCUS:
+		case ftGREATERWEAPONFOCUS:
+		case ftWEAPONSPECIALIZATION:
+		case ftGREATERWEAPONSPECIALIZATION:
+			nfw = f->data;
+			if (nfw->weapon == weapon) {
+				count++;
+			}
+			break;
+		}
+	}
+
+	return count;
+}
+
+
+static int selectAppropriateSchoolOfMagic(NPC* npc, NPCWIZARDDATA* wiz) {
+	NPCFEAT* f;
+	WEIGHTEDLIST* wlist;
+	int total;
+	int i;
+	int found;
+	NPCFEATSCHOOL* nfsch;
+	int favmult;
+
+	wlist = 0;
+	total = 0;
+
+	for (i = 0; schoolsOfMagic[i] != 0; i++) {
+		if (schoolsOfMagic[i] == ssUNIVERSAL) {
+			continue;
+		}
+
+		if (wiz) {
+			if (schoolsOfMagic[i] & wiz->opposedSchoolsCheck) continue;
+		}
+
+		found = 0;
+		for (f = npc->feats; f != 0; f = f->next) {
+			if (f->type == ftSPELLFOCUS) {
+				nfsch = f->data;
+				if (nfsch->school == schoolsOfMagic[i]) {
+					found = 1;
+					break;
+				}
+			}
+		}
+		if (found) {
+			continue;
+		}
+
+		if (wiz) {
+			if (schoolsOfMagic[i] & wiz->favoredSchool) favmult = 500;
+			else favmult = 1;
+		}
+		else favmult = 1;
+
+
+		total += addToWeightedList(&wlist, schoolsOfMagic[i], favmult);
+	}
+
+	if (wlist == 0) {
+		return 0;
+	}
+
+	i = getWeightedItem(&wlist, rollDice(1, total), &total);
+	destroyWeightedList(&wlist);
+
+	return i;
+}
+
+static int selectAppropriateSchoolOfGreaterMagic(NPC* npc, NPCWIZARDDATA* wiz) {
+	NPCFEAT* f;
+	NPCFEAT* f2;
+	WEIGHTEDLIST* wlist;
+	int total;
+	int i;
+	int found;
+	NPCFEATSCHOOL* nfsch;
+	NPCFEATSCHOOL* nfsch2;
+	int favmult;
+
+	wlist = 0;
+	total = 0;
+
+	for (f = npc->feats; f != 0; f = f->next) {
+		if (f->type == ftSPELLFOCUS) {
+			nfsch = f->data;
+
+			found = 0;
+			for (f2 = npc->feats; f2 != 0; f2 = f2->next) {
+				if (f2->type == ftGREATERSPELLFOCUS) {
+					nfsch2 = f2->data;
+
+					if (nfsch->school == nfsch2->school) {
+						found = 1;
+					}
+				}
+			}
+			if (found) {
+				continue;
+			}
+
+			if (wiz) {
+				if (nfsch->school & wiz->favoredSchool) favmult = 500;
+				else favmult = 1;
+			}
+			else favmult = 1;
+
+			total += addToWeightedList(&wlist, nfsch->school, favmult);
+		}
+	}
+
+	if (wlist == 0) {
+		return 0;
+	}
+
+	i = getWeightedItem(&wlist, rollDice(1, total), &total);
+	destroyWeightedList(&wlist);
+
+	return i;
+}
+
+static int selectExistingSkill(int feat, int classType, NPCSKILL* skills, NPCFEAT* feats) {
+	WEIGHTEDLIST* wlist;
+	int           total;
+	NPCSKILL* s;
+	NPCFEAT* f;
+	int           i;
+	int           found;
+	NPCFEATSKILL* nfs;
+
+	wlist = 0;
+	total = 0;
+
+	for (s = skills; s != 0; s = s->next) {
+		found = 0;
+
+		for (f = feats; f != 0; f = f->next) {
+			if (f->type == feat) {
+				nfs = (NPCFEATSKILL*)f->data;
+				if (nfs != NULL) {
+					if (nfs->skill == s->type) {
+						found = 1;
+						break;
+					}
+				}
+				
+			}
+		}
+
+		if (found) {
+			continue;
+		}
+
+		i = dndGetSkillType(classType, s->type);
+		if (i == sktCLASS) {
+			total += addToWeightedList(&wlist, s->type, 10);
+		}
+		else {
+			total += addToWeightedList(&wlist, s->type, 1);
+		}
+	}
+
+	if (wlist == 0) {
+		return 0;
+	}
+
+	i = getWeightedItem(&wlist, rollDice(1, total), &total);
+	destroyWeightedList(&wlist);
+
+	return i;
 }
 
 
 /* a character cannot use a weapon that is more than one size large than
  * the character -- ie, halflings cannot use greatswords */
 
-int npcCanUseWeapon( NPC* npc, int weapon ) {
-  int wsize;
+int npcCanUseWeapon(NPC* npc, int weapon) {
+	int wsize;
 
-  wsize = dndGetWeaponSize( weapon );
-  if( wsize - dndGetRaceSize( npc->race ) > 1 ) {
-    return 0;
-  }
+	wsize = dndGetWeaponSize(weapon);
+	if (wsize - dndGetRaceSize(npc->race) > 1) {
+		return 0;
+	}
 
-  return 1;
+	return 1;
 }
 
 
 /* selectProficientWeapon
- *   - selects one weapon among those in the PREFERREDWEAPONs array, and 
+ *   - selects one weapon among those in the PREFERREDWEAPONs array, and
  *     among those specified in the feats list as being proficient.
  */
 
-static int selectProficientWeapon( NPC* npc, int feat, PREFERREDWEAPONS* weapons, int type ) {
-  WEIGHTEDLIST* wlist;
-  int           total;
-  int           i;
-  int           found;
-  NPCFEAT*      f;
-  NPCFEAT*      f2;
-  int           size;
+static int selectProficientWeapon(NPC* npc, int feat, PREFERREDWEAPONS* weapons, int type) {
+	WEIGHTEDLIST* wlist;
+	int           total;
+	int           i;
+	int           found;
+	NPCFEAT* f;
+	NPCFEAT* f2;
+	int           size;
 
-  size = ( type & ( wtLIGHT | wtONEHANDED | wtTWOHANDED ) );
-  type &= ~( wtLIGHT | wtONEHANDED | wtTWOHANDED );
-  if( type == 0 ) {
-    type = 0xFFFF;
-  }
+	size = (type & (wtLIGHT | wtONEHANDED | wtTWOHANDED));
+	type &= ~(wtLIGHT | wtONEHANDED | wtTWOHANDED);
+	if (type == 0) {
+		type = 0xFFFF;
+	}
 
-  wlist = 0;
-  total = 0;
-  for( i = 0; weapons[ i ].weapon != 0; i++ ) {
-    found = 0;
+	wlist = 0;
+	total = 0;
+	for (i = 0; weapons[i].weapon != 0; i++) {
+		found = 0;
 
-    if( !npcCanUseWeapon( npc, weapons[ i ].weapon ) ) {
-      continue;
-    }
-        
-    for( f = npc->feats; f != 0; f = f->next ) {
-      if( f->type == feat ) {
-        NPCFEATWEAPON* nfw = (NPCFEATWEAPON*)f->data;
-        if( nfw->weapon == weapons[ i ].weapon ) {
-          found = 1;
-          break;
-        }
-      }
-    }
+		if (!npcCanUseWeapon(npc, weapons[i].weapon)) {
+			continue;
+		}
 
-    if( !found && ( dndGetWeaponType( weapons[ i ].weapon ) & type ) == 0 ) {
-      found = 1;
-    }
+		for (f = npc->feats; f != 0; f = f->next) {
+			if (f->type == feat) {
+				NPCFEATWEAPON* nfw = (NPCFEATWEAPON*)f->data;
+				if (nfw->weapon == weapons[i].weapon) {
+					found = 1;
+					break;
+				}
+			}
+		}
 
-    if( !found && ( size > 0 ) ) {
-      if( ( dndGetRelativeWeaponSize( npc->race, weapons[ i ].weapon ) & size ) == 0 ) {
-        found = 1;
-      }
-    }
+		if (!found && (dndGetWeaponType(weapons[i].weapon) & type) == 0) {
+			found = 1;
+		}
 
-    if( found ) {
-      continue;
-    }
+		if (!found && (size > 0)) {
+			if ((dndGetRelativeWeaponSize(npc->race, weapons[i].weapon) & size) == 0) {
+				found = 1;
+			}
+		}
 
-    found = countFeatsWithWeapon( weapons[ i ].weapon, npc->feats );
-    total += addToWeightedList( &wlist, weapons[ i ].weapon, findWeaponWeighting( weapons[ i ].weapon, weapons ) * ( 2 << ( found + 1 ) ) * 10 );
-  }
+		if (found) {
+			continue;
+		}
 
-  for( f = npc->feats; f != 0; f = f->next ) {
-    NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
-    found = 1;
-    switch( f->type ) {
-      case ftSIMPLEWEAPONPROFICIENCY:
-      case ftMARTIALWEAPONPROFICIENCY:
-      case ftEXOTICWEAPONPROFICIENCY:
-        found = 0;
-        for( f2 = npc->feats; f2 != 0; f2 = f2->next ) {
-          if( f2->type == feat ) {
-            NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
-            if( nfw2->weapon == nfw1->weapon ) {
-              found = 1;
-              break;
-            }
-          }
-        }
-        break;
-    }
-    if( found ) {
-      continue;
-    }
-    found = countFeatsWithWeapon( nfw1->weapon, npc->feats );
-    total += addToWeightedList( &wlist, nfw1->weapon, findWeaponWeighting( nfw1->weapon, weapons ) * ( 2 << ( found + 1 ) ) * 10 );
-  }
+		found = countFeatsWithWeapon(weapons[i].weapon, npc->feats);
+		total += addToWeightedList(&wlist, weapons[i].weapon, findWeaponWeighting(weapons[i].weapon, weapons) * (2 << (found + 1)) * 10);
+	}
 
-  if( wlist == 0 ) {
-    return 0;
-  }
+	for (f = npc->feats; f != 0; f = f->next) {
+		NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
+		found = 1;
+		switch (f->type) {
+		case ftSIMPLEWEAPONPROFICIENCY:
+		case ftMARTIALWEAPONPROFICIENCY:
+		case ftEXOTICWEAPONPROFICIENCY:
+			found = 0;
+			for (f2 = npc->feats; f2 != 0; f2 = f2->next) {
+				if (f2->type == feat) {
+					NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
+					if (nfw2->weapon == nfw1->weapon) {
+						found = 1;
+						break;
+					}
+				}
+			}
+			break;
+		}
+		if (found) {
+			continue;
+		}
+		found = countFeatsWithWeapon(nfw1->weapon, npc->feats);
+		total += addToWeightedList(&wlist, nfw1->weapon, findWeaponWeighting(nfw1->weapon, weapons) * (2 << (found + 1)) * 10);
+	}
 
-  i = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  destroyWeightedList( &wlist );
+	if (wlist == 0) {
+		return 0;
+	}
 
-  return i;
+	i = getWeightedItem(&wlist, rollDice(1, total), &total);
+	destroyWeightedList(&wlist);
+
+	return i;
 }
 
 
@@ -3504,786 +3516,798 @@ static int selectProficientWeapon( NPC* npc, int feat, PREFERREDWEAPONS* weapons
  *   that does not already exist in either the weapons list or the feats
  *   list. */
 
-static int selectWeaponForProficiency( NPC* npc, int feat, PREFERREDWEAPONS* weapons ) {
-  WEIGHTEDLIST* wlist;
-  int           total;
-  int           i;
-  int           j;
-  int           found;
-  NPCFEAT*      f;
-  int*          weaponList;
+static int selectWeaponForProficiency(NPC* npc, int feat, PREFERREDWEAPONS* weapons) {
+	WEIGHTEDLIST* wlist;
+	int           total;
+	int           i;
+	int           j;
+	int           found;
+	NPCFEAT* f;
+	int* weaponList;
 
-  switch( feat ) {
-    case ftSIMPLEWEAPONPROFICIENCY: weaponList = (int*)simpleWeapons; break;
-    case ftMARTIALWEAPONPROFICIENCY: weaponList = (int*)martialWeapons; break;
-    case ftEXOTICWEAPONPROFICIENCY: weaponList = (int*)exoticWeapons; break;
-    default:
-      return 0;
-  }
+	switch (feat) {
+	case ftSIMPLEWEAPONPROFICIENCY: weaponList = (int*)simpleWeapons; break;
+	case ftMARTIALWEAPONPROFICIENCY: weaponList = (int*)martialWeapons; break;
+	case ftEXOTICWEAPONPROFICIENCY: weaponList = (int*)exoticWeapons; break;
+	default:
+		return 0;
+	}
 
-  wlist = 0;
-  total = 0;
-  for( i = 0; weaponList[ i ] != 0; i++ ) {
-    found = 0;
-    
-    if( !npcCanUseWeapon( npc, weaponList[ i ] ) ) {
-      continue;
-    }
+	wlist = 0;
+	total = 0;
+	for (i = 0; weaponList[i] != 0; i++) {
+		found = 0;
 
-    for( j = 0; weapons[ j ].weapon != 0; j++ ) {
-      if( weaponList[ i ] == weapons[ j ].weapon ) {
-        found = 1;
-        break;
-      }
-    }
-    
-    if( found ) {
-      continue;
-    }
+		if (!npcCanUseWeapon(npc, weaponList[i])) {
+			continue;
+		}
 
-    for( f = npc->feats; f != 0; f = f->next ) {
-      if( f->type == feat ) {
-        NPCFEATWEAPON* nfw = (NPCFEATWEAPON*)f->data;
-        if( nfw->weapon == weaponList[ i ] ) {
-          found = 1;
-          break;
-        }
-      }
-    }
+		for (j = 0; weapons[j].weapon != 0; j++) {
+			if (weaponList[i] == weapons[j].weapon) {
+				found = 1;
+				break;
+			}
+		}
 
-    if( found ) {
-      continue;
-    }
+		if (found) {
+			continue;
+		}
 
-    total += addToWeightedList( &wlist, weaponList[ i ], findWeaponWeighting( weaponList[ i ], weapons ) );
-  }
+		for (f = npc->feats; f != 0; f = f->next) {
+			if (f->type == feat) {
+				NPCFEATWEAPON* nfw = (NPCFEATWEAPON*)f->data;
+				if (nfw->weapon == weaponList[i]) {
+					found = 1;
+					break;
+				}
+			}
+		}
 
-  if( wlist == 0 ) {
-    return 0;
-  }
+		if (found) {
+			continue;
+		}
 
-  i = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  destroyWeightedList( &wlist );
+		total += addToWeightedList(&wlist, weaponList[i], findWeaponWeighting(weaponList[i], weapons));
+	}
 
-  return i;
+	if (wlist == 0) {
+		return 0;
+	}
+
+	i = getWeightedItem(&wlist, rollDice(1, total), &total);
+	destroyWeightedList(&wlist);
+
+	return i;
 }
 
 
-static int selectWeaponForSpecialization( NPC* npc ) {
-  WEIGHTEDLIST *wlist;
-  int            total;
-  NPCFEAT*       f;
-  NPCFEAT*       f2;
-  int            found;
+static int selectWeaponForSpecialization(NPC* npc) {
+	WEIGHTEDLIST* wlist;
+	int            total;
+	NPCFEAT* f;
+	NPCFEAT* f2;
+	int            found;
 
-  wlist = 0;
-  total = 0;  
+	wlist = 0;
+	total = 0;
 
-  for( f = npc->feats; f != 0; f = f->next ) {
-    if( f->type == ftWEAPONFOCUS ) {
-      NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
+	for (f = npc->feats; f != 0; f = f->next) {
+		if (f->type == ftWEAPONFOCUS) {
+			NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
 
-      found = 0;
-      for( f2 = npc->feats; f2 != 0; f2 = f2->next ) {
-        if( f2->type == ftWEAPONSPECIALIZATION ) {
-          NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
+			found = 0;
+			for (f2 = npc->feats; f2 != 0; f2 = f2->next) {
+				if (f2->type == ftWEAPONSPECIALIZATION) {
+					NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
 
-          if( nfw1->weapon == nfw2->weapon ) {
-            found = 1;
-          }
-        }
-      }
+					if (nfw1->weapon == nfw2->weapon) {
+						found = 1;
+					}
+				}
+			}
 
-      if( found ) {
-        continue;
-      }
-
-      total += addToWeightedList( &wlist, nfw1->weapon, ( 2 << countFeatsWithWeapon( nfw1->weapon, npc->feats ) ) * 10 );
-    }
-  }
-
-  if( wlist == 0 ) {
-    return 0;
-  }
-
-  found = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  destroyWeightedList( &wlist );
-
-  return found;
-}
-
-static int selectWeaponForGreaterFocus( NPC* npc ) {
-  WEIGHTEDLIST *wlist;
-  int            total;
-  NPCFEAT*       f;
-  NPCFEAT*       f2;
-  int            found;
-
-  wlist = 0;
-  total = 0;  
-
-  for( f = npc->feats; f != 0; f = f->next ) {
-    if( f->type == ftWEAPONFOCUS ) {
-      NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
-
-      found = 0;
-      for( f2 = npc->feats; f2 != 0; f2 = f2->next ) {
-        if( f2->type == ftGREATERWEAPONFOCUS ) {
-          NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
-
-          if( nfw1->weapon == nfw2->weapon ) {
-            found = 1;
-          }
-        }
-      }
-      if( found ) {
-        continue;
-      }
-
-      total += addToWeightedList( &wlist, nfw1->weapon, ( 2 << countFeatsWithWeapon( nfw1->weapon, npc->feats ) ) * 10 );
-    }
-  }
-
-  if( wlist == 0 ) {
-    return 0;
-  }
-
-  found = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  destroyWeightedList( &wlist );
-
-  return found;
-}
-
-static int selectWeaponForGreaterSpecialization( NPC* npc ) {
-  WEIGHTEDLIST *wlist;
-  int            total;
-  NPCFEAT*       f;
-  NPCFEAT*       f2;
-  int            found;
-
-  wlist = 0;
-  total = 0;  
-
-  for( f = npc->feats; f != 0; f = f->next ) {
-    if( f->type == ftGREATERWEAPONFOCUS ) {
-      NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
-
-      found = 0;
-      for( f2 = npc->feats; f2 != 0; f2 = f2->next ) {
-        if( f2->type == ftGREATERWEAPONSPECIALIZATION ) {
-          NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
-
-          if( nfw1->weapon == nfw2->weapon ) {
-            found = 1;
-          }
-        }
-      }
-
-      if( found ) {
-        continue;
-      }
-
-      total += addToWeightedList( &wlist, nfw1->weapon, ( 2 << countFeatsWithWeapon( nfw1->weapon, npc->feats ) ) * 10 );
-    }
-  }
-
-  if( wlist == 0 ) {
-    return 0;
-  }
-
-  found = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  destroyWeightedList( &wlist );
-
-  return found;
-}
-
-static int selectWeaponForImprovedCritical( NPC* npc ) {
-  WEIGHTEDLIST *wlist;
-  int            total;
-  NPCFEAT*       f;
-  NPCFEAT*       f2;
-  int            found;
-
-  wlist = 0;
-  total = 0;  
-
-  for( f = npc->feats; f != 0; f = f->next ) {
-    if( f->type == ftWEAPONFOCUS ) {
-      NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
-
-      found = 0;
-      for( f2 = npc->feats; f2 != 0; f2 = f2->next ) {
-        if( f2->type == ftIMPROVEDCRITICAL ) {
-          NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
-
-          if( nfw1->weapon == nfw2->weapon ) {
-            found = 1;
-          }
-        }
-      }
-
-      if( found ) {
-        continue;
-      }
-
-      total += addToWeightedList( &wlist, nfw1->weapon, ( 2 << countFeatsWithWeapon( nfw1->weapon, npc->feats ) ) * 10 );
-    }
-  }
-
-  if( wlist == 0 || total == 0) {
-    return 0;
-  }
-
-  found = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  destroyWeightedList( &wlist );
-
-  return found;
-}
-
-
-void computeExpertSkillSet( NPCEXPERTDATA* data ) {
-  int i;
-  WEIGHTEDLIST* wlist;
-  int total;
-
-  wlist = 0;
-  total = 0;
-  for( i = 0; allSkills[ i ] != 0; i++ ) {
-    total += addToWeightedList( &wlist, allSkills[ i ], 1 );
-  }
-
-  for( i = 0; i < 10; i++ ) {
-    data->classSkills[ i ] = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-  }
-
-  destroyWeightedList( &wlist );
-}
-
-
-void addClass( NPC* npc, int type, int level ) {
-  NPCCLASS* c;
-  NPCCLASS* i;
-  WEIGHTEDLIST* wlist;
-  NPCWIZARDDATA* wiz;
-  int total;
-  int res;
-  int s;
-
-  wlist = 0;
-  total = 0;
-  res = 0;
-
-  c = (NPCCLASS*)malloc( sizeof( NPCCLASS ) );
-  memset( c, 0, sizeof( *c ) );
-
-  c->type = type;
-  c->level = level;
-
-  switch( type ) {
-    case pcBARD:
-      if( npc->charisma < 12 ) {
-        npc->charisma = 12;
-      }
-      c->data = (void*)malloc( sizeof( NPCBARDDATA ) );
-      memset( c->data, 0, sizeof( NPCBARDDATA ) );
-      break;
-    case pcCLERIC:
-      if( npc->wisdom < 12 ) {
-        npc->wisdom = 12;
-      }
-      c->data = (void*)malloc( sizeof( NPCCLERICDATA ) );
-      memset( c->data, 0, sizeof( NPCCLERICDATA ) );
-      selectDomainsForNPC( npc, (NPCCLERICDATA*)c->data );
-      break;
-    case pcDRUID:
-      if( npc->wisdom < 12 ) {
-        npc->wisdom = 12;
-      }
-      c->data = (void*)malloc( sizeof( NPCDRUIDDATA ) );
-      memset( c->data, 0, sizeof( NPCDRUIDDATA ) );
-      break;
-    case pcPALADIN:
-      if( npc->wisdom < 12 ) {
-        npc->wisdom = 12;
-      }
-      c->data = (void*)malloc( sizeof( NPCPALADINDATA ) );
-      memset( c->data, 0, sizeof( NPCPALADINDATA ) );
-      break;
-    case pcRANGER:
-      if( npc->wisdom < 12 ) {
-        npc->wisdom = 12;
-      }
-      c->data = (void*)malloc( sizeof( NPCRANGERDATA ) );
-      memset( c->data, 0, sizeof( NPCRANGERDATA ) );
-      break;
-    case pcSORCERER:
-      if( npc->charisma < 12 ) {
-        npc->charisma = 12;
-      }
-      c->data = (void*)malloc( sizeof( NPCSORCERERDATA ) );
-      memset( c->data, 0, sizeof( NPCSORCERERDATA ) );
-      break;
-    case pcWIZARD:
-      if( npc->intelligence < 12 ) {
-        npc->intelligence = 12;
-      }
-      c->data = (void*)malloc( sizeof( NPCWIZARDDATA ) );
-      memset( c->data, 0, sizeof( NPCWIZARDDATA ) );
-	  wiz = c->data;
-
-	  //if (level == 1) {
-		total += addToWeightedList( &wlist, 0, 40 );
-		for( s = 0; schoolsOfMagic[ s ] != 0; s++ ) {
-			if( schoolsOfMagic[ s ] == ssUNIVERSAL ) {
+			if (found) {
 				continue;
 			}
-			total += addToWeightedList( &wlist, schoolsOfMagic[ s ], 1 );
+
+			total += addToWeightedList(&wlist, nfw1->weapon, (2 << countFeatsWithWeapon(nfw1->weapon, npc->feats)) * 10);
 		}
-		res = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-		destroyWeightedList( &wlist );
-		
+	}
+
+	if (wlist == 0) {
+		return 0;
+	}
+
+	found = getWeightedItem(&wlist, rollDice(1, total), &total);
+	destroyWeightedList(&wlist);
+
+	return found;
+}
+
+static int selectWeaponForGreaterFocus(NPC* npc) {
+	WEIGHTEDLIST* wlist;
+	int            total;
+	NPCFEAT* f;
+	NPCFEAT* f2;
+	int            found;
+
+	wlist = 0;
+	total = 0;
+
+	for (f = npc->feats; f != 0; f = f->next) {
+		if (f->type == ftWEAPONFOCUS) {
+			NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
+
+			found = 0;
+			for (f2 = npc->feats; f2 != 0; f2 = f2->next) {
+				if (f2->type == ftGREATERWEAPONFOCUS) {
+					NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
+
+					if (nfw1->weapon == nfw2->weapon) {
+						found = 1;
+					}
+				}
+			}
+			if (found) {
+				continue;
+			}
+
+			total += addToWeightedList(&wlist, nfw1->weapon, (2 << countFeatsWithWeapon(nfw1->weapon, npc->feats)) * 10);
+		}
+	}
+
+	if (wlist == 0) {
+		return 0;
+	}
+
+	found = getWeightedItem(&wlist, rollDice(1, total), &total);
+	destroyWeightedList(&wlist);
+
+	return found;
+}
+
+static int selectWeaponForGreaterSpecialization(NPC* npc) {
+	WEIGHTEDLIST* wlist;
+	int            total;
+	NPCFEAT* f;
+	NPCFEAT* f2;
+	int            found;
+
+	wlist = 0;
+	total = 0;
+
+	for (f = npc->feats; f != 0; f = f->next) {
+		if (f->type == ftGREATERWEAPONFOCUS) {
+			NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
+
+			found = 0;
+			for (f2 = npc->feats; f2 != 0; f2 = f2->next) {
+				if (f2->type == ftGREATERWEAPONSPECIALIZATION) {
+					NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
+
+					if (nfw1->weapon == nfw2->weapon) {
+						found = 1;
+					}
+				}
+			}
+
+			if (found) {
+				continue;
+			}
+
+			total += addToWeightedList(&wlist, nfw1->weapon, (2 << countFeatsWithWeapon(nfw1->weapon, npc->feats)) * 10);
+		}
+	}
+
+	if (wlist == 0) {
+		return 0;
+	}
+
+	found = getWeightedItem(&wlist, rollDice(1, total), &total);
+	destroyWeightedList(&wlist);
+
+	return found;
+}
+
+static int selectWeaponForImprovedCritical(NPC* npc) {
+	WEIGHTEDLIST* wlist;
+	int            total;
+	NPCFEAT* f;
+	NPCFEAT* f2;
+	int            found;
+
+	wlist = 0;
+	total = 0;
+
+	for (f = npc->feats; f != 0; f = f->next) {
+		if (f->type == ftWEAPONFOCUS) {
+			NPCFEATWEAPON* nfw1 = (NPCFEATWEAPON*)f->data;
+
+			found = 0;
+			for (f2 = npc->feats; f2 != 0; f2 = f2->next) {
+				if (f2->type == ftIMPROVEDCRITICAL) {
+					NPCFEATWEAPON* nfw2 = (NPCFEATWEAPON*)f2->data;
+
+					if (nfw1->weapon == nfw2->weapon) {
+						found = 1;
+					}
+				}
+			}
+
+			if (found) {
+				continue;
+			}
+
+			total += addToWeightedList(&wlist, nfw1->weapon, (2 << countFeatsWithWeapon(nfw1->weapon, npc->feats)) * 10);
+		}
+	}
+
+	if (wlist == 0 || total == 0) {
+		return 0;
+	}
+
+	found = getWeightedItem(&wlist, rollDice(1, total), &total);
+	destroyWeightedList(&wlist);
+
+	return found;
+}
+
+
+void computeExpertSkillSet(NPCEXPERTDATA* data) {
+	int i;
+	WEIGHTEDLIST* wlist;
+	int total;
+
+	wlist = 0;
+	total = 0;
+	for (i = 0; allSkills[i] != 0; i++) {
+		total += addToWeightedList(&wlist, allSkills[i], 1);
+	}
+
+	for (i = 0; i < 10; i++) {
+		data->classSkills[i] = getWeightedItem(&wlist, rollDice(1, total), &total);
+	}
+
+	destroyWeightedList(&wlist);
+}
+
+
+void addClass(NPC* npc, int type, int level) {
+	NPCCLASS* c;
+	NPCCLASS* i;
+	WEIGHTEDLIST* wlist;
+	NPCWIZARDDATA* wiz;
+	int total;
+	int res;
+	int s;
+
+	wlist = 0;
+	total = 0;
+	res = 0;
+
+	c = (NPCCLASS*)malloc(sizeof(NPCCLASS));
+	memset(c, 0, sizeof(*c));
+
+	c->type = type;
+	c->level = level;
+
+	switch (type) {
+	case pcBARD:
+		if (npc->charisma < 12) {
+			npc->charisma = 12;
+		}
+		c->data = (void*)malloc(sizeof(NPCBARDDATA));
+		memset(c->data, 0, sizeof(NPCBARDDATA));
+		break;
+	case pcCLERIC:
+		if (npc->wisdom < 12) {
+			npc->wisdom = 12;
+		}
+		c->data = (void*)malloc(sizeof(NPCCLERICDATA));
+		memset(c->data, 0, sizeof(NPCCLERICDATA));
+		selectDomainsForNPC(npc, (NPCCLERICDATA*)c->data);
+		break;
+	case pcDRUID:
+		if (npc->wisdom < 12) {
+			npc->wisdom = 12;
+		}
+		c->data = (void*)malloc(sizeof(NPCDRUIDDATA));
+		memset(c->data, 0, sizeof(NPCDRUIDDATA));
+		break;
+	case pcPALADIN:
+		if (npc->wisdom < 12) {
+			npc->wisdom = 12;
+		}
+		c->data = (void*)malloc(sizeof(NPCPALADINDATA));
+		memset(c->data, 0, sizeof(NPCPALADINDATA));
+		break;
+	case pcRANGER:
+		if (npc->wisdom < 12) {
+			npc->wisdom = 12;
+		}
+		c->data = (void*)malloc(sizeof(NPCRANGERDATA));
+		memset(c->data, 0, sizeof(NPCRANGERDATA));
+		break;
+	case pcSORCERER:
+		if (npc->charisma < 12) {
+			npc->charisma = 12;
+		}
+		c->data = (void*)malloc(sizeof(NPCSORCERERDATA));
+		memset(c->data, 0, sizeof(NPCSORCERERDATA));
+		break;
+	case pcWIZARD:
+		if (npc->intelligence < 12) {
+			npc->intelligence = 12;
+		}
+		c->data = (void*)malloc(sizeof(NPCWIZARDDATA));
+		memset(c->data, 0, sizeof(NPCWIZARDDATA));
+		wiz = c->data;
+
+		//if (level == 1) {
+		total += addToWeightedList(&wlist, 0, 40);
+		for (s = 0; schoolsOfMagic[s] != 0; s++) {
+			if (schoolsOfMagic[s] == ssUNIVERSAL) {
+				continue;
+			}
+			total += addToWeightedList(&wlist, schoolsOfMagic[s], 1);
+		}
+		res = getWeightedItem(&wlist, rollDice(1, total), &total);
+		destroyWeightedList(&wlist);
+
 		if (res != 0) {
 			wiz->favoredSchool = res;
 
 			wlist = 0;
 			total = 0;
-			for( s = 0; schoolsOfMagic[ s ] != 0; s++ ) {
-				if( schoolsOfMagic[ s ] == ssUNIVERSAL ||
-					schoolsOfMagic[ s ] == ssDIVINATION ||
-					schoolsOfMagic[ s ] == wiz->favoredSchool) {
+			for (s = 0; schoolsOfMagic[s] != 0; s++) {
+				if (schoolsOfMagic[s] == ssUNIVERSAL ||
+					schoolsOfMagic[s] == ssDIVINATION ||
+					schoolsOfMagic[s] == wiz->favoredSchool) {
 					continue;
 				}
-				total += addToWeightedList( &wlist, schoolsOfMagic[ s ], 1 );
+				total += addToWeightedList(&wlist, schoolsOfMagic[s], 1);
 			}
-			res = getWeightedItem( &wlist, rollDice( 1, total ), &total );
+			res = getWeightedItem(&wlist, rollDice(1, total), &total);
 			wiz->opposedSchools[0] = res;
-			destroyWeightedList( &wlist );
+			destroyWeightedList(&wlist);
 
 			if (wiz->favoredSchool != ssDIVINATION) {
 				wlist = 0;
 				total = 0;
-				for( s = 0; schoolsOfMagic[ s ] != 0; s++ ) {
-					if( schoolsOfMagic[ s ] == ssUNIVERSAL ||
-						schoolsOfMagic[ s ] == ssDIVINATION ||
-						schoolsOfMagic[ s ] == wiz->favoredSchool ||
-						schoolsOfMagic[ s ] == wiz->opposedSchools[0]) {
+				for (s = 0; schoolsOfMagic[s] != 0; s++) {
+					if (schoolsOfMagic[s] == ssUNIVERSAL ||
+						schoolsOfMagic[s] == ssDIVINATION ||
+						schoolsOfMagic[s] == wiz->favoredSchool ||
+						schoolsOfMagic[s] == wiz->opposedSchools[0]) {
 						continue;
 					}
-					total += addToWeightedList( &wlist, schoolsOfMagic[ s ], 1 );
+					total += addToWeightedList(&wlist, schoolsOfMagic[s], 1);
 				}
-			
-				res = getWeightedItem( &wlist, rollDice( 1, total ), &total );
+
+				res = getWeightedItem(&wlist, rollDice(1, total), &total);
 				wiz->opposedSchools[1] = res;
-				destroyWeightedList( &wlist );
+				destroyWeightedList(&wlist);
 			}
 			wiz->opposedSchoolsCheck = wiz->opposedSchools[0] | wiz->opposedSchools[1];
 		}
-	  //}
-      break;
-    case npcADEPT:
-      if( npc->wisdom < 12 ) {
-        npc->wisdom = 12;
-      }
-      break;
-    case npcEXPERT:
-      c->data = (void*)malloc( sizeof( NPCEXPERTDATA ) );
-      computeExpertSkillSet( (NPCEXPERTDATA*)c->data );
-      break;
-  }
-
-  i = npc->classes;
-  if( i == 0 ) {
-    npc->classes = c;
-  } else {
-    while( i->next != 0 ) {
-      i = i->next;
-    }
-    i->next = c;
-  }
-}
-
-
-int lookupAbilityScore( ABILITYSCORE* scores, int ability ) {
-  int i;
-  for( i = 0; i < 6; i++ ) {
-    if( scores[i].ability == ability ) {
-      return scores[i].score;
-    }
-  }
-  return 0;
-}
-
-
-int lookupAbility( int classType, int which ) {
-  int i;
-  for( i = 0; classes[i].type != 0; i++ ) {
-    if( classes[i].type == classType ) {
-      return classes[i].abilities[which];
-    }
-  }
-  return 0;
-}
-
-
-void addSkill( NPC* npc, int skillType, float ranks, int classType ) {
-  NPCSKILL* skill;
-  NPCSKILL* i;
-  NPCSKILL* p;
-  char* skillTxt;
-  int rc;
-
-  skill = (NPCSKILL*)malloc( sizeof( NPCSKILL ) );
-  memset( skill, 0, sizeof( *skill ) );
-
-  skillTxt = dndGetSkillName( skillType );
-
-  skill->type = skillType;
-  skill->rank = ranks;
-
-  skill->classrank[classType] += ranks;
-
-  if( npc->skills == 0 ) {
-    npc->skills = skill;
-  } else {
-    i = npc->skills;
-    p = 0;
-    while( i != 0 ) {
-      rc = strcmp( skillTxt, dndGetSkillName( i->type ) );
-      if( rc < 0 ) {
-        skill->next = i;
-        if( p == 0 ) {
-          npc->skills = skill;
-        } else {
-          p->next = skill;
-        }
-        return;
-      }
-      p = i;
-      i = i->next;
-    }
-    p->next = skill;
-  }
-
-/*
-	npc->skilltype[npc->skillops] = skillType;
-	if (npc->curclass == 0) {
-		NPCCLASS *cls = npc->classes;
-		NPCCLASS *cur = npc->classes;
-		while (cls->next) cur = cls;
-		npc->curclass = cur;
+		//}
+		break;
+	case npcADEPT:
+		if (npc->wisdom < 12) {
+			npc->wisdom = 12;
+		}
+		break;
+	case npcEXPERT:
+		c->data = (void*)malloc(sizeof(NPCEXPERTDATA));
+		computeExpertSkillSet((NPCEXPERTDATA*)c->data);
+		break;
 	}
-	npc->skillclass[npc->skillops] = npc->curclass->type;
-	npc->skillrank[npc->skillops] = ranks;
-	npc->skillcost[npc->skillops++] = getSkillType( npc, npc->curclass->type, skillType );
-*/
-  
+
+	i = npc->classes;
+	if (i == 0) {
+		npc->classes = c;
+	}
+	else {
+		while (i->next != 0) {
+			i = i->next;
+		}
+		i->next = c;
+	}
 }
 
 
-void addFeat( NPC* npc, int featType, int autoAdd, void* data ) {
-  NPCFEAT* feat;
-  NPCFEAT* i;
-  NPCFEAT* p;
-  int rc;
-  char* featTxt;
-
-  feat = (NPCFEAT*)malloc( sizeof( NPCFEAT ) );
-  memset( feat, 0, sizeof( *feat ) );
-
-  featTxt = dndGetFeatName( featType );
-
-  feat->type = featType;
-  feat->autoAdd = autoAdd;
-  feat->data = data;
-
-  if( npc->feats == 0 ) {
-    npc->feats = feat;
-  } else {
-    i = npc->feats;
-    p = 0;
-    while( i != 0 ) {
-      rc = strcmp( featTxt, dndGetFeatName( i->type ) );
-      if( rc < 0 ) {
-        feat->next = i;
-        if( p == 0 ) {
-          npc->feats = feat;
-        } else {
-          p->next = feat;
-        }
-        return;
-      }
-      p = i;
-      i = i->next;
-    }
-    p->next = feat;
-  }
+int lookupAbilityScore(ABILITYSCORE* scores, int ability) {
+	int i;
+	for (i = 0; i < 6; i++) {
+		if (scores[i].ability == ability) {
+			return scores[i].score;
+		}
+	}
+	return 0;
 }
 
 
-void addFeatIfNotExist( NPC* npc, int featType, int autoAdd, void* data ) {
-  if( npcHasFeat( npc, featType, 0 ) ) {
-    return;
-  }
-
-  addFeat( npc, featType, autoAdd, data );
+int lookupAbility(int classType, int which) {
+	int i;
+	for (i = 0; classes[i].type != 0; i++) {
+		if (classes[i].type == classType) {
+			return classes[i].abilities[which];
+		}
+	}
+	return 0;
 }
 
 
-int addNewLanguages( NPC* npc, int count ) {
-  WEIGHTEDLIST* llist;
-  int ltotal;
-  char* next;
-  int k;
-  int n;
+void addSkill(NPC* npc, int skillType, float ranks, int classType) {
+	NPCSKILL* skill;
+	NPCSKILL* i;
+	NPCSKILL* p;
+	char* skillTxt;
+	int rc;
 
-  /* pick count languages to learn */
+	skill = (NPCSKILL*)malloc(sizeof(NPCSKILL));
+	memset(skill, 0, sizeof(*skill));
 
-  llist = 0;
-  ltotal = 0;
-  n = npc->race;
-  while( ( k = dndGetBonusLanguages( n, &next ) ) != 0 ) {
-    n = 0;
-    if( !npcKnowsLanguage( npc, k ) ) {
-      ltotal += addToWeightedList( &llist, k, 1 );
-    }
-  }
+	skillTxt = dndGetSkillName(skillType);
 
-  while( count > 0 ) {
-    if( llist == 0 ) {
-      ltotal = 0;
-      for( k = 0; allLanguages[ k ] != 0; k++ ) {
-        if( !npcKnowsLanguage( npc, allLanguages[ k ] ) ) {
-          ltotal += addToWeightedList( &llist, allLanguages[ k ], 1 );
-        }
-      }
-    }
-    if( llist == 0 ) {
-      break;
-    }
-    addLanguage( npc,
-                 getWeightedItem( &llist, rollDice( 1, ltotal ), &ltotal ) );
-    count--;
-  }
+	skill->type = skillType;
+	skill->rank = ranks;
 
-  destroyWeightedList( &llist );
+	skill->classrank[classType] += ranks;
 
-  return count;
-}
-
-
-float computeMaxSkillRank( NPC* npc, int excludeClass, int skill ) {
-  NPCCLASS* cls;
-  float     total;
-  int       i;
-
-  total = 0;
-  for( cls = 0; cls != 0; cls = cls->next ) {
-    if( cls->type != excludeClass ) {
-      i = getSkillType( npc, cls->type, skill );
-
-      if( i == sktCLASS ) {
-        total += cls->level + 3;
-      } else if( i == sktCROSSCLASS ) {
-        total += ( cls->level + 3 ) / 2;
-      }
-    }
-  }
-
-  return total;
-}
-
-
-void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
-  int points;
-  WEIGHTEDLIST* wlist;
-  int total;
-  int weight;
-  int wt;
-  int i;
-  int j;
-  int k;
-  float maxClassRank;
-  int diff;
-  float ranks;
-  float rankIncrease;
-  NPCSKILL *skill;
-  NPCCLASS *cls;
-
-  points = dndGetSkillBonusForClass( classType ) +
-           dndGetAbilityBonus( npc->intelligence );
-  if( points < 1 ) {
-    points = 1;
-  }
-
-  /* humans get an additional skill point at each level */
-
-  if( npc->race == rcHUMAN ) {
-    points++;
-  }
-
-  /* at first level, the number of skill points is quadrupled */
-
-  if( tlevel == 1 ) {
-    points *= 4;
-  }
-
-  
-  cls = npcGetClass( npc, classType );
-  if (cls != 0) cls->skillpoints[clevel-1] = points;
-
-  while( points > 0 ) {
-
-    /* make a weighted list of all existing skills so that the ones at the
-     * end of the list don't be shorted. */
-
-    wlist = 0;
-    total = 0;
-    for( skill = npc->skills; skill != 0; skill = skill->next ) {
-      i = getSkillType( npc, classType, skill->type );
-	  wt = 5;
-	  if ((skill->type >= skCRAFT_ALCHEMY) && (skill->type<= skCRAFT_WOODWORKING)) wt = 1;
-      total += addToWeightedList( &wlist, (int)skill, ( i == sktCLASS ? wt : 1 ) );
-    }
-
-    /* fist, go through all existing skills.  If the existing skill is a
-     * class skill, there is an 60% chance that the skill will be raised
-     * to it's maximum rank (or as high as possible given remaining skill
-     * points) and a 20% chance that the skill will be raised by 1 point.
-     * if the skill is cross-class, there is a 30% chance that it will be
-     * raised to its maximum rank (or as high as possible given remaining
-     * skill points) and a 10% chance that it will be raised by 0.5 point.
-     */
-
-    while( wlist != 0 ) {
-      skill = (NPCSKILL*)getWeightedItem( &wlist, rollDice( 1, total ), &total );
-      i = getSkillType( npc, classType, skill->type );
-      
-      maxClassRank = computeMaxSkillRank( npc, classType, skill->type );
-      rankIncrease = 0.0;
-
-      if( i == sktCLASS ) {
-        maxClassRank += clevel + 3;
-        j = rollDice( 1, 100 );
-        if( j <= 60 ) {
-          diff = (int)( maxClassRank - skill->rank );
-          if( diff > points ) {
-            diff = points;
-          }
-          rankIncrease = (float)diff;
-        } else if( j <= 80 ) {
-          rankIncrease = 1.0;
-        }
-      } else {
-        maxClassRank += (float)( ( clevel + 3 ) / 2.0 );
-        j = rollDice( 1, 100 );
-        if( j <= 30 ) {
-          diff = (int)( maxClassRank - skill->rank );
-          if( diff > points ) {
-            diff = points;
-          }
-          rankIncrease = (float)diff;
-        } else if( j <= 40 ) {
-          rankIncrease = 0.5;
-        }
-      }
-
-      if( rankIncrease < 0.5 ) {
-        continue;
-      }
-
-      if( skill->type == skLINGUISTICS ) {
-        if( rankIncrease - (int)rankIncrease > 0 ) {
-          if( rankIncrease*2 + 1 > points ) {
-            if( rankIncrease*2 - 1 < 1 ) {
-              continue;
-            }
-            rankIncrease -= 0.5;
-          } else {
-            rankIncrease += 0.5;
-          }
-        }
-
-        k = addNewLanguages( npc, (int)rankIncrease );
-        rankIncrease -= k;
-        if( rankIncrease < 1 ) {
-          continue;
-        }
-      }
-
-      skill->rank += rankIncrease;
-		skill->classrank[classType] += rankIncrease;
-/*
-	 npc->skilltype[npc->skillops] = skill->type;
-	 npc->skillclass[npc->skillops] = classType;
-	 npc->skillrank[npc->skillops] = rankIncrease;
-	 npc->skillcost[npc->skillops++] = i;
-*/
-
-      points -= (int)( i == sktCLASS ? rankIncrease : rankIncrease*2 );
-            
-      if( points < 1 ) {
-        break;
-      }
-    }
-
-
-
-    destroyWeightedList( &wlist );
-
-    if( points < 1 ) {
-      break;
-    }
-
-    /* build a weighted list of all skills that the given character can
-     * possibly have */
-
-    wlist = 0;
-    total = 0;
-
-    for( i = 0; allSkills[ i ] != 0; i++ ) {
-    
-      /* don't put the same skill in more than once */
-      if( npcHasSkill( npc, allSkills[ i ] ) ) {
-        continue;
-      }
-
-      j = getSkillType( npc, classType, allSkills[ i ] );
-
-      //if( j == sktEXCLUSIVE ) {
-        //continue;
-      //} else
-		  
-	  if( j == sktCLASS) {
-        weight = 10;
-      } else {
-        weight = 1;
-      }
-
-      k = dndGetSkillAbility( allSkills[ j ] );
-      if( k != abNONE ) {
-        weight *= dndGetAbilityBonus( getNamedAbility( npc, k ) );
-        if( j == sktCLASS ) {
-          k = 10;
-        } else {
-          k = 1;
-        }
-        if( weight < k ) {
-          weight = k;
-        }
-      }
+	if (npc->skills == 0) {
+		npc->skills = skill;
+	}
+	else {
+		i = npc->skills;
+		p = 0;
+		while (i != 0) {
+			rc = strcmp(skillTxt, dndGetSkillName(i->type));
+			if (rc < 0) {
+				skill->next = i;
+				if (p == 0) {
+					npc->skills = skill;
+				}
+				else {
+					p->next = skill;
+				}
+				return;
+			}
+			p = i;
+			i = i->next;
+		}
+		p->next = skill;
+	}
 
 	/*
-      if( ( ( classType == pcBARD ) && ( (allSkills[ i ] >= skPERFORM_ACT) && (allSkills[ i ] <= skPERFORM_SING) ) ) ||
-          ( ( npcHasFeat( npc, ftTRACK ) && ( allSkills[ i ] == skSURVIVAL ) ) ) )
-      {
-        weight *= 20;
-      }
-	  
-      if ( (classType == pcROGUE) && (allSkills[i] == skHIDE) 	 	
-*/
-	  switch (classType) {
-		  case pcBARBARIAN:
-			  switch (allSkills[i]) {
+		npc->skilltype[npc->skillops] = skillType;
+		if (npc->curclass == 0) {
+			NPCCLASS *cls = npc->classes;
+			NPCCLASS *cur = npc->classes;
+			while (cls->next) cur = cls;
+			npc->curclass = cur;
+		}
+		npc->skillclass[npc->skillops] = npc->curclass->type;
+		npc->skillrank[npc->skillops] = ranks;
+		npc->skillcost[npc->skillops++] = getSkillType( npc, npc->curclass->type, skillType );
+	*/
+
+}
+
+
+void addFeat(NPC* npc, int featType, int autoAdd, void* data) {
+	NPCFEAT* feat;
+	NPCFEAT* i;
+	NPCFEAT* p;
+	int rc;
+	char* featTxt;
+
+	feat = (NPCFEAT*)malloc(sizeof(NPCFEAT));
+	memset(feat, 0, sizeof(*feat));
+
+	featTxt = dndGetFeatName(featType);
+
+	feat->type = featType;
+	feat->autoAdd = autoAdd;
+	feat->data = data;
+
+	if (npc->feats == 0) {
+		npc->feats = feat;
+	}
+	else {
+		i = npc->feats;
+		p = 0;
+		while (i != 0) {
+			rc = strcmp(featTxt, dndGetFeatName(i->type));
+			if (rc < 0) {
+				feat->next = i;
+				if (p == 0) {
+					npc->feats = feat;
+				}
+				else {
+					p->next = feat;
+				}
+				return;
+			}
+			p = i;
+			i = i->next;
+		}
+		p->next = feat;
+	}
+}
+
+
+void addFeatIfNotExist(NPC* npc, int featType, int autoAdd, void* data) {
+	if (npcHasFeat(npc, featType, 0)) {
+		return;
+	}
+
+	addFeat(npc, featType, autoAdd, data);
+}
+
+
+int addNewLanguages(NPC* npc, int count) {
+	WEIGHTEDLIST* llist;
+	int ltotal;
+	char* next;
+	int k;
+	int n;
+
+	/* pick count languages to learn */
+
+	llist = 0;
+	ltotal = 0;
+	n = npc->race;
+	while ((k = dndGetBonusLanguages(n, &next)) != 0) {
+		n = 0;
+		if (!npcKnowsLanguage(npc, k)) {
+			ltotal += addToWeightedList(&llist, k, 1);
+		}
+	}
+
+	while (count > 0) {
+		if (llist == 0) {
+			ltotal = 0;
+			for (k = 0; allLanguages[k] != 0; k++) {
+				if (!npcKnowsLanguage(npc, allLanguages[k])) {
+					ltotal += addToWeightedList(&llist, allLanguages[k], 1);
+				}
+			}
+		}
+		if (llist == 0) {
+			break;
+		}
+		addLanguage(npc,
+			getWeightedItem(&llist, rollDice(1, ltotal), &ltotal));
+		count--;
+	}
+
+	destroyWeightedList(&llist);
+
+	return count;
+}
+
+
+float computeMaxSkillRank(NPC* npc, int excludeClass, int skill) {
+	NPCCLASS* cls;
+	float     total;
+	int       i;
+
+	total = 0;
+	for (cls = 0; cls != 0; cls = cls->next) {
+		if (cls->type != excludeClass) {
+			i = getSkillType(npc, cls->type, skill);
+
+			if (i == sktCLASS) {
+				total += cls->level + 3;
+			}
+			else if (i == sktCROSSCLASS) {
+				total += (cls->level + 3) / 2;
+			}
+		}
+	}
+
+	return total;
+}
+
+
+void computeSkills(NPC* npc, int classType, int tlevel, int clevel) {
+	int points;
+	WEIGHTEDLIST* wlist;
+	int total;
+	int weight;
+	int wt;
+	int i;
+	int j;
+	int k;
+	float maxClassRank;
+	int diff;
+	float ranks;
+	float rankIncrease;
+	NPCSKILL* skill;
+	NPCCLASS* cls;
+
+	points = dndGetSkillBonusForClass(classType) +
+		dndGetAbilityBonus(npc->intelligence);
+	if (points < 1) {
+		points = 1;
+	}
+
+	/* humans get an additional skill point at each level */
+
+	if (npc->race == rcHUMAN) {
+		points++;
+	}
+
+	/* at first level, the number of skill points is quadrupled */
+
+	if (tlevel == 1) {
+		points *= 4;
+	}
+
+
+	cls = npcGetClass(npc, classType);
+	if (cls != 0) cls->skillpoints[clevel - 1] = points;
+
+	while (points > 0) {
+
+		/* make a weighted list of all existing skills so that the ones at the
+		 * end of the list don't be shorted. */
+
+		wlist = 0;
+		total = 0;
+		for (skill = npc->skills; skill != 0; skill = skill->next) {
+			i = getSkillType(npc, classType, skill->type);
+			wt = 5;
+			if ((skill->type >= skCRAFT_ALCHEMY) && (skill->type <= skCRAFT_WOODWORKING)) wt = 1;
+			total += addToWeightedList(&wlist, (int)skill, (i == sktCLASS ? wt : 1));
+		}
+
+		/* fist, go through all existing skills.  If the existing skill is a
+		 * class skill, there is an 60% chance that the skill will be raised
+		 * to it's maximum rank (or as high as possible given remaining skill
+		 * points) and a 20% chance that the skill will be raised by 1 point.
+		 * if the skill is cross-class, there is a 30% chance that it will be
+		 * raised to its maximum rank (or as high as possible given remaining
+		 * skill points) and a 10% chance that it will be raised by 0.5 point.
+		 */
+
+		while (wlist != 0) {
+			skill = (NPCSKILL*)getWeightedItem(&wlist, rollDice(1, total), &total);
+			i = getSkillType(npc, classType, skill->type);
+
+			maxClassRank = computeMaxSkillRank(npc, classType, skill->type);
+			rankIncrease = 0.0;
+
+			if (i == sktCLASS) {
+				maxClassRank += clevel + 3;
+				j = rollDice(1, 100);
+				if (j <= 60) {
+					diff = (int)(maxClassRank - skill->rank);
+					if (diff > points) {
+						diff = points;
+					}
+					rankIncrease = (float)diff;
+				}
+				else if (j <= 80) {
+					rankIncrease = 1.0;
+				}
+			}
+			else {
+				maxClassRank += (float)((clevel + 3) / 2.0);
+				j = rollDice(1, 100);
+				if (j <= 30) {
+					diff = (int)(maxClassRank - skill->rank);
+					if (diff > points) {
+						diff = points;
+					}
+					rankIncrease = (float)diff;
+				}
+				else if (j <= 40) {
+					rankIncrease = 0.5;
+				}
+			}
+
+			if (rankIncrease < 0.5) {
+				continue;
+			}
+
+			if (skill->type == skLINGUISTICS) {
+				if (rankIncrease - (int)rankIncrease > 0) {
+					if (rankIncrease * 2 + 1 > points) {
+						if (rankIncrease * 2 - 1 < 1) {
+							continue;
+						}
+						rankIncrease -= 0.5;
+					}
+					else {
+						rankIncrease += 0.5;
+					}
+				}
+
+				k = addNewLanguages(npc, (int)rankIncrease);
+				rankIncrease -= k;
+				if (rankIncrease < 1) {
+					continue;
+				}
+			}
+
+			skill->rank += rankIncrease;
+			skill->classrank[classType] += rankIncrease;
+			/*
+				 npc->skilltype[npc->skillops] = skill->type;
+				 npc->skillclass[npc->skillops] = classType;
+				 npc->skillrank[npc->skillops] = rankIncrease;
+				 npc->skillcost[npc->skillops++] = i;
+			*/
+
+			points -= (int)(i == sktCLASS ? rankIncrease : rankIncrease * 2);
+
+			if (points < 1) {
+				break;
+			}
+		}
+
+
+
+		destroyWeightedList(&wlist);
+
+		if (points < 1) {
+			break;
+		}
+
+		/* build a weighted list of all skills that the given character can
+		 * possibly have */
+
+		wlist = 0;
+		total = 0;
+
+		for (i = 0; allSkills[i] != 0; i++) {
+
+			/* don't put the same skill in more than once */
+			if (npcHasSkill(npc, allSkills[i])) {
+				continue;
+			}
+
+			j = getSkillType(npc, classType, allSkills[i]);
+
+			//if( j == sktEXCLUSIVE ) {
+			  //continue;
+			//} else
+
+			if (j == sktCLASS) {
+				weight = 10;
+			}
+			else {
+				weight = 1;
+			}
+
+			k = dndGetSkillAbility(allSkills[j]);
+			if (k != abNONE) {
+				weight *= dndGetAbilityBonus(getNamedAbility(npc, k));
+				if (j == sktCLASS) {
+					k = 10;
+				}
+				else {
+					k = 1;
+				}
+				if (weight < k) {
+					weight = k;
+				}
+			}
+
+			/*
+			  if( ( ( classType == pcBARD ) && ( (allSkills[ i ] >= skPERFORM_ACT) && (allSkills[ i ] <= skPERFORM_SING) ) ) ||
+				  ( ( npcHasFeat( npc, ftTRACK ) && ( allSkills[ i ] == skSURVIVAL ) ) ) )
+			  {
+				weight *= 20;
+			  }
+
+			  if ( (classType == pcROGUE) && (allSkills[i] == skHIDE)
+		*/
+			switch (classType) {
+			case pcBARBARIAN:
+				switch (allSkills[i]) {
 				case skBLUFF:
 				case skCLIMB:
 				case skESCAPEARTIST:
@@ -4301,14 +4325,14 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 					weight *= 5;
 					break;
 
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 1;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight = 1;
-			  break;
-		  case pcBARD:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight = 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 1;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight = 1;
+				break;
+			case pcBARD:
+				switch (allSkills[i]) {
 				case skAPPRAISE:
 				case skBLUFF:
 				case skLINGUISTICS:
@@ -4326,14 +4350,14 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skKNOWLEDGE_ARCANA:
 					weight *= 2;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight *= 3;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 5;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight *= 20;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight = 1;
-			  break;
-		  case pcCLERIC:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight *= 3;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 5;
+				if (dndIsSkillPerform(allSkills[i])) weight *= 20;
+				if (dndIsSkillProfession(allSkills[i])) weight = 1;
+				break;
+			case pcCLERIC:
+				switch (allSkills[i]) {
 				case skLINGUISTICS:
 				case skDIPLOMACY:
 				case skSENSEMOTIVE:
@@ -4346,14 +4370,14 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skHEAL:
 					weight *= 20;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight *= 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 5;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight *= 2;
-			  break;
-		  case pcDRUID:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight *= 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 5;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight *= 2;
+				break;
+			case pcDRUID:
+				switch (allSkills[i]) {
 				case skCLIMB:
 				case skDIPLOMACY:
 				case skESCAPEARTIST:
@@ -4371,14 +4395,14 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skHANDLEANIMAL:
 					weight *= 20;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight *= 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 3;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight = 1;
-			  break;
-		  case pcFIGHTER:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight *= 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 3;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight = 1;
+				break;
+			case pcFIGHTER:
+				switch (allSkills[i]) {
 				case skACROBATICS:
 				case skBLUFF:
 				case skCLIMB:
@@ -4390,14 +4414,14 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skSPELLCRAFT:
 					weight *= 2;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight = 1;
-			  break;
-		  case pcMONK:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight = 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight = 1;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight = 1;
+				break;
+			case pcMONK:
+				switch (allSkills[i]) {
 				case skCLIMB:
 				case skDIPLOMACY:
 				case skESCAPEARTIST:
@@ -4409,14 +4433,14 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skACROBATICS:
 					weight *= 5;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 2;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight = 1;
-			  break;
-		  case pcPALADIN:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight = 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 2;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight = 1;
+				break;
+			case pcPALADIN:
+				switch (allSkills[i]) {
 				case skDIPLOMACY:
 				case skHANDLEANIMAL:
 				case skHEAL:
@@ -4433,14 +4457,14 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skSLEIGHTOFHAND:
 					weight = 1;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 2;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight = 1;
-			  break;
-		  case pcRANGER:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight = 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 2;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight = 1;
+				break;
+			case pcRANGER:
+				switch (allSkills[i]) {
 				case skACROBATICS:
 				case skBLUFF:
 				case skCLIMB:
@@ -4461,14 +4485,14 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skSURVIVAL:
 					weight *= 20;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight *= 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 3;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight *= 2;
-			  break;
-		  case pcROGUE:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight *= 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 3;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight *= 2;
+				break;
+			case pcROGUE:
+				switch (allSkills[i]) {
 				case skAPPRAISE:
 				case skACROBATICS:
 				case skBLUFF:
@@ -4485,28 +4509,28 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skDISABLEDEVICE:
 					weight *= 5;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 2;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight = 1;
-			  break;
-		  case pcSORCERER:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight = 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 2;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight = 1;
+				break;
+			case pcSORCERER:
+				switch (allSkills[i]) {
 				case skDIPLOMACY:
 				case skSENSEMOTIVE:
 				case skSPELLCRAFT:
 				case skUSEMAGICDEVICE:
 					weight *= 2;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 5;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight = 1;
-			  break;
-		  case pcWIZARD:
-			  switch (allSkills[i]) {
+				}
+				if (dndIsSkillCraft(allSkills[i])) weight = 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 5;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight = 1;
+				break;
+			case pcWIZARD:
+				switch (allSkills[i]) {
 				case skDIPLOMACY:
 				case skSENSEMOTIVE:
 				case skUSEMAGICDEVICE:
@@ -4517,2364 +4541,2387 @@ void computeSkills( NPC* npc, int classType, int tlevel, int clevel ) {
 				case skSPELLCRAFT:
 					weight *= 20;
 					break;
-			  }
-			  if (dndIsSkillCraft(allSkills[ i ])) weight *= 1;
-			  if (dndIsSkillKnowledge(allSkills[ i ])) weight *= 5;
-			  if (dndIsSkillPerform(allSkills[ i ])) weight = 1;
-			  if (dndIsSkillProfession(allSkills[ i ])) weight = 1;
-			  break;
-	  }
-
-      
-
-      if(npcHasFeat( npc, ftTRACK, 0 ) && (allSkills[ i ] == skSURVIVAL ) || 
-		 npcHasSkillFocus( npc, allSkills[ i ] ))
-      {
-        weight *= 20;
-      }
-
-	  //if ((allSkills[i] >= skCRAFT_ALCHEMY) && (allSkills[i] <= skCRAFT_WOODWORKING)) weight = 1;
-      total += addToWeightedList( &wlist, allSkills[ i ], weight );
-    }
-
-    /* if wlist is 0, then there are no more skills available to be taken */
-
-    if( wlist == 0 ) {
-      break;
-    }
-
-    while( wlist != 0 ) {
-      j = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-
-      /* if this is the first character level, the character is 80% likely
-       * to put the skill at the maximum possible rank, and 20% likely to
-       * put it at half the maximum rank (or, at least, at the minimum
-       * possible -- 1, or 0.5). If this is not the first character level,
-       * they have a 50% chance of putting 1 (or 0.5) rank, and a 50% chance
-       * of putting 2 (or 1) ranks in. */
-
-      i = getSkillType( npc, classType, j );
-      maxClassRank = (float)( i == sktCLASS ? ( clevel + 3 ) : ( ( clevel + 3 ) / 2.0 ) );
-
-      k = rollDice( 1, 100 );
-      if( tlevel == 1 ) {
-        if( k <= 80 ) {
-          ranks = maxClassRank;
-        } else {
-          if( maxClassRank - (int)maxClassRank > 0 ) {
-            ranks = (float)( ( maxClassRank + 0.5 ) / 2.0 );
-          } else {
-            ranks = (float)( maxClassRank / 2.0 );
-          }
-        }
-        if( i == sktCLASS ) {
-          if( ranks > points ) {
-            ranks = (float)points;
-          }
-        } else if( ranks*2 > points ) {
-          ranks = (float)( points / 2.0 );
-        }
-      } else {
-        if( k <= 50 ) {
-          ranks = (float)( i == sktCLASS ? 1 : 0.5 );
-        } else {
-          ranks = (float)( i == sktCLASS ? 2 : 1 );
-        }
-      }
-
-      if( j == skLINGUISTICS ) {
-        if( i != sktCLASS ) {
-          if( ranks - (int)ranks > 0 ) {
-            if( ranks*2 + 1 > points ) {
-              if( ranks*2 - 1 < 1 ) {
-                continue;
-              }
-              ranks -= 0.5;                
-            } else {
-              ranks += 0.5;
-            }
-          }
-        }
-        
-        k = addNewLanguages( npc, (int)ranks );
-
-        ranks -= (float)( i == sktCLASS ? k : k / 2.0 );
-
-        if( ranks < 0.5 ) {
-          continue;
-        }
-      }
-
-      //npc->curclass = 0;
-      addSkill( npc, j, ranks, classType );
-
- 
-	 // npc->skilltype[npc->skillops] = j;
-	 // npc->skillclass[npc->skillops] = classType;
-	 // npc->skillrank[npc->skillops] = ranks;
-	 // npc->skillcost[npc->skillops++] = i;
-
-      points -= (int)( i == sktCLASS ? ranks : ranks*2 );
-
-      if( points < 1 ) {
-        break;
-      }
-    }
-
-    destroyWeightedList( &wlist );
-  }
-}
-
-
-int calculateCharacterLevel( NPC* npc ) {
-  NPCCLASS* cls;
-  int       total;
-
-  total = 0;
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    total += cls->level;
-  }
-  
-  return total; 
-}
-
-
-int calculateSpellcasterLevel( NPC* npc ) {
-  NPCCLASS* cls;
-  int       total;
-
-  total = 0;
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    switch( cls->type ) {
-      case pcCLERIC:
-      case pcDRUID:
-      case npcADEPT:
-      case pcSORCERER:
-      case pcWIZARD:
-      case pcBARD:
-      //case prcLOREMASTER:
-      //case prcBLACKGUARD:
-        if( total < cls->level ) {
-          total = cls->level;
-        }
-        break;
-      case pcPALADIN:
-      case pcRANGER:
-        if( cls->level >= 4 ) {
-          if( total < ( cls->level >> 1 ) ) {
-            total = cls->level >> 1;
-          }
-        }
-        break;
-    }
-  }
-  
-  return total; 
-}
-
-
-int meetsFeatPreReqs( NPC* npc, int feat, int classType, int level ) {
-  int   type;
-  int   data1;
-  int   data2;
-  int   rc;
-  char* next;
-
-  rc = dndGetFeatPrerequisite( feat, &type, &data1, &data2, &next );
-  while( rc != 0 ) {
-    switch( type ) {
-      case fprMINIMUMABILITYSCORE:
-        data1 = getNamedAbility( npc, data1 );
-        if( data1 < data2 ) {
-          return 0;
-        }
-        break;
-      case fprFEAT:
-        if( !npcHasFeat( npc, data1, data2 ) ) {
-          return 0;
-        }
-        break;
-      case fprMINIMUMBASEATTACKBONUS:
-        if( npcGetBaseAttack( npc ) < data1 ) {
-          return 0;
-        }
-        break;
-      case fprMINIMUMCHARACTERLEVEL:
-        if( calculateCharacterLevel( npc ) < data1 ) {
-          return 0;
-        }
-        break;
-      case fprSKILL:
-        if( !npcHasSkill( npc, data1 ) ) {
-          return 0;
-        }
-        break;
-      case fprPROFICIENTWITHWEAPON:
-        /* this is handled when the calling routine tries to identify a
-         * weapon with which the NPC is already proficient.  If there are
-         * none, then the feat is skipped. */
-        break;
-      case fprMINIMUMSPELLCASTERLEVEL:
-        if( calculateSpellcasterLevel( npc ) < data1 ) {
-          return 0;
-        }
-        break;
-      case fprCLERICORPALADIN:
-        if( ( classType != pcCLERIC ) && ( classType != pcPALADIN ) ) {
-          return 0;
-        }
-        break;
-      case fprWIZARD:
-        if( classType != pcWIZARD ) {
-          return 0;
-        }
-        break;
-      case fprMINIMUMFIGHTERLEVEL:
-        if( classType != pcFIGHTER ) {
-          return 0;
-        }
-        if( level < data1 ) {
-          return 0;
-        }
-        break;
-      case fprMINIMUMDRUIDLEVEL:
-        if( classType != pcDRUID ) {
-          return 0;
-        }
-        if( level < data1 ) {
-          return 0;
-        }
-        break;
-       case fprMINIMUMRANGERLEVEL:
-        if( classType != pcRANGER ) {
-          return 0;
-        }
-        if( level < data1 ) {
-          return 0;
-        }
-        break;
-       case fprMAXIMUMRANGERLEVEL:
-        if( classType != pcRANGER ) {
-          return 0;
-        }
-        if( level > data1 ) {
-          return 0;
-        }
-        break;
-       case fprEXACTRANGERLEVEL:
-        if( classType != pcRANGER ) {
-          return 0;
-        }
-        if( level != data1 ) {
-          return 0;
-        }
-        break;
-    }
-
-    rc = dndGetFeatPrerequisite( 0, &type, &data1, &data2, &next );
-  }
-
-  return 1;
-}
-
-
-PREFERREDWEAPONS* getPreferredWeapons( int classType ) {
-  int i;
-
-  for( i = 0; classes[ i ].type != 0; i++ ) {
-    if( classes[ i ].type == classType ) {
-      return classes[ i ].weapons;
-    }
-  }
-
-  return 0;
-}
-
-
-void addFeatsFromList( NPC* npc, PREFERREDFEATS* feats, int count, int classType, int level, int autoAdd) {
-  WEIGHTEDLIST* wlist;
-  int           total;
-  int           i;
-  int           feat;
-  int           rc;
-  NPCFEATWEAPON* nfw;
-  NPCFEATSKILL*  nfs;
-  NPCFEATSCHOOL* nfsch;
-  void*         data;
-
-  wlist = 0;
-  total = 0;
-
-  for( i = 0; feats[i].feat != 0; i++ ) {
-    if( !npcHasFeat( npc, feats[i].feat, 0 ) || dndFeatIsReusable( feats[i].feat ) ) {
-      total += addToWeightedList( &wlist, feats[i].feat, feats[i].weight );
-    }
-  }
-
-  for( i = 0; i < count; i++ ) {
-    feat = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-    if( autoAdd || meetsFeatPreReqs( npc, feat, classType, level ) ) {
-
-      data = 0;
-
-      switch( feat ) {
-        case ftSPELLMASTERY:
-          {
-            NPCCLASS *c;
-            NPCWIZARDDATA *d;
-            NPCFEATSPELLS* nfspell;
-
-            c = npcGetClass( npc, classType );
-            d = ((NPCWIZARDDATA*)c->data);
-
-            nfspell = (NPCFEATSPELLS*)malloc( sizeof( NPCFEATSPELLS ) );
-            memset( nfspell, 0, sizeof( *nfspell ) );
-
-			
-            rc = selectSpellMasterySpells( d->spells, npc->feats, nfspell, dndGetAbilityBonus( npc->intelligence ), d );
-
-            if( rc == 0 ) {
-              free( nfspell );
-              continue;
-            }
-            data = nfspell;
-          }
-          break;
-        case ftSPELLFOCUS:
-          {
-            NPCCLASS *c;
-            NPCWIZARDDATA *d;
-
-            c = npcGetClass( npc, classType );
-            d = ((NPCWIZARDDATA*)c->data);
-			
-			rc = selectAppropriateSchoolOfMagic( npc, d );
-			  if( rc == 0 ) {
-				continue;
-			  }
-			  nfsch = (NPCFEATSCHOOL*)malloc( sizeof( NPCFEATSCHOOL ) );
-			  nfsch->school = rc;
-			  data = nfsch;
-          }
-          break;
-        case ftGREATERSPELLFOCUS:
-          {
-            NPCCLASS *c;
-            NPCWIZARDDATA *d;
-
-            c = npcGetClass( npc, classType );
-            d = ((NPCWIZARDDATA*)c->data);
-			  rc = selectAppropriateSchoolOfGreaterMagic( npc, d );
-			  if( rc == 0 ) {
-				continue;
-			  }
-			  nfsch = (NPCFEATSCHOOL*)malloc( sizeof( NPCFEATSCHOOL ) );
-			  nfsch->school = rc;
-			  data = nfsch;
-          }
-          break;
-        case ftEXOTICWEAPONPROFICIENCY:
-        case ftMARTIALWEAPONPROFICIENCY:
-        case ftSIMPLEWEAPONPROFICIENCY:
-          rc = selectWeaponForProficiency( npc, feat, getPreferredWeapons( classType ) );
-          if( rc == 0 ) {
-            continue;
-          }
-          nfw = (NPCFEATWEAPON*)malloc( sizeof( NPCFEATWEAPON ) );
-          nfw->weapon = rc;
-          data = nfw;
-          break;
-        case ftIMPROVEDCRITICAL:
-			rc = wtMELEE | wtRANGED;
-			rc = selectWeaponForImprovedCritical( npc );
-				
-			if( rc == 0 ) {
-				rc = selectWeaponForProficiency( npc, feat, getPreferredWeapons( classType ) );
-				if( rc == 0 ) {
-					continue;
 				}
+				if (dndIsSkillCraft(allSkills[i])) weight *= 1;
+				if (dndIsSkillKnowledge(allSkills[i])) weight *= 5;
+				if (dndIsSkillPerform(allSkills[i])) weight = 1;
+				if (dndIsSkillProfession(allSkills[i])) weight = 1;
+				break;
 			}
-			  
-			nfw = (NPCFEATWEAPON*)malloc( sizeof( NPCFEATWEAPON ) );
-			nfw->weapon = rc;
-			data = nfw;
-          break;
-		case ftWEAPONFINESSE:
-		  if( feat == ftWEAPONFINESSE ) {
-            if( npc->dexterity <= npc->strength ) {
-              feat = ftWEAPONFOCUS;
-            } else if( npc->dexterity < 12 ) {
-              continue;
-            }              
-          }
-        case ftWEAPONFOCUS:
 
-          
-		  if (feat != ftWEAPONFINESSE) {
-			rc = wtMELEE | wtRANGED;
-			rc = selectProficientWeapon( npc, feat, getPreferredWeapons( classType ), rc );
-			if( rc == 0 ) {
-				continue;
+
+
+			if (npcHasFeat(npc, ftTRACK, 0) && (allSkills[i] == skSURVIVAL) ||
+				npcHasSkillFocus(npc, allSkills[i]))
+			{
+				weight *= 20;
 			}
-		  
-			nfw = (NPCFEATWEAPON*)malloc( sizeof( NPCFEATWEAPON ) );
-			nfw->weapon = rc;
-			data = nfw;
-		  }
-          break;
-        case ftRAPIDRELOAD:
-			rc = wtCROSSBOW;
-			rc = selectProficientWeapon( npc, feat, getPreferredWeapons( classType ), rc );
-			if( rc == 0 ) {
-				continue;
-			}
-		  
-			nfw = (NPCFEATWEAPON*)malloc( sizeof( NPCFEATWEAPON ) );
-			nfw->weapon = rc;
-			data = nfw;
-          break;
-        case ftGREATERWEAPONFOCUS:
-			rc = wtMELEE | wtRANGED;
-			rc = selectWeaponForGreaterFocus( npc );
-				
-			if( rc == 0 ) {
-				continue;
-			}
-			  
-			nfw = (NPCFEATWEAPON*)malloc( sizeof( NPCFEATWEAPON ) );
-			nfw->weapon = rc;
-			data = nfw;
-          break;
-        case ftWEAPONSPECIALIZATION:
-		  rc = selectWeaponForSpecialization( npc );
-          if( rc == 0 ) {
-            continue;
-          }
-          nfw = (NPCFEATWEAPON*)malloc( sizeof( NPCFEATWEAPON ) );
-          nfw->weapon = rc;
-          data = nfw;
-          break;
-        case ftGREATERWEAPONSPECIALIZATION:
-		  rc = selectWeaponForGreaterSpecialization( npc );
-          if( rc == 0 ) {
-            continue;
-          }
-          nfw = (NPCFEATWEAPON*)malloc( sizeof( NPCFEATWEAPON ) );
-          nfw->weapon = rc;
-          data = nfw;
-          break;
-        case ftTOUGHNESS:
-          npc->hp += 3;
-          break;
-        case ftSKILLFOCUS:
-          rc = selectExistingSkill( feat, classType, npc->skills, npc->feats );
-          if( rc == 0 ) {
-            continue;
-          }
-          if( dndGetSkillAbility( rc ) == abNONE ) {
-            continue;
-          }
-          nfs = (NPCFEATSKILL*)malloc( sizeof( NPCFEATSKILL ) );
-          nfs->skill = rc;
-          data = nfs;
-          break;
-		case ftRANGERARCHERY:
-			addFeat( npc, ftRAPIDSHOT, 1, 0 );
-			break;
-		case ftRANGERIMPROVEDARCHERY:
-			addFeat( npc, ftMANYSHOT, 1, 0 );
-			break;
-		case ftRANGERGREATERARCHERY:
-			addFeat( npc, ftIMPROVEDPRECISESHOT, 1, 0 );
-			break;
-		case ftRANGERTWOWEAPONFIGHTING:
-			addFeat( npc, ftTWOWEAPONFIGHTING, 1, 0 );
-			break;
-		case ftRANGERIMPROVEDTWOWEAPONFIGHTING:
-			addFeat( npc, ftIMPROVEDTWOWEAPONFIGHTING, 1, 0 );
-			break;
-		case ftRANGERGREATERTWOWEAPONFIGHTING:
-			addFeat( npc, ftGREATERTWOWEAPONFIGHTING, 1, 0 );
+
+			//if ((allSkills[i] >= skCRAFT_ALCHEMY) && (allSkills[i] <= skCRAFT_WOODWORKING)) weight = 1;
+			total += addToWeightedList(&wlist, allSkills[i], weight);
+		}
+
+		/* if wlist is 0, then there are no more skills available to be taken */
+
+		if (wlist == 0) {
 			break;
 		}
 
-      addFeat( npc, feat, autoAdd, data );
-      if( dndFeatIsReusable( feat ) ) {
-        total += addToWeightedList( &wlist, feat, 1 );
-      }
-    } else {
-      i--;
-    }
-    if( wlist == 0 ) {
-      break;
-    }
-  }
+		while (wlist != 0) {
+			j = getWeightedItem(&wlist, rollDice(1, total), &total);
 
-  if( i < count ) {
-    printf( "[BUG] %d feats are left over (unused)!\n", ( count - i ) );
-  }
+			/* if this is the first character level, the character is 80% likely
+			 * to put the skill at the maximum possible rank, and 20% likely to
+			 * put it at half the maximum rank (or, at least, at the minimum
+			 * possible -- 1, or 0.5). If this is not the first character level,
+			 * they have a 50% chance of putting 1 (or 0.5) rank, and a 50% chance
+			 * of putting 2 (or 1) ranks in. */
 
-  destroyWeightedList( &wlist );
+			i = getSkillType(npc, classType, j);
+			maxClassRank = (float)(i == sktCLASS ? (clevel + 3) : ((clevel + 3) / 2.0));
+
+			k = rollDice(1, 100);
+			if (tlevel == 1) {
+				if (k <= 80) {
+					ranks = maxClassRank;
+				}
+				else {
+					if (maxClassRank - (int)maxClassRank > 0) {
+						ranks = (float)((maxClassRank + 0.5) / 2.0);
+					}
+					else {
+						ranks = (float)(maxClassRank / 2.0);
+					}
+				}
+				if (i == sktCLASS) {
+					if (ranks > points) {
+						ranks = (float)points;
+					}
+				}
+				else if (ranks * 2 > points) {
+					ranks = (float)(points / 2.0);
+				}
+			}
+			else {
+				if (k <= 50) {
+					ranks = (float)(i == sktCLASS ? 1 : 0.5);
+				}
+				else {
+					ranks = (float)(i == sktCLASS ? 2 : 1);
+				}
+			}
+
+			if (j == skLINGUISTICS) {
+				if (i != sktCLASS) {
+					if (ranks - (int)ranks > 0) {
+						if (ranks * 2 + 1 > points) {
+							if (ranks * 2 - 1 < 1) {
+								continue;
+							}
+							ranks -= 0.5;
+						}
+						else {
+							ranks += 0.5;
+						}
+					}
+				}
+
+				k = addNewLanguages(npc, (int)ranks);
+
+				ranks -= (float)(i == sktCLASS ? k : k / 2.0);
+
+				if (ranks < 0.5) {
+					continue;
+				}
+			}
+
+			//npc->curclass = 0;
+			addSkill(npc, j, ranks, classType);
+
+
+			// npc->skilltype[npc->skillops] = j;
+			// npc->skillclass[npc->skillops] = classType;
+			// npc->skillrank[npc->skillops] = ranks;
+			// npc->skillcost[npc->skillops++] = i;
+
+			points -= (int)(i == sktCLASS ? ranks : ranks * 2);
+
+			if (points < 1) {
+				break;
+			}
+		}
+
+		destroyWeightedList(&wlist);
+	}
 }
 
 
-void computeFeats( NPC* npc, int classType, int tlevel, int clevel ) {
-  int i;
-  int featCount;
-  int bonusFeatCount;
-  PREFERREDFEATS* feats;
-  PREFERREDFEATS* bonusFeats;
+int calculateCharacterLevel(NPC* npc) {
+	NPCCLASS* cls;
+	int       total;
 
-  /* many classes have level dependent abilities that either mimic or
-   * actually are feats.  we'll insert those automatically here. */
+	total = 0;
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		total += cls->level;
+	}
 
-  /* first, we count how many feats the character is entitled to at the
-   * current level. */
+	return total;
+}
 
-  switch( classType ) {
-    case pcBARBARIAN:
-      break;
-    case pcBARD:
-      break;      
-    case pcCLERIC:
-      break;
-    case pcDRUID:
-      break;
-    case pcFIGHTER:
-      break;
-    case pcMONK:
-      switch( clevel ) {
-        case 1:
-          addFeatIfNotExist( npc, ftIMPROVEDUNARMEDSTRIKE, 1, 0 );
-		  addFeatsFromList( npc, monkBonusFeats1, 1, classType, clevel, 1 );
-          break;
-        case 2:
-			addFeatIfNotExist( npc, ftEVASION, 1, 0 );
-		  addFeatsFromList( npc, monkBonusFeats2, 1, classType, clevel, 1 );
-          break;
-        case 6:
-		  addFeatsFromList( npc, monkBonusFeats6, 1, classType, clevel, 1 );
-          break;
-        case 9:
-			addFeatIfNotExist( npc, ftIMPROVEDEVASION, 1, 0 );
-          break;
-      }
-      break;
-    case pcPALADIN:
-      break;
-    case pcRANGER:
-      switch( clevel ) {
-        case 1:
-          addFeatIfNotExist( npc, ftTRACK, 1, 0 );
-          break;
+
+int calculateSpellcasterLevel(NPC* npc) {
+	NPCCLASS* cls;
+	int       total;
+
+	total = 0;
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		switch (cls->type) {
+		case pcCLERIC:
+		case pcDRUID:
+		case npcADEPT:
+		case pcSORCERER:
+		case pcWIZARD:
+		case pcBARD:
+			//case prcLOREMASTER:
+			//case prcBLACKGUARD:
+			if (total < cls->level) {
+				total = cls->level;
+			}
+			break;
+		case pcPALADIN:
+		case pcRANGER:
+			if (cls->level >= 4) {
+				if (total < (cls->level >> 1)) {
+					total = cls->level >> 1;
+				}
+			}
+			break;
+		}
+	}
+
+	return total;
+}
+
+
+int meetsFeatPreReqs(NPC* npc, int feat, int classType, int level) {
+	int   type;
+	int   data1;
+	int   data2;
+	int   rc;
+	char* next;
+
+	rc = dndGetFeatPrerequisite(feat, &type, &data1, &data2, &next);
+	while (rc != 0) {
+		switch (type) {
+		case fprMINIMUMABILITYSCORE:
+			data1 = getNamedAbility(npc, data1);
+			if (data1 < data2) {
+				return 0;
+			}
+			break;
+		case fprFEAT:
+			if (!npcHasFeat(npc, data1, data2)) {
+				return 0;
+			}
+			break;
+		case fprMINIMUMBASEATTACKBONUS:
+			if (npcGetBaseAttack(npc) < data1) {
+				return 0;
+			}
+			break;
+		case fprMINIMUMCHARACTERLEVEL:
+			if (calculateCharacterLevel(npc) < data1) {
+				return 0;
+			}
+			break;
+		case fprSKILL:
+			if (!npcHasSkill(npc, data1)) {
+				return 0;
+			}
+			break;
+		case fprPROFICIENTWITHWEAPON:
+			/* this is handled when the calling routine tries to identify a
+			 * weapon with which the NPC is already proficient.  If there are
+			 * none, then the feat is skipped. */
+			break;
+		case fprMINIMUMSPELLCASTERLEVEL:
+			if (calculateSpellcasterLevel(npc) < data1) {
+				return 0;
+			}
+			break;
+		case fprCLERICORPALADIN:
+			if ((classType != pcCLERIC) && (classType != pcPALADIN)) {
+				return 0;
+			}
+			break;
+		case fprWIZARD:
+			if (classType != pcWIZARD) {
+				return 0;
+			}
+			break;
+		case fprMINIMUMFIGHTERLEVEL:
+			if (classType != pcFIGHTER) {
+				return 0;
+			}
+			if (level < data1) {
+				return 0;
+			}
+			break;
+		case fprMINIMUMDRUIDLEVEL:
+			if (classType != pcDRUID) {
+				return 0;
+			}
+			if (level < data1) {
+				return 0;
+			}
+			break;
+		case fprMINIMUMRANGERLEVEL:
+			if (classType != pcRANGER) {
+				return 0;
+			}
+			if (level < data1) {
+				return 0;
+			}
+			break;
+		case fprMAXIMUMRANGERLEVEL:
+			if (classType != pcRANGER) {
+				return 0;
+			}
+			if (level > data1) {
+				return 0;
+			}
+			break;
+		case fprEXACTRANGERLEVEL:
+			if (classType != pcRANGER) {
+				return 0;
+			}
+			if (level != data1) {
+				return 0;
+			}
+			break;
+		}
+
+		rc = dndGetFeatPrerequisite(0, &type, &data1, &data2, &next);
+	}
+
+	return 1;
+}
+
+
+PREFERREDWEAPONS* getPreferredWeapons(int classType) {
+	int i;
+
+	for (i = 0; classes[i].type != 0; i++) {
+		if (classes[i].type == classType) {
+			return classes[i].weapons;
+		}
+	}
+
+	return 0;
+}
+
+
+void addFeatsFromList(NPC* npc, PREFERREDFEATS* feats, int count, int classType, int level, int autoAdd) {
+	WEIGHTEDLIST* wlist;
+	int           total;
+	int           i;
+	int           feat;
+	int           rc;
+	NPCFEATWEAPON* nfw;
+	NPCFEATSKILL* nfs;
+	NPCFEATSCHOOL* nfsch;
+	void* data;
+
+	wlist = 0;
+	total = 0;
+
+	for (i = 0; feats[i].feat != 0; i++) {
+		if (!npcHasFeat(npc, feats[i].feat, 0) || dndFeatIsReusable(feats[i].feat)) {
+			total += addToWeightedList(&wlist, feats[i].feat, feats[i].weight);
+		}
+	}
+
+	for (i = 0; i < count; i++) {
+		feat = getWeightedItem(&wlist, rollDice(1, total), &total);
+		if (autoAdd || meetsFeatPreReqs(npc, feat, classType, level)) {
+
+			data = 0;
+
+			switch (feat) {
+			case ftSPELLMASTERY:
+			{
+				NPCCLASS* c;
+				NPCWIZARDDATA* d;
+				NPCFEATSPELLS* nfspell;
+
+				c = npcGetClass(npc, classType);
+				d = ((NPCWIZARDDATA*)c->data);
+
+				nfspell = (NPCFEATSPELLS*)malloc(sizeof(NPCFEATSPELLS));
+				memset(nfspell, 0, sizeof(*nfspell));
+
+
+				rc = selectSpellMasterySpells(d->spells, npc->feats, nfspell, dndGetAbilityBonus(npc->intelligence), d);
+
+				if (rc == 0) {
+					free(nfspell);
+					continue;
+				}
+				data = nfspell;
+			}
+			break;
+			case ftSPELLFOCUS:
+			{
+				NPCCLASS* c;
+				NPCWIZARDDATA* d;
+
+				c = npcGetClass(npc, classType);
+				d = ((NPCWIZARDDATA*)c->data);
+
+				rc = selectAppropriateSchoolOfMagic(npc, d);
+				if (rc == 0) {
+					continue;
+				}
+				nfsch = (NPCFEATSCHOOL*)malloc(sizeof(NPCFEATSCHOOL));
+				nfsch->school = rc;
+				data = nfsch;
+			}
+			break;
+			case ftGREATERSPELLFOCUS:
+			{
+				NPCCLASS* c;
+				NPCWIZARDDATA* d;
+
+				c = npcGetClass(npc, classType);
+				d = ((NPCWIZARDDATA*)c->data);
+				rc = selectAppropriateSchoolOfGreaterMagic(npc, d);
+				if (rc == 0) {
+					continue;
+				}
+				nfsch = (NPCFEATSCHOOL*)malloc(sizeof(NPCFEATSCHOOL));
+				nfsch->school = rc;
+				data = nfsch;
+			}
+			break;
+			case ftEXOTICWEAPONPROFICIENCY:
+			case ftMARTIALWEAPONPROFICIENCY:
+			case ftSIMPLEWEAPONPROFICIENCY:
+				rc = selectWeaponForProficiency(npc, feat, getPreferredWeapons(classType));
+				if (rc == 0) {
+					continue;
+				}
+				nfw = (NPCFEATWEAPON*)malloc(sizeof(NPCFEATWEAPON));
+				nfw->weapon = rc;
+				data = nfw;
+				break;
+			case ftIMPROVEDCRITICAL:
+				rc = wtMELEE | wtRANGED;
+				rc = selectWeaponForImprovedCritical(npc);
+
+				if (rc == 0) {
+					rc = selectWeaponForProficiency(npc, feat, getPreferredWeapons(classType));
+					if (rc == 0) {
+						continue;
+					}
+				}
+
+				nfw = (NPCFEATWEAPON*)malloc(sizeof(NPCFEATWEAPON));
+				nfw->weapon = rc;
+				data = nfw;
+				break;
+			case ftWEAPONFINESSE:
+				if (feat == ftWEAPONFINESSE) {
+					if (npc->dexterity <= npc->strength) {
+						feat = ftWEAPONFOCUS;
+					}
+					else if (npc->dexterity < 12) {
+						continue;
+					}
+				}
+			case ftWEAPONFOCUS:
+
+
+				if (feat != ftWEAPONFINESSE) {
+					rc = wtMELEE | wtRANGED;
+					rc = selectProficientWeapon(npc, feat, getPreferredWeapons(classType), rc);
+					if (rc == 0) {
+						continue;
+					}
+
+					nfw = (NPCFEATWEAPON*)malloc(sizeof(NPCFEATWEAPON));
+					nfw->weapon = rc;
+					data = nfw;
+				}
+				break;
+			case ftRAPIDRELOAD:
+				rc = wtCROSSBOW;
+				rc = selectProficientWeapon(npc, feat, getPreferredWeapons(classType), rc);
+				if (rc == 0) {
+					continue;
+				}
+
+				nfw = (NPCFEATWEAPON*)malloc(sizeof(NPCFEATWEAPON));
+				nfw->weapon = rc;
+				data = nfw;
+				break;
+			case ftGREATERWEAPONFOCUS:
+				rc = wtMELEE | wtRANGED;
+				rc = selectWeaponForGreaterFocus(npc);
+
+				if (rc == 0) {
+					continue;
+				}
+
+				nfw = (NPCFEATWEAPON*)malloc(sizeof(NPCFEATWEAPON));
+				nfw->weapon = rc;
+				data = nfw;
+				break;
+			case ftWEAPONSPECIALIZATION:
+				rc = selectWeaponForSpecialization(npc);
+				if (rc == 0) {
+					continue;
+				}
+				nfw = (NPCFEATWEAPON*)malloc(sizeof(NPCFEATWEAPON));
+				nfw->weapon = rc;
+				data = nfw;
+				break;
+			case ftGREATERWEAPONSPECIALIZATION:
+				rc = selectWeaponForGreaterSpecialization(npc);
+				if (rc == 0) {
+					continue;
+				}
+				nfw = (NPCFEATWEAPON*)malloc(sizeof(NPCFEATWEAPON));
+				nfw->weapon = rc;
+				data = nfw;
+				break;
+			case ftTOUGHNESS:
+				npc->hp += 3;
+				break;
+			case ftSKILLFOCUS:
+				rc = selectExistingSkill(feat, classType, npc->skills, npc->feats);
+				if (rc == 0) {
+					continue;
+				}
+				if (dndGetSkillAbility(rc) == abNONE) {
+					continue;
+				}
+				nfs = (NPCFEATSKILL*)malloc(sizeof(NPCFEATSKILL));
+				nfs->skill = rc;
+				data = nfs;
+				break;
+			case ftRANGERARCHERY:
+				addFeat(npc, ftRAPIDSHOT, 1, 0);
+				break;
+			case ftRANGERIMPROVEDARCHERY:
+				addFeat(npc, ftMANYSHOT, 1, 0);
+				break;
+			case ftRANGERGREATERARCHERY:
+				addFeat(npc, ftIMPROVEDPRECISESHOT, 1, 0);
+				break;
+			case ftRANGERTWOWEAPONFIGHTING:
+				addFeat(npc, ftTWOWEAPONFIGHTING, 1, 0);
+				break;
+			case ftRANGERIMPROVEDTWOWEAPONFIGHTING:
+				addFeat(npc, ftIMPROVEDTWOWEAPONFIGHTING, 1, 0);
+				break;
+			case ftRANGERGREATERTWOWEAPONFIGHTING:
+				addFeat(npc, ftGREATERTWOWEAPONFIGHTING, 1, 0);
+				break;
+			}
+
+			addFeat(npc, feat, autoAdd, data);
+			if (dndFeatIsReusable(feat)) {
+				total += addToWeightedList(&wlist, feat, 1);
+			}
+		}
+		else {
+			i--;
+		}
+		if (wlist == 0) {
+			break;
+		}
+	}
+
+	if (i < count) {
+		printf("[BUG] %d feats are left over (unused)!\n", (count - i));
+	}
+
+	destroyWeightedList(&wlist);
+}
+
+
+void computeFeats(NPC* npc, int classType, int tlevel, int clevel) {
+	int i;
+	int featCount;
+	int bonusFeatCount;
+	PREFERREDFEATS* feats;
+	PREFERREDFEATS* bonusFeats;
+
+	/* many classes have level dependent abilities that either mimic or
+	 * actually are feats.  we'll insert those automatically here. */
+
+	 /* first, we count how many feats the character is entitled to at the
+	  * current level. */
+
+	switch (classType) {
+	case pcBARBARIAN:
+		break;
+	case pcBARD:
+		break;
+	case pcCLERIC:
+		break;
+	case pcDRUID:
+		break;
+	case pcFIGHTER:
+		break;
+	case pcMONK:
+		switch (clevel) {
+		case 1:
+			addFeatIfNotExist(npc, ftIMPROVEDUNARMEDSTRIKE, 1, 0);
+			addFeatsFromList(npc, monkBonusFeats1, 1, classType, clevel, 1);
+			break;
+		case 2:
+			addFeatIfNotExist(npc, ftEVASION, 1, 0);
+			addFeatsFromList(npc, monkBonusFeats2, 1, classType, clevel, 1);
+			break;
+		case 6:
+			addFeatsFromList(npc, monkBonusFeats6, 1, classType, clevel, 1);
+			break;
+		case 9:
+			addFeatIfNotExist(npc, ftIMPROVEDEVASION, 1, 0);
+			break;
+		}
+		break;
+	case pcPALADIN:
+		break;
+	case pcRANGER:
+		switch (clevel) {
+		case 1:
+			addFeatIfNotExist(npc, ftTRACK, 1, 0);
+			break;
 		case 2: case 6: case 11:
-		  if (clevel == 6) addFeatIfNotExist( npc, ftEVASION, 1, 0 );
-		  addFeatsFromList( npc, rangerBonusFeats, 1, classType, clevel, 0 );
-		  break;
-      }
-      break;
-    case pcROGUE:
-		if (clevel == 2) addFeatIfNotExist( npc, ftEVASION, 1, 0 );
-      break;
-    case pcSORCERER:
-      break;
-    case pcWIZARD:
-      switch( clevel ) {
-        case 1:
-          addFeatIfNotExist( npc, ftSCRIBESCROLL, 1, 0 );
-          break;
-      }
-      break;
-  }
+			if (clevel == 6) addFeatIfNotExist(npc, ftEVASION, 1, 0);
+			addFeatsFromList(npc, rangerBonusFeats, 1, classType, clevel, 0);
+			break;
+		}
+		break;
+	case pcROGUE:
+		if (clevel == 2) addFeatIfNotExist(npc, ftEVASION, 1, 0);
+		break;
+	case pcSORCERER:
+		break;
+	case pcWIZARD:
+		switch (clevel) {
+		case 1:
+			addFeatIfNotExist(npc, ftSCRIBESCROLL, 1, 0);
+			break;
+		}
+		break;
+	}
 
 
-  /* first, we count how many feats the character is entitled to at the
-   * current level. */
+	/* first, we count how many feats the character is entitled to at the
+	 * current level. */
 
-  featCount = bonusFeatCount = 0;
+	featCount = bonusFeatCount = 0;
 
-  /* at first level, all classes get at least one feat.  Some classes 
-   * (such as fighters) also gain a bonus feat at first level.  Humans
-   * get an additional feat at first level. */
+	/* at first level, all classes get at least one feat.  Some classes
+	 * (such as fighters) also gain a bonus feat at first level.  Humans
+	 * get an additional feat at first level. */
 
-  if( tlevel == 1 ) {
-    featCount++;
-    if( npc->race == rcHUMAN ) {
-      featCount++;
-    }
-  }
+	if (tlevel == 1) {
+		featCount++;
+		if (npc->race == rcHUMAN) {
+			featCount++;
+		}
+	}
 
-  if( ( clevel == 1 ) && dndClassHasBonusFeatAtFirstLevel( classType ) ) {
-    bonusFeatCount++;
-  }
+	if ((clevel == 1) && dndClassHasBonusFeatAtFirstLevel(classType)) {
+		bonusFeatCount++;
+	}
 
-  /* every three character levels the character gets another feat */
+	/* every three character levels the character gets another feat */
 
-  if( tlevel % 3 == 0 ) {
-    featCount++;
-  }
+	if (tlevel % 3 == 0) {
+		featCount++;
+	}
 
-  /* some classes (like fighters and wizards) get bonus feats every so
-   * many levels */
+	/* some classes (like fighters and wizards) get bonus feats every so
+	 * many levels */
 
-  i = dndClassBonusFeatEveryXLevels( classType );
-  if( i != 0 ) {
-    if( clevel % i == 0 ) {
-      bonusFeatCount++;
-    }
-  }
+	i = dndClassBonusFeatEveryXLevels(classType);
+	if (i != 0) {
+		if (clevel % i == 0) {
+			bonusFeatCount++;
+		}
+	}
 
-  if( featCount + bonusFeatCount < 1 ) {
-    return;
-  }
+	if (featCount + bonusFeatCount < 1) {
+		return;
+	}
 
-  feats = bonusFeats = 0;
+	feats = bonusFeats = 0;
 
-  for( i = 0; classes[ i ].type != 0; i++ ) {
-    if( classes[ i ].type == classType ) {
-      feats = classes[ i ].feats;
-      bonusFeats = classes[ i ].bonusFeats;
-      break;      
-    }
-  }
+	for (i = 0; classes[i].type != 0; i++) {
+		if (classes[i].type == classType) {
+			feats = classes[i].feats;
+			bonusFeats = classes[i].bonusFeats;
+			break;
+		}
+	}
 
-  if( featCount > 0 ) {
-    if( feats != 0 ) {
-      addFeatsFromList( npc, feats, featCount, classType, clevel, 0 );
-    }
-  }
+	if (featCount > 0) {
+		if (feats != 0) {
+			addFeatsFromList(npc, feats, featCount, classType, clevel, 0);
+		}
+	}
 
-  if( bonusFeatCount > 0 ) {
-    if( bonusFeats != 0 ) {
-      addFeatsFromList( npc, bonusFeats, bonusFeatCount, classType, clevel, 0 );
-    }
-  }
+	if (bonusFeatCount > 0) {
+		if (bonusFeats != 0) {
+			addFeatsFromList(npc, bonusFeats, bonusFeatCount, classType, clevel, 0);
+		}
+	}
 }
 
 
-NPCSPELL** getSpellListForClass( NPC* npc, int classType ) {
-  NPCCLASS* c;
+NPCSPELL** getSpellListForClass(NPC* npc, int classType) {
+	NPCCLASS* c;
 
-  for( c = npc->classes; c != 0; c = c->next ) {
-    if( c->type == classType ) {
-      switch( c->type ) {
-        case pcWIZARD:
-          return ((NPCWIZARDDATA*)c->data)->spells;
-        case pcSORCERER:
-          return ((NPCSORCERERDATA*)c->data)->spells;
-        case pcBARD:
-          return ((NPCBARDDATA*)c->data)->spells;
-      }
-    }
-  }
+	for (c = npc->classes; c != 0; c = c->next) {
+		if (c->type == classType) {
+			switch (c->type) {
+			case pcWIZARD:
+				return ((NPCWIZARDDATA*)c->data)->spells;
+			case pcSORCERER:
+				return ((NPCSORCERERDATA*)c->data)->spells;
+			case pcBARD:
+				return ((NPCBARDDATA*)c->data)->spells;
+			}
+		}
+	}
 
-  return 0;
+	return 0;
 }
 
-int npcHasSpell( NPCSPELL** list, int spell, int level ) {
-  NPCSPELL* c;
+int npcHasSpell(NPCSPELL** list, int spell, int level) {
+	NPCSPELL* c;
 
-  for( c = list[ level ]; c != 0; c = c->next ) {
-    if( c->spell == spell ) {
-      return 1;
-    }
-  }
+	for (c = list[level]; c != 0; c = c->next) {
+		if (c->spell == spell) {
+			return 1;
+		}
+	}
 
-  return 0;
+	return 0;
 }
 
 
-void addAllSpellsOfLevelXToRepertoire( NPCCLASS* cls, int classType, int level ) {
-  char* next;
-  int   spell;
-  NPCWIZARDDATA *wiz;
-  int opposed = 0;
+void addAllSpellsOfLevelXToRepertoire(NPCCLASS* cls, int classType, int level) {
+	char* next;
+	int   spell;
+	NPCWIZARDDATA* wiz;
+	int opposed = 0;
 
-  if (cls->type == pcWIZARD) {
-	wiz = cls->data;
-	opposed = wiz->opposedSchoolsCheck;
-  }
+	if (cls->type == pcWIZARD) {
+		wiz = cls->data;
+		opposed = wiz->opposedSchoolsCheck;
+	}
 
-  spell = dndGetSpellOfLevel( classType, level, &next );
-  while( spell != 0 ) {
-	  if (!(dndGetSpellSchool(spell) & opposed)) {
-		addSpellToRepertoire( cls, spell, level );
-	  }
-	  spell = dndGetSpellOfLevel( 0, level, &next );
-  }
+	spell = dndGetSpellOfLevel(classType, level, &next);
+	while (spell != 0) {
+		if (!(dndGetSpellSchool(spell) & opposed)) {
+			addSpellToRepertoire(cls, spell, level);
+		}
+		spell = dndGetSpellOfLevel(0, level, &next);
+	}
 }
 
 
 /* puts two new spells into the caster's repertoire */
 
-void computeSpells( NPC* npc, int classType, int tlevel, int clevel ) {
-  int relevantAbility;
-  int slevel;
-  int count;
-  int knowable;
-  int currentCount;
-  int slotsAvail[10];
-  NPCSPELL** list;
-  NPCSPELL*  s;
-  NPCCLASS*  c;
-  WEIGHTEDLIST* wlist;
-  int total;
-  int spellsLeft;
-  char* next;
-  int spell;
-  int bonusSpells;
-  int sch;
-  int favmult;
-  NPCWIZARDDATA* wiz;
+void computeSpells(NPC* npc, int classType, int tlevel, int clevel) {
+	int relevantAbility;
+	int slevel;
+	int count;
+	int knowable;
+	int currentCount;
+	int slotsAvail[10];
+	NPCSPELL** list;
+	NPCSPELL* s;
+	NPCCLASS* c;
+	WEIGHTEDLIST* wlist;
+	int total;
+	int spellsLeft;
+	char* next;
+	int spell;
+	int bonusSpells;
+	int sch;
+	int favmult;
+	NPCWIZARDDATA* wiz;
 
-  /* only wizards, sorcerers, and bards need to worry about repertoires */
+	/* only wizards, sorcerers, and bards need to worry about repertoires */
 
-  if( classType != pcWIZARD && classType != pcSORCERER && classType != pcBARD ) {
-    return;
-  }
+	if (classType != pcWIZARD && classType != pcSORCERER && classType != pcBARD) {
+		return;
+	}
 
-  switch( classType ) {
-    case pcWIZARD:
-      relevantAbility = npc->intelligence;
-      break;
-    case pcSORCERER:
-    case pcBARD:
-      relevantAbility = npc->charisma;
-      break;
-  }
+	switch (classType) {
+	case pcWIZARD:
+		relevantAbility = npc->intelligence;
+		break;
+	case pcSORCERER:
+	case pcBARD:
+		relevantAbility = npc->charisma;
+		break;
+	}
 
-  /* get the spellcaster's current repertoire of spells */
+	/* get the spellcaster's current repertoire of spells */
 
-  list = getSpellListForClass( npc, classType );
-  c = npcGetClass( npc, classType );
+	list = getSpellListForClass(npc, classType);
+	c = npcGetClass(npc, classType);
 
-  if( ( classType == pcSORCERER ) || ( classType == pcBARD ) ) {
-    /* determine how many "slots" are available in the caster's repertoire,
-     * so that we can fill two of them */
-       
-    memset( slotsAvail, 0, sizeof( slotsAvail ) );
-    slevel = 0;
-    do {
-      count = dndGetSpellsPerDay( classType, clevel, slevel );
-      if( count == -1 ) {
-        break;
-      }
+	if ((classType == pcSORCERER) || (classType == pcBARD)) {
+		/* determine how many "slots" are available in the caster's repertoire,
+		 * so that we can fill two of them */
 
-      count += dndGetBonusSpellsPerDay( relevantAbility, slevel );
-      if( count < 1 ) {
-        break;
-      }
+		memset(slotsAvail, 0, sizeof(slotsAvail));
+		slevel = 0;
+		do {
+			count = dndGetSpellsPerDay(classType, clevel, slevel);
+			if (count == -1) {
+				break;
+			}
 
-      knowable = dndGetSpellsKnown( classType, clevel, slevel );
-      if( knowable < 0 ) {
-        break;
-      }
+			count += dndGetBonusSpellsPerDay(relevantAbility, slevel);
+			if (count < 1) {
+				break;
+			}
 
-      currentCount = 0;
-      for( s = list[ slevel ]; s != 0; s = s->next ) {
-        currentCount++;
-      }
+			knowable = dndGetSpellsKnown(classType, clevel, slevel);
+			if (knowable < 0) {
+				break;
+			}
 
-      if( currentCount < knowable ) {
-        slotsAvail[ slevel ] = knowable - currentCount;
-      }
+			currentCount = 0;
+			for (s = list[slevel]; s != 0; s = s->next) {
+				currentCount++;
+			}
 
-      slevel++;
+			if (currentCount < knowable) {
+				slotsAvail[slevel] = knowable - currentCount;
+			}
 
-      if( slevel > 10 + relevantAbility ) {
-        break;
-      }
-    } while( slevel < 10 );
+			slevel++;
 
-    /* build the weighted list of spells to choose from */
+			if (slevel > 10 + relevantAbility) {
+				break;
+			}
+		} while (slevel < 10);
 
-    for( slevel = 0; slevel < 10; slevel++ ) {
-      if( slotsAvail[ slevel ] > 0 ) {
-        wlist = 0;
-        total = 0;
-        spell = dndGetSpellOfLevel( classType, slevel, &next );
-        while( spell != 0 ) {
-          if( !npcHasSpell( list, spell, slevel ) ) {
-            total += addToWeightedList( &wlist, spell, getWeightingForSpell( classType, spell, npc->feats ) );
-          }
-          spell = dndGetSpellOfLevel( 0, slevel, &next );
-        }
-        if( wlist == 0 ) {
-          continue;
-        }
-        while( slotsAvail[ slevel ] > 0 ) {
-          spell = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-          addSpellToRepertoire( c, spell, slevel ); 
-          slotsAvail[ slevel ]--;
-        }
-        destroyWeightedList( &wlist );
-      }
-    }
-  } else { /* if classType == pcWIZARD */
-    const int odds[30] = { 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 
-                           1, 1, 1, 2, 2, 2, 2, 2, 3, 3,
-                           3, 3, 3, 3, 4, 4, 4, 4, 5, 5 };
-    if( clevel == 1 ) {
-      addAllSpellsOfLevelXToRepertoire( c, classType, 0 );
-      spellsLeft = 4;
-      bonusSpells = 0;
-    } else {
-      spellsLeft = 2;
-      bonusSpells = odds[ clevel + ( rand() % 11 ) - 1 ];
-    }
+		/* build the weighted list of spells to choose from */
 
-    knowable = relevantAbility - 10;
-    if( knowable > 9 ) {
-      knowable = 9;
-    }
+		for (slevel = 0; slevel < 10; slevel++) {
+			if (slotsAvail[slevel] > 0) {
+				wlist = 0;
+				total = 0;
+				spell = dndGetSpellOfLevel(classType, slevel, &next);
+				while (spell != 0) {
+					if (!npcHasSpell(list, spell, slevel)) {
+						total += addToWeightedList(&wlist, spell, getWeightingForSpell(classType, spell, npc->feats));
+					}
+					spell = dndGetSpellOfLevel(0, slevel, &next);
+				}
+				if (wlist == 0) {
+					continue;
+				}
+				while (slotsAvail[slevel] > 0) {
+					spell = getWeightedItem(&wlist, rollDice(1, total), &total);
+					addSpellToRepertoire(c, spell, slevel);
+					slotsAvail[slevel]--;
+				}
+				destroyWeightedList(&wlist);
+			}
+		}
+	}
+	else { /* if classType == pcWIZARD */
+		const int odds[30] = { 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+							   1, 1, 1, 2, 2, 2, 2, 2, 3, 3,
+							   3, 3, 3, 3, 4, 4, 4, 4, 5, 5 };
+		if (clevel == 1) {
+			addAllSpellsOfLevelXToRepertoire(c, classType, 0);
+			spellsLeft = 4;
+			bonusSpells = 0;
+		}
+		else {
+			spellsLeft = 2;
+			bonusSpells = odds[clevel + (rand() % 11) - 1];
+		}
 
-    if( knowable < 1 ) {
-      return;
-    }
+		knowable = relevantAbility - 10;
+		if (knowable > 9) {
+			knowable = 9;
+		}
 
-	wiz = c->data;
-    while( spellsLeft > 0 ) {
-      for( slevel = knowable; slevel > 0; slevel-- ) {
-        count = dndGetSpellsPerDay( classType, clevel, slevel );
-        if( count < 0 ) {
-          continue;
-        }
-        count += dndGetBonusSpellsPerDay( relevantAbility, slevel );
-        if( count < 1 ) {
-          continue;
-        }
+		if (knowable < 1) {
+			return;
+		}
 
-        wlist = 0;
-        total = 0;
-        spell = dndGetSpellOfLevel( classType, slevel, &next );
-        while( spell != 0 ) {
-		  sch = dndGetSpellSchool(spell);
-          if( !npcHasSpell( list, spell, slevel ) && !(sch & wiz->opposedSchoolsCheck)) {
-			if (sch & wiz->favoredSchool) favmult = 5;
-			else favmult = 1;
-            total += addToWeightedList( &wlist, spell, getWeightingForSpell( classType, spell, npc->feats ) * favmult );
-          }
-          spell = dndGetSpellOfLevel( 0, slevel, &next );
-        }
-        if( wlist == 0 ) {
-          continue;
-        }
-        while( spellsLeft > 0 ) {
-          spell = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-          addSpellToRepertoire( c, spell, slevel ); 
-          spellsLeft--;
-          if( wlist == 0 ) {
-            break;
-          }
-          if( ( slevel > 1 ) && ( rollDice( 1, 100 ) <= 10 ) ) {
-            break;
-          }
-        }
-        destroyWeightedList( &wlist );
-      }
-    }
-    while( bonusSpells > 0 ) {
-      for( slevel = rollDice( 1, knowable ); slevel <= knowable; slevel++ ) {
-        count = dndGetSpellsPerDay( classType, clevel, slevel );
-        if( count < 0 ) {
-          continue;
-        }
-        count += dndGetBonusSpellsPerDay( relevantAbility, slevel );
-        if( count < 1 ) {
-          continue;
-        }
+		wiz = c->data;
+		while (spellsLeft > 0) {
+			for (slevel = knowable; slevel > 0; slevel--) {
+				count = dndGetSpellsPerDay(classType, clevel, slevel);
+				if (count < 0) {
+					continue;
+				}
+				count += dndGetBonusSpellsPerDay(relevantAbility, slevel);
+				if (count < 1) {
+					continue;
+				}
 
-        wlist = 0;
-        total = 0;
-        spell = dndGetSpellOfLevel( classType, slevel, &next );
-        while( spell != 0 ) {
-		  sch = dndGetSpellSchool(spell);
-          if( !npcHasSpell( list, spell, slevel ) && !(sch & wiz->opposedSchoolsCheck) ) {
-			if (sch & wiz->favoredSchool) favmult = 5;
-			else favmult = 1;
-            total += addToWeightedList( &wlist, spell, getWeightingForSpell( classType, spell, npc->feats ) * favmult );
-          }
-          spell = dndGetSpellOfLevel( 0, slevel, &next );
-        }
-        if( wlist == 0 ) {
-          continue;
-        }
-        while( bonusSpells > 0 ) {
-          spell = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-          addSpellToRepertoire( c, spell, slevel ); 
-          bonusSpells--;
-          if( wlist == 0 ) {
-            break;
-          }
-          if( rollDice( 1, 100 ) <= 50 ) {
-            break;
-          }
-        }
-        destroyWeightedList( &wlist );
-      }
-    }
-  }
+				wlist = 0;
+				total = 0;
+				spell = dndGetSpellOfLevel(classType, slevel, &next);
+				while (spell != 0) {
+					sch = dndGetSpellSchool(spell);
+					if (!npcHasSpell(list, spell, slevel) && !(sch & wiz->opposedSchoolsCheck)) {
+						if (sch & wiz->favoredSchool) favmult = 5;
+						else favmult = 1;
+						total += addToWeightedList(&wlist, spell, getWeightingForSpell(classType, spell, npc->feats) * favmult);
+					}
+					spell = dndGetSpellOfLevel(0, slevel, &next);
+				}
+				if (wlist == 0) {
+					continue;
+				}
+				while (spellsLeft > 0) {
+					spell = getWeightedItem(&wlist, rollDice(1, total), &total);
+					addSpellToRepertoire(c, spell, slevel);
+					spellsLeft--;
+					if (wlist == 0) {
+						break;
+					}
+					if ((slevel > 1) && (rollDice(1, 100) <= 10)) {
+						break;
+					}
+				}
+				destroyWeightedList(&wlist);
+			}
+		}
+		while (bonusSpells > 0) {
+			for (slevel = rollDice(1, knowable); slevel <= knowable; slevel++) {
+				count = dndGetSpellsPerDay(classType, clevel, slevel);
+				if (count < 0) {
+					continue;
+				}
+				count += dndGetBonusSpellsPerDay(relevantAbility, slevel);
+				if (count < 1) {
+					continue;
+				}
+
+				wlist = 0;
+				total = 0;
+				spell = dndGetSpellOfLevel(classType, slevel, &next);
+				while (spell != 0) {
+					sch = dndGetSpellSchool(spell);
+					if (!npcHasSpell(list, spell, slevel) && !(sch & wiz->opposedSchoolsCheck)) {
+						if (sch & wiz->favoredSchool) favmult = 5;
+						else favmult = 1;
+						total += addToWeightedList(&wlist, spell, getWeightingForSpell(classType, spell, npc->feats) * favmult);
+					}
+					spell = dndGetSpellOfLevel(0, slevel, &next);
+				}
+				if (wlist == 0) {
+					continue;
+				}
+				while (bonusSpells > 0) {
+					spell = getWeightedItem(&wlist, rollDice(1, total), &total);
+					addSpellToRepertoire(c, spell, slevel);
+					bonusSpells--;
+					if (wlist == 0) {
+						break;
+					}
+					if (rollDice(1, 100) <= 50) {
+						break;
+					}
+				}
+				destroyWeightedList(&wlist);
+			}
+		}
+	}
 }
 
 
-void computeUpdatedAbilities( NPC* npc, int classType, int tlevel, int clevel ) {
-  int odds[10] = { 0, 0, 0, 0, 0, 0, 0, 1, 1, 2 };
-  int i;
+void computeUpdatedAbilities(NPC* npc, int classType, int tlevel, int clevel) {
+	int odds[10] = { 0, 0, 0, 0, 0, 0, 0, 1, 1, 2 };
+	int i;
 
-  if( tlevel % 4 == 0 ) {
-    i = lookupAbility( classType, odds[ rand() % 10 ] );
-    switch( i ) {
-      case abSTRENGTH: npc->strength++; break;
-      case abDEXTERITY: npc->dexterity++; break;
-      case abCONSTITUTION: npc->constitution++; break;
-      case abINTELLIGENCE: npc->intelligence++; break;
-      case abWISDOM: npc->wisdom++; break;
-      case abCHARISMA: npc->charisma++; break;
-    }
-  }
+	if (tlevel % 4 == 0) {
+		i = lookupAbility(classType, odds[rand() % 10]);
+		switch (i) {
+		case abSTRENGTH: npc->strength++; break;
+		case abDEXTERITY: npc->dexterity++; break;
+		case abCONSTITUTION: npc->constitution++; break;
+		case abINTELLIGENCE: npc->intelligence++; break;
+		case abWISDOM: npc->wisdom++; break;
+		case abCHARISMA: npc->charisma++; break;
+		}
+	}
 
-  computeSkills( npc, classType, tlevel, clevel );
-  computeFeats( npc, classType, tlevel, clevel );
-  computeSpells( npc, classType, tlevel, clevel );
+	computeSkills(npc, classType, tlevel, clevel);
+	computeFeats(npc, classType, tlevel, clevel);
+	computeSpells(npc, classType, tlevel, clevel);
 }
 
 
-static void generateNPCHeightWeight( NPC* npc ) {
-  DNDRACIALHEIGHTWEIGHT data;
-  int rc;
-  int hmod;
-  int wmod;
+static void generateNPCHeightWeight(NPC* npc) {
+	DNDRACIALHEIGHTWEIGHT data;
+	int rc;
+	int hmod;
+	int wmod;
 
-  rc = dndGetRacialHeightWeight( npc->race, npc->gender, &data );
-  if( !rc ) {
-    return;
-  }
+	rc = dndGetRacialHeightWeight(npc->race, npc->gender, &data);
+	if (!rc) {
+		return;
+	}
 
-  npc->height_ft = data.baseHeight_Feet;
-  npc->height_in = data.baseHeight_Inches;
-  npc->weight = data.baseWeight;
+	npc->height_ft = data.baseHeight_Feet;
+	npc->height_in = data.baseHeight_Inches;
+	npc->weight = data.baseWeight;
 
-  hmod = rollDice( data.heightModDieCount, data.heightModDie );
-  for( rc = 0; rc < hmod; rc++ ) {
-    if( npc->height_in == 11 ) {
-      npc->height_ft++;
-      npc->height_in = 0;
-    } else {
-      npc->height_in++;
-    }
-  }
+	hmod = rollDice(data.heightModDieCount, data.heightModDie);
+	for (rc = 0; rc < hmod; rc++) {
+		if (npc->height_in == 11) {
+			npc->height_ft++;
+			npc->height_in = 0;
+		}
+		else {
+			npc->height_in++;
+		}
+	}
 
-  wmod = rollDice( data.weightModDieCount, data.weightModDie ) * hmod;
-  npc->weight += wmod;
+	wmod = rollDice(data.weightModDieCount, data.weightModDie) * hmod;
+	npc->weight += wmod;
 }
 
 
-static int stepsRemoved( int alignment, int from ) {
-  const int lc = alLAWFUL | alLCNEUTRAL | alCHAOTIC;
-  const int ge = alGOOD | alGENEUTRAL | alEVIL;
-  int lc_align;
-  int ge_align;
-  int lc_alignfrom;
-  int ge_alignfrom;
-  int steps;
+static int stepsRemoved(int alignment, int from) {
+	const int lc = alLAWFUL | alLCNEUTRAL | alCHAOTIC;
+	const int ge = alGOOD | alGENEUTRAL | alEVIL;
+	int lc_align;
+	int ge_align;
+	int lc_alignfrom;
+	int ge_alignfrom;
+	int steps;
 
-  steps = 0;
+	steps = 0;
 
-  if( ( alignment == 0 ) || ( from == 0 ) ) {
-    return steps;
-  }
+	if ((alignment == 0) || (from == 0)) {
+		return steps;
+	}
 
-  lc_align = alignment & lc;
-  lc_alignfrom = from & lc;
+	lc_align = alignment & lc;
+	lc_alignfrom = from & lc;
 
-  ge_align = alignment & ge;
-  ge_alignfrom = from & ge;
+	ge_align = alignment & ge;
+	ge_alignfrom = from & ge;
 
-  if( ( lc_align != 0 ) && ( lc_alignfrom != 0 ) ) {
-    switch( lc_align ) {
-      case alLAWFUL:
-        switch( lc_alignfrom ) {
-          case alLAWFUL: break;
-          case alLCNEUTRAL: steps += 1; break;
-          case alCHAOTIC: steps += 2; break;            
-        }
-        break;
-      case alLCNEUTRAL:
-        switch( lc_alignfrom ) {
-          case alLAWFUL: steps += 1; break;
-          case alLCNEUTRAL: break;
-          case alCHAOTIC: steps += 1; break;            
-        }
-        break;
-      case alCHAOTIC:
-        switch( lc_alignfrom ) {
-          case alLAWFUL: steps += 2; break;
-          case alLCNEUTRAL: steps += 1; break;
-          case alCHAOTIC: break;            
-        }
-        break;
-    }
-  }
+	if ((lc_align != 0) && (lc_alignfrom != 0)) {
+		switch (lc_align) {
+		case alLAWFUL:
+			switch (lc_alignfrom) {
+			case alLAWFUL: break;
+			case alLCNEUTRAL: steps += 1; break;
+			case alCHAOTIC: steps += 2; break;
+			}
+			break;
+		case alLCNEUTRAL:
+			switch (lc_alignfrom) {
+			case alLAWFUL: steps += 1; break;
+			case alLCNEUTRAL: break;
+			case alCHAOTIC: steps += 1; break;
+			}
+			break;
+		case alCHAOTIC:
+			switch (lc_alignfrom) {
+			case alLAWFUL: steps += 2; break;
+			case alLCNEUTRAL: steps += 1; break;
+			case alCHAOTIC: break;
+			}
+			break;
+		}
+	}
 
-  if( ( ge_align != 0 ) && ( ge_alignfrom != 0 ) ) {
-    switch( ge_align ) {
-      case alGOOD:
-        switch( ge_alignfrom ) {
-          case alGOOD: break;
-          case alGENEUTRAL: steps += 2; break;
-          case alEVIL: steps += 4; break;            
-        }
-        break;
-      case alGENEUTRAL:
-        switch( ge_alignfrom ) {
-          case alGOOD: steps += 2; break;
-          case alGENEUTRAL: break;
-          case alEVIL: steps += 2; break;            
-        }
-        break;
-      case alEVIL:
-        switch( ge_alignfrom ) {
-          case alGOOD: steps += 4; break;
-          case alGENEUTRAL: steps += 2; break;
-          case alEVIL: break;            
-        }
-        break;
-    }
-  }
+	if ((ge_align != 0) && (ge_alignfrom != 0)) {
+		switch (ge_align) {
+		case alGOOD:
+			switch (ge_alignfrom) {
+			case alGOOD: break;
+			case alGENEUTRAL: steps += 2; break;
+			case alEVIL: steps += 4; break;
+			}
+			break;
+		case alGENEUTRAL:
+			switch (ge_alignfrom) {
+			case alGOOD: steps += 2; break;
+			case alGENEUTRAL: break;
+			case alEVIL: steps += 2; break;
+			}
+			break;
+		case alEVIL:
+			switch (ge_alignfrom) {
+			case alGOOD: steps += 4; break;
+			case alGENEUTRAL: steps += 2; break;
+			case alEVIL: break;
+			}
+			break;
+		}
+	}
 
-  return steps;
+	return steps;
 }
 
 
-static void freeClassData( NPCCLASS* c ) {
-  NPCSPELL** list;
-  NPCSPELL*  i;
-  NPCSPELL*  n;
-  int        levels;
-  int        j;
+static void freeClassData(NPCCLASS* c) {
+	NPCSPELL** list;
+	NPCSPELL* i;
+	NPCSPELL* n;
+	int        levels;
+	int        j;
 
-  list = 0;
+	list = 0;
 
-  switch( c->type ) {
-    case pcBARD:
-      list = ((NPCBARDDATA*)(c->data))->spells;
-      levels = 7;
-      break;
-    case pcSORCERER:
-      list = ((NPCSORCERERDATA*)(c->data))->spells;
-      levels = 10;
-      break;
-    case pcWIZARD:
-      list = ((NPCWIZARDDATA*)(c->data))->spells;
-      levels = 10;
-      break;
-  }
+	switch (c->type) {
+	case pcBARD:
+		list = ((NPCBARDDATA*)(c->data))->spells;
+		levels = 7;
+		break;
+	case pcSORCERER:
+		list = ((NPCSORCERERDATA*)(c->data))->spells;
+		levels = 10;
+		break;
+	case pcWIZARD:
+		list = ((NPCWIZARDDATA*)(c->data))->spells;
+		levels = 10;
+		break;
+	}
 
-  if( list != 0 ) {
-    for( j = 0; j < levels; j++ ) {
-      i = list[ j ];
-      while( i != 0 ) {
-        n = i->next;
-        free( i );
-        i = n;
-      }
-    }
-  }
+	if (list != 0) {
+		for (j = 0; j < levels; j++) {
+			i = list[j];
+			while (i != 0) {
+				n = i->next;
+				free(i);
+				i = n;
+			}
+		}
+	}
 }
 
 
-void npcDestroyNPC( NPC* npc ) {
-  NPCCLASS* cli;
-  NPCFEAT*  fti;
-  NPCSKILL* ski;
-  NPCCLASS* cln;
-  NPCFEAT*  ftn;
-  NPCSKILL* skn;
+void npcDestroyNPC(NPC* npc) {
+	NPCCLASS* cli;
+	NPCFEAT* fti;
+	NPCSKILL* ski;
+	NPCCLASS* cln;
+	NPCFEAT* ftn;
+	NPCSKILL* skn;
 
-  free( npc->name );
+	free(npc->name);
 
-  cli = npc->classes;
-  while( cli != 0 ) {
-    cln = cli->next;
-    freeClassData( cli );
-    free( cli );
-    cli = cln;
-  }
+	cli = npc->classes;
+	while (cli != 0) {
+		cln = cli->next;
+		freeClassData(cli);
+		free(cli);
+		cli = cln;
+	}
 
-  fti = npc->feats;
-  while( fti != 0 ) {
-    ftn = fti->next;
-    if( fti->data != 0 ) {
-      free( fti->data );
-    }
-    free( fti );
-    fti = ftn;
-  }
+	fti = npc->feats;
+	while (fti != 0) {
+		ftn = fti->next;
+		if (fti->data != 0) {
+			free(fti->data);
+		}
+		free(fti);
+		fti = ftn;
+	}
 
-  ski = npc->skills;
-  while( ski != 0 ) {
-    skn = ski->next;
-    if( ski->data != 0 ) {
-      free( ski->data );
-    }
-    free( ski );
-    ski = skn;
-  }
+	ski = npc->skills;
+	while (ski != 0) {
+		skn = ski->next;
+		if (ski->data != 0) {
+			free(ski->data);
+		}
+		free(ski);
+		ski = skn;
+	}
 
-  free( npc );
+	free(npc);
 }
 
 
-int npcGetBaseClassAttack( NPC* npc ) {
-  NPCCLASS* cls;
-  int       total;
+int npcGetBaseClassAttack(NPC* npc) {
+	NPCCLASS* cls;
+	int       total;
 
-  total = 0;
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    total += dndGetClassAttackBonus( cls->type, cls->level );
-  }
+	total = 0;
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		total += dndGetClassAttackBonus(cls->type, cls->level);
+	}
 
-  return total; 
+	return total;
 }
 
 
-int npcGetBaseAttack( NPC* npc ) {
-  int       total;
+int npcGetBaseAttack(NPC* npc) {
+	int       total;
 
-  total  = npcGetBaseClassAttack( npc );  
-  total += dndGetRaceBonus( npc->race, npc->gender, rbtATTACK, 0 );
+	total = npcGetBaseClassAttack(npc);
+	total += dndGetRaceBonus(npc->race, npc->gender, rbtATTACK, 0);
 
-  return total; 
+	return total;
 }
 
 
-int npcHasClass( NPC* npc, int classType ) {
-  NPCCLASS* cls;
+int npcHasClass(NPC* npc, int classType) {
+	NPCCLASS* cls;
 
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    if( cls->type == classType ) {
-      return 1;
-    }
-  }
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		if (cls->type == classType) {
+			return 1;
+		}
+	}
 
-  return 0;
+	return 0;
 }
 
 
-NPCCLASS* npcGetClass( NPC* npc, int classType ) {
-  NPCCLASS* c;
+NPCCLASS* npcGetClass(NPC* npc, int classType) {
+	NPCCLASS* c;
 
-  for( c = npc->classes; c != 0; c = c->next ) {
-    if( c->type == classType ) {
-      return c;
-    }
-  }
+	for (c = npc->classes; c != 0; c = c->next) {
+		if (c->type == classType) {
+			return c;
+		}
+	}
 
-  return 0;
+	return 0;
 }
 
 
-int npcGetBaseFortitudeSave( NPC* npc ) {
-  NPCCLASS* cls;
-  int       total;
+int npcGetBaseFortitudeSave(NPC* npc) {
+	NPCCLASS* cls;
+	int       total;
 
-  total = 0;
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    total += dndGetFortitudeSave( cls->type, cls->level );
-  }
-  
-  return total; 
+	total = 0;
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		total += dndGetFortitudeSave(cls->type, cls->level);
+	}
+
+	return total;
 }
 
 
-int npcGetBaseReflexSave( NPC* npc ) {
-  NPCCLASS* cls;
-  int       total;
+int npcGetBaseReflexSave(NPC* npc) {
+	NPCCLASS* cls;
+	int       total;
 
-  total = 0;
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    total += dndGetReflexSave( cls->type, cls->level );
-  }
-  
-  return total; 
+	total = 0;
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		total += dndGetReflexSave(cls->type, cls->level);
+	}
+
+	return total;
 }
 
 
-int npcGetBaseWillSave( NPC* npc ) {
-  NPCCLASS* cls;
-  int       total;
+int npcGetBaseWillSave(NPC* npc) {
+	NPCCLASS* cls;
+	int       total;
 
-  total = 0;
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    total += dndGetWillSave( cls->type, cls->level );
-  }
-  
-  return total; 
+	total = 0;
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		total += dndGetWillSave(cls->type, cls->level);
+	}
+
+	return total;
 }
 
 
-int npcClassCount( NPC* npc ) {
-  NPCCLASS* cls;
-  int total;
+int npcClassCount(NPC* npc) {
+	NPCCLASS* cls;
+	int total;
 
-  total = 0;
+	total = 0;
 
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    total++;
-  }
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		total++;
+	}
 
-  return total;
+	return total;
 }
 
 
-int npcGetCharacterLevel( NPC* npc ) {
-  NPCCLASS* cls;
-  int total;
+int npcGetCharacterLevel(NPC* npc) {
+	NPCCLASS* cls;
+	int total;
 
-  total = 0;
+	total = 0;
 
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    total += cls->level;
-  }
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		total += cls->level;
+	}
 
-  return total;
+	return total;
 }
 
 
-void npcDestroyComponentBreakdown( NPCCOMPBREAKDOWN* breakdown ) {
-  NPCCOMPBREAKDOWN* n;
-  NPCCOMPBREAKDOWN* i;
+void npcDestroyComponentBreakdown(NPCCOMPBREAKDOWN* breakdown) {
+	NPCCOMPBREAKDOWN* n;
+	NPCCOMPBREAKDOWN* i;
 
-  i = breakdown;
-  while( i != 0 ) {
-    n = i->next;
-    free( i );
-    i = n;
-  }
+	i = breakdown;
+	while (i != 0) {
+		n = i->next;
+		free(i);
+		i = n;
+	}
 }
 
 
-static NPCCOMPBREAKDOWN* s_newBreakdownItem( int comp, int data1, int data2 ) {
-  NPCCOMPBREAKDOWN* bd;
+static NPCCOMPBREAKDOWN* s_newBreakdownItem(int comp, int data1, int data2) {
+	NPCCOMPBREAKDOWN* bd;
 
-  bd = (NPCCOMPBREAKDOWN*)malloc( sizeof( NPCCOMPBREAKDOWN ) );
-  memset( bd, 0, sizeof( *bd ) );
+	bd = (NPCCOMPBREAKDOWN*)malloc(sizeof(NPCCOMPBREAKDOWN));
+	memset(bd, 0, sizeof(*bd));
 
-  bd->component = comp;
-  bd->data1 = data1;
-  bd->data2 = data2;
+	bd->component = comp;
+	bd->data1 = data1;
+	bd->data2 = data2;
 
-  return bd;
+	return bd;
 }
 
 
-int npcComputeActualAC( NPC* npc, NPCCOMPBREAKDOWN** breakdown ) {
-  NPCCOMPBREAKDOWN** b;
-  int ac;
-  int mod;
+int npcComputeActualAC(NPC* npc, NPCCOMPBREAKDOWN** breakdown) {
+	NPCCOMPBREAKDOWN** b;
+	int ac;
+	int mod;
 
-  if( breakdown != 0 ) {
-    b = breakdown;
-    *b = 0;
-  }
+	if (breakdown != 0) {
+		b = breakdown;
+		*b = 0;
+	}
 
-  ac = 10;
-  
-  mod = dndGetAbilityBonus( npc->dexterity );
-  if( mod != 0 ) {
-    ac += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtABILITYSCORE, abDEXTERITY, mod );
-      b = &((*b)->next);
-    }
-  }
+	ac = 10;
 
-  if( npcHasClass( npc, pcMONK ) ) {
-    NPCCLASS *cls;
+	mod = dndGetAbilityBonus(npc->dexterity);
+	if (mod != 0) {
+		ac += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtABILITYSCORE, abDEXTERITY, mod);
+			b = &((*b)->next);
+		}
+	}
 
-    mod = dndGetAbilityBonus( npc->wisdom );
-    if( mod != 0 ) {
-      ac += mod;
-      if( breakdown != 0 ) {
-        *b = s_newBreakdownItem( bdtABILITYSCORE, abWISDOM, mod );
-        b = &((*b)->next);
-      }
-    }
+	if (npcHasClass(npc, pcMONK)) {
+		NPCCLASS* cls;
 
-    cls = npcGetClass( npc, pcMONK );
-    mod = cls->level / 5;
-    if( mod > 0 ) {
-      ac += mod;
-      if( breakdown != 0 ) {
-        *b = s_newBreakdownItem( bdtCLASS, pcMONK, mod );
-        b = &((*b)->next);
-      }
-    }
-  }
+		mod = dndGetAbilityBonus(npc->wisdom);
+		if (mod != 0) {
+			ac += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtABILITYSCORE, abWISDOM, mod);
+				b = &((*b)->next);
+			}
+		}
 
-  mod = dndGetSizeACMod( dndGetRaceSize( npc->race ) );
-  if( mod != 0 ) {
-    ac += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtSIZE, mod, 0 );
-      b = &((*b)->next);
-    }
-  }
+		cls = npcGetClass(npc, pcMONK);
+		mod = cls->level / 5;
+		if (mod > 0) {
+			ac += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtCLASS, pcMONK, mod);
+				b = &((*b)->next);
+			}
+		}
+	}
 
-  mod = dndGetRaceBonus( npc->race, npc->gender, rbtARMORCLASS, 0 );
-  if( mod != 0 ) {
-    ac += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtNATURAL, mod, 0 );
-      b = &((*b)->next);
-    }
-  }
+	mod = dndGetSizeACMod(dndGetRaceSize(npc->race));
+	if (mod != 0) {
+		ac += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtSIZE, mod, 0);
+			b = &((*b)->next);
+		}
+	}
 
-  return ac;
+	mod = dndGetRaceBonus(npc->race, npc->gender, rbtARMORCLASS, 0);
+	if (mod != 0) {
+		ac += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtNATURAL, mod, 0);
+			b = &((*b)->next);
+		}
+	}
+
+	return ac;
 }
 
 
-int npcHasFeat( NPC* npc, int featType, int featSubType ) {
-  NPCFEAT *feat;
-  NPCFEATSCHOOL* nfsch;
+int npcHasFeat(NPC* npc, int featType, int featSubType) {
+	NPCFEAT* feat;
+	NPCFEATSCHOOL* nfsch;
 
-  for( feat = npc->feats; feat != 0; feat = feat->next ) {
-    if( feat->type == featType ) {
-		if (featSubType != 0) {
-			switch (featType) {
+	for (feat = npc->feats; feat != 0; feat = feat->next) {
+		if (feat->type == featType) {
+			if (featSubType != 0) {
+				switch (featType) {
 				case ftSPELLFOCUS:
 					nfsch = feat->data;
 					if (nfsch->school == featSubType) return 1;
 					break;
+				}
 			}
-		} else return 1;
-    }
-  }
-
-  return 0;
-}
-
-
-int npcComputeActualInitiative( NPC* npc, NPCCOMPBREAKDOWN** breakdown ) {
-  NPCCOMPBREAKDOWN** b;
-  int init;
-  int mod;
-
-  if( breakdown != 0 ) {
-    b = breakdown;
-    *b = 0;
-  }
-
-  init = 0;
-  
-  mod = dndGetAbilityBonus( npc->dexterity );
-  if( mod != 0 ) {
-    init += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtABILITYSCORE, abDEXTERITY, mod );
-      b = &((*b)->next);
-    }
-  }
-
-  if( npcHasFeat( npc, ftIMPROVEDINITIATIVE, 0 ) ) {
-    init += 4;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtFEAT, ftIMPROVEDINITIATIVE, 4 );
-      b = &((*b)->next);
-    }
-  }
-
-  return init;
-}
-
-
-char* npcBuildComponentBreakdownDescription( NPCCOMPBREAKDOWN* breakdown, 
-                                             char* buffer, 
-                                             int len )
-{
-  char temp1[ 100 ];
-  char temp2[ 100 ];
-  NPCCOMPBREAKDOWN* i;
-  int parens;
-  int pos;
-
-  *buffer = 0;
-  pos = 0;
-  parens = 0;
-
-  for( i = breakdown; i != 0; i = i->next ) {
-    if( pos + 2 >= len ) {
-      break;
-    }
-
-    if( !parens ) {
-      strcat( buffer, "(" );
-      pos++;
-      parens = 1;
-    } else {
-      strcat( buffer, ", " );
-      pos += 2;
-    }
-
-    switch( i->component ) {
-      case bdtABILITYSCORE:
-        strcpy( temp1, dndGetAbilityName( i->data1 ) );
-        temp1[0] = toupper( temp1[0] );
-        temp1[3] = 0;
-        sprintf( temp2, "%+d %s", i->data2, temp1 );
-        strncpy( &(buffer[pos]), temp2, len - pos );
-        pos += strlen( temp2 );
-        break;
-      case bdtBASE:
-        sprintf( temp1, "%+d Base", i->data1 );
-        strncpy( &(buffer[pos]), temp1, len - pos );
-        pos += strlen( temp1 );
-        break;
-      case bdtSIZE:
-        sprintf( temp1, "%+d Size", i->data1 );
-        strncpy( &(buffer[pos]), temp1, len - pos );
-        pos += strlen( temp1 );
-        break;
-      case bdtRANK:
-        sprintf( temp1, "%+d Rank", i->data1 );
-        strncpy( &(buffer[pos]), temp1, len - pos );
-        pos += strlen( temp1 );
-        break;
-      case bdtHALFRANK:
-        sprintf( temp1, "%+g Rank", i->data1 / 2.0 );
-        strncpy( &(buffer[pos]), temp1, len - pos );
-        pos += strlen( temp1 );
-        break;
-      case bdtFOCUS:
-        sprintf( temp1, "%+d Focus", i->data1 );
-        strncpy( &(buffer[pos]), temp1, len - pos );
-        pos += strlen( temp1 );
-        break;
-      case bdtRACIAL:
-        sprintf( temp1, "%+d Racial", i->data1 );
-        strncpy( &(buffer[pos]), temp1, len - pos );
-        pos += strlen( temp1 );
-        break;
-      case bdtNATURAL:
-        sprintf( temp1, "%+d Natural", i->data1 );
-        strncpy( &(buffer[pos]), temp1, len - pos );
-        pos += strlen( temp1 );
-        break;
-      case bdtARMOR:
-        sprintf( temp1, "%+d Armor", i->data1 );
-        strncpy( &(buffer[pos]), temp1, len - pos );
-        pos += strlen( temp1 );
-        break;
-      case bdtFEAT:
-        strcpy( temp1, dndGetFeatName( i->data1 ) );
-        temp1[0] = toupper( temp1[0] );
-        sprintf( temp2, "%+d %s", 
-                 i->data2,
-                 temp1 );
-        strncpy( &(buffer[pos]), temp2, len - pos );
-        pos += strlen( temp2 );
-        break;
-      case bdtCLASS:
-        strcpy( temp1, dndGetClassAbbr( i->data1 ) );
-        temp1[0] = toupper( temp1[0] );
-        sprintf( temp2, "%+d %s", 
-                 i->data2,
-                 temp1 );
-        strncpy( &(buffer[pos]), temp2, len - pos );
-        pos += strlen( temp2 );
-        break;
-    }
-  }
-
-  if( ( pos < len - 1 ) && ( parens ) ) {
-    strcat( buffer, ")" );
-  }    
-
-  return buffer;
-}
-
-
-int npcComputeActualSave( NPC* npc, int save, NPCCOMPBREAKDOWN** breakdown ) {
-  NPCCOMPBREAKDOWN** b;
-  int base;
-  int mod;
-  int ability;
-
-  if( breakdown != 0 ) {
-    b = breakdown;
-    *b = 0;
-  }
-
-  base = 0;
-  switch( save ) {
-    case svFORTITUDE:
-      mod = npcGetBaseFortitudeSave( npc );
-      break;
-    case svREFLEX:
-      mod = npcGetBaseReflexSave( npc );
-      break;
-    case svWILL:
-      mod = npcGetBaseWillSave( npc );
-      break;
-  }
-  
-  base += mod;
-  if( breakdown != 0 ) {
-    *b = s_newBreakdownItem( bdtBASE, mod, 0 );
-    b = &((*b)->next);
-  }
-
-  switch( save ) {
-    case svFORTITUDE:
-      ability = abCONSTITUTION;
-      mod = dndGetAbilityBonus( npc->constitution );
-      break;
-    case svREFLEX:
-      ability = abDEXTERITY;
-      mod = dndGetAbilityBonus( npc->dexterity );
-      break;
-    case svWILL:
-      ability = abWISDOM;
-      mod = dndGetAbilityBonus( npc->wisdom );
-      break;
-  }
-
-  if( mod != 0 ) {
-    base += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtABILITYSCORE, ability, mod );
-      b = &((*b)->next);
-    }
-  }
-
-  if( npcHasClass( npc, pcPALADIN ) ) {
-	NPCCLASS *cls = npcGetClass( npc, pcPALADIN );
-	if (cls->level > 1) {
-		mod = dndGetAbilityBonus( npc->charisma );
-		if( mod > 0 ) {
-		  base += mod;
-		  if( breakdown != 0 ) {
-			*b = s_newBreakdownItem( bdtABILITYSCORE, abCHARISMA, mod );
-			b = &((*b)->next);
-		  }
+			else return 1;
 		}
 	}
-  }
-    
-  switch( save ) {
-    case svFORTITUDE:
-      ability = ftGREATFORTITUDE;
-      break;
-    case svREFLEX:
-      ability = ftLIGHTNINGREFLEXES;
-      break;
-    case svWILL:
-      ability = ftIRONWILL;
-      break;
-  }
 
-  if( npcHasFeat( npc, ability, 0 ) ) {
-    base += 2;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtFEAT, ability, 2 );
-      b = &((*b)->next);
-    }
-  }
-
-  mod = dndGetRaceBonus( npc->race, npc->gender, rbtSAVINGTHROW, save );
-  if( mod != 0 ) {
-    base += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtRACIAL, mod, 0 );
-      b = &((*b)->next);
-    }
-  }
-
-  return base;
+	return 0;
 }
 
 
-int npcHasSkill( NPC* npc, int skillType ) {
-  NPCSKILL *skill;
+int npcComputeActualInitiative(NPC* npc, NPCCOMPBREAKDOWN** breakdown) {
+	NPCCOMPBREAKDOWN** b;
+	int init;
+	int mod;
 
-  for( skill = npc->skills; skill != 0; skill = skill->next ) {
-    if( skill->type == skillType ) {
-      return 1;
-    }
-  }
-
-  return 0;
-}
-
-
-int npcComputeActualAttack( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdown ) {
-  NPCCOMPBREAKDOWN** b;
-  int base;
-  int mod;
-  int ability;
-
-  if( breakdown != 0 ) {
-    b = breakdown;
-    *b = 0;
-  }
-
-  base = 0;
-
-  mod = npcGetBaseClassAttack( npc );
-  base += mod;
-  if( breakdown != 0 ) {
-    *b = s_newBreakdownItem( bdtBASE, mod, 0 );
-    b = &((*b)->next);
-  }
-
-  switch( type ) {
-    case attMELEE:
-      ability = abSTRENGTH;
-      mod = dndGetAbilityBonus( npc->strength );
-      break;
-    case attRANGED:
-      ability = abDEXTERITY;
-      mod = dndGetAbilityBonus( npc->dexterity );
-      break;
-  }
-
-  if( mod != 0 ) {
-    base += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtABILITYSCORE, ability, mod );
-      b = &((*b)->next);
-    }
-  }
-
-  mod = dndGetSizeACMod( dndGetRaceSize( npc->race ) );
-  if( mod != 0 ) {
-    base += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtSIZE, mod, 0 );
-      b = &((*b)->next);
-    }
-  }
-
-  mod = dndGetRaceBonus( npc->race, npc->gender, rbtATTACK, 0 );
-  if( mod != 0 ) {
-    base += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtRACIAL, mod, 0 );
-      b = &((*b)->next);
-    }
-  }
-    
-  return base;
-}
-
-
-NPCSKILL* npcGetSkill( NPC* npc, int skillType ) {
-  NPCSKILL* c;
-
-  for( c = npc->skills; c != 0; c = c->next ) {
-    if( c->type == skillType ) {
-      return c;
-    }
-  }
-
-  return 0;
-}
-
-
-float npcComputeActualSkillBonus( NPC* npc, int type, NPCCOMPBREAKDOWN** breakdown ) {
-  NPCCOMPBREAKDOWN** b;
-  NPCSKILL* skill;
-  float base;
-  int mod;
-  int ability;
-  int data;
-
-  if( breakdown != 0 ) {
-    b = breakdown;
-    *b = 0;
-  }
-
-  base = 0;
-
-  skill = npcGetSkill( npc, type );
-  if( skill != 0 ) {
-    if( skill->rank - (int)skill->rank < 0.5 ) {
-      mod = (int)skill->rank;
-      data = bdtRANK;
-    } else {
-      mod = (int)( skill->rank * 2 );
-      data = bdtHALFRANK;
-    }
-    if( mod != 0 ) {
-      base += skill->rank;
-      if( breakdown != 0 ) {
-        *b = s_newBreakdownItem( data, mod, 0 );
-        b = &((*b)->next);
-      }
-    }
-  }
-
-  ability = dndGetSkillAbility( type );
-  switch( ability ) {
-    case abSTRENGTH:
-      mod = dndGetAbilityBonus( npc->strength );
-      break;
-    case abDEXTERITY:
-      mod = dndGetAbilityBonus( npc->dexterity );
-      break;
-    case abCONSTITUTION:
-      mod = dndGetAbilityBonus( npc->constitution );
-      break;
-    case abINTELLIGENCE:
-      mod = dndGetAbilityBonus( npc->intelligence );
-      break;
-    case abWISDOM:
-      mod = dndGetAbilityBonus( npc->wisdom );
-      break;
-    case abCHARISMA:
-      mod = dndGetAbilityBonus( npc->charisma );
-      break;
-    case abNONE:
-      mod = 0;
-      break;
-  }
-
-  if( mod != 0 ) {
-    base += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtABILITYSCORE, ability, mod );
-      b = &((*b)->next);
-    }
-  }
-
-  mod = dndGetRaceBonus( npc->race, npc->gender, rbtSKILL, type );
-  if( mod != 0 ) {
-    base += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtRACIAL, mod, 0 );
-      b = &((*b)->next);
-    }
-  }
-    
-  if( npcHasSkillFocus( npc, type ) ) {
-    mod = 3;
-    base += mod;
-    if( breakdown != 0 ) {
-      *b = s_newBreakdownItem( bdtFOCUS, mod, 0 );
-      b = &((*b)->next);
-    }
-  }
-
-  if( type == skSTEALTH ) {
-    mod = dndGetSizeHideMod( dndGetRaceSize( npc->race ) );
-    if( mod != 0 ) {
-      base += mod;
-      if( breakdown != 0 ) {
-        *b = s_newBreakdownItem( bdtSIZE, mod, 0 );
-        b = &((*b)->next);
-      }
-    }
-  }
-
-  /*
-  if( ( type == skSPOT ) || ( type == skLISTEN ) ) {
-    if( npcHasFeat( npc, ftALERTNESS, 0 ) ) {
-      mod = 2;
-      base += mod;
-      if( breakdown != 0 ) {
-        *b = s_newBreakdownItem( bdtFEAT, ftALERTNESS, mod );
-        b = &((*b)->next);
-      }
-    }
-  }
-*/
-  switch (type) {
-  	//case skJUMP: case skTUMBLE:
-	  //  if( npcHasFeat( npc, ftACROBATIC, 0 ) ) {
-	  //    mod = 2;
-	  //    base += mod;
-	  //    if( breakdown != 0 ) {
-	  //      *b = s_newBreakdownItem( bdtFEAT, ftACROBATIC, mod );
-	  //      b = &((*b)->next);
-	  //    }
-	  //  }
-	  //  break;
-  	case skACROBATICS: case skESCAPEARTIST:
-	    if( npcHasFeat( npc, ftAGILE, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftAGILE, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-	case skPERCEPTION: case skSENSEMOTIVE:
-	    if( npcHasFeat( npc, ftALERTNESS, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftALERTNESS, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	case skHANDLEANIMAL: case skRIDE:
-	    if( npcHasFeat( npc, ftANIMALAFFINITY, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftANIMALAFFINITY, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	case skCLIMB: case skSWIM:
-	    if( npcHasFeat( npc, ftATHLETIC, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftATHLETIC, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	case skDISGUISE: case skBLUFF:
-	    if( npcHasFeat( npc, ftDECEITFUL, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftDECEITFUL, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	case skSLEIGHTOFHAND: case skDISABLEDEVICE:
-	    if( npcHasFeat( npc, ftDEFTHANDS, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftDEFTHANDS, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	//case skAPPRAISE: case skDECIPHERSCRIPT:
-	  //  if( npcHasFeat( npc, ftDILIGENT, 0 ) ) {
-	  //    mod = 2;
-	  //    base += mod;
-	  //    if( breakdown != 0 ) {
-	  //      *b = s_newBreakdownItem( bdtFEAT, ftDILIGENT, mod );
-	  //      b = &((*b)->next);
-	  //    }
-	  //  }
-	  //  break;
-  	//case skGATHERINFORMATION: case skSEARCH:
-	  //  if( npcHasFeat( npc, ftINVESTIGATOR, 0 ) ) {
-	  //    mod = 2;
-	  //    base += mod;
-	  //    if( breakdown != 0 ) {
-	  //      *b = s_newBreakdownItem( bdtFEAT, ftINVESTIGATOR, mod );
-	  //      b = &((*b)->next);
-	  //    }
-	  //  }
-	  //  break;
-  	case skSPELLCRAFT: case skUSEMAGICDEVICE:
-	    if( npcHasFeat( npc, ftMAGICALAPTITUDE, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftMAGICALAPTITUDE, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	case skDIPLOMACY:
-	    if( npcHasFeat( npc, ftNEGOTIATOR, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftNEGOTIATOR, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	//case skDISABLEDEVICE: 
-	  //  if( npcHasFeat( npc, ftNIMBLEFINGERS, 0 ) ) {
-	  //    mod = 2;
-	  //    base += mod;
-	  //    if( breakdown != 0 ) {
-	  //      *b = s_newBreakdownItem( bdtFEAT, ftNIMBLEFINGERS, mod );
-	  //      b = &((*b)->next);
-	  //    }
-	  //  }
-	  //  break;
-  	//case skBLUFF: case skINTIMIDATE:
-	  //  if( npcHasFeat( npc, ftPERSUASIVE, 0 ) ) {
-	  //    mod = 2;
-	  //    base += mod;
-	  //    if( breakdown != 0 ) {
-	  //      *b = s_newBreakdownItem( bdtFEAT, ftPERSUASIVE, mod );
-	  //      b = &((*b)->next);
-	  //    }
-	  //  }
-	  //  break;
-  	case skHEAL: case skSURVIVAL:
-	    if( npcHasFeat( npc, ftSELFSUFFICIENT, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftSELFSUFFICIENT, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  	case skSTEALTH:
-	    if( npcHasFeat( npc, ftSTEALTHY, 0 ) ) {
-	      mod = 2;
-	      base += mod;
-	      if( breakdown != 0 ) {
-	        *b = s_newBreakdownItem( bdtFEAT, ftSTEALTHY, mod );
-	        b = &((*b)->next);
-	      }
-	    }
-	    break;
-  }
-
-
-  return base;
-}
-
-
-int npcHasSkillFocus( NPC* npc, int skillType ) {
-  NPCFEAT* feat;
-
-  for( feat = npc->feats; feat != 0; feat = feat->next ) {
-    if( feat->type == ftSKILLFOCUS ) {
-      if( ((NPCFEATSKILL*)feat->data)->skill == skillType ) {
-        return 1;
-      }
-    }
-  }
-
-  return 0;
-}
-
-
-char* npcBuildHitDiceBreakdown( NPC* npc, char* buffer, int len ) {
-  NPCCLASS* cls;
-  int       count;
-  int       die;
-  char      temp[ 100 ];
-  int       con;
-  int       length;
-
-  *buffer = 0;
-  length = 0;
-
-  con = dndGetAbilityBonus( npc->constitution );
-
-  if( dndGetRaceExtraHitDice( npc->race, &count, &die ) ) {
-    if( con != 0 ) {
-      sprintf( temp, "%dd%d%+d", count, die, count*con );
-    } else {
-      sprintf( temp, "%dd%d", count, die );
-    }
-    strncpy( buffer, temp, len - length - strlen( temp ) + 1 );
-    length = strlen( buffer );
-  }
-
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    if( length >= len ) {
-      break;
-    }
-
-    die = dndGetClassHitDie( cls->type );
-    if( con != 0 ) {
-      sprintf( temp, "%dd%d%+d", cls->level, die, cls->level*con );
-    } else {
-      sprintf( temp, "%dd%d", cls->level, die );
-    }
-    if( *buffer != 0 ) {
-      strcat( buffer, " + " );
-      length += 3;
-    }
-    strncpy( &(buffer[length]), temp, len - length - strlen( temp ) + 1 );
-    length = strlen( buffer );
-  }
-
-  return buffer;
-}
-
-
-char* npcBuildStatBlock( NPC* npc, NPCSTATBLOCKOPTS* opts, char* buffer, int len ) {
-  char* temp;
-  char  temp2[100];
-  char  temp3[100];
-  char  temp4[100];
-  NPCCLASS* cls;
-  int pos;
-  int count;
-  int n;
-  int i;
-  int j;
-  NPCCOMPBREAKDOWN* breakdown;
-  NPCSKILL* skill;
-  NPCFEAT* feat;
-  NPCFEATSPELLS* nfsp;
-  NPCFEATWEAPON* nfw;
-  NPCFEATSKILL* nfs;
-  NPCFEATSCHOOL* nfsch;
-  NPCSPELL** list;
-  NPCSPELL*  spell;
-  NPCLANGUAGE* lang;
-  NPCWIZARDDATA* wiz;
-  int        hasPlus;
-  int        relevantAbility;
-  int        cr;
-  char*      italBegin;
-  char*      italEnd;
-  char*      boldBegin;
-  char*      boldEnd;
-
-  if( opts->richFormatting ) {
-    italBegin = "~I";
-    italEnd = "~i";
-    boldBegin = "~B";
-    boldEnd = "~b";
-  } else {
-    italBegin = italEnd = boldBegin = boldEnd = "";
-  }
-
-  /* name, gender race cls#/cls#/cls#:  CR ?; Size ?; HD ?; hp ?; Init ? (why);
-   * Spd ?; AC ? (why); Atk ? melee, or ? ranged; SV Fort ?, Ref ?, Will ?;
-   * AL ?; Str ?, Dex ?, Con ?, Int ?, Wis ?, Cha ?.
-   *
-   * Skills and feats: skill ?, skill ?; feat, feat.
-   *
-   * Possessions: possession, possession.
-   */
-
-  temp = (char*)malloc( 32 * 1024 );
-
-  sprintf( temp, "%s%s, %s %s ", 
-           boldBegin,
-           npc->name,
-           ( npc->gender == gMALE ? "male" : "female" ),
-           dndGetRaceName( npc->race ) );
-  pos = strlen( temp );
-
-  count = 0;
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    if( count > 0 ) {
-      strcat( temp, "/" );
-      pos++;
-    }
-
-	strcpy( temp2, dndGetClassAbbr( cls->type ) );
-
-	if (cls->type == pcWIZARD) {
-		wiz = cls->data;
-		if (wiz->favoredSchool != 0) strcpy( temp2, dndGetSpecialistName( wiz->favoredSchool ) );
+	if (breakdown != 0) {
+		b = breakdown;
+		*b = 0;
 	}
 
-    
-    temp2[0] = toupper( temp2[0] );
+	init = 0;
 
-    sprintf( &(temp[pos]), "%s%d",
-             temp2,
-             cls->level );
+	mod = dndGetAbilityBonus(npc->dexterity);
+	if (mod != 0) {
+		init += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtABILITYSCORE, abDEXTERITY, mod);
+			b = &((*b)->next);
+		}
+	}
 
-    pos = strlen( temp );
-    count++;
-  }
+	if (npcHasFeat(npc, ftIMPROVEDINITIATIVE, 0)) {
+		init += 4;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtFEAT, ftIMPROVEDINITIATIVE, 4);
+			b = &((*b)->next);
+		}
+	}
 
-  strcat( temp, ":" );
-  strcat( temp, boldEnd );
-  strcat( temp, "  " );
-  pos = strlen( temp );
+	return init;
+}
 
-  cr = npcComputeCR( npc );
-  sprintf( &(temp[pos]), "CR %d; ", cr );
-  pos = strlen( temp );
 
-  strcpy( temp2, dndGetSizeName( dndGetRaceSize( npc->race ) ) );
-  temp2[0] = toupper( temp2[0] );
-  temp2[1] = 0;
+char* npcBuildComponentBreakdownDescription(NPCCOMPBREAKDOWN* breakdown,
+	char* buffer,
+	int len)
+{
+	char temp1[100];
+	char temp2[100];
+	NPCCOMPBREAKDOWN* i;
+	int parens;
+	int pos;
 
-  sprintf( &(temp[pos]), "Size %s (%d ft., %d in. tall); ", temp2, npc->height_ft, npc->height_in );
-  pos = strlen( temp );
+	*buffer = 0;
+	pos = 0;
+	parens = 0;
 
-  npcBuildHitDiceBreakdown( npc, temp2, sizeof( temp2 ) );
-  sprintf( &(temp[pos]), "HD %s; hp %d; ", temp2, npc->hp );
-  pos = strlen( temp );
+	for (i = breakdown; i != 0; i = i->next) {
+		if (pos + 2 >= len) {
+			break;
+		}
 
-  temp2[0] = 0;
-  n = npcComputeActualInitiative( npc, &breakdown );
-  if( opts->initBreakdown ) {
-    npcBuildComponentBreakdownDescription( breakdown, temp2, sizeof( temp2 ) );
-  }
-  npcDestroyComponentBreakdown( breakdown );
+		if (!parens) {
+			strcat(buffer, "(");
+			pos++;
+			parens = 1;
+		}
+		else {
+			strcat(buffer, ", ");
+			pos += 2;
+		}
 
-  if( temp2[0] != 0 ) {
-    sprintf( &(temp[pos]), "Init %+d %s; ", n, temp2 );
-  } else {
-    sprintf( &(temp[pos]), "Init %+d; ", n );
-  }
-  pos = strlen( temp );
+		switch (i->component) {
+		case bdtABILITYSCORE:
+			strcpy(temp1, dndGetAbilityName(i->data1));
+			temp1[0] = toupper(temp1[0]);
+			temp1[3] = 0;
+			sprintf(temp2, "%+d %s", i->data2, temp1);
+			strncpy(&(buffer[pos]), temp2, len - pos);
+			pos += strlen(temp2);
+			break;
+		case bdtBASE:
+			sprintf(temp1, "%+d Base", i->data1);
+			strncpy(&(buffer[pos]), temp1, len - pos);
+			pos += strlen(temp1);
+			break;
+		case bdtSIZE:
+			sprintf(temp1, "%+d Size", i->data1);
+			strncpy(&(buffer[pos]), temp1, len - pos);
+			pos += strlen(temp1);
+			break;
+		case bdtRANK:
+			sprintf(temp1, "%+d Rank", i->data1);
+			strncpy(&(buffer[pos]), temp1, len - pos);
+			pos += strlen(temp1);
+			break;
+		case bdtHALFRANK:
+			sprintf(temp1, "%+g Rank", i->data1 / 2.0);
+			strncpy(&(buffer[pos]), temp1, len - pos);
+			pos += strlen(temp1);
+			break;
+		case bdtFOCUS:
+			sprintf(temp1, "%+d Focus", i->data1);
+			strncpy(&(buffer[pos]), temp1, len - pos);
+			pos += strlen(temp1);
+			break;
+		case bdtRACIAL:
+			sprintf(temp1, "%+d Racial", i->data1);
+			strncpy(&(buffer[pos]), temp1, len - pos);
+			pos += strlen(temp1);
+			break;
+		case bdtNATURAL:
+			sprintf(temp1, "%+d Natural", i->data1);
+			strncpy(&(buffer[pos]), temp1, len - pos);
+			pos += strlen(temp1);
+			break;
+		case bdtARMOR:
+			sprintf(temp1, "%+d Armor", i->data1);
+			strncpy(&(buffer[pos]), temp1, len - pos);
+			pos += strlen(temp1);
+			break;
+		case bdtFEAT:
+			strcpy(temp1, dndGetFeatName(i->data1));
+			temp1[0] = toupper(temp1[0]);
+			sprintf(temp2, "%+d %s",
+				i->data2,
+				temp1);
+			strncpy(&(buffer[pos]), temp2, len - pos);
+			pos += strlen(temp2);
+			break;
+		case bdtCLASS:
+			strcpy(temp1, dndGetClassAbbr(i->data1));
+			temp1[0] = toupper(temp1[0]);
+			sprintf(temp2, "%+d %s",
+				i->data2,
+				temp1);
+			strncpy(&(buffer[pos]), temp2, len - pos);
+			pos += strlen(temp2);
+			break;
+		}
+	}
 
-  cls = npcGetClass( npc, pcMONK );
-  if( cls != 0 ) {
-    n = dndGetMonkSpeedForRace( npc->race, cls->level );
-  } else {
-    n = dndGetRaceSpeed( npc->race );
-    if( npcHasClass( npc, pcBARBARIAN ) ) {
-      n += 10;
-    }
-  }
+	if ((pos < len - 1) && (parens)) {
+		strcat(buffer, ")");
+	}
 
-  sprintf( &(temp[pos]), "Spd %d ft.; ", n );
-  pos = strlen( temp );
+	return buffer;
+}
 
-  temp2[0] = 0;
-  n = npcComputeActualAC( npc, &breakdown );
-  if( opts->acBreakdown ) {
-    npcBuildComponentBreakdownDescription( breakdown, temp2, sizeof( temp2 ) );
-  }
-  npcDestroyComponentBreakdown( breakdown );
 
-  if( temp2[0] != 0 ) {
-    sprintf( &(temp[pos]), "AC %d %s; ", n, temp2 );
-  } else {
-    sprintf( &(temp[pos]), "AC %d; ", n );
-  }
-  pos = strlen( temp );
+int npcComputeActualSave(NPC* npc, int save, NPCCOMPBREAKDOWN** breakdown) {
+	NPCCOMPBREAKDOWN** b;
+	int base;
+	int mod;
+	int ability;
 
-  n = npcGetBaseAttack( npc );
-  count = dndGetClassAttacksPerRound( n );
+	if (breakdown != 0) {
+		b = breakdown;
+		*b = 0;
+	}
 
-  n = npcComputeActualAttack( npc, attMELEE, &breakdown );
-  strcat( temp, "Attack " );
-  pos = strlen( temp );
-  for( i = 1; i <= count; i++ ) {
-    if( i > 1 ) {
-      strcat( temp, "/" );
-      pos++;
-    }
-    j = dndGetClassMultipleAttackBonus( n, i );
-    sprintf( &(temp[pos]), "%+d", j );
-    pos = strlen( temp );
-  }
-  if( opts->attackBreakdown ) {
-    npcBuildComponentBreakdownDescription( breakdown, temp2, sizeof( temp2 ) );
-    if( temp2[0] != 0 ) {
-      strcat( temp, " " );
-      strcat( temp, temp2 );
-    }
-  }
-  npcDestroyComponentBreakdown( breakdown );
-  strcat( temp, " melee, or " );
-  pos = strlen( temp );
+	base = 0;
+	switch (save) {
+	case svFORTITUDE:
+		mod = npcGetBaseFortitudeSave(npc);
+		break;
+	case svREFLEX:
+		mod = npcGetBaseReflexSave(npc);
+		break;
+	case svWILL:
+		mod = npcGetBaseWillSave(npc);
+		break;
+	}
 
-  if( npcHasClass( npc, pcMONK ) ) {
-    int monkAttackCount;
-    int monkBaseAttack;
-    NPCCLASS* cls;
+	base += mod;
+	if (breakdown != 0) {
+		*b = s_newBreakdownItem(bdtBASE, mod, 0);
+		b = &((*b)->next);
+	}
 
-    cls = npcGetClass( npc, pcMONK );
+	switch (save) {
+	case svFORTITUDE:
+		ability = abCONSTITUTION;
+		mod = dndGetAbilityBonus(npc->constitution);
+		break;
+	case svREFLEX:
+		ability = abDEXTERITY;
+		mod = dndGetAbilityBonus(npc->dexterity);
+		break;
+	case svWILL:
+		ability = abWISDOM;
+		mod = dndGetAbilityBonus(npc->wisdom);
+		break;
+	}
 
-    monkBaseAttack = dndGetClassAttackBonus( pcMONK, cls->level ) +
-                     dndGetRaceBonus( npc->race, npc->gender, rbtATTACK, 0 );
-    monkAttackCount = dndGetMonkAttacksPerRound( monkBaseAttack );
-    n = npcComputeActualAttack( npc, attMELEE, &breakdown ); 
+	if (mod != 0) {
+		base += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtABILITYSCORE, ability, mod);
+			b = &((*b)->next);
+		}
+	}
 
-    for( i = 1; i <= monkAttackCount; i++ ) {
-      if( i > 1 ) {
-        strcat( temp, "/" );
-        pos++;
-      }
-	  
-      j = dndGetMonkMultipleAttackBonus( n, cls->level, i );
-      sprintf( &(temp[pos]), "%+d", j);
-	  pos = strlen( temp );
+	if (npcHasClass(npc, pcPALADIN)) {
+		NPCCLASS* cls = npcGetClass(npc, pcPALADIN);
+		if (cls->level > 1) {
+			mod = dndGetAbilityBonus(npc->charisma);
+			if (mod > 0) {
+				base += mod;
+				if (breakdown != 0) {
+					*b = s_newBreakdownItem(bdtABILITYSCORE, abCHARISMA, mod);
+					b = &((*b)->next);
+				}
+			}
+		}
+	}
 
-    }
-    if( opts->attackBreakdown ) {
-      npcBuildComponentBreakdownDescription( breakdown, temp2, sizeof( temp2 ) );
-      if( temp2[0] != 0 ) {
-        strcat( temp, " " );
-        strcat( temp, temp2 );
-      }
-    }
-    npcDestroyComponentBreakdown( breakdown );
-    strcat( temp, " monk, or " );
-    pos = strlen( temp );
-  }
+	switch (save) {
+	case svFORTITUDE:
+		ability = ftGREATFORTITUDE;
+		break;
+	case svREFLEX:
+		ability = ftLIGHTNINGREFLEXES;
+		break;
+	case svWILL:
+		ability = ftIRONWILL;
+		break;
+	}
 
-  n = npcComputeActualAttack( npc, attRANGED, &breakdown );
-  for( i = 1; i <= count; i++ ) {
-    if( i > 1 ) {
-      strcat( temp, "/" );
-      pos++;
-    }
-    j = dndGetClassMultipleAttackBonus( n, i );
-    sprintf( &(temp[pos]), "%+d", j );
-    pos = strlen( temp );
-  }
-  if( opts->attackBreakdown ) {
-    npcBuildComponentBreakdownDescription( breakdown, temp2, sizeof( temp2 ) );
-    if( temp2[0] != 0 ) {
-      strcat( temp, " " );
-      strcat( temp, temp2 );
-    }
-  }
-  npcDestroyComponentBreakdown( breakdown );
-  strcat( temp, " ranged; " );
-  pos = strlen( temp );
+	if (npcHasFeat(npc, ability, 0)) {
+		base += 2;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtFEAT, ability, 2);
+			b = &((*b)->next);
+		}
+	}
 
-  temp2[0] = temp3[0] = temp4[0] = 0;
-  
-  n = npcComputeActualSave( npc, svFORTITUDE, &breakdown );
-  if( opts->saveBreakdown ) {
-    npcBuildComponentBreakdownDescription( breakdown, temp2, sizeof( temp2 ) );
-    if( temp2[0] != 0 ) {
-      memmove( &(temp2[1]), temp2, strlen( temp2 ) + 1 );
-      temp2[0] = ' ';
-    }
-  }
-  npcDestroyComponentBreakdown( breakdown );
+	mod = dndGetRaceBonus(npc->race, npc->gender, rbtSAVINGTHROW, save);
+	if (mod != 0) {
+		base += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtRACIAL, mod, 0);
+			b = &((*b)->next);
+		}
+	}
 
-  i = npcComputeActualSave( npc, svREFLEX, &breakdown );
-  if( opts->saveBreakdown ) {
-    npcBuildComponentBreakdownDescription( breakdown, temp3, sizeof( temp3 ) );
-    if( temp3[0] != 0 ) {
-      memmove( &(temp3[1]), temp3, strlen( temp3 ) + 1 );
-      temp3[0] = ' ';
-    }
-  }
-  npcDestroyComponentBreakdown( breakdown );
+	return base;
+}
 
-  j = npcComputeActualSave( npc, svWILL, &breakdown );
-  if( opts->saveBreakdown ) {
-    npcBuildComponentBreakdownDescription( breakdown, temp4, sizeof( temp4 ) );
-    if( temp4[0] != 0 ) {
-      memmove( &(temp4[1]), temp4, strlen( temp4 ) + 1 );
-      temp4[0] = ' ';
-    }
-  }
-  npcDestroyComponentBreakdown( breakdown );
 
-  sprintf( &(temp[pos]), "SV Fort %+d%s, Ref %+d%s, Will %+d%s; ", 
-           n, temp2, i, temp3, j, temp4 );
-  pos = strlen( temp );
+int npcHasSkill(NPC* npc, int skillType) {
+	NPCSKILL* skill;
 
-  sprintf( &(temp[pos]), "AL %s; ", dndGetAlignmentAbbr( npc->alignment ) );
-  pos = strlen( temp );
+	for (skill = npc->skills; skill != 0; skill = skill->next) {
+		if (skill->type == skillType) {
+			return 1;
+		}
+	}
 
-  if( opts->abilityBonuses ) {
-    sprintf( &(temp[pos]), "Str %d (%+d), Dex %d (%+d), Con %d (%+d), Int %d (%+d), Wis %d (%+d), Cha %d (%+d).",
-             npc->strength, dndGetAbilityBonus( npc->strength ),
-             npc->dexterity, dndGetAbilityBonus( npc->dexterity ),
-             npc->constitution, dndGetAbilityBonus( npc->constitution ),
-             npc->intelligence, dndGetAbilityBonus( npc->intelligence ),
-             npc->wisdom, dndGetAbilityBonus( npc->wisdom ),
-             npc->charisma, dndGetAbilityBonus( npc->charisma ) );
-  } else {
-    sprintf( &(temp[pos]), "Str %d, Dex %d, Con %d, Int %d, Wis %d, Cha %d.",
-             npc->strength,
-             npc->dexterity,
-             npc->constitution,
-             npc->intelligence,
-             npc->wisdom,
-             npc->charisma );
-  }
+	return 0;
+}
 
-  if( opts->languages ) {
-    strcat( temp, "\n\n" );
-    strcat( temp, italBegin );
-    strcat( temp, "Languages Spoken:" );
-    strcat( temp, italEnd );
-    strcat( temp, "  " );
-    pos = strlen( temp );
-    
-    n = 0;
-    for( lang = npc->languages; lang != 0; lang = lang->next ) {
-      if( n > 0 ) {
-        strcat( temp, ", " );
-      }
-      strcpy( temp2, dndGetLanguageName( lang->language ) );
-      temp2[ 0 ] = toupper( temp2[ 0 ] );
-      strcat( temp, temp2 );
-      n++;
-    }
-    strcat( temp, "." );
-    pos = strlen( temp );
-  }
 
-  if( opts->skillsAndFeats || opts->skill_points ) {
-    strcat( temp, "\n" );
-  }
+int npcComputeActualAttack(NPC* npc, int type, NPCCOMPBREAKDOWN** breakdown) {
+	NPCCOMPBREAKDOWN** b;
+	int base;
+	int mod;
+	int ability;
 
-  if( opts->skill_points ) {
-    strcat( temp, "\n" );
-    strcat( temp, italBegin );
-    strcat( temp, "Skill points:" );
-    strcat( temp, italEnd );
-    strcat( temp, "  " );
-    for( cls = npc->classes; cls != 0; cls = cls->next ) {
-      int points;
-      int level;
+	if (breakdown != 0) {
+		b = breakdown;
+		*b = 0;
+	}
 
-      strcpy( temp3, dndGetClassAbbr( cls->type ) );
-      temp3[0] = toupper( temp3[0] );
+	base = 0;
 
-      points = 0;
-      for( level = 0; level < cls->level; level++ ) points += cls->skillpoints[ level ];
-      sprintf( temp2, "%s %d", temp3, points );
-      strcat( temp, temp2 );
-      if( cls->next != NULL ) {
-        strcat( temp, ", " );
-      }
-    }
-  }
+	mod = npcGetBaseClassAttack(npc);
+	base += mod;
+	if (breakdown != 0) {
+		*b = s_newBreakdownItem(bdtBASE, mod, 0);
+		b = &((*b)->next);
+	}
 
-  if( opts->skillsAndFeats ) {
-    strcat( temp, "\n\n" );
-    strcat( temp, italBegin );
-    strcat( temp, "Skills and feats:" );
-    strcat( temp, italEnd );
-    strcat( temp, "  " );
-    pos = strlen( temp );
+	switch (type) {
+	case attMELEE:
+		ability = abSTRENGTH;
+		mod = dndGetAbilityBonus(npc->strength);
+		break;
+	case attRANGED:
+		ability = abDEXTERITY;
+		mod = dndGetAbilityBonus(npc->dexterity);
+		break;
+	}
 
-    n = 0;
-    for( skill = npc->skills; skill != 0; skill = skill->next ) {
-      if( n > 0 ) {
-        strcat( temp, ", " );
-        pos += 2;
-      }
-      strcpy( temp2, dndGetSkillName( skill->type ) );
-      temp2[0] = toupper( temp2[0] );
-      sprintf( &(temp[pos]), "%s %+g",
-               temp2,
-               npcComputeActualSkillBonus( npc, skill->type, &breakdown ) );
-      if( opts->skillBreakdown ) {
-        npcBuildComponentBreakdownDescription( breakdown, temp2, sizeof( temp2 ) );
-        if( temp2[0] != 0 ) {
-          strcat( temp, " " );
-          strcat( temp, temp2 );
-        }
-      }
-      npcDestroyComponentBreakdown( breakdown );
-      pos = strlen( temp );
-      n++;
-    }
-    strcat( temp, "; " );
-    pos = strlen( temp );
+	if (mod != 0) {
+		base += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtABILITYSCORE, ability, mod);
+			b = &((*b)->next);
+		}
+	}
 
-    n = 0;
-    for( feat = npc->feats; feat != 0; feat = feat->next ) {
+	mod = dndGetSizeACMod(dndGetRaceSize(npc->race));
+	if (mod != 0) {
+		base += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtSIZE, mod, 0);
+			b = &((*b)->next);
+		}
+	}
 
-		switch(feat->type) {
+	mod = dndGetRaceBonus(npc->race, npc->gender, rbtATTACK, 0);
+	if (mod != 0) {
+		base += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtRACIAL, mod, 0);
+			b = &((*b)->next);
+		}
+	}
+
+	return base;
+}
+
+
+NPCSKILL* npcGetSkill(NPC* npc, int skillType) {
+	NPCSKILL* c;
+
+	for (c = npc->skills; c != 0; c = c->next) {
+		if (c->type == skillType) {
+			return c;
+		}
+	}
+
+	return 0;
+}
+
+
+float npcComputeActualSkillBonus(NPC* npc, int type, NPCCOMPBREAKDOWN** breakdown) {
+	NPCCOMPBREAKDOWN** b;
+	NPCSKILL* skill;
+	float base;
+	int mod;
+	int ability;
+	int data;
+
+	if (breakdown != 0) {
+		b = breakdown;
+		*b = 0;
+	}
+
+	base = 0;
+
+	skill = npcGetSkill(npc, type);
+	if (skill != 0) {
+		if (skill->rank - (int)skill->rank < 0.5) {
+			mod = (int)skill->rank;
+			data = bdtRANK;
+		}
+		else {
+			mod = (int)(skill->rank * 2);
+			data = bdtHALFRANK;
+		}
+		if (mod != 0) {
+			base += skill->rank;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(data, mod, 0);
+				b = &((*b)->next);
+			}
+		}
+	}
+
+	ability = dndGetSkillAbility(type);
+	switch (ability) {
+	case abSTRENGTH:
+		mod = dndGetAbilityBonus(npc->strength);
+		break;
+	case abDEXTERITY:
+		mod = dndGetAbilityBonus(npc->dexterity);
+		break;
+	case abCONSTITUTION:
+		mod = dndGetAbilityBonus(npc->constitution);
+		break;
+	case abINTELLIGENCE:
+		mod = dndGetAbilityBonus(npc->intelligence);
+		break;
+	case abWISDOM:
+		mod = dndGetAbilityBonus(npc->wisdom);
+		break;
+	case abCHARISMA:
+		mod = dndGetAbilityBonus(npc->charisma);
+		break;
+	case abNONE:
+		mod = 0;
+		break;
+	}
+
+	if (mod != 0) {
+		base += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtABILITYSCORE, ability, mod);
+			b = &((*b)->next);
+		}
+	}
+
+	mod = dndGetRaceBonus(npc->race, npc->gender, rbtSKILL, type);
+	if (mod != 0) {
+		base += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtRACIAL, mod, 0);
+			b = &((*b)->next);
+		}
+	}
+
+	if (npcHasSkillFocus(npc, type)) {
+		mod = 3;
+		base += mod;
+		if (breakdown != 0) {
+			*b = s_newBreakdownItem(bdtFOCUS, mod, 0);
+			b = &((*b)->next);
+		}
+	}
+
+	if (type == skSTEALTH) {
+		mod = dndGetSizeHideMod(dndGetRaceSize(npc->race));
+		if (mod != 0) {
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtSIZE, mod, 0);
+				b = &((*b)->next);
+			}
+		}
+	}
+
+	/*
+	if( ( type == skSPOT ) || ( type == skLISTEN ) ) {
+	  if( npcHasFeat( npc, ftALERTNESS, 0 ) ) {
+		mod = 2;
+		base += mod;
+		if( breakdown != 0 ) {
+		  *b = s_newBreakdownItem( bdtFEAT, ftALERTNESS, mod );
+		  b = &((*b)->next);
+		}
+	  }
+	}
+  */
+	switch (type) {
+		//case skJUMP: case skTUMBLE:
+		  //  if( npcHasFeat( npc, ftACROBATIC, 0 ) ) {
+		  //    mod = 2;
+		  //    base += mod;
+		  //    if( breakdown != 0 ) {
+		  //      *b = s_newBreakdownItem( bdtFEAT, ftACROBATIC, mod );
+		  //      b = &((*b)->next);
+		  //    }
+		  //  }
+		  //  break;
+	case skACROBATICS: case skESCAPEARTIST:
+		if (npcHasFeat(npc, ftAGILE, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftAGILE, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+	case skPERCEPTION: case skSENSEMOTIVE:
+		if (npcHasFeat(npc, ftALERTNESS, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftALERTNESS, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+	case skHANDLEANIMAL: case skRIDE:
+		if (npcHasFeat(npc, ftANIMALAFFINITY, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftANIMALAFFINITY, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+	case skCLIMB: case skSWIM:
+		if (npcHasFeat(npc, ftATHLETIC, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftATHLETIC, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+	case skDISGUISE: case skBLUFF:
+		if (npcHasFeat(npc, ftDECEITFUL, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftDECEITFUL, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+	case skSLEIGHTOFHAND: case skDISABLEDEVICE:
+		if (npcHasFeat(npc, ftDEFTHANDS, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftDEFTHANDS, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+		//case skAPPRAISE: case skDECIPHERSCRIPT:
+		  //  if( npcHasFeat( npc, ftDILIGENT, 0 ) ) {
+		  //    mod = 2;
+		  //    base += mod;
+		  //    if( breakdown != 0 ) {
+		  //      *b = s_newBreakdownItem( bdtFEAT, ftDILIGENT, mod );
+		  //      b = &((*b)->next);
+		  //    }
+		  //  }
+		  //  break;
+		//case skGATHERINFORMATION: case skSEARCH:
+		  //  if( npcHasFeat( npc, ftINVESTIGATOR, 0 ) ) {
+		  //    mod = 2;
+		  //    base += mod;
+		  //    if( breakdown != 0 ) {
+		  //      *b = s_newBreakdownItem( bdtFEAT, ftINVESTIGATOR, mod );
+		  //      b = &((*b)->next);
+		  //    }
+		  //  }
+		  //  break;
+	case skSPELLCRAFT: case skUSEMAGICDEVICE:
+		if (npcHasFeat(npc, ftMAGICALAPTITUDE, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftMAGICALAPTITUDE, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+	case skDIPLOMACY:
+		if (npcHasFeat(npc, ftNEGOTIATOR, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftNEGOTIATOR, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+		//case skDISABLEDEVICE: 
+		  //  if( npcHasFeat( npc, ftNIMBLEFINGERS, 0 ) ) {
+		  //    mod = 2;
+		  //    base += mod;
+		  //    if( breakdown != 0 ) {
+		  //      *b = s_newBreakdownItem( bdtFEAT, ftNIMBLEFINGERS, mod );
+		  //      b = &((*b)->next);
+		  //    }
+		  //  }
+		  //  break;
+		//case skBLUFF: case skINTIMIDATE:
+		  //  if( npcHasFeat( npc, ftPERSUASIVE, 0 ) ) {
+		  //    mod = 2;
+		  //    base += mod;
+		  //    if( breakdown != 0 ) {
+		  //      *b = s_newBreakdownItem( bdtFEAT, ftPERSUASIVE, mod );
+		  //      b = &((*b)->next);
+		  //    }
+		  //  }
+		  //  break;
+	case skHEAL: case skSURVIVAL:
+		if (npcHasFeat(npc, ftSELFSUFFICIENT, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftSELFSUFFICIENT, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+	case skSTEALTH:
+		if (npcHasFeat(npc, ftSTEALTHY, 0)) {
+			mod = 2;
+			base += mod;
+			if (breakdown != 0) {
+				*b = s_newBreakdownItem(bdtFEAT, ftSTEALTHY, mod);
+				b = &((*b)->next);
+			}
+		}
+		break;
+	}
+
+
+	return base;
+}
+
+
+int npcHasSkillFocus(NPC* npc, int skillType) {
+	NPCFEAT* feat;
+
+	for (feat = npc->feats; feat != 0; feat = feat->next) {
+		if (feat->type == ftSKILLFOCUS) {
+			if ((NPCFEATSKILL*)feat->data != NULL) {
+				if (((NPCFEATSKILL*)feat->data)->skill == skillType) {
+					return 1;
+				}
+			}
+		}
+	}
+
+	return 0;
+}
+
+
+char* npcBuildHitDiceBreakdown(NPC* npc, char* buffer, int len) {
+	NPCCLASS* cls;
+	int       count;
+	int       die;
+	char      temp[100];
+	int       con;
+	int       length;
+
+	*buffer = 0;
+	length = 0;
+
+	con = dndGetAbilityBonus(npc->constitution);
+
+	if (dndGetRaceExtraHitDice(npc->race, &count, &die)) {
+		if (con != 0) {
+			sprintf(temp, "%dd%d%+d", count, die, count * con);
+		}
+		else {
+			sprintf(temp, "%dd%d", count, die);
+		}
+		strncpy(buffer, temp, len - length - strlen(temp) + 1);
+		length = strlen(buffer);
+	}
+
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		if (length >= len) {
+			break;
+		}
+
+		die = dndGetClassHitDie(cls->type);
+		if (con != 0) {
+			sprintf(temp, "%dd%d%+d", cls->level, die, cls->level * con);
+		}
+		else {
+			sprintf(temp, "%dd%d", cls->level, die);
+		}
+		if (*buffer != 0) {
+			strcat(buffer, " + ");
+			length += 3;
+		}
+		strncpy(&(buffer[length]), temp, len - length - strlen(temp) + 1);
+		length = strlen(buffer);
+	}
+
+	return buffer;
+}
+
+
+char* npcBuildStatBlock(NPC* npc, NPCSTATBLOCKOPTS* opts, char* buffer, int len) {
+	char* temp;
+	char  temp2[100];
+	char  temp3[100];
+	char  temp4[100];
+	NPCCLASS* cls;
+	int pos;
+	int count;
+	int n;
+	int i;
+	int j;
+	NPCCOMPBREAKDOWN* breakdown;
+	NPCSKILL* skill;
+	NPCFEAT* feat;
+	NPCFEATSPELLS* nfsp;
+	NPCFEATWEAPON* nfw;
+	NPCFEATSKILL* nfs;
+	NPCFEATSCHOOL* nfsch;
+	NPCSPELL** list;
+	NPCSPELL* spell;
+	NPCLANGUAGE* lang;
+	NPCWIZARDDATA* wiz;
+	int        hasPlus;
+	int        relevantAbility;
+	int        cr;
+	char* italBegin;
+	char* italEnd;
+	char* boldBegin;
+	char* boldEnd;
+
+	if (opts->richFormatting) {
+		italBegin = "~I";
+		italEnd = "~i";
+		boldBegin = "~B";
+		boldEnd = "~b";
+	}
+	else {
+		italBegin = italEnd = boldBegin = boldEnd = "";
+	}
+
+	/* name, gender race cls#/cls#/cls#:  CR ?; Size ?; HD ?; hp ?; Init ? (why);
+	 * Spd ?; AC ? (why); Atk ? melee, or ? ranged; SV Fort ?, Ref ?, Will ?;
+	 * AL ?; Str ?, Dex ?, Con ?, Int ?, Wis ?, Cha ?.
+	 *
+	 * Skills and feats: skill ?, skill ?; feat, feat.
+	 *
+	 * Possessions: possession, possession.
+	 */
+
+	temp = (char*)malloc(32 * 1024);
+
+	sprintf(temp, "%s%s, %s %s ",
+		boldBegin,
+		npc->name,
+		(npc->gender == gMALE ? "male" : "female"),
+		dndGetRaceName(npc->race));
+	pos = strlen(temp);
+
+	count = 0;
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		if (count > 0) {
+			strcat(temp, "/");
+			pos++;
+		}
+
+		strcpy(temp2, dndGetClassAbbr(cls->type));
+
+		if (cls->type == pcWIZARD) {
+			wiz = cls->data;
+			if (wiz->favoredSchool != 0) strcpy(temp2, dndGetSpecialistName(wiz->favoredSchool));
+		}
+
+
+		temp2[0] = toupper(temp2[0]);
+
+		sprintf(&(temp[pos]), "%s%d",
+			temp2,
+			cls->level);
+
+		pos = strlen(temp);
+		count++;
+	}
+
+	strcat(temp, ":");
+	strcat(temp, boldEnd);
+	strcat(temp, "  ");
+	pos = strlen(temp);
+
+	cr = npcComputeCR(npc);
+	sprintf(&(temp[pos]), "CR %d; ", cr);
+	pos = strlen(temp);
+
+	strcpy(temp2, dndGetSizeName(dndGetRaceSize(npc->race)));
+	temp2[0] = toupper(temp2[0]);
+	temp2[1] = 0;
+
+	sprintf(&(temp[pos]), "Size %s (%d ft., %d in. tall); ", temp2, npc->height_ft, npc->height_in);
+	pos = strlen(temp);
+
+	npcBuildHitDiceBreakdown(npc, temp2, sizeof(temp2));
+	sprintf(&(temp[pos]), "HD %s; hp %d; ", temp2, npc->hp);
+	pos = strlen(temp);
+
+	temp2[0] = 0;
+	n = npcComputeActualInitiative(npc, &breakdown);
+	if (opts->initBreakdown) {
+		npcBuildComponentBreakdownDescription(breakdown, temp2, sizeof(temp2));
+	}
+	npcDestroyComponentBreakdown(breakdown);
+
+	if (temp2[0] != 0) {
+		sprintf(&(temp[pos]), "Init %+d %s; ", n, temp2);
+	}
+	else {
+		sprintf(&(temp[pos]), "Init %+d; ", n);
+	}
+	pos = strlen(temp);
+
+	cls = npcGetClass(npc, pcMONK);
+	if (cls != 0) {
+		n = dndGetMonkSpeedForRace(npc->race, cls->level);
+	}
+	else {
+		n = dndGetRaceSpeed(npc->race);
+		if (npcHasClass(npc, pcBARBARIAN)) {
+			n += 10;
+		}
+	}
+
+	sprintf(&(temp[pos]), "Spd %d ft.; ", n);
+	pos = strlen(temp);
+
+	temp2[0] = 0;
+	n = npcComputeActualAC(npc, &breakdown);
+	if (opts->acBreakdown) {
+		npcBuildComponentBreakdownDescription(breakdown, temp2, sizeof(temp2));
+	}
+	npcDestroyComponentBreakdown(breakdown);
+
+	if (temp2[0] != 0) {
+		sprintf(&(temp[pos]), "AC %d %s; ", n, temp2);
+	}
+	else {
+		sprintf(&(temp[pos]), "AC %d; ", n);
+	}
+	pos = strlen(temp);
+
+	n = npcGetBaseAttack(npc);
+	count = dndGetClassAttacksPerRound(n);
+
+	n = npcComputeActualAttack(npc, attMELEE, &breakdown);
+	strcat(temp, "Attack ");
+	pos = strlen(temp);
+	for (i = 1; i <= count; i++) {
+		if (i > 1) {
+			strcat(temp, "/");
+			pos++;
+		}
+		j = dndGetClassMultipleAttackBonus(n, i);
+		sprintf(&(temp[pos]), "%+d", j);
+		pos = strlen(temp);
+	}
+	if (opts->attackBreakdown) {
+		npcBuildComponentBreakdownDescription(breakdown, temp2, sizeof(temp2));
+		if (temp2[0] != 0) {
+			strcat(temp, " ");
+			strcat(temp, temp2);
+		}
+	}
+	npcDestroyComponentBreakdown(breakdown);
+	strcat(temp, " melee, or ");
+	pos = strlen(temp);
+
+	if (npcHasClass(npc, pcMONK)) {
+		int monkAttackCount;
+		int monkBaseAttack;
+		NPCCLASS* cls;
+
+		cls = npcGetClass(npc, pcMONK);
+
+		monkBaseAttack = dndGetClassAttackBonus(pcMONK, cls->level) +
+			dndGetRaceBonus(npc->race, npc->gender, rbtATTACK, 0);
+		monkAttackCount = dndGetMonkAttacksPerRound(monkBaseAttack);
+		n = npcComputeActualAttack(npc, attMELEE, &breakdown);
+
+		for (i = 1; i <= monkAttackCount; i++) {
+			if (i > 1) {
+				strcat(temp, "/");
+				pos++;
+			}
+
+			j = dndGetMonkMultipleAttackBonus(n, cls->level, i);
+			sprintf(&(temp[pos]), "%+d", j);
+			pos = strlen(temp);
+
+		}
+		if (opts->attackBreakdown) {
+			npcBuildComponentBreakdownDescription(breakdown, temp2, sizeof(temp2));
+			if (temp2[0] != 0) {
+				strcat(temp, " ");
+				strcat(temp, temp2);
+			}
+		}
+		npcDestroyComponentBreakdown(breakdown);
+		strcat(temp, " monk, or ");
+		pos = strlen(temp);
+	}
+
+	n = npcComputeActualAttack(npc, attRANGED, &breakdown);
+	for (i = 1; i <= count; i++) {
+		if (i > 1) {
+			strcat(temp, "/");
+			pos++;
+		}
+		j = dndGetClassMultipleAttackBonus(n, i);
+		sprintf(&(temp[pos]), "%+d", j);
+		pos = strlen(temp);
+	}
+	if (opts->attackBreakdown) {
+		npcBuildComponentBreakdownDescription(breakdown, temp2, sizeof(temp2));
+		if (temp2[0] != 0) {
+			strcat(temp, " ");
+			strcat(temp, temp2);
+		}
+	}
+	npcDestroyComponentBreakdown(breakdown);
+	strcat(temp, " ranged; ");
+	pos = strlen(temp);
+
+	temp2[0] = temp3[0] = temp4[0] = 0;
+
+	n = npcComputeActualSave(npc, svFORTITUDE, &breakdown);
+	if (opts->saveBreakdown) {
+		npcBuildComponentBreakdownDescription(breakdown, temp2, sizeof(temp2));
+		if (temp2[0] != 0) {
+			memmove(&(temp2[1]), temp2, strlen(temp2) + 1);
+			temp2[0] = ' ';
+		}
+	}
+	npcDestroyComponentBreakdown(breakdown);
+
+	i = npcComputeActualSave(npc, svREFLEX, &breakdown);
+	if (opts->saveBreakdown) {
+		npcBuildComponentBreakdownDescription(breakdown, temp3, sizeof(temp3));
+		if (temp3[0] != 0) {
+			memmove(&(temp3[1]), temp3, strlen(temp3) + 1);
+			temp3[0] = ' ';
+		}
+	}
+	npcDestroyComponentBreakdown(breakdown);
+
+	j = npcComputeActualSave(npc, svWILL, &breakdown);
+	if (opts->saveBreakdown) {
+		npcBuildComponentBreakdownDescription(breakdown, temp4, sizeof(temp4));
+		if (temp4[0] != 0) {
+			memmove(&(temp4[1]), temp4, strlen(temp4) + 1);
+			temp4[0] = ' ';
+		}
+	}
+	npcDestroyComponentBreakdown(breakdown);
+
+	sprintf(&(temp[pos]), "SV Fort %+d%s, Ref %+d%s, Will %+d%s; ",
+		n, temp2, i, temp3, j, temp4);
+	pos = strlen(temp);
+
+	sprintf(&(temp[pos]), "AL %s; ", dndGetAlignmentAbbr(npc->alignment));
+	pos = strlen(temp);
+
+	if (opts->abilityBonuses) {
+		sprintf(&(temp[pos]), "Str %d (%+d), Dex %d (%+d), Con %d (%+d), Int %d (%+d), Wis %d (%+d), Cha %d (%+d).",
+			npc->strength, dndGetAbilityBonus(npc->strength),
+			npc->dexterity, dndGetAbilityBonus(npc->dexterity),
+			npc->constitution, dndGetAbilityBonus(npc->constitution),
+			npc->intelligence, dndGetAbilityBonus(npc->intelligence),
+			npc->wisdom, dndGetAbilityBonus(npc->wisdom),
+			npc->charisma, dndGetAbilityBonus(npc->charisma));
+	}
+	else {
+		sprintf(&(temp[pos]), "Str %d, Dex %d, Con %d, Int %d, Wis %d, Cha %d.",
+			npc->strength,
+			npc->dexterity,
+			npc->constitution,
+			npc->intelligence,
+			npc->wisdom,
+			npc->charisma);
+	}
+
+	if (opts->languages) {
+		strcat(temp, "\n\n");
+		strcat(temp, italBegin);
+		strcat(temp, "Languages Spoken:");
+		strcat(temp, italEnd);
+		strcat(temp, "  ");
+		pos = strlen(temp);
+
+		n = 0;
+		for (lang = npc->languages; lang != 0; lang = lang->next) {
+			if (n > 0) {
+				strcat(temp, ", ");
+			}
+			strcpy(temp2, dndGetLanguageName(lang->language));
+			temp2[0] = toupper(temp2[0]);
+			strcat(temp, temp2);
+			n++;
+		}
+		strcat(temp, ".");
+		pos = strlen(temp);
+	}
+
+	if (opts->skillsAndFeats || opts->skill_points) {
+		strcat(temp, "\n");
+	}
+
+	if (opts->skill_points) {
+		strcat(temp, "\n");
+		strcat(temp, italBegin);
+		strcat(temp, "Skill points:");
+		strcat(temp, italEnd);
+		strcat(temp, "  ");
+		for (cls = npc->classes; cls != 0; cls = cls->next) {
+			int points;
+			int level;
+
+			strcpy(temp3, dndGetClassAbbr(cls->type));
+			temp3[0] = toupper(temp3[0]);
+
+			points = 0;
+			for (level = 0; level < cls->level; level++) points += cls->skillpoints[level];
+			sprintf(temp2, "%s %d", temp3, points);
+			strcat(temp, temp2);
+			if (cls->next != NULL) {
+				strcat(temp, ", ");
+			}
+		}
+	}
+
+	if (opts->skillsAndFeats) {
+		strcat(temp, "\n\n");
+		strcat(temp, italBegin);
+		strcat(temp, "Skills and feats:");
+		strcat(temp, italEnd);
+		strcat(temp, "  ");
+		pos = strlen(temp);
+
+		n = 0;
+		for (skill = npc->skills; skill != 0; skill = skill->next) {
+			if (n > 0) {
+				strcat(temp, ", ");
+				pos += 2;
+			}
+			strcpy(temp2, dndGetSkillName(skill->type));
+			temp2[0] = toupper(temp2[0]);
+			sprintf(&(temp[pos]), "%s %+g",
+				temp2,
+				npcComputeActualSkillBonus(npc, skill->type, &breakdown));
+			if (opts->skillBreakdown) {
+				npcBuildComponentBreakdownDescription(breakdown, temp2, sizeof(temp2));
+				if (temp2[0] != 0) {
+					strcat(temp, " ");
+					strcat(temp, temp2);
+				}
+			}
+			npcDestroyComponentBreakdown(breakdown);
+			pos = strlen(temp);
+			n++;
+		}
+		strcat(temp, "; ");
+		pos = strlen(temp);
+
+		n = 0;
+		for (feat = npc->feats; feat != 0; feat = feat->next) {
+
+			switch (feat->type) {
 			case ftRANGERARCHERY:
 			case ftRANGERGREATERARCHERY:
 			case ftRANGERGREATERTWOWEAPONFIGHTING:
@@ -6882,1091 +6929,1122 @@ char* npcBuildStatBlock( NPC* npc, NPCSTATBLOCKOPTS* opts, char* buffer, int len
 			case ftRANGERIMPROVEDTWOWEAPONFIGHTING:
 			case ftRANGERTWOWEAPONFIGHTING:
 				continue;
-		}
-
-      if( n > 0 ) {
-        strcat( temp, ", " );
-        pos += 2;
-      }
-      strcpy( buffer, dndGetFeatName( feat->type ) );
-      buffer[0] = toupper( buffer[0] );
-
-      if( feat->autoAdd ) {
-        strcat( temp, "[" );
-        pos++;
-      }
-
-      strcat( temp, buffer );
-      pos += strlen( buffer );
-
-      switch( feat->type ) {
-        case ftSPELLMASTERY:
-          nfsp = feat->data;
-          strcat( temp, " (" );
-          pos += 2;
-          for( i = 0; i < nfsp->count; i++ ) {
-            sprintf( &(temp[pos]), "%s%s", 
-                      ( i > 0 ? ", " : "" ),
-                      dndGetSpellName( nfsp->spells[ i ] ) );
-            pos = strlen( temp );
-          }
-          strcat( temp, ")" );
-          pos++;
-          break;
-        case ftSPELLFOCUS:
-        case ftGREATERSPELLFOCUS:
-          nfsch = feat->data;
-          sprintf( &(temp[pos]), " (%s)", dndGetSchoolOfMagicName( nfsch->school ) );
-          pos = strlen( temp );
-          break;
-        case ftSIMPLEWEAPONPROFICIENCY:
-        case ftMARTIALWEAPONPROFICIENCY:
-        case ftEXOTICWEAPONPROFICIENCY:
-        case ftIMPROVEDCRITICAL:
-        case ftRAPIDRELOAD:
-        case ftWEAPONFOCUS:
-        case ftGREATERWEAPONFOCUS:
-        case ftWEAPONSPECIALIZATION:
-        case ftGREATERWEAPONSPECIALIZATION:
-          nfw = feat->data;
-          sprintf( &(temp[pos]), " (%s)", dndGetWeaponName( nfw->weapon ) );
-          pos = strlen( temp );
-          break;
-        case ftSKILLFOCUS:
-          nfs = feat->data;
-          sprintf( &(temp[pos]), " (%s)", dndGetSkillName( nfs->skill ) );
-          pos = strlen( temp );
-          break;
-      }
-
-      if( feat->autoAdd ) {
-        strcat( temp, "]" );
-        pos++;
-      }
-      n++;
-    }
-    strcat( temp, "." );
-    pos = strlen( temp );
-  }
-
-  /* FIXME: add posessions here */
-  if( opts->possessions ) {
-    strcat( temp, "\n\n" );
-    strcat( temp, italBegin );
-    strcat( temp, "Possessions:" );
-    strcat( temp, italEnd );
-    strcat( temp, "  " );
-
-    commify( temp2, npcGearValue( npc ) );
-    strcat( temp2, " gp " );
-    strcat( temp, temp2 );
-    strcat( temp, " in gear." );
-  }
-
-  /* spells */
-
-  if( opts->spells ) {
-    for( cls = npc->classes; cls != 0; cls = cls->next ) {
-      list = 0;
-      hasPlus = 0;
-
-      switch( cls->type ) {
-        case pcBARD:
-          list = ((NPCBARDDATA*)(cls->data))->spells;
-          relevantAbility = npc->charisma;
-          break;
-        case pcCLERIC:
-          relevantAbility = npc->wisdom;
-          hasPlus = 1;
-          break;
-        case pcDRUID:
-          relevantAbility = npc->wisdom;
-          break;
-        case pcPALADIN:
-          relevantAbility = npc->wisdom;
-          break;
-        case pcRANGER:
-          relevantAbility = npc->wisdom;
-          break;
-        case pcSORCERER:
-          list = ((NPCSORCERERDATA*)(cls->data))->spells;
-          relevantAbility = npc->charisma;
-          break;
-        case pcWIZARD:
-          list = ((NPCWIZARDDATA*)(cls->data))->spells;
-          relevantAbility = npc->intelligence;
-          break;
-        case npcADEPT:
-          relevantAbility = npc->wisdom;
-          break;
-        default:
-          continue;
-      }
-
-      strcat( temp, "\n\n" );
-      pos += 2;
-
-      if( cls->type == pcCLERIC ) {
-        strcat( temp, italBegin );
-        strcat( temp, "Cleric Domains:" );
-        strcat( temp, italEnd );
-        strcat( temp, "  " );
-        for( i = 0; i < 2; i++ ) {
-          strcpy( temp2, dndGetDomainName( ((NPCCLERICDATA*)(cls->data))->domain[i] ) );
-          temp2[ 0 ] = toupper( temp2[ 0 ] );
-          if( i > 0 ) {
-            strcat( temp, ", " );
-          }
-          strcat( temp, temp2 );
-        }
-        strcat( temp, ".\n" );
-        pos = strlen( temp );
-      }
-
-      if( cls->type == pcWIZARD) {
-		wiz = cls->data;
-		if (wiz->favoredSchool) {
-			hasPlus = 1;
-			strcat( temp, italBegin );
-			strcat( temp, "Prohibited Schools:" );
-			strcat( temp, italEnd );
-			strcat( temp, "  " );
-			for( i = 0; i < 2; i++ ) {
-			  strcpy( temp2, dndGetSchoolOfMagicName( wiz->opposedSchools[i] ) );
-			  temp2[ 0 ] = toupper( temp2[ 0 ] );
-			  if( i > 0 ) {
-				strcat( temp, ", " );
-			  }
-			  strcat( temp, temp2 );
-			  if (wiz->favoredSchool == ssDIVINATION) break;
 			}
-			strcat( temp, ".\n\n" );
-			pos = strlen( temp );
+
+			if (n > 0) {
+				strcat(temp, ", ");
+				pos += 2;
+			}
+			strcpy(buffer, dndGetFeatName(feat->type));
+			buffer[0] = toupper(buffer[0]);
+
+			if (feat->autoAdd) {
+				strcat(temp, "[");
+				pos++;
+			}
+
+			strcat(temp, buffer);
+			pos += strlen(buffer);
+
+			switch (feat->type) {
+			case ftSPELLMASTERY:
+				nfsp = feat->data;
+				strcat(temp, " (");
+				pos += 2;
+				for (i = 0; i < nfsp->count; i++) {
+					sprintf(&(temp[pos]), "%s%s",
+						(i > 0 ? ", " : ""),
+						dndGetSpellName(nfsp->spells[i]));
+					pos = strlen(temp);
+				}
+				strcat(temp, ")");
+				pos++;
+				break;
+			case ftSPELLFOCUS:
+			case ftGREATERSPELLFOCUS:
+				nfsch = feat->data;
+				sprintf(&(temp[pos]), " (%s)", dndGetSchoolOfMagicName(nfsch->school));
+				pos = strlen(temp);
+				break;
+			case ftSIMPLEWEAPONPROFICIENCY:
+			case ftMARTIALWEAPONPROFICIENCY:
+			case ftEXOTICWEAPONPROFICIENCY:
+			case ftIMPROVEDCRITICAL:
+			case ftRAPIDRELOAD:
+			case ftWEAPONFOCUS:
+			case ftGREATERWEAPONFOCUS:
+			case ftWEAPONSPECIALIZATION:
+			case ftGREATERWEAPONSPECIALIZATION:
+				nfw = feat->data;
+				sprintf(&(temp[pos]), " (%s)", dndGetWeaponName(nfw->weapon));
+				pos = strlen(temp);
+				break;
+			case ftSKILLFOCUS:
+				nfs = feat->data;
+				if (nfs == NULL) {
+					sprintf(&(temp[pos]), " (%s)", "Not Selected");
+				}
+				else {
+					sprintf(&(temp[pos]), " (%s)", dndGetSkillName(nfs->skill));
+				}
+				//sprintf(&(temp[pos]), " (%s)", dndGetSkillName(nfs->skill));
+				pos = strlen(temp);
+				break;
+			}
+
+			if (feat->autoAdd) {
+				strcat(temp, "]");
+				pos++;
+			}
+			n++;
 		}
-	  }
+		strcat(temp, ".");
+		pos = strlen(temp);
+	}
 
-      strcpy( temp2, dndGetClassName( cls->type ) );
-      temp2[ 0 ] = toupper( temp2[ 0 ] );
-      strcat( temp, italBegin );
-      strcat( temp, temp2 );
-      if( list == 0 ) {
-        strcat( temp, " Spells Per Day:" );
-        strcat( temp, italEnd );
-        strcat( temp, "  " );
-      } else {
-        strcat( temp, " Spells Known (" );
-      }
-      pos = strlen( temp );
+	/* FIXME: add posessions here */
+	if (opts->possessions) {
+		strcat(temp, "\n\n");
+		strcat(temp, italBegin);
+		strcat(temp, "Possessions:");
+		strcat(temp, italEnd);
+		strcat(temp, "  ");
 
-      n = relevantAbility - 10;
-      if( n > 9 ) {
-        n = 9;
-      }
-      if( n < 0 ) {
-        n = 0;
-      }
+		commify(temp2, npcGearValue(npc));
+		strcat(temp2, " gp ");
+		strcat(temp, temp2);
+		strcat(temp, " in gear.");
+	}
 
-      if( ( cls->type == pcRANGER ) || ( cls->type == pcPALADIN ) ) {
-        if( cls->level < 4 ) {
-          strcat( temp, "None until 4th level" );
-          pos = strlen( temp );
-        }
-      }
+	/* spells */
 
-      j = 0;
-      for( i = 0; i <= n; i++ ) {
-        count = dndGetSpellsPerDay( cls->type, cls->level, i );
-        if( count < 0 ) {
-          continue;
-        }
+	if (opts->spells) {
+		for (cls = npc->classes; cls != 0; cls = cls->next) {
+			list = 0;
+			hasPlus = 0;
 
-        count += dndGetBonusSpellsPerDay( relevantAbility, i );
-        if( count < 1 ) {
-          continue;
-        }
+			switch (cls->type) {
+			case pcBARD:
+				list = ((NPCBARDDATA*)(cls->data))->spells;
+				relevantAbility = npc->charisma;
+				break;
+			case pcCLERIC:
+				relevantAbility = npc->wisdom;
+				hasPlus = 1;
+				break;
+			case pcDRUID:
+				relevantAbility = npc->wisdom;
+				break;
+			case pcPALADIN:
+				relevantAbility = npc->wisdom;
+				break;
+			case pcRANGER:
+				relevantAbility = npc->wisdom;
+				break;
+			case pcSORCERER:
+				list = ((NPCSORCERERDATA*)(cls->data))->spells;
+				relevantAbility = npc->charisma;
+				break;
+			case pcWIZARD:
+				list = ((NPCWIZARDDATA*)(cls->data))->spells;
+				relevantAbility = npc->intelligence;
+				break;
+			case npcADEPT:
+				relevantAbility = npc->wisdom;
+				break;
+			default:
+				continue;
+			}
 
-        if( j ) {
-          strcat( temp, "/" );
-          pos++;
-        }
+			strcat(temp, "\n\n");
+			pos += 2;
 
-        j = 1;
-        sprintf( &(temp[pos]), "%d%s", count, ( ( hasPlus && ( i > 0 ) ) ? "+1" : "" ) );
-        pos = strlen( temp );
-      }
+			if (cls->type == pcCLERIC) {
+				strcat(temp, italBegin);
+				strcat(temp, "Cleric Domains:");
+				strcat(temp, italEnd);
+				strcat(temp, "  ");
+				for (i = 0; i < 2; i++) {
+					strcpy(temp2, dndGetDomainName(((NPCCLERICDATA*)(cls->data))->domain[i]));
+					temp2[0] = toupper(temp2[0]);
+					if (i > 0) {
+						strcat(temp, ", ");
+					}
+					strcat(temp, temp2);
+				}
+				strcat(temp, ".\n");
+				pos = strlen(temp);
+			}
 
-      if( list == 0 ) {
-        strcat( temp, "." );
-      } else {
-        strcat( temp, "):" );
-        strcat( temp, italEnd );
-        strcat( temp, "  " );
-      }
+			if (cls->type == pcWIZARD) {
+				wiz = cls->data;
+				if (wiz->favoredSchool) {
+					hasPlus = 1;
+					strcat(temp, italBegin);
+					strcat(temp, "Prohibited Schools:");
+					strcat(temp, italEnd);
+					strcat(temp, "  ");
+					for (i = 0; i < 2; i++) {
+						strcpy(temp2, dndGetSchoolOfMagicName(wiz->opposedSchools[i]));
+						temp2[0] = toupper(temp2[0]);
+						if (i > 0) {
+							strcat(temp, ", ");
+						}
+						strcat(temp, temp2);
+						if (wiz->favoredSchool == ssDIVINATION) break;
+					}
+					strcat(temp, ".\n\n");
+					pos = strlen(temp);
+				}
+			}
 
-      pos = strlen( temp );
-      if( list == 0 ) {
-        continue;
-      }
+			strcpy(temp2, dndGetClassName(cls->type));
+			temp2[0] = toupper(temp2[0]);
+			strcat(temp, italBegin);
+			strcat(temp, temp2);
+			if (list == 0) {
+				strcat(temp, " Spells Per Day:");
+				strcat(temp, italEnd);
+				strcat(temp, "  ");
+			}
+			else {
+				strcat(temp, " Spells Known (");
+			}
+			pos = strlen(temp);
 
-      for( i = 0; i <= n; i++ ) {
-        if( list[ i ] != 0 ) {
-          sprintf( &(temp[pos]), "%d%s -- ", i, getOrdinalSuffix( i ) );
-          strcat( temp, italBegin );
-          pos = strlen( temp );
-          for( spell = list[i]; spell != 0; spell = spell->next ) {
-            strcpy( temp2, dndGetSpellName( spell->spell ) );
-            strcat( temp, temp2 );
-            if( spell->next != 0 ) {
-              strcat( temp, ", " );
-            }
-          }
-          strcat( temp, "." );
-          strcat( temp, italEnd );
-          strcat( temp, "  " );
-          pos = strlen( temp );
-        }
-      }
-    }
-  }
+			n = relevantAbility - 10;
+			if (n > 9) {
+				n = 9;
+			}
+			if (n < 0) {
+				n = 0;
+			}
 
-  len = strlen( temp ) + 1;
-  strncpy( buffer, temp, len );
-  free( temp );
+			if ((cls->type == pcRANGER) || (cls->type == pcPALADIN)) {
+				if (cls->level < 4) {
+					strcat(temp, "None until 4th level");
+					pos = strlen(temp);
+				}
+			}
 
-  return buffer;
+			j = 0;
+			for (i = 0; i <= n; i++) {
+				count = dndGetSpellsPerDay(cls->type, cls->level, i);
+				if (count < 0) {
+					continue;
+				}
+
+				count += dndGetBonusSpellsPerDay(relevantAbility, i);
+				if (count < 1) {
+					continue;
+				}
+
+				if (j) {
+					strcat(temp, "/");
+					pos++;
+				}
+
+				j = 1;
+				sprintf(&(temp[pos]), "%d%s", count, ((hasPlus && (i > 0)) ? "+1" : ""));
+				pos = strlen(temp);
+			}
+
+			if (list == 0) {
+				strcat(temp, ".");
+			}
+			else {
+				strcat(temp, "):");
+				strcat(temp, italEnd);
+				strcat(temp, "  ");
+			}
+
+			pos = strlen(temp);
+			if (list == 0) {
+				continue;
+			}
+
+			for (i = 0; i <= n; i++) {
+				if (list[i] != 0) {
+					sprintf(&(temp[pos]), "%d%s -- ", i, getOrdinalSuffix(i));
+					strcat(temp, italBegin);
+					pos = strlen(temp);
+					for (spell = list[i]; spell != 0; spell = spell->next) {
+						strcpy(temp2, dndGetSpellName(spell->spell));
+						strcat(temp, temp2);
+						if (spell->next != 0) {
+							strcat(temp, ", ");
+						}
+					}
+					strcat(temp, ".");
+					strcat(temp, italEnd);
+					strcat(temp, "  ");
+					pos = strlen(temp);
+				}
+			}
+		}
+	}
+
+	len = strlen(temp) + 1;
+	strncpy(buffer, temp, len);
+	free(temp);
+
+	return buffer;
 }
 
 
-char* npcRandomName( int race, int gender, char* filePath, char* name, int buflen ) {
-  char       grammarPath[ 1024 ];
-  grGRAMMAR* grammar;
+char* npcRandomName(int race, int gender, char* filePath, char* name, int buflen) {
+	char       grammarPath[1024];
+	grGRAMMAR* grammar;
 
-  switch( race ) {
-    case rcHALFELF:
-      if( rand() % 2 ) {
-        race = rcELF_HIGH;
-      } else {
-        race = rcHUMAN;
-      }
-      break;
-    case rcHALFORC:
+	switch (race) {
+	case rcHALFELF:
+		if (rand() % 2) {
+			race = rcELF_HIGH;
+		}
+		else {
+			race = rcHUMAN;
+		}
+		break;
+	case rcHALFORC:
 		race = rcHUMAN;
-      //if( rand() % 2 ) {
-      //  race = rcORC;
-      //} else {
-      //  race = rcHUMAN;
-      //}
-      break;
-  }
+		//if( rand() % 2 ) {
+		//  race = rcORC;
+		//} else {
+		//  race = rcHUMAN;
+		//}
+		break;
+	}
 
-  strcpy( grammarPath, filePath );
+	strcpy(grammarPath, filePath);
 
-  switch( race ) {
-    case rcHUMAN:
-      strcat( grammarPath, "human_names.txt" );
-      break;
-    case rcDWARF_HILL:
-    /*case rcDWARF_MOUNTAIN:
-    case rcDWARF_DEEP:
-    case rcDWARF_DUERGAR:
-    case rcDWARF_DERRO:
-    case rcHALFLING_DEEP:
-    case rcCC_CHARDUNI:
-    case rcCC_DWARF_FORSAKEN:*/
-      strcat( grammarPath, "dwarf_names.txt" );
-      break;
-    case rcELF_HIGH:
-    /*case rcELF_GRAY:
-    case rcELF_WILD:
-    case rcELF_WOOD:
-    case rcELF_DROW:
-    case rcCC_ELF_FORSAKEN:*/
-      strcat( grammarPath, "elf_names.txt" );
-      break;
-    case rcHALFLING_LIGHTFOOT:
-    //case rcHALFLING_TALLFELLOW:
-      strcat( grammarPath, "halfling_names.txt" );
-      break;
-    case rcGNOME_ROCK:
-    //case rcGNOME_FOREST:
-    //case rcGNOME_SVIRFNEBLIN:
-      strcat( grammarPath, "gnome_names.txt" );
-      break;
-    default:
-      strcat( grammarPath, "monstrous_names.txt" );
-      break;
-  }
+	switch (race) {
+	case rcHUMAN:
+		strcat(grammarPath, "human_names.txt");
+		break;
+	case rcDWARF_HILL:
+		/*case rcDWARF_MOUNTAIN:
+		case rcDWARF_DEEP:
+		case rcDWARF_DUERGAR:
+		case rcDWARF_DERRO:
+		case rcHALFLING_DEEP:
+		case rcCC_CHARDUNI:
+		case rcCC_DWARF_FORSAKEN:*/
+		strcat(grammarPath, "dwarf_names.txt");
+		break;
+	case rcELF_HIGH:
+		/*case rcELF_GRAY:
+		case rcELF_WILD:
+		case rcELF_WOOD:
+		case rcELF_DROW:
+		case rcCC_ELF_FORSAKEN:*/
+		strcat(grammarPath, "elf_names.txt");
+		break;
+	case rcHALFLING_LIGHTFOOT:
+		//case rcHALFLING_TALLFELLOW:
+		strcat(grammarPath, "halfling_names.txt");
+		break;
+	case rcGNOME_ROCK:
+		//case rcGNOME_FOREST:
+		//case rcGNOME_SVIRFNEBLIN:
+		strcat(grammarPath, "gnome_names.txt");
+		break;
+	default:
+		strcat(grammarPath, "monstrous_names.txt");
+		break;
+	}
 
-  *name = 0;
+	*name = 0;
 
-  grammar = grLoadGrammar( grammarPath );
-  if( grammar == NULL ) {
-    return NULL;
-  }
+	grammar = grLoadGrammar(grammarPath);
+	if (grammar == NULL) {
+		return NULL;
+	}
 
-  if( gender == gMALE ) {
-    grammar->startSymbol = "[M]";
-  } else if( gender == gFEMALE ) {
-    grammar->startSymbol = "[F]";
-  }
+	if (gender == gMALE) {
+		grammar->startSymbol = "[M]";
+	}
+	else if (gender == gFEMALE) {
+		grammar->startSymbol = "[F]";
+	}
 
-  grBuildPhrase( grammar, name, buflen );
+	grBuildPhrase(grammar, name, buflen);
 
-  grDestroyGrammar( grammar );
+	grDestroyGrammar(grammar);
 
-  return name;
+	return name;
 }
 
 
-int npcKnowsLanguage( NPC* npc, int language ) {
-  NPCLANGUAGE* lang;
+int npcKnowsLanguage(NPC* npc, int language) {
+	NPCLANGUAGE* lang;
 
-  for( lang = npc->languages; lang != 0; lang = lang->next ) {
-    if( lang->language == language ) {
-      return 1;
-    }
-  }
+	for (lang = npc->languages; lang != 0; lang = lang->next) {
+		if (lang->language == language) {
+			return 1;
+		}
+	}
 
-  return 0;
+	return 0;
 }
 
 
-int classMatchesRequest( int classType, int request ) {
-  int i;
+int classMatchesRequest(int classType, int request) {
+	int i;
 
-  if( request == classANY ) {
-    return 1;
-  }
+	if (request == classANY) {
+		return 1;
+	}
 
-  for( i = 0; classes[ i ].type != 0; i++ ) {
-    switch( request ) {
-      case classANY_PC:
-        if( ( classes[ i ].dtop_PC != 0 ) && ( classes[ i ].type == classType ) ) {
-          return 1;
-        }
-        break;
-      case classANY_NPC:
-        if( ( classes[ i ].dtop_NPC != 0 ) && ( classes[ i ].type == classType ) ) {
-          return 1;
-        }
-        break;
-    }
-  }
+	for (i = 0; classes[i].type != 0; i++) {
+		switch (request) {
+		case classANY_PC:
+			if ((classes[i].dtop_PC != 0) && (classes[i].type == classType)) {
+				return 1;
+			}
+			break;
+		case classANY_NPC:
+			if ((classes[i].dtop_NPC != 0) && (classes[i].type == classType)) {
+				return 1;
+			}
+			break;
+		}
+	}
 
-  return 0;
+	return 0;
 }
 
 
-int conflictDetected( NPC* npc, NPCGENERATOROPTS* opts, int classType ) {
-  /* first, check for alignment conflicts */
-  switch( classType ) {
-    case pcBARBARIAN:
-      if( ( npc->alignment & alLAWFUL ) != 0 ) {
-        return 1;
-      }
-      break;
-    case pcBARD:
-      if( ( npc->alignment & alLAWFUL ) != 0 ) {
-        return 1;
-      }
-      break;
-    case pcDRUID:
-      if( ( npc->alignment & ( alLCNEUTRAL | alGENEUTRAL ) ) == 0 ) {
-        return 1;
-      }
-      break;
-    case pcMONK:
-      if( ( npc->alignment & alLAWFUL ) == 0 ) {
-        return 1;
-      }
-      break;
-    case pcPALADIN:
-      if( npc->alignment != ( alLAWFUL | alGOOD ) ) {
-        return 1;
-      }
-      break;
-  }
+int conflictDetected(NPC* npc, NPCGENERATOROPTS* opts, int classType) {
+	/* first, check for alignment conflicts */
+	switch (classType) {
+	case pcBARBARIAN:
+		if ((npc->alignment & alLAWFUL) != 0) {
+			return 1;
+		}
+		break;
+	case pcBARD:
+		if ((npc->alignment & alLAWFUL) != 0) {
+			return 1;
+		}
+		break;
+	case pcDRUID:
+		if ((npc->alignment & (alLCNEUTRAL | alGENEUTRAL)) == 0) {
+			return 1;
+		}
+		break;
+	case pcMONK:
+		if ((npc->alignment & alLAWFUL) == 0) {
+			return 1;
+		}
+		break;
+	case pcPALADIN:
+		if (npc->alignment != (alLAWFUL | alGOOD)) {
+			return 1;
+		}
+		break;
+	}
 
-  return 0;
+	return 0;
 }
 
 
-int enforceAlignment( NPC* npc, NPCGENERATOROPTS* opts ) {
-  int i;
-  int constrained;
-  int doC, doL, doLCN, doG, doE, doGEN;
+int enforceAlignment(NPC* npc, NPCGENERATOROPTS* opts) {
+	int i;
+	int constrained;
+	int doC, doL, doLCN, doG, doE, doGEN;
 
-  constrained = 0;
+	constrained = 0;
 
-  doG = ( opts->alignment == alANY_GOOD );
-  doE = ( opts->alignment == alANY_EVIL );
-  doGEN = ( opts->alignment == alANY_GENEUTRAL );
-  doL = ( opts->alignment == alANY_LAWFUL );
-  doC = ( opts->alignment == alANY_CHAOTIC );
-  doLCN = ( opts->alignment == alANY_LCNEUTRAL );
+	doG = (opts->alignment == alANY_GOOD);
+	doE = (opts->alignment == alANY_EVIL);
+	doGEN = (opts->alignment == alANY_GENEUTRAL);
+	doL = (opts->alignment == alANY_LAWFUL);
+	doC = (opts->alignment == alANY_CHAOTIC);
+	doLCN = (opts->alignment == alANY_LCNEUTRAL);
 
-  if( opts->alignment < 0 ) {
-    constrained = 1;
-  }
+	if (opts->alignment < 0) {
+		constrained = 1;
+	}
 
-  for( i = 0; i < 3; i++ ) {
-    if( opts->classType[ i ] == pcBARD ) {
-      if( ( npc->alignment & alLAWFUL ) != 0 ) {
-        constrained = 1;
+	for (i = 0; i < 3; i++) {
+		if (opts->classType[i] == pcBARD) {
+			if ((npc->alignment & alLAWFUL) != 0) {
+				constrained = 1;
 
-        /* added 4 Jun 2001 to fix problem with wrong alignments being selected */
-        if( doL ) continue;
+				/* added 4 Jun 2001 to fix problem with wrong alignments being selected */
+				if (doL) continue;
 
-        npc->alignment &= ~alLAWFUL;
-        if( rand() % 2 == 0 ) {
-          npc->alignment |= alLCNEUTRAL;
-        } else {
-          npc->alignment |= alCHAOTIC;
-        }
-        break;
-      }
-    } else if( opts->classType[ i ] == pcBARBARIAN ) {
-      if( ( npc->alignment & alLAWFUL ) != 0 ) {
-        constrained = 1;
+				npc->alignment &= ~alLAWFUL;
+				if (rand() % 2 == 0) {
+					npc->alignment |= alLCNEUTRAL;
+				}
+				else {
+					npc->alignment |= alCHAOTIC;
+				}
+				break;
+			}
+		}
+		else if (opts->classType[i] == pcBARBARIAN) {
+			if ((npc->alignment & alLAWFUL) != 0) {
+				constrained = 1;
 
-        /* added 4 Jun 2001 to fix problem with wrong alignments being selected */
-        if( doL ) continue;
+				/* added 4 Jun 2001 to fix problem with wrong alignments being selected */
+				if (doL) continue;
 
-        npc->alignment &= ~alLAWFUL;
-        if( rand() % 2 == 0 ) {
-          npc->alignment |= alLCNEUTRAL;
-        } else {
-          npc->alignment |= alCHAOTIC;
-        }
-        break;
-      }
-    } else if( opts->classType[ i ] == pcDRUID ) {
-      if( ( npc->alignment & ( alLCNEUTRAL | alGENEUTRAL ) ) == 0 ) {
-        constrained = 1;
-        /* changed 4 Jun 2001 to fix problem with wrong alignments being selected */
-        if( !( doL || doC ) && ( doG || doE || ( rand() % 2 == 0 ) ) ) {
-          npc->alignment &= ~( alLAWFUL | alCHAOTIC );
-          npc->alignment |= alLCNEUTRAL;
-        } else {
-          npc->alignment &= ~( alGOOD | alEVIL );
-          npc->alignment |= alGENEUTRAL;
-        }
-        break;
-      }
-    } else if( opts->classType[ i ] == pcMONK ) {
-      if( ( npc->alignment & alLAWFUL ) == 0 ) {
-        constrained = 1;
+				npc->alignment &= ~alLAWFUL;
+				if (rand() % 2 == 0) {
+					npc->alignment |= alLCNEUTRAL;
+				}
+				else {
+					npc->alignment |= alCHAOTIC;
+				}
+				break;
+			}
+		}
+		else if (opts->classType[i] == pcDRUID) {
+			if ((npc->alignment & (alLCNEUTRAL | alGENEUTRAL)) == 0) {
+				constrained = 1;
+				/* changed 4 Jun 2001 to fix problem with wrong alignments being selected */
+				if (!(doL || doC) && (doG || doE || (rand() % 2 == 0))) {
+					npc->alignment &= ~(alLAWFUL | alCHAOTIC);
+					npc->alignment |= alLCNEUTRAL;
+				}
+				else {
+					npc->alignment &= ~(alGOOD | alEVIL);
+					npc->alignment |= alGENEUTRAL;
+				}
+				break;
+			}
+		}
+		else if (opts->classType[i] == pcMONK) {
+			if ((npc->alignment & alLAWFUL) == 0) {
+				constrained = 1;
 
-        /* added 4 Jun 2001 to fix problem with wrong alignments being selected */
-        if( doC || doLCN ) continue;
+				/* added 4 Jun 2001 to fix problem with wrong alignments being selected */
+				if (doC || doLCN) continue;
 
-        npc->alignment &= ~( alCHAOTIC | alLCNEUTRAL );
-        npc->alignment |= alLAWFUL;
-        break;
-      }
-    } else if( opts->classType[ i ] == pcPALADIN ) {
-      if( npc->alignment != ( alLAWFUL | alGOOD ) ) {
-        constrained = 1;
+				npc->alignment &= ~(alCHAOTIC | alLCNEUTRAL);
+				npc->alignment |= alLAWFUL;
+				break;
+			}
+		}
+		else if (opts->classType[i] == pcPALADIN) {
+			if (npc->alignment != (alLAWFUL | alGOOD)) {
+				constrained = 1;
 
-        /* added 4 Jun 2001 to fix problem with wrong alignments being selected */
-        if( doG || doGEN ) {
-          npc->alignment = alLAWFUL | ( doG ? alGOOD : alGENEUTRAL );
-          continue;
-        }
+				/* added 4 Jun 2001 to fix problem with wrong alignments being selected */
+				if (doG || doGEN) {
+					npc->alignment = alLAWFUL | (doG ? alGOOD : alGENEUTRAL);
+					continue;
+				}
 
-        if( doC || doLCN ) {
-          npc->alignment = ( doC ? alCHAOTIC : alLCNEUTRAL ) | alGOOD;
-          continue;
-        }
+				if (doC || doLCN) {
+					npc->alignment = (doC ? alCHAOTIC : alLCNEUTRAL) | alGOOD;
+					continue;
+				}
 
-        npc->alignment = alLAWFUL | alGOOD;
-        break;
-      }
-    }
-  }
+				npc->alignment = alLAWFUL | alGOOD;
+				break;
+			}
+		}
+	}
 
-  return constrained;
+	return constrained;
 }
 
 
-void generateRandomClasses( NPC* npc, NPCGENERATOROPTS* opts ) {
-  int  i;
-  int  d;
-  int  j;
-  int  v;
-  int  k;
-  int  found;
-  int  preferredClass;
+void generateRandomClasses(NPC* npc, NPCGENERATOROPTS* opts) {
+	int  i;
+	int  d;
+	int  j;
+	int  v;
+	int  k;
+	int  found;
+	int  preferredClass;
 
-  /* first, check for the odds for the primary class to be the race's
-   * preferred class */
+	/* first, check for the odds for the primary class to be the race's
+	 * preferred class */
 
-  if( opts->classType[ 0 ] <= 0 ) {
-    preferredClass = dndGetRacePreferredClass( npc->race );
-    if( preferredClass != 0 ) {
-      if( classMatchesRequest( preferredClass, opts->classType[0] ) ) {
-        if( rollDice( 1, 100 ) <= PREFERRED_CLASS_CHANCE ) {
-          opts->classType[ 0 ] = preferredClass;
-        }
-      }
-    }
-  }
+	if (opts->classType[0] <= 0) {
+		preferredClass = dndGetRacePreferredClass(npc->race);
+		if (preferredClass != 0) {
+			if (classMatchesRequest(preferredClass, opts->classType[0])) {
+				if (rollDice(1, 100) <= PREFERRED_CLASS_CHANCE) {
+					opts->classType[0] = preferredClass;
+				}
+			}
+		}
+	}
 
-  /* go through each of the "multiclass" slots in the opts structure.  if
-   * any of them have a 'classANY*' request, generate a random class and
-   * make sure it does not already exist among the classes generated. */
+	/* go through each of the "multiclass" slots in the opts structure.  if
+	 * any of them have a 'classANY*' request, generate a random class and
+	 * make sure it does not already exist among the classes generated. */
 
-  for( i = 0; i < 3; i++ ) {
-    if( ( opts->classType[ i ] != classANY ) &&
-        ( opts->classType[ i ] != classANY_PC ) &&
-        ( opts->classType[ i ] != classANY_NPC ) )
-    {
-      for( k = 0; k < i; k++ ) {
-        if( opts->classType[ k ] == opts->classType[ i ] ) {
-          opts->classType[ k ] = classNONE;
-          if( opts->level[ k ] > 0 ) {
-            opts->level[ i ] += opts->level[ k ];
-          }
-          enforceAlignment( npc, opts );
-          break;
-        }
-      }
-      continue;
-    }
+	for (i = 0; i < 3; i++) {
+		if ((opts->classType[i] != classANY) &&
+			(opts->classType[i] != classANY_PC) &&
+			(opts->classType[i] != classANY_NPC))
+		{
+			for (k = 0; k < i; k++) {
+				if (opts->classType[k] == opts->classType[i]) {
+					opts->classType[k] = classNONE;
+					if (opts->level[k] > 0) {
+						opts->level[i] += opts->level[k];
+					}
+					enforceAlignment(npc, opts);
+					break;
+				}
+			}
+			continue;
+		}
 
-    do {
-      found = 0;
-      d = rollDice( 1, 100 );
-      for( j = 0; classes[ j ].type != 0; j++ ) {
-        switch( opts->classType[ i ] ) {
-          case classANY: v = classes[ j ].dtop_All; break;
-          case classANY_PC: v = classes[ j ].dtop_PC; break;
-          case classANY_NPC: v = classes[ j ].dtop_NPC; break;
-        }
-        if( d <= v ) {
-          for( k = 0; k < i; k++ ) {
-            if( opts->classType[ k ] == classes[ j ].type ) {
-              found = 1;
-              break;
-            }
-          }
-          if( !found ) {
-            if( conflictDetected( npc, opts, classes[ j ].type ) ) {
-              found = 1;
-            } else {
-              opts->classType[ i ] = classes[ j ].type;
-            }
-          }
-          break;
-        }
-      }
-    } while( found );
-  }
+		do {
+			found = 0;
+			d = rollDice(1, 100);
+			for (j = 0; classes[j].type != 0; j++) {
+				switch (opts->classType[i]) {
+				case classANY: v = classes[j].dtop_All; break;
+				case classANY_PC: v = classes[j].dtop_PC; break;
+				case classANY_NPC: v = classes[j].dtop_NPC; break;
+				}
+				if (d <= v) {
+					for (k = 0; k < i; k++) {
+						if (opts->classType[k] == classes[j].type) {
+							found = 1;
+							break;
+						}
+					}
+					if (!found) {
+						if (conflictDetected(npc, opts, classes[j].type)) {
+							found = 1;
+						}
+						else {
+							opts->classType[i] = classes[j].type;
+						}
+					}
+					break;
+				}
+			}
+		} while (found);
+	}
 }
 
 
-void generateAbilityScores( NPC* npc, NPCGENERATOROPTS* opts ) {
-  int i;
-  int j;
-  int rolledScores[6];
-  WEIGHTEDLIST* wlist;
-  int total;
-  int weights[7];
-  int weightMods[6] = { 64, 16, 8, 4, 2, 1 };
+void generateAbilityScores(NPC* npc, NPCGENERATOROPTS* opts) {
+	int i;
+	int j;
+	int rolledScores[6];
+	WEIGHTEDLIST* wlist;
+	int total;
+	int weights[7];
+	int weightMods[6] = { 64, 16, 8, 4, 2, 1 };
 
-  if( opts->abilityScoreStrategy == 0 ) {
-    npcAbScoreStrategy_Straight3d6( rolledScores, opts->userData );
-  } else {
-    opts->abilityScoreStrategy( rolledScores, opts->userData );
-  }
+	if (opts->abilityScoreStrategy == 0) {
+		npcAbScoreStrategy_Straight3d6(rolledScores, opts->userData);
+	}
+	else {
+		opts->abilityScoreStrategy(rolledScores, opts->userData);
+	}
 
-  /* sort the 6 scores from highest to lowest */
+	/* sort the 6 scores from highest to lowest */
 
-  qsort( rolledScores, 6, sizeof( int ), icomp );
+	qsort(rolledScores, 6, sizeof(int), icomp);
 
-  /* initialize the weights */
+	/* initialize the weights */
 
-  for( i = 0; i < 7; i++ ) {
-    weights[ i ] = 1;
-  }
+	for (i = 0; i < 7; i++) {
+		weights[i] = 1;
+	}
 
-  /* for each ability of each requested class, weight that ability by it's
-   * importance to that class. */
+	/* for each ability of each requested class, weight that ability by it's
+	 * importance to that class. */
 
-  for( i = 0; i < 6; i++ ) {
-    for( j = 0; j < 3; j++ ) {
-      if( opts->classType[ j ] <= 0 ) {
-        continue;
-      }
-      total = weightMods[ i ] - j * 8;
-      if( total <= 0 ) {
-        total = 1;
-      }
+	for (i = 0; i < 6; i++) {
+		for (j = 0; j < 3; j++) {
+			if (opts->classType[j] <= 0) {
+				continue;
+			}
+			total = weightMods[i] - j * 8;
+			if (total <= 0) {
+				total = 1;
+			}
 
-      weights[ lookupAbility( opts->classType[ j ], i ) ] += total;
-    }
-  }
+			weights[lookupAbility(opts->classType[j], i)] += total;
+		}
+	}
 
-  /* build a weighted list based on the weights calculated above */
-  
-  wlist = 0;
-  total = 0;
-  for( i = 1; i < 7; i++ ) { /* abSTRENGTH to abCHARISMA */
-    total += addToWeightedList( &wlist, i, weights[ i ] );
-  }
+	/* build a weighted list based on the weights calculated above */
 
-  /* now, randomly select the weighted items out and assign them to the
-   * indicated ability score */
+	wlist = 0;
+	total = 0;
+	for (i = 1; i < 7; i++) { /* abSTRENGTH to abCHARISMA */
+		total += addToWeightedList(&wlist, i, weights[i]);
+	}
 
-  i = 0;
-  while( wlist != 0 ) {
-    j = getWeightedItem( &wlist, rollDice( 1, total ), &total );
-    switch( j ) {
-      case abSTRENGTH: npc->strength = rolledScores[ i ]; break;
-      case abDEXTERITY: npc->dexterity = rolledScores[ i ]; break;
-      case abCONSTITUTION: npc->constitution = rolledScores[ i ]; break;
-      case abINTELLIGENCE: npc->intelligence = rolledScores[ i ]; break;
-      case abWISDOM: npc->wisdom = rolledScores[ i ]; break;
-      case abCHARISMA: npc->charisma = rolledScores[ i ]; break;
-    }
-    i++;
-  }
+	/* now, randomly select the weighted items out and assign them to the
+	 * indicated ability score */
 
-  /* modify the ability scores based on the character's race */
+	i = 0;
+	while (wlist != 0) {
+		j = getWeightedItem(&wlist, rollDice(1, total), &total);
+		switch (j) {
+		case abSTRENGTH: npc->strength = rolledScores[i]; break;
+		case abDEXTERITY: npc->dexterity = rolledScores[i]; break;
+		case abCONSTITUTION: npc->constitution = rolledScores[i]; break;
+		case abINTELLIGENCE: npc->intelligence = rolledScores[i]; break;
+		case abWISDOM: npc->wisdom = rolledScores[i]; break;
+		case abCHARISMA: npc->charisma = rolledScores[i]; break;
+		}
+		i++;
+	}
 
-  npc->strength     += dndGetRaceBonus( npc->race, npc->gender, rbtABILITYSCORE, abSTRENGTH );
-  npc->dexterity    += dndGetRaceBonus( npc->race, npc->gender, rbtABILITYSCORE, abDEXTERITY );
-  npc->constitution += dndGetRaceBonus( npc->race, npc->gender, rbtABILITYSCORE, abCONSTITUTION );
-  npc->intelligence += dndGetRaceBonus( npc->race, npc->gender, rbtABILITYSCORE, abINTELLIGENCE );
-  npc->wisdom       += dndGetRaceBonus( npc->race, npc->gender, rbtABILITYSCORE, abWISDOM );
-  npc->charisma     += dndGetRaceBonus( npc->race, npc->gender, rbtABILITYSCORE, abCHARISMA );
+	/* modify the ability scores based on the character's race */
 
-  /* intelligence cannot be less than 3 */
+	npc->strength += dndGetRaceBonus(npc->race, npc->gender, rbtABILITYSCORE, abSTRENGTH);
+	npc->dexterity += dndGetRaceBonus(npc->race, npc->gender, rbtABILITYSCORE, abDEXTERITY);
+	npc->constitution += dndGetRaceBonus(npc->race, npc->gender, rbtABILITYSCORE, abCONSTITUTION);
+	npc->intelligence += dndGetRaceBonus(npc->race, npc->gender, rbtABILITYSCORE, abINTELLIGENCE);
+	npc->wisdom += dndGetRaceBonus(npc->race, npc->gender, rbtABILITYSCORE, abWISDOM);
+	npc->charisma += dndGetRaceBonus(npc->race, npc->gender, rbtABILITYSCORE, abCHARISMA);
 
-  if( npc->intelligence < 3 ) {
-    npc->intelligence = 3;
-  }
+	/* intelligence cannot be less than 3 */
 
-  /* the others should not be less than 1 */
+	if (npc->intelligence < 3) {
+		npc->intelligence = 3;
+	}
 
-  if( npc->strength < 1 ) {
-    npc->strength = 1;
-  }
-  if( npc->dexterity < 1 ) {
-    npc->dexterity = 1;
-  }
-  if( npc->constitution < 1 ) {
-    npc->constitution = 1;
-  }
-  if( npc->wisdom < 1 ) {
-    npc->wisdom = 1;
-  }
-  if( npc->charisma < 1 ) {
-    npc->charisma = 1;
-  }
+	/* the others should not be less than 1 */
+
+	if (npc->strength < 1) {
+		npc->strength = 1;
+	}
+	if (npc->dexterity < 1) {
+		npc->dexterity = 1;
+	}
+	if (npc->constitution < 1) {
+		npc->constitution = 1;
+	}
+	if (npc->wisdom < 1) {
+		npc->wisdom = 1;
+	}
+	if (npc->charisma < 1) {
+		npc->charisma = 1;
+	}
 }
 
 
-int npcGetRandomRace( int raceType ) {
-  int i;
-  int j;
-  int k;
+int npcGetRandomRace(int raceType) {
+	int i;
+	int j;
+	int k;
 
-  if( raceType > 0 ) {
-    return raceType;
-  }
+	if (raceType > 0) {
+		return raceType;
+	}
 
-  j = rollDice( 1, 100 );
-  for( i = 0; races[ i ].type != 0; i++ ) {
-/*
-	  if( raceType == raceANY ) {
-      k = races[ i ].dtop_All;
-    } else if( raceType == raceANY_CORE ) {
-      k = races[ i ].dtop_Core;
-    } else if( raceType == raceANY_DMG ) {
-      k = races[ i ].dtop_DMG;
-    } else if( raceType == raceANY_MM ) {
-      k = races[ i ].dtop_MM;
-    } else if( raceType == raceANY_CC ) {
-      k = races[ i ].dtop_CC;
-    }
-*/
-	k = races[ i ].dtop_Core;
+	j = rollDice(1, 100);
+	for (i = 0; races[i].type != 0; i++) {
+		/*
+			  if( raceType == raceANY ) {
+			  k = races[ i ].dtop_All;
+			} else if( raceType == raceANY_CORE ) {
+			  k = races[ i ].dtop_Core;
+			} else if( raceType == raceANY_DMG ) {
+			  k = races[ i ].dtop_DMG;
+			} else if( raceType == raceANY_MM ) {
+			  k = races[ i ].dtop_MM;
+			} else if( raceType == raceANY_CC ) {
+			  k = races[ i ].dtop_CC;
+			}
+		*/
+		k = races[i].dtop_Core;
 
-    if( j <= k ) {
-      return races[ i ].type;
-    }
-  }
+		if (j <= k) {
+			return races[i].type;
+		}
+	}
 
-  return 0;
+	return 0;
 }
 
 
-int npcGetRandomAlignment( int alType ) {
-  if( alType > 0 ) {
-    return alType;
-  }
+int npcGetRandomAlignment(int alType) {
+	if (alType > 0) {
+		return alType;
+	}
 
-  switch( alType ) {
-    case alANY:
-      return getRandomLCAlignment() | getRandomGEAlignment();
-    case alANY_GOOD:
-      return getRandomLCAlignment() | alGOOD;
-    case alANY_GENEUTRAL:
-      return getRandomLCAlignment() | alGENEUTRAL;
-    case alANY_EVIL:
-      return getRandomLCAlignment() | alEVIL;
-    case alANY_LAWFUL:
-      return alLAWFUL | getRandomGEAlignment();
-    case alANY_LCNEUTRAL:
-      return alLCNEUTRAL | getRandomGEAlignment();
-    case alANY_CHAOTIC:
-      return alCHAOTIC | getRandomGEAlignment();
-    case alANY_NONGOOD:
-      if( rand() % 2 == 0 ) {
-        return getRandomLCAlignment() | alGENEUTRAL;
-      } else {
-        return getRandomLCAlignment() | alEVIL;
-      }
-    case alANY_NONEVIL:
-      if( rand() % 2 == 0 ) {
-        return getRandomLCAlignment() | alGENEUTRAL;
-      } else {
-        return getRandomLCAlignment() | alGOOD;
-      }
-    case alANY_NONLAWFUL:
-      if( rand() % 2 == 0 ) {
-        return alLCNEUTRAL | getRandomGEAlignment();
-      } else {
-        return alCHAOTIC | getRandomGEAlignment();
-      }
-    case alANY_NONCHAOTIC:
-      if( rand() % 2 == 0 ) {
-        return alLCNEUTRAL | getRandomGEAlignment();
-      } else {
-        return alLAWFUL | getRandomGEAlignment();
-      }
-  }
+	switch (alType) {
+	case alANY:
+		return getRandomLCAlignment() | getRandomGEAlignment();
+	case alANY_GOOD:
+		return getRandomLCAlignment() | alGOOD;
+	case alANY_GENEUTRAL:
+		return getRandomLCAlignment() | alGENEUTRAL;
+	case alANY_EVIL:
+		return getRandomLCAlignment() | alEVIL;
+	case alANY_LAWFUL:
+		return alLAWFUL | getRandomGEAlignment();
+	case alANY_LCNEUTRAL:
+		return alLCNEUTRAL | getRandomGEAlignment();
+	case alANY_CHAOTIC:
+		return alCHAOTIC | getRandomGEAlignment();
+	case alANY_NONGOOD:
+		if (rand() % 2 == 0) {
+			return getRandomLCAlignment() | alGENEUTRAL;
+		}
+		else {
+			return getRandomLCAlignment() | alEVIL;
+		}
+	case alANY_NONEVIL:
+		if (rand() % 2 == 0) {
+			return getRandomLCAlignment() | alGENEUTRAL;
+		}
+		else {
+			return getRandomLCAlignment() | alGOOD;
+		}
+	case alANY_NONLAWFUL:
+		if (rand() % 2 == 0) {
+			return alLCNEUTRAL | getRandomGEAlignment();
+		}
+		else {
+			return alCHAOTIC | getRandomGEAlignment();
+		}
+	case alANY_NONCHAOTIC:
+		if (rand() % 2 == 0) {
+			return alLCNEUTRAL | getRandomGEAlignment();
+		}
+		else {
+			return alLAWFUL | getRandomGEAlignment();
+		}
+	}
 
-  return 0;
+	return 0;
 }
 
 
-NPC* npcGenerateNPC( NPCGENERATOROPTS* opts )
+NPC* npcGenerateNPC(NPCGENERATOROPTS* opts)
 {
-  NPC* npc;
-  int  clevel;
-  int  tlevel;
-  int i;
-  int j;
-  int k;
-  int hp;
-  int constrained;
-  int levelsLeft;
-  char* next;
-  char temp[ 100 ];
-  NPCCLASS* cls;
-  WEIGHTEDLIST* wlist;
+	NPC* npc;
+	int  clevel;
+	int  tlevel;
+	int i;
+	int j;
+	int k;
+	int hp;
+	int constrained;
+	int levelsLeft;
+	char* next;
+	char temp[100];
+	NPCCLASS* cls;
+	WEIGHTEDLIST* wlist;
 
-  npc = (NPC*)malloc( sizeof( NPC ) );
-  memset( npc, 0, sizeof( *npc ) );
+	npc = (NPC*)malloc(sizeof(NPC));
+	memset(npc, 0, sizeof(*npc));
 
-  if( opts->gender == gANY ) {
-    if( rand() % 3 < 1 ) {
-      npc->gender = gFEMALE;
-    } else {
-      npc->gender = gMALE;
-    }
-  } else {
-    npc->gender = opts->gender;
-  }
+	if (opts->gender == gANY) {
+		if (rand() % 3 < 1) {
+			npc->gender = gFEMALE;
+		}
+		else {
+			npc->gender = gMALE;
+		}
+	}
+	else {
+		npc->gender = opts->gender;
+	}
 
-  /* if the alignment was not specified, choose one (from the tables in the
-   * DMG, chapter 2, pg. 47 */
+	/* if the alignment was not specified, choose one (from the tables in the
+	 * DMG, chapter 2, pg. 47 */
 
-  constrained = 0;
+	constrained = 0;
 
-  if( opts->alignment <= alANY ) {
-    do {
-      npc->alignment = npcGetRandomAlignment( opts->alignment );
+	if (opts->alignment <= alANY) {
+		do {
+			npc->alignment = npcGetRandomAlignment(opts->alignment);
 
-      constrained = enforceAlignment( npc, opts );
+			constrained = enforceAlignment(npc, opts);
 
-      if( constrained ) {
-        i = 0;
-      } else {
-        if( opts->raceType > 0 ) {
-          k = dndGetRaceAlignment( opts->raceType );
-        } else {
-          k = 0;
-        }
-        i = stepsRemoved( k, npc->alignment );
-      }
-    } while( rollDice( 1, 4 ) + i > 4 );
-  } else {
-    npc->alignment = opts->alignment;
-  }
+			if (constrained) {
+				i = 0;
+			}
+			else {
+				if (opts->raceType > 0) {
+					k = dndGetRaceAlignment(opts->raceType);
+				}
+				else {
+					k = 0;
+				}
+				i = stepsRemoved(k, npc->alignment);
+			}
+		} while (rollDice(1, 4) + i > 4);
+	}
+	else {
+		npc->alignment = opts->alignment;
+	}
 
-  /* if the race was not specified, determine it randomly */
+	/* if the race was not specified, determine it randomly */
 
-  if( opts->raceType <= 0 ) {
-    do {
-      npc->race = npcGetRandomRace( opts->raceType );
+	if (opts->raceType <= 0) {
+		do {
+			npc->race = npcGetRandomRace(opts->raceType);
 
-      /* make sure the alignment is kept within what the race usually is */
-      k = dndGetRaceAlignment( npc->race );
-      i = stepsRemoved( k, npc->alignment );
-    } while( rollDice( 1, 4 ) + i > 4 );
-  } else {
-    npc->race = opts->raceType;
-  }
+			/* make sure the alignment is kept within what the race usually is */
+			k = dndGetRaceAlignment(npc->race);
+			i = stepsRemoved(k, npc->alignment);
+		} while (rollDice(1, 4) + i > 4);
+	}
+	else {
+		npc->race = opts->raceType;
+	}
 
-  /* determine the height and weight of the npc */
-  generateNPCHeightWeight( npc );
+	/* determine the height and weight of the npc */
+	generateNPCHeightWeight(npc);
 
-  /* generate any classes that were requested to be random */
-  generateRandomClasses( npc, opts );
+	/* generate any classes that were requested to be random */
+	generateRandomClasses(npc, opts);
 
-  /* generate the ability scores */
-  generateAbilityScores( npc, opts );
+	/* generate the ability scores */
+	generateAbilityScores(npc, opts);
 
-  /* add all automatic languages that the race is entitled to */
-  j = npc->race;
-  while( ( i = dndGetGivenLanguages( j, &next ) ) != 0 ) {
-    j = 0;
-    addLanguage( npc, i );
-  }
+	/* add all automatic languages that the race is entitled to */
+	j = npc->race;
+	while ((i = dndGetGivenLanguages(j, &next)) != 0) {
+		j = 0;
+		addLanguage(npc, i);
+	}
 
-  k = dndGetAbilityBonus( npc->intelligence );
-  if( k > 0 ) {
-    /* build a list of bonus languages that the NPC can take */
-    wlist = 0;
-    clevel = 0;
-    j = npc->race;
-    while( ( i = dndGetBonusLanguages( j, &next ) ) != 0 ) {
-      j = 0;
-      if( !npcKnowsLanguage( npc, i ) ) {
-        clevel += addToWeightedList( &wlist, i, 1 );
-      }
-    }
+	k = dndGetAbilityBonus(npc->intelligence);
+	if (k > 0) {
+		/* build a list of bonus languages that the NPC can take */
+		wlist = 0;
+		clevel = 0;
+		j = npc->race;
+		while ((i = dndGetBonusLanguages(j, &next)) != 0) {
+			j = 0;
+			if (!npcKnowsLanguage(npc, i)) {
+				clevel += addToWeightedList(&wlist, i, 1);
+			}
+		}
 
-    while( k > 0 ) {
-      if( wlist == 0 ) {
-        /* add all remaining languages */
-        clevel = 0;
-        for( i = 0; allLanguages[ i ] != 0; i++ ) {
-          if( !npcKnowsLanguage( npc, allLanguages[ i ] ) ) {
-            clevel += addToWeightedList( &wlist, allLanguages[ i ], 1 );
-          }
-        }
-      }
+		while (k > 0) {
+			if (wlist == 0) {
+				/* add all remaining languages */
+				clevel = 0;
+				for (i = 0; allLanguages[i] != 0; i++) {
+					if (!npcKnowsLanguage(npc, allLanguages[i])) {
+						clevel += addToWeightedList(&wlist, allLanguages[i], 1);
+					}
+				}
+			}
 
-      if( wlist == 0 ) {
-        break;
-      }
+			if (wlist == 0) {
+				break;
+			}
 
-      i = getWeightedItem( &wlist, rollDice( 1, clevel ), &clevel );
-      addLanguage( npc, i );
+			i = getWeightedItem(&wlist, rollDice(1, clevel), &clevel);
+			addLanguage(npc, i);
 
-      k--;
-    }
+			k--;
+		}
 
-    destroyWeightedList( &wlist );
-  }
+		destroyWeightedList(&wlist);
+	}
 
-  /* if the race grants any feat to beginning level characters, add them to
-   * the NPC's feat list */
+	/* if the race grants any feat to beginning level characters, add them to
+	 * the NPC's feat list */
 
-  k = npc->race;
-  while( dndGetRaceBonusOfType( k, npc->gender, rbtFEAT, &i, &j, &next ) ) {
-    addFeat( npc, i, 1, 0 );
-    k = 0;
-  }
+	k = npc->race;
+	while (dndGetRaceBonusOfType(k, npc->gender, rbtFEAT, &i, &j, &next)) {
+		addFeat(npc, i, 1, 0);
+		k = 0;
+	}
 
-  /* determine the character level */
+	/* determine the character level */
 
-  levelsLeft = 20;
-  tlevel = 0;
+	levelsLeft = 20;
+	tlevel = 0;
 
-  for( j = 0; j < 3; j++ ) {
-    if( opts->classType[j] == classNONE ) {
-      continue;
-    }
+	for (j = 0; j < 3; j++) {
+		if (opts->classType[j] == classNONE) {
+			continue;
+		}
 
-    switch( opts->level[j] ) {
-      case levelANY:
-        clevel = selectBetween( 1, 20 );
-        break;
-      case levelLOW:
-        clevel = selectBetween( 1, 5 );
-        break;
-      case levelMID:
-        clevel = selectBetween( 6, 12 );
-        break;
-      case levelHI:
-        clevel = selectBetween( 13, 20 );
-        break;
-      default:
-        clevel = opts->level[j];
-    }
+		switch (opts->level[j]) {
+		case levelANY:
+			clevel = selectBetween(1, 20);
+			break;
+		case levelLOW:
+			clevel = selectBetween(1, 5);
+			break;
+		case levelMID:
+			clevel = selectBetween(6, 12);
+			break;
+		case levelHI:
+			clevel = selectBetween(13, 20);
+			break;
+		default:
+			clevel = opts->level[j];
+		}
 
-    if( clevel > levelsLeft ) {
-      clevel = levelsLeft;
-    }
+		if (clevel > levelsLeft) {
+			clevel = levelsLeft;
+		}
 
-    if( opts->classType[j] == pcDRUID ) {
-      addLanguage( npc, lnDRUIDIC );
-    }
+		if (opts->classType[j] == pcDRUID) {
+			addLanguage(npc, lnDRUIDIC);
+		}
 
-    addClass( npc, opts->classType[j], clevel );
-    for( i = 1; i <= clevel; i++ ) {
-      computeUpdatedAbilities( npc, opts->classType[j], i+tlevel, i );
-    }
+		addClass(npc, opts->classType[j], clevel);
+		for (i = 1; i <= clevel; i++) {
+			computeUpdatedAbilities(npc, opts->classType[j], i + tlevel, i);
+		}
 
-    levelsLeft -= clevel;
-    tlevel += clevel;
+		levelsLeft -= clevel;
+		tlevel += clevel;
 
-    if( levelsLeft < 1 ) {
-      break;
-    }
-  }
+		if (levelsLeft < 1) {
+			break;
+		}
+	}
 
-  /* compute hit points */
+	/* compute hit points */
 
-  i = dndGetAbilityBonus( npc->constitution );
-  if( dndGetRaceExtraHitDice( npc->race, &j, &k ) ) {
-    while( j > 0 ) {
-      hp = rollDice( 1, k ) + i;
-      if( hp < 1 ) {
-        hp = 1;
-      }
-      npc->hp += hp;
-      j--;
-    }
-  }
+	i = dndGetAbilityBonus(npc->constitution);
+	if (dndGetRaceExtraHitDice(npc->race, &j, &k)) {
+		while (j > 0) {
+			hp = rollDice(1, k) + i;
+			if (hp < 1) {
+				hp = 1;
+			}
+			npc->hp += hp;
+			j--;
+		}
+	}
 
-  cls = npc->classes;
-  cls->hp = 0;
-  clevel = 0;
-  while( cls != 0 ) {
-    j = dndGetClassHitDie( cls->type );
+	cls = npc->classes;
+	cls->hp = 0;
+	clevel = 0;
+	while (cls != 0) {
+		j = dndGetClassHitDie(cls->type);
 
-    for( k = 0; k < cls->level; k++ ) {
-      
-      /* we have to do this one die at a time (instead of all at once)
-       * because if a die roll modified by a constitution penalty is less
-       * than 1, it must be modified upwards to 1.  Every level gained
-       * brings in at least one hit point! */
+		for (k = 0; k < cls->level; k++) {
 
-      if( ( k == 0 ) && ( clevel < 1 ) ) { /* maximum hp at first level */
-        hp = j + i;
-      } else {
-        hp = rollDice( 1, j ) + i;
-      }
+			/* we have to do this one die at a time (instead of all at once)
+			 * because if a die roll modified by a constitution penalty is less
+			 * than 1, it must be modified upwards to 1.  Every level gained
+			 * brings in at least one hit point! */
 
-      if( hp < 1 ) {
-        hp = 1;
-      }
-      npc->hp += hp;
-      cls->hp += hp;
-	  cls->levelhp[k] = hp - i;
-    }
+			if ((k == 0) && (clevel < 1)) { /* maximum hp at first level */
+				hp = j + i;
+			}
+			else {
+				hp = rollDice(1, j) + i;
+			}
 
-    clevel += cls->level;
-    cls = cls->next;
-  }
+			if (hp < 1) {
+				hp = 1;
+			}
+			npc->hp += hp;
+			cls->hp += hp;
+			cls->levelhp[k] = hp - i;
+		}
 
-  /* if the race of the npc grants a bonus to any skill, and the npc has
-   * not taken any ranks in that skill, add it to their skill list with
-   * 0 ranks. */
+		clevel += cls->level;
+		cls = cls->next;
+	}
 
-  i = npc->race;
-  while( dndGetRaceBonusOfType( i, npc->gender, rbtSKILL, &j, &k, &next ) ) {
-    if( !npcHasSkill( npc, j ) ) {
-      addSkill( npc, j, 0, 0 );
-    }
-    i = 0;
-  }
+	/* if the race of the npc grants a bonus to any skill, and the npc has
+	 * not taken any ranks in that skill, add it to their skill list with
+	 * 0 ranks. */
 
-  /* lastly, if the npc does not have any of the following skills, add them
-   * at 0 ranks, because they are used often (even untrained). */
+	i = npc->race;
+	while (dndGetRaceBonusOfType(i, npc->gender, rbtSKILL, &j, &k, &next)) {
+		if (!npcHasSkill(npc, j)) {
+			addSkill(npc, j, 0, 0);
+		}
+		i = 0;
+	}
 
-  for( i = 0; requiredSkills[ i ] != 0; i++ ) {
-    if( !npcHasSkill( npc, requiredSkills[ i ] ) ) {
-      addSkill( npc, requiredSkills[ i ], 0, 0 );
-    }
-  }
+	/* lastly, if the npc does not have any of the following skills, add them
+	 * at 0 ranks, because they are used often (even untrained). */
 
-  npcRandomName( npc->race, npc->gender, opts->filePath, temp, sizeof( temp ) );
-  npc->name = strdup( temp );
-  npc->name[0] = toupper( npc->name[0] );
+	for (i = 0; requiredSkills[i] != 0; i++) {
+		if (!npcHasSkill(npc, requiredSkills[i])) {
+			addSkill(npc, requiredSkills[i], 0, 0);
+		}
+	}
 
-  return npc;
+	npcRandomName(npc->race, npc->gender, opts->filePath, temp, sizeof(temp));
+	npc->name = strdup(temp);
+	npc->name[0] = toupper(npc->name[0]);
+
+	return npc;
 }
 
 
-int npcGearValue( NPC* npc ) {
-  NPCCLASS* cls;
-  int       i;
+int npcGearValue(NPC* npc) {
+	NPCCLASS* cls;
+	int       i;
 
-  if( npcHasClass( npc, npcCOMMONER ) ) {
-    cls = npcGetClass( npc, npcCOMMONER );
-    i = npcGetCharacterLevel( npc ) - cls->level;
-    i = dndGetNPCGearValue( cls->level ) / 200 +
-           ( i > 0 ? dndGetNPCGearValue( i ) : 0 );
-  } else {
-    i = dndGetNPCGearValue( npcGetCharacterLevel( npc ) );
-  }
-  
-  return i;
+	if (npcHasClass(npc, npcCOMMONER)) {
+		cls = npcGetClass(npc, npcCOMMONER);
+		i = npcGetCharacterLevel(npc) - cls->level;
+		i = dndGetNPCGearValue(cls->level) / 200 +
+			(i > 0 ? dndGetNPCGearValue(i) : 0);
+	}
+	else {
+		i = dndGetNPCGearValue(npcGetCharacterLevel(npc));
+	}
+
+	return i;
 }
 
 
-int npcComputeCR( NPC* npc ) {
-  int       cr;
-  int       level;
-  NPCCLASS* cls;
+int npcComputeCR(NPC* npc) {
+	int       cr;
+	int       level;
+	NPCCLASS* cls;
 
-  cr = dndGetRaceCR( npc->race );
+	cr = dndGetRaceCR(npc->race);
 
-  for( cls = npc->classes; cls != 0; cls = cls->next ) {
-    level = cls->level;
-    if( dndGetClassType( cls->type ) == cctNONPLAYER ) {
-      level--;
-    }
-    cr += level;
-  }
+	for (cls = npc->classes; cls != 0; cls = cls->next) {
+		level = cls->level;
+		if (dndGetClassType(cls->type) == cctNONPLAYER) {
+			level--;
+		}
+		cr += level;
+	}
 
-  if( cr < 1 ) {
-    cr = 1;
-  }
+	if (cr < 1) {
+		cr = 1;
+	}
 
-  return cr;
+	return cr;
 }
 
 
-void npcAbScoreStrategy_BestOf4d6( int* scores, void* data ) {
-  int rolls[6];
-  int i;
-  int j;
+void npcAbScoreStrategy_BestOf4d6(int* scores, void* data) {
+	int rolls[6];
+	int i;
+	int j;
 
-  /* roll the 6 abilities by rolling 4 dice for each, and keeping only the
-   * highest 3. */
+	/* roll the 6 abilities by rolling 4 dice for each, and keeping only the
+	 * highest 3. */
 
-  for( i = 0; i < 6; i++ ) {
-    for( j = 0; j < 4; j++ ) {
-      rolls[j] = rollDice( 1, 6 );
-    }
-    qsort( rolls, 4, sizeof( int ), icomp );
-    scores[i] = rolls[0] + rolls[1] + rolls[2];
-  }
+	for (i = 0; i < 6; i++) {
+		for (j = 0; j < 4; j++) {
+			rolls[j] = rollDice(1, 6);
+		}
+		qsort(rolls, 4, sizeof(int), icomp);
+		scores[i] = rolls[0] + rolls[1] + rolls[2];
+	}
 }
 
 
-void npcAbScoreStrategy_Straight3d6( int* scores, void* data ) {
-  int i;
+void npcAbScoreStrategy_Straight3d6(int* scores, void* data) {
+	int i;
 
-  for( i = 0; i < 6; i++ ) {
-    scores[ i ] = rollDice( 3, 6 );
-  }
+	for (i = 0; i < 6; i++) {
+		scores[i] = rollDice(3, 6);
+	}
 }
