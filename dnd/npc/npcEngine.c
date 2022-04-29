@@ -2719,11 +2719,11 @@ struct {
   //{  82,   0,  36, pcROGUE,       rogueFeats,     0,                 rogueWeapons,     { abDEXTERITY, abWISDOM, abINTELLIGENCE, abCONSTITUTION, abSTRENGTH, abCHARISMA } },
   //{  91,   0,  40, pcSORCERER,    sorcererFeats,  0,                 sorcererWeapons,  { abCHARISMA, abINTELLIGENCE, abCONSTITUTION, abDEXTERITY, abWISDOM, abSTRENGTH } },
   //{ 100,   0,  44, pcWIZARD,      wizardFeats,    wizardBonusFeats,  wizardWeapons,    { abINTELLIGENCE, abCONSTITUTION, abDEXTERITY, abWISDOM, abCHARISMA, abSTRENGTH } },
-  //{   0,  20,  48, npcADEPT,      adeptFeats,     0,                 adeptWeapons,     { abWISDOM, abINTELLIGENCE, abCHARISMA, abSTRENGTH, abCONSTITUTION, abDEXTERITY } },
-  //{   0,  40,  52, npcARISTOCRAT, nobleFeats,     0,                 nobleWeapons,     { abCHARISMA, abWISDOM, abDEXTERITY, abINTELLIGENCE, abSTRENGTH, abCONSTITUTION } },
-  //{   0,  60,  92, npcCOMMONER,   commonFeats,    0,                 commonWeapons,    { abSTRENGTH, abWISDOM, abDEXTERITY, abINTELLIGENCE, abCHARISMA, abCONSTITUTION } },
-  //{   0,  80,  96, npcEXPERT,     expertFeats,    0,                 expertWeapons,    { abDEXTERITY, abINTELLIGENCE, abWISDOM, abCONSTITUTION, abCHARISMA, abSTRENGTH } },
-  //{   0, 100, 100, npcWARRIOR,    warriorFeats,   0,                 fighterWeapons,   { abSTRENGTH, abCONSTITUTION, abDEXTERITY, abINTELLIGENCE, abCHARISMA, abWISDOM } },
+  {   0,  20,  48, npcADEPT,      adeptFeats,     0,                 adeptWeapons,     { abWISDOM, abINTELLIGENCE, abCHARISMA, abSTRENGTH, abCONSTITUTION, abDEXTERITY } },
+  {   0,  40,  52, npcARISTOCRAT, nobleFeats,     0,                 nobleWeapons,     { abCHARISMA, abWISDOM, abDEXTERITY, abINTELLIGENCE, abSTRENGTH, abCONSTITUTION } },
+  {   0,  60,  92, npcCOMMONER,   commonFeats,    0,                 commonWeapons,    { abSTRENGTH, abWISDOM, abDEXTERITY, abINTELLIGENCE, abCHARISMA, abCONSTITUTION } },
+  {   0,  80,  96, npcEXPERT,     expertFeats,    0,                 expertWeapons,    { abDEXTERITY, abINTELLIGENCE, abWISDOM, abCONSTITUTION, abCHARISMA, abSTRENGTH } },
+  {   0, 100, 100, npcWARRIOR,    warriorFeats,   0,                 fighterWeapons,   { abSTRENGTH, abCONSTITUTION, abDEXTERITY, abINTELLIGENCE, abCHARISMA, abWISDOM } },
   {   0,   0,   0, 0,             0,              0,                 0,                { 0, 0, 0, 0, 0, 0 } }
 };
 

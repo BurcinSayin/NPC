@@ -63,6 +63,8 @@ struct __racialbonus__  {
 
 /* class and cross-class skill designations */
 
+char* UNKNOWN_SKILL = "Unknown Skill";
+char* UNKNOWN_ALIGN = "Unknown Skill";
 
 static SKILLSFORCLASS barbarianSkills[] = {
 	{ skACROBATICS,1 },
@@ -4226,11 +4228,11 @@ static const struct {
   //{ prcDWARVENDEFENDER, cctPRESTIGE,  2, 12, 0, 0, goodAttackProgression,   goodSaveProgression, poorSaveProgression, goodSaveProgression, dwarvenDefenderSkills, 0,            0,                     0,                    "ddr", "dwarven defender" },
   //{ prcLOREMASTER,      cctPRESTIGE,  4,  4, 0, 0, poorAttackProgression,   poorSaveProgression, poorSaveProgression, goodSaveProgression, loremasterSkills,      0,            0,                     0,                    "lmr", "loremaster" },
   //{ prcSHADOWDANCER,    cctPRESTIGE,  6,  8, 0, 0, mediumAttackProgression, poorSaveProgression, goodSaveProgression, poorSaveProgression, shadowdancerSkills,    0,            0,                     0,                    "sdr", "shadowdancer" },
-  //{ npcADEPT,           cctNONPLAYER, 2,  6, 0, 0, poorAttackProgression,   poorSaveProgression, poorSaveProgression, goodSaveProgression, adeptSkills,           s_Adept,      &adeptSpellsPerDay,    0,                    "adp", "adept" },
-  //{ npcARISTOCRAT,      cctNONPLAYER, 4,  8, 0, 0, mediumAttackProgression, poorSaveProgression, poorSaveProgression, goodSaveProgression, aristocratSkills,      0,            0,                     0,                    "nob", "aristocrat" },
-  //{ npcCOMMONER,        cctNONPLAYER, 2,  4, 0, 0, poorAttackProgression,   poorSaveProgression, poorSaveProgression, poorSaveProgression, commonerSkills,        0,            0,                     0,                    "com", "commoner" },
-  //{ npcEXPERT,          cctNONPLAYER, 6,  6, 0, 0, mediumAttackProgression, poorSaveProgression, poorSaveProgression, goodSaveProgression, expertSkills,          0,            0,                     0,                    "exp", "expert" },
-  //{ npcWARRIOR,         cctNONPLAYER, 2,  8, 0, 0, goodAttackProgression,   goodSaveProgression, poorSaveProgression, poorSaveProgression, warriorSkills,         0,            0,                     0,                    "war", "warrior" },
+  { npcADEPT,           cctNONPLAYER, 2,  6, 0, 0, poorAttackProgression,   poorSaveProgression, poorSaveProgression, goodSaveProgression, adeptSkills,           s_Adept,      &adeptSpellsPerDay,    0,                    "adp", "adept" },
+  { npcARISTOCRAT,      cctNONPLAYER, 4,  8, 0, 0, mediumAttackProgression, poorSaveProgression, poorSaveProgression, goodSaveProgression, aristocratSkills,      0,            0,                     0,                    "nob", "aristocrat" },
+  { npcCOMMONER,        cctNONPLAYER, 2,  4, 0, 0, poorAttackProgression,   poorSaveProgression, poorSaveProgression, poorSaveProgression, commonerSkills,        0,            0,                     0,                    "com", "commoner" },
+  { npcEXPERT,          cctNONPLAYER, 6,  6, 0, 0, mediumAttackProgression, poorSaveProgression, poorSaveProgression, goodSaveProgression, expertSkills,          0,            0,                     0,                    "exp", "expert" },
+  { npcWARRIOR,         cctNONPLAYER, 2,  8, 0, 0, goodAttackProgression,   goodSaveProgression, poorSaveProgression, poorSaveProgression, warriorSkills,         0,            0,                     0,                    "war", "warrior" },
   { 0,                  0,            0,  0, 0, 0, 0,                       0,                   0,                   0,                   0,                     0,            0,                     0,                    0,     0 }
 };
 
@@ -7625,7 +7627,7 @@ char* dndGetAlignmentText( int alignment ) {
     }
   }
 
-  return NULL;
+  return UNKNOWN_ALIGN;
 }
 
 
@@ -7638,7 +7640,7 @@ char* dndGetSkillName( int skill ) {
     }
   }
   
-  return NULL;
+  return UNKNOWN_SKILL;
 }
 
 
